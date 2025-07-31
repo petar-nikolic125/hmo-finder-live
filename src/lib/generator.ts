@@ -6,7 +6,7 @@
 // • Zero scraped data — all values are statistically realistic
 // -----------------------------------------------------------------------------
 
-import { type InsertProperty, type PropertyWithAnalytics } from "./types";
+import { type InsertProperty } from "./types";
 
 /* -------------------------------------------------------------------------- */
 /* 0.  BASIC UTILITIES                                                        */
@@ -450,7 +450,19 @@ function generateCoordinates(city: string): { latitude: number; longitude: numbe
 /* -------------------------------------------------------------------------- */
 /* 8.  CORE GENERATOR                                                         */
 /* -------------------------------------------------------------------------- */
-export function generateRealisticProperty(city: string): PropertyWithAnalytics {
+export function generateRealisticProperty(city: string): InsertProperty & {
+  /* extra analytics */
+  lhaWeekly: number;
+  grossYield: number;
+  netYield: number;
+  roi: number;
+  paybackYears: number;
+  monthlyCashflow: number;
+  dscr: number;
+  stampDuty: number;
+  refurbCost: number;
+  totalInvested: number;
+} {
   const postcode = generatePostcode(city);
   const coords = generateCoordinates(city);
   const platform = pick(["rightmove", "zoopla", "onthemarket"]) as
@@ -478,9 +490,9 @@ export function generateRealisticProperty(city: string): PropertyWithAnalytics {
   const annualCashflow = annualNetIncome - interestCost;
   const monthlyCashflow = Math.round(annualCashflow / 12);
 
-  const grossYield = +((annualRent / price) * 100).toFixed(1);
-  const netYield = +((annualNetIncome / price) * 100).toFixed(1);
-  const roi = +((annualCashflow / totalInvested) * 100).toFixed(1);
+  const grossYield = +(annualRent / price) * 100;
+  const netYield = +(annualNetIncome / price) * 100;
+  const roi = +(annualCashflow / totalInvested) * 100;
   const paybackYears = +(totalInvested / annualCashflow).toFixed(1);
   const dscr = +(annualNetIncome / interestCost).toFixed(2);
 
@@ -513,6 +525,17 @@ export function generateRealisticProperty(city: string): PropertyWithAnalytics {
     stampDuty,
     refurbCost,
     totalInvested,
+  } as InsertProperty & {
+    lhaWeekly: number;
+    grossYield: number;
+    netYield: number;
+    roi: number;
+    paybackYears: number;
+    monthlyCashflow: number;
+    dscr: number;
+    stampDuty: number;
+    refurbCost: number;
+    totalInvested: number;
   };
 }
 

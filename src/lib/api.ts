@@ -1,5 +1,19 @@
-import { PropertySearchParams, PropertyWithAnalytics } from './types';
+import { PropertySearchParams, InsertProperty } from './types';
 import { generatePropertiesForCity, getAvailableCities } from './generator';
+
+// Enhanced property type with analytics
+export type PropertyWithAnalytics = InsertProperty & {
+  lhaWeekly: number;
+  grossYield: number;
+  netYield: number;
+  roi: number;
+  paybackYears: number;
+  monthlyCashflow: number;
+  dscr: number;
+  stampDuty: number;
+  refurbCost: number;
+  totalInvested: number;
+};
 
 // Mock API client - simulates real backend calls
 class ApiClient {
@@ -21,6 +35,7 @@ class ApiClient {
       sortBy = 'profit'
     } = params;
 
+    // Use the generator as the single source of truth
     let properties = generatePropertiesForCity(city, count * 2); // Generate extra for filtering
 
     // Apply filters

@@ -1,4 +1,4 @@
-import { PropertyWithAnalytics } from '@/lib/types';
+import { PropertyWithAnalytics } from '@/lib/api';
 import { formatPrice, formatSize, formatProfit, formatPercentage } from '@/lib/format';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
