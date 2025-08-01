@@ -2,13 +2,13 @@
 {
   "functions": {
     "api/properties.ts": {
-      "runtime": "@vercel/node"
+      "runtime": "@vercel/node@3.0.0"
     },
     "api/cities.ts": {
-      "runtime": "@vercel/node"
+      "runtime": "@vercel/node@3.0.0"  
     },
     "api/ping.ts": {
-      "runtime": "@vercel/node"
+      "runtime": "@vercel/node@3.0.0"
     }
   },
   "rewrites": [
