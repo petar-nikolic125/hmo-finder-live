@@ -74,23 +74,25 @@ export const PropertyCard = ({ property }: PropertyCardProps) => {
 
         <div className="space-y-2">
           <a 
-            href={property.rightmoveUrl} 
+            href={property.primeLocationUrl} 
             target="_blank" 
             rel="noopener noreferrer"
             className="inline-flex items-center justify-center gap-2 h-10 px-4 py-2 bg-primary text-primary-foreground hover:bg-primary/90 transition-colors whitespace-nowrap rounded-md text-sm font-medium w-full"
           >
             <TrendingUp className="w-4 h-4" />
-            Rightmove →
+            {property.primeLocationUrl.includes('rightmove') ? 'Rightmove' : 
+             property.primeLocationUrl.includes('zoopla') ? 'Zoopla' : 
+             'PrimeLocation'} →
             <ExternalLink className="w-4 h-4" />
           </a>
           
           <a 
-            href={property.zooplaUrl} 
+            href={property.rightmoveUrl !== property.primeLocationUrl ? property.rightmoveUrl : property.zooplaUrl} 
             target="_blank" 
             rel="noopener noreferrer"
             className="inline-flex items-center justify-center gap-2 h-9 px-3 border border-input bg-background hover:bg-accent hover:text-accent-foreground transition-colors whitespace-nowrap rounded-md text-sm font-medium w-full"
           >
-            See more on Zoopla
+            {property.rightmoveUrl !== property.primeLocationUrl ? 'See more on Rightmove' : 'See more on Zoopla'}
             <ExternalLink className="w-3 h-3" />
           </a>
         </div>

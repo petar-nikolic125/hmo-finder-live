@@ -47,6 +47,15 @@ Properties include comprehensive analytics:
 - Ensured consistency between city context and portal search results
 - Removed on-the-fly URL builders in favor of generator's SEARCH_SEEDS
 
+### Enhanced City and Portal Diversity (January 2025)
+- **Expanded SEARCH_SEEDS**: Added Coventry, Wolverhampton (West Midlands) and Salford, Stockport (Greater Manchester)
+- **Added PrimeLocation**: All cities now include third portal option for 5% randomization
+- **Varied Query Parameters**: Each city uses different beds_min (3-5), price_max (400k-500k), and sort options
+- **Randomized Portal Choice**: 70% Rightmove, 25% Zoopla, 5% PrimeLocation per property card
+- **Fallback Generator**: Cities not in SEARCH_SEEDS generate URLs from postcode prefixes
+- **Authentic Geographic Data**: Added proper street names, areas, and postcodes for new cities
+- **Footer Credit**: Added "Built by Petar Nikolić · Commissioned for Nathan Fonteijn"
+
 ## Architecture Decisions
 
 ### Client-Server Separation

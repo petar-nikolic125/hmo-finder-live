@@ -61,49 +61,97 @@ const LHA_SHARED: Record<string, number> = {
 export const SEARCH_SEEDS = {
   Birmingham: {
     rightmove:
-      "https://www.rightmove.co.uk/property-for-sale/find.html?locationIdentifier=REGION%5E1642&keywords=HMO",
+      "https://www.rightmove.co.uk/property-for-sale/find.html?locationIdentifier=REGION%5E1642&keywords=HMO&beds_min=4&price_max=500000",
     zoopla:
       "https://www.zoopla.co.uk/for-sale/property/birmingham/?beds_min=4&price_max=500000&q=HMO",
+    primelocation:
+      "https://www.primelocation.com/for-sale/property/birmingham/?keywords=HMO&price_max=500000",
+  },
+  Coventry: {
+    rightmove:
+      "https://www.rightmove.co.uk/property-for-sale/find.html?locationIdentifier=REGION%5E87271&keywords=HMO&beds_min=3&price_max=450000&sort=highest_price",
+    zoopla:
+      "https://www.zoopla.co.uk/for-sale/property/coventry/?beds_min=3&price_max=450000&q=HMO&view_type=list",
+    primelocation:
+      "https://www.primelocation.com/for-sale/property/coventry/?keywords=HMO&price_max=450000",
+  },
+  Wolverhampton: {
+    rightmove:
+      "https://www.rightmove.co.uk/property-for-sale/find.html?locationIdentifier=REGION%5E87277&keywords=HMO&beds_min=4&price_max=400000",
+    zoopla:
+      "https://www.zoopla.co.uk/for-sale/property/wolverhampton/?beds_min=4&price_max=400000&q=HMO",
+    primelocation:
+      "https://www.primelocation.com/for-sale/property/wolverhampton/?keywords=HMO&price_max=400000",
   },
   Manchester: {
     rightmove:
-      "https://www.rightmove.co.uk/property-for-sale/find.html?locationIdentifier=REGION%5E2558&keywords=HMO",
+      "https://www.rightmove.co.uk/property-for-sale/find.html?locationIdentifier=REGION%5E2558&keywords=HMO&beds_min=4&price_max=500000&view_type=list",
     zoopla:
-      "https://www.zoopla.co.uk/for-sale/property/manchester/?beds_min=4&q=HMO",
+      "https://www.zoopla.co.uk/for-sale/property/manchester/?beds_min=4&price_max=500000&q=HMO",
+    primelocation:
+      "https://www.primelocation.com/for-sale/property/manchester/?keywords=HMO&price_max=500000",
+  },
+  Salford: {
+    rightmove:
+      "https://www.rightmove.co.uk/property-for-sale/find.html?locationIdentifier=REGION%5E87280&keywords=HMO&beds_min=3&price_max=450000&sort=highest_price",
+    zoopla:
+      "https://www.zoopla.co.uk/for-sale/property/salford/?beds_min=3&price_max=450000&q=HMO",
+    primelocation:
+      "https://www.primelocation.com/for-sale/property/salford/?keywords=HMO&price_max=450000",
+  },
+  Stockport: {
+    rightmove:
+      "https://www.rightmove.co.uk/property-for-sale/find.html?locationIdentifier=REGION%5E87281&keywords=HMO&beds_min=4&price_max=400000",
+    zoopla:
+      "https://www.zoopla.co.uk/for-sale/property/stockport/?beds_min=4&price_max=400000&q=HMO&view_type=list",
+    primelocation:
+      "https://www.primelocation.com/for-sale/property/stockport/?keywords=HMO&price_max=400000",
   },
   Leeds: {
     rightmove:
-      "https://www.rightmove.co.uk/property-for-sale/find.html?locationIdentifier=REGION%5E87490&keywords=HMO",
+      "https://www.rightmove.co.uk/property-for-sale/find.html?locationIdentifier=REGION%5E87490&keywords=HMO&beds_min=4&price_max=500000",
     zoopla:
-      "https://www.zoopla.co.uk/for-sale/property/leeds/?beds_min=4&q=HMO",
+      "https://www.zoopla.co.uk/for-sale/property/leeds/?beds_min=4&price_max=500000&q=HMO",
+    primelocation:
+      "https://www.primelocation.com/for-sale/property/leeds/?keywords=HMO&price_max=500000",
   },
   Sheffield: {
     rightmove:
-      "https://www.rightmove.co.uk/property-for-sale/find.html?locationIdentifier=REGION%5E87495&keywords=HMO",
-    zoopla: "https://www.zoopla.co.uk/for-sale/property/sheffield/?beds_min=5",
+      "https://www.rightmove.co.uk/property-for-sale/find.html?locationIdentifier=REGION%5E87495&keywords=HMO&beds_min=5&price_max=450000&sort=highest_price",
+    zoopla: "https://www.zoopla.co.uk/for-sale/property/sheffield/?beds_min=5&price_max=450000&q=HMO",
+    primelocation:
+      "https://www.primelocation.com/for-sale/property/sheffield/?keywords=HMO&price_max=450000",
   },
   Liverpool: {
     rightmove:
-      "https://www.rightmove.co.uk/property-for-sale/find.html?locationIdentifier=REGION%5E87487&keywords=HMO",
-    zoopla: "https://www.zoopla.co.uk/for-sale/property/liverpool/?beds_min=4",
+      "https://www.rightmove.co.uk/property-for-sale/find.html?locationIdentifier=REGION%5E87487&keywords=HMO&beds_min=4&price_max=500000&view_type=list",
+    zoopla: "https://www.zoopla.co.uk/for-sale/property/liverpool/?beds_min=4&price_max=500000&q=HMO",
+    primelocation:
+      "https://www.primelocation.com/for-sale/property/liverpool/?keywords=HMO&price_max=500000",
   },
   Nottingham: {
     rightmove:
-      "https://www.rightmove.co.uk/property-for-sale/find.html?locationIdentifier=REGION%5E239&keywords=HMO",
+      "https://www.rightmove.co.uk/property-for-sale/find.html?locationIdentifier=REGION%5E239&keywords=HMO&beds_min=4&price_max=450000",
     zoopla:
-      "https://www.zoopla.co.uk/for-sale/property/nottingham/?beds_min=4&q=HMO",
+      "https://www.zoopla.co.uk/for-sale/property/nottingham/?beds_min=4&price_max=450000&q=HMO&sort=highest_price",
+    primelocation:
+      "https://www.primelocation.com/for-sale/property/nottingham/?keywords=HMO&price_max=450000",
   },
   Leicester: {
     rightmove:
-      "https://www.rightmove.co.uk/property-for-sale/find.html?locationIdentifier=REGION%5E87485&keywords=HMO",
+      "https://www.rightmove.co.uk/property-for-sale/find.html?locationIdentifier=REGION%5E87485&keywords=HMO&beds_min=4&price_max=500000",
     zoopla:
-      "https://www.zoopla.co.uk/for-sale/property/leicester/?beds_min=4&q=HMO",
+      "https://www.zoopla.co.uk/for-sale/property/leicester/?beds_min=4&price_max=500000&q=HMO&view_type=list",
+    primelocation:
+      "https://www.primelocation.com/for-sale/property/leicester/?keywords=HMO&price_max=500000",
   },
   Newcastle: {
     rightmove:
-      "https://www.rightmove.co.uk/property-for-sale/find.html?locationIdentifier=REGION%5E87488&keywords=HMO",
+      "https://www.rightmove.co.uk/property-for-sale/find.html?locationIdentifier=REGION%5E87488&keywords=HMO&beds_min=4&price_max=400000&sort=highest_price",
     zoopla:
-      "https://www.zoopla.co.uk/for-sale/property/newcastle/?beds_min=4&q=HMO",
+      "https://www.zoopla.co.uk/for-sale/property/newcastle/?beds_min=4&price_max=400000&q=HMO",
+    primelocation:
+      "https://www.primelocation.com/for-sale/property/newcastle/?keywords=HMO&price_max=400000",
   },
 };
 
@@ -133,6 +181,74 @@ const STREET_TEMPLATES = {
     "High Street",
     "New Street",
     "Bull Ring",
+  ],
+  Coventry: [
+    "Foleshill Road",
+    "Walsgrave Road",
+    "Binley Road",
+    "Albany Road",
+    "Charter Avenue",
+    "Holbrook Lane",
+    "Far Gosford Street",
+    "Earlsdon Avenue",
+    "Tile Hill Lane",
+    "Allesley Old Road",
+    "Corporation Street",
+    "Broadgate",
+    "Trinity Street",
+    "High Street",
+    "Hertford Street",
+  ],
+  Wolverhampton: [
+    "Penn Road",
+    "Stafford Road",
+    "Tettenhall Road",
+    "Compton Road",
+    "Wednesfield Road",
+    "Bilston Road",
+    "Chapel Ash",
+    "Coalway Road",
+    "Whitmore Reans",
+    "Dunstall Hill",
+    "Queen Street",
+    "Darlington Street",
+    "Victoria Street",
+    "Lichfield Street",
+    "Pipers Row",
+  ],
+  Salford: [
+    "Chapel Street",
+    "Eccles New Road",
+    "Liverpool Street",
+    "Regent Road",
+    "Broad Street",
+    "Ordsall Lane",
+    "Trinity Way",
+    "Cromwell Road",
+    "Frederick Road",
+    "Langworthy Road",
+    "The Crescent",
+    "Bexley Square",
+    "Cross Lane",
+    "Greengate",
+    "New Bailey Street",
+  ],
+  Stockport: [
+    "Wellington Road",
+    "Bramhall Lane",
+    "Didsbury Road",
+    "Hazel Grove",
+    "Buxton Road",
+    "Cheadle Road",
+    "Adswood Road",
+    "Greek Street",
+    "Shaw Heath",
+    "Reddish Road",
+    "Market Street",
+    "Wellington Road",
+    "St Peters Square",
+    "Underbanks",
+    "Castle Street",
   ],
   Manchester: [
     "Oxford Road",
@@ -265,6 +381,46 @@ const AREA_SUFFIXES = {
     "Moseley",
     "Erdington",
     "Aston",
+  ],
+  Coventry: [
+    "Foleshill",
+    "Tile Hill",
+    "Canley",
+    "Earlsdon",
+    "Chapelfields",
+    "Hillfields",
+    "Radford",
+    "Stoke",
+  ],
+  Wolverhampton: [
+    "Whitmore Reans",
+    "Penn",
+    "Tettenhall",
+    "Wednesfield",
+    "Bilston",
+    "Heath Town",
+    "Fallings Park",
+    "Bushbury",
+  ],
+  Salford: [
+    "Eccles",
+    "Pendleton",
+    "Ordsall",
+    "Weaste",
+    "Seedley",
+    "Langworthy",
+    "Little Hulton",
+    "Walkden",
+  ],
+  Stockport: [
+    "Bramhall",
+    "Cheadle",
+    "Gatley",
+    "Heald Green",
+    "Hazel Grove",
+    "Marple",
+    "Reddish",
+    "Bredbury",
   ],
   Manchester: [
     "Longsight",
@@ -411,7 +567,11 @@ function generateAddress(city: string): string {
 function generatePostcode(city: string): string {
   const postcodes = {
     Birmingham: ["B1", "B11", "B12", "B14", "B21", "B29"],
+    Coventry: ["CV1", "CV2", "CV3", "CV4", "CV5", "CV6"],
+    Wolverhampton: ["WV1", "WV2", "WV3", "WV4", "WV6", "WV10"],
     Manchester: ["M1", "M13", "M14", "M16"],
+    Salford: ["M5", "M6", "M7", "M27", "M28", "M30"],
+    Stockport: ["SK1", "SK2", "SK3", "SK4", "SK7", "SK8"],
     Leeds: ["LS2", "LS4", "LS6", "LS11"],
     Sheffield: ["S1", "S6", "S7", "S10", "S11"],
     Liverpool: ["L8", "L15", "L17", "L18"],
@@ -432,7 +592,11 @@ function generatePostcode(city: string): string {
 function generateCoordinates(city: string): { latitude: number; longitude: number } {
   const cityCoords = {
     Birmingham: { lat: 52.4862, lng: -1.8904 },
+    Coventry: { lat: 52.4068, lng: -1.5197 },
+    Wolverhampton: { lat: 52.5855, lng: -2.1282 },
     Manchester: { lat: 53.4808, lng: -2.2426 },
+    Salford: { lat: 53.4875, lng: -2.2901 },
+    Stockport: { lat: 53.4106, lng: -2.1575 },
     Leeds: { lat: 53.8008, lng: -1.5491 },
     Sheffield: { lat: 53.3811, lng: -1.4701 },
     Liverpool: { lat: 53.4084, lng: -2.9916 },
@@ -496,8 +660,34 @@ export function generateRealisticProperty(city: string): InsertProperty & {
   const paybackYears = +(totalInvested / annualCashflow).toFixed(1);
   const dscr = +(annualNetIncome / interestCost).toFixed(2);
 
-  // Get city-specific search URLs from SEARCH_SEEDS
-  const citySearchUrls = SEARCH_SEEDS[city as keyof typeof SEARCH_SEEDS] || SEARCH_SEEDS.Birmingham;
+  // Get city-specific search URLs from SEARCH_SEEDS or generate fallback
+  const citySearchUrls = SEARCH_SEEDS[city as keyof typeof SEARCH_SEEDS];
+  
+  let rightmoveUrl: string;
+  let zooplaUrl: string;
+  let primaryUrl: string;
+  
+  if (citySearchUrls) {
+    // Use existing SEARCH_SEEDS
+    rightmoveUrl = citySearchUrls.rightmove;
+    zooplaUrl = citySearchUrls.zoopla;
+    
+    // Randomize portal choice: 70% Rightmove, 25% Zoopla, 5% PrimeLocation
+    const portalChoice = Math.random();
+    if (portalChoice < 0.7) {
+      primaryUrl = citySearchUrls.rightmove;
+    } else if (portalChoice < 0.95) {
+      primaryUrl = citySearchUrls.zoopla;
+    } else {
+      primaryUrl = citySearchUrls.primelocation;
+    }
+  } else {
+    // Fallback generator for cities not in SEARCH_SEEDS
+    const postcodePrefix = postcode.split(' ')[0];
+    rightmoveUrl = `https://www.rightmove.co.uk/property-for-sale/find.html?locationIdentifier=${postcodePrefix}%5E&keywords=HMO&beds_min=4&price_max=500000`;
+    zooplaUrl = `https://www.zoopla.co.uk/for-sale/property/${city.toLowerCase()}/?beds_min=4&price_max=500000&q=HMO`;
+    primaryUrl = rightmoveUrl; // Default to Rightmove for fallback
+  }
 
   return {
     address: generateAddress(city),
@@ -508,10 +698,10 @@ export function generateRealisticProperty(city: string): InsertProperty & {
     bathrooms,
     latitude: coords.latitude,
     longitude: coords.longitude,
-    imageUrl: pick(IMG_POOL),
-    primeLocationUrl: citySearchUrls.rightmove, // Use city-specific Rightmove search URL
-    rightmoveUrl: citySearchUrls.rightmove, // Primary search URL from SEARCH_SEEDS
-    zooplaUrl: citySearchUrls.zoopla, // Secondary search URL from SEARCH_SEEDS
+    imageUrl: pick(IMG_POOL), // Ensure all images are from the pool
+    primeLocationUrl: primaryUrl, // Randomized portal choice
+    rightmoveUrl, // Always available
+    zooplaUrl, // Always available
     description: `${pick(DESCRIPTION_TEMPLATES)} — ${bedrooms} bed / ${bathrooms} bath.`,
     hasGarden: Math.random() < 0.6,
     hasParking: Math.random() < 0.5,

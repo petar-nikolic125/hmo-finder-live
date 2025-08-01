@@ -9,6 +9,7 @@ import { UpdateBadge } from '@/components/UpdateBadge';
 import { PropertyCard } from '@/components/PropertyCard';
 import { PropertyGridSkeleton } from '@/components/LoadingSkeletons';
 import { RefreshFab } from '@/components/RefreshFab';
+import { Footer } from '@/components/Footer';
 import { useToast } from '@/hooks/use-toast';
 
 export const Home = () => {
@@ -139,13 +140,7 @@ export const Home = () => {
         )}
       </main>
 
-      <footer className="bg-muted/50 py-8 mt-12">
-        <div className="container mx-auto px-4 text-center">
-          <p className="text-sm text-muted-foreground">
-            Data provided for illustrative purposes – always verify with agent
-          </p>
-        </div>
-      </footer>
+      <Footer />
 
       <RefreshFab onRefresh={handleRefresh} isLoading={isLoading} />
     </div>
