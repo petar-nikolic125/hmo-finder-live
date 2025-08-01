@@ -1,8 +1,15 @@
+
 {
-  "buildCommand": "vite build",
-  "outputDirectory": "dist/public",
-  "framework": null,
+  "functions": {
+    "api/serverless.ts": {
+      "runtime": "@vercel/node"
+    }
+  },
   "rewrites": [
+    {
+      "source": "/api/(.*)",
+      "destination": "/api/serverless"
+    },
     {
       "source": "/(.*)",
       "destination": "/index.html"
