@@ -20,6 +20,8 @@ export const properties = pgTable("properties", {
   longitude: real("longitude").notNull(),
   imageUrl: text("image_url").notNull(),
   primeLocationUrl: text("prime_location_url").notNull(),
+  rightmoveUrl: text("rightmove_url").notNull(),
+  zooplaUrl: text("zoopla_url").notNull(),
   description: text("description").notNull(),
   hasGarden: boolean("has_garden").notNull().default(false),
   hasParking: boolean("has_parking").notNull().default(false),

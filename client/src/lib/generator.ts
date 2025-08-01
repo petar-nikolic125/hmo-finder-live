@@ -496,6 +496,9 @@ export function generateRealisticProperty(city: string): InsertProperty & {
   const paybackYears = +(totalInvested / annualCashflow).toFixed(1);
   const dscr = +(annualNetIncome / interestCost).toFixed(2);
 
+  // Get city-specific search URLs from SEARCH_SEEDS
+  const citySearchUrls = SEARCH_SEEDS[city as keyof typeof SEARCH_SEEDS] || SEARCH_SEEDS.Birmingham;
+
   return {
     address: generateAddress(city),
     postcode,
@@ -506,7 +509,9 @@ export function generateRealisticProperty(city: string): InsertProperty & {
     latitude: coords.latitude,
     longitude: coords.longitude,
     imageUrl: pick(IMG_POOL),
-    primeLocationUrl: generatePropertyUrl(platform),
+    primeLocationUrl: citySearchUrls.rightmove, // Use city-specific Rightmove search URL
+    rightmoveUrl: citySearchUrls.rightmove, // Primary search URL from SEARCH_SEEDS
+    zooplaUrl: citySearchUrls.zoopla, // Secondary search URL from SEARCH_SEEDS
     description: `${pick(DESCRIPTION_TEMPLATES)} — ${bedrooms} bed / ${bathrooms} bath.`,
     hasGarden: Math.random() < 0.6,
     hasParking: Math.random() < 0.5,

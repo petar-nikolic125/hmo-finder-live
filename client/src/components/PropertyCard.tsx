@@ -72,22 +72,41 @@ export const PropertyCard = ({ property }: PropertyCardProps) => {
           </div>
         </div>
 
-        <Button 
-          asChild 
-          className="w-full"
-          variant="default"
-        >
-          <a 
-            href={property.primeLocationUrl} 
-            target="_blank" 
-            rel="noopener noreferrer"
-            className="flex items-center justify-center gap-2"
+        <div className="space-y-2">
+          <Button 
+            asChild 
+            className="w-full"
+            variant="default"
           >
-            <TrendingUp className="w-4 h-4" />
-            View on PrimeLocation
-            <ExternalLink className="w-4 h-4" />
-          </a>
-        </Button>
+            <a 
+              href={property.rightmoveUrl} 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="flex items-center justify-center gap-2"
+            >
+              <TrendingUp className="w-4 h-4" />
+              Rightmove →
+              <ExternalLink className="w-4 h-4" />
+            </a>
+          </Button>
+          
+          <Button 
+            asChild 
+            className="w-full"
+            variant="outline"
+            size="sm"
+          >
+            <a 
+              href={property.zooplaUrl} 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="flex items-center justify-center gap-2"
+            >
+              See more on Zoopla
+              <ExternalLink className="w-3 h-3" />
+            </a>
+          </Button>
+        </div>
       </CardContent>
     </Card>
   );

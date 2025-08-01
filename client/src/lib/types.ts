@@ -9,6 +9,8 @@ export interface InsertProperty {
   longitude: number;
   imageUrl: string;
   primeLocationUrl: string;
+  rightmoveUrl: string;
+  zooplaUrl: string;
   description: string;
   hasGarden: boolean;
   hasParking: boolean;
