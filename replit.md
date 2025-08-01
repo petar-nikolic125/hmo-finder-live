@@ -34,6 +34,13 @@ Properties include comprehensive analytics:
 
 ## Recent Changes (August 2025)
 
+### Migration from Replit Agent to Standard Replit Environment
+- **Serverless Architecture**: Restructured API endpoints for Vercel compatibility
+- **Individual API Routes**: Created separate `/api/properties.ts`, `/api/cities.ts`, and `/api/ping.ts` files 
+- **Stateless Design**: Modified backend to generate properties per request rather than in-memory storage
+- **Vercel Configuration**: Updated `vercel.json` to properly handle serverless functions
+- **Type Safety**: Added `@vercel/node` types for proper serverless function support
+
 ### Migration from Lovable to Replit
 - **Routing Migration**: Converted from React Router to Wouter for Replit compatibility
 - **Backend Setup**: Created Express.js API with proper TypeScript configuration

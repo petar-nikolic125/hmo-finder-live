@@ -1,15 +1,17 @@
 
 {
   "functions": {
-    "api/serverless.ts": {
+    "api/properties.ts": {
+      "runtime": "@vercel/node"
+    },
+    "api/cities.ts": {
+      "runtime": "@vercel/node"
+    },
+    "api/ping.ts": {
       "runtime": "@vercel/node"
     }
   },
   "rewrites": [
-    {
-      "source": "/api/(.*)",
-      "destination": "/api/serverless"
-    },
     {
       "source": "/(.*)",
       "destination": "/index.html"
