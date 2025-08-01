@@ -1,14 +1,8 @@
 
 {
   "functions": {
-    "api/properties.ts": {
-      "runtime": "nodejs18.x"
-    },
-    "api/cities.ts": {
-      "runtime": "nodejs18.x"
-    },
-    "api/ping.ts": {
-      "runtime": "nodejs18.x"
+    "api/**/*.ts": {
+      "runtime": "nodejs20.x"
     }
   },
   "rewrites": [
