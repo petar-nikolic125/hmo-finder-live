@@ -50,8 +50,9 @@ export const HeroSection = ({
                 </label>
                 <Input
                   placeholder="e.g. Birmingham, Manchester, Leeds"
-                  value={searchParams.city || ''}
-                  className="w-full"
+                  defaultValue={searchParams.city || ''}
+                  readOnly
+                  className="w-full bg-gray-50"
                 />
               </div>
               
