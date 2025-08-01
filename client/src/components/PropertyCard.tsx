@@ -73,39 +73,26 @@ export const PropertyCard = ({ property }: PropertyCardProps) => {
         </div>
 
         <div className="space-y-2">
-          <Button 
-            asChild 
-            className="w-full"
-            variant="default"
+          <a 
+            href={property.rightmoveUrl} 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="inline-flex items-center justify-center gap-2 h-10 px-4 py-2 bg-primary text-primary-foreground hover:bg-primary/90 transition-colors whitespace-nowrap rounded-md text-sm font-medium w-full"
           >
-            <a 
-              href={property.rightmoveUrl} 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="flex items-center justify-center gap-2"
-            >
-              <TrendingUp className="w-4 h-4" />
-              Rightmove →
-              <ExternalLink className="w-4 h-4" />
-            </a>
-          </Button>
+            <TrendingUp className="w-4 h-4" />
+            Rightmove →
+            <ExternalLink className="w-4 h-4" />
+          </a>
           
-          <Button 
-            asChild 
-            className="w-full"
-            variant="outline"
-            size="sm"
+          <a 
+            href={property.zooplaUrl} 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="inline-flex items-center justify-center gap-2 h-9 px-3 border border-input bg-background hover:bg-accent hover:text-accent-foreground transition-colors whitespace-nowrap rounded-md text-sm font-medium w-full"
           >
-            <a 
-              href={property.zooplaUrl} 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="flex items-center justify-center gap-2"
-            >
-              See more on Zoopla
-              <ExternalLink className="w-3 h-3" />
-            </a>
-          </Button>
+            See more on Zoopla
+            <ExternalLink className="w-3 h-3" />
+          </a>
         </div>
       </CardContent>
     </Card>
