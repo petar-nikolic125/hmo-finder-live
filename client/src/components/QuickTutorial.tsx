@@ -78,19 +78,35 @@ export const QuickTutorial = ({ isOpen, onClose }: QuickTutorialProps) => {
               <span className="font-medium text-amber-800 dark:text-amber-200">Important Notice</span>
             </div>
             <p className="text-sm text-amber-700 dark:text-amber-300">
-              Due to UK property data protection laws, we cannot link directly to live listings. 
-              Generated URLs provide realistic search parameters but may not lead to the exact properties shown. 
-              Use this tool for investment analysis and market research purposes.
+              <strong>Legal Compliance:</strong> Due to UK property data protection laws, we cannot link directly to live listings. 
+              Our system generates realistic search URLs with authentic parameters for investment analysis. 
+              Database is updated weekly to ensure current market conditions.
             </p>
           </div>
 
-          <div className="flex items-center justify-between pt-4 border-t">
-            <Badge variant="secondary" className="text-xs">
-              Accessibility: Screen reader compatible
-            </Badge>
-            <Button onClick={onClose} className="bg-primary hover:bg-primary-glow">
-              Got it, let's start!
-            </Button>
+          <div className="pt-4 border-t space-y-3">
+            <div className="flex items-center justify-between">
+              <Badge variant="secondary" className="text-xs">
+                Accessibility: Screen reader compatible
+              </Badge>
+              <Button onClick={onClose} className="bg-primary hover:bg-primary-glow">
+                Got it, let's start!
+              </Button>
+            </div>
+            
+            <div className="text-center">
+              <p className="text-xs text-muted-foreground">
+                Built by Petar Nikolić · Suggestions and business contact: {' '}
+                <a 
+                  href="https://pnikolic-dev.vercel.app/" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="text-blue-600 dark:text-blue-400 hover:underline"
+                >
+                  pnikolic-dev.vercel.app
+                </a>
+              </p>
+            </div>
           </div>
         </CardContent>
       </Card>
