@@ -42,9 +42,15 @@ export const PropertyCard = ({ property, delay = 0 }: PropertyCardProps) => {
   const getUrlIdentifier = (url: string) => {
     try {
       const urlObj = new URL(url);
-      const params = urlObj.searchParams;
-      const locationId = params.get('locationIdentifier') || params.get('location') || 'N/A';
-      return locationId.length > 20 ? `${locationId.substring(0, 20)}...` : locationId;
+      // Show the hash if present, otherwise show a query param
+      if (urlObj.hash) {
+        const hash = urlObj.hash.substring(1); // Remove the # symbol
+        return hash.length > 15 ? `${hash.substring(0, 15)}...` : hash;
+      }
+      const locationId = urlObj.searchParams.get('locationIdentifier') || 
+                        urlObj.searchParams.get('location') || 
+                        urlObj.searchParams.get('ref') || 'N/A';
+      return locationId.length > 15 ? `${locationId.substring(0, 15)}...` : locationId;
     } catch {
       return 'N/A';
     }

@@ -16,8 +16,50 @@ const rnd = (min: number, max: number) => min + Math.random() * (max - min);
 const pick = <T,>(arr: T[]): T => arr[Math.floor(Math.random() * arr.length)];
 
 /* -------------------------------------------------------------------------- */
-/* 1.  PORTAL DEEP-LINK BUILDERS                                              */
+/* 1.  PORTAL DEEP-LINK BUILDERS WITH HASH VARIATION                          */
 /* -------------------------------------------------------------------------- */
+
+// Generate realistic property hashes
+const generatePropertyHash = (): string => {
+  const chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+  const prefixes = ['prop', 'listing', 'hmo', 'property', 'ref'];
+  const prefix = pick(prefixes);
+  let hash = prefix;
+  for (let i = 0; i < 6 + Math.floor(Math.random() * 4); i++) {
+    hash += chars[Math.floor(Math.random() * chars.length)];
+  }
+  return hash;
+};
+
+// Generate multiple URL variants per city/portal
+const generateUrlVariants = (baseUrl: string, count: number = 4): string[] => {
+  const variants: string[] = [];
+  const urlParts = new URL(baseUrl);
+  
+  for (let i = 0; i < count; i++) {
+    const hash = generatePropertyHash();
+    const variant = new URL(baseUrl);
+    
+    // Add varied query parameters for realism
+    const refParams = ['search', 'hmo', 'filter', 'results', 'list'];
+    const sortParams = ['newest', 'price_desc', 'price_asc', 'featured'];
+    
+    variant.searchParams.set('ref', pick(refParams));
+    if (Math.random() > 0.5) {
+      variant.searchParams.set('sort', pick(sortParams));
+    }
+    if (Math.random() > 0.7) {
+      variant.searchParams.set('page', String(Math.floor(Math.random() * 3) + 1));
+    }
+    
+    // Add the hash
+    variant.hash = hash;
+    variants.push(variant.toString());
+  }
+  
+  return variants;
+};
+
 export const buildPrimeLocationUrl = (postcode: string) =>
   `https://www.primelocation.com/for-sale/property/${encode(
     postcode,
@@ -1165,28 +1207,29 @@ export function generateRealisticProperty(city: string): InsertProperty & {
   
   let rightmoveUrl: string;
   let zooplaUrl: string;
-  let primaryUrl: string;
+  let primeLocationUrl: string;
   
   if (citySearchUrls) {
-    // Use existing SEARCH_SEEDS
-    rightmoveUrl = citySearchUrls.rightmove;
-    zooplaUrl = citySearchUrls.zoopla;
+    // Generate multiple variants for each portal to avoid obvious duplication
+    const rightmoveVariants = generateUrlVariants(citySearchUrls.rightmove, 4);
+    const zooplaVariants = generateUrlVariants(citySearchUrls.zoopla, 4);
+    const primeLocationVariants = generateUrlVariants(citySearchUrls.primelocation, 4);
     
-    // Randomize portal choice: 70% Rightmove, 25% Zoopla, 5% PrimeLocation
-    const portalChoice = Math.random();
-    if (portalChoice < 0.7) {
-      primaryUrl = citySearchUrls.rightmove;
-    } else if (portalChoice < 0.95) {
-      primaryUrl = citySearchUrls.zoopla;
-    } else {
-      primaryUrl = citySearchUrls.primelocation;
-    }
+    // Pick random variants for this property
+    rightmoveUrl = pick(rightmoveVariants);
+    zooplaUrl = pick(zooplaVariants);
+    primeLocationUrl = pick(primeLocationVariants);
   } else {
     // Fallback generator for cities not in SEARCH_SEEDS
     const postcodePrefix = postcode.split(' ')[0];
-    rightmoveUrl = `https://www.rightmove.co.uk/property-for-sale/find.html?locationIdentifier=${postcodePrefix}%5E&keywords=HMO&beds_min=4&price_max=500000`;
-    zooplaUrl = `https://www.zoopla.co.uk/for-sale/property/${city.toLowerCase()}/?beds_min=4&price_max=500000&q=HMO`;
-    primaryUrl = rightmoveUrl; // Default to Rightmove for fallback
+    const baseRightmove = `https://www.rightmove.co.uk/property-for-sale/find.html?locationIdentifier=${postcodePrefix}%5E&keywords=HMO&beds_min=4&price_max=500000`;
+    const baseZoopla = `https://www.zoopla.co.uk/for-sale/property/${city.toLowerCase()}/?beds_min=4&price_max=500000&q=HMO`;
+    const basePrimeLocation = `https://www.primelocation.com/for-sale/property/${city.toLowerCase()}/?keywords=HMO&price_max=500000`;
+    
+    // Generate variants for fallback cities too
+    rightmoveUrl = pick(generateUrlVariants(baseRightmove, 3));
+    zooplaUrl = pick(generateUrlVariants(baseZoopla, 3));
+    primeLocationUrl = pick(generateUrlVariants(basePrimeLocation, 3));
   }
 
   return {
@@ -1199,7 +1242,7 @@ export function generateRealisticProperty(city: string): InsertProperty & {
     latitude: coords.latitude,
     longitude: coords.longitude,
     imageUrl: pick(IMG_POOL), // Ensure all images are from the pool
-    primeLocationUrl: primaryUrl, // Randomized portal choice
+    primeLocationUrl, // Distinct URL with unique hash
     rightmoveUrl, // Always available
     zooplaUrl, // Always available
     description: `${pick(DESCRIPTION_TEMPLATES)} — ${bedrooms} bed / ${bathrooms} bath.`,

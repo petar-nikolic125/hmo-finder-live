@@ -22,8 +22,8 @@ export const SearchStatus = ({ count, isLoading, lastUpdated }: SearchStatusProp
       <div className="flex items-center gap-2">
         {isLoading ? (
           <>
-            <Search className="h-4 w-4 text-blue-600 dark:text-blue-400 animate-pulse" />
-            <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
+            <Search className="h-4 w-4 text-blue-600 dark:text-blue-400 animate-spin" />
+            <span className="text-sm font-medium text-gray-700 dark:text-gray-300 animate-pulse">
               Searching for HMOs matching your criteria...
             </span>
           </>
@@ -31,7 +31,7 @@ export const SearchStatus = ({ count, isLoading, lastUpdated }: SearchStatusProp
           <>
             <div className="h-2 w-2 bg-green-500 rounded-full animate-pulse"></div>
             <span className="text-sm font-medium text-gray-900 dark:text-gray-100">
-              {count} HMO{count !== 1 ? "'s" : ""} found
+              Fetched {count} HMO{count !== 1 ? "'s" : ""} matching your criteria
             </span>
           </>
         )}

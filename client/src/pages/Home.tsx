@@ -146,7 +146,7 @@ export const Home = () => {
               <PropertyCard 
                 key={`${property.postcode}-${index}`} 
                 property={property}
-                delay={index * 100} // Staggered animation
+                delay={150 + (index * 200)} // Staggered reveal: 150-300ms range
               />
             ))}
           </div>
