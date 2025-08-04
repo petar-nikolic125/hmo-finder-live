@@ -21,7 +21,7 @@ export const Home = () => {
   // Search parameters
   const [searchParams, setSearchParams] = useState<PropertySearchParams>({
     city: 'Birmingham',
-    count: 12,
+    count: 4,
     minSize: 90,
     maxPrice: 500000,
     excludeArticle4: true,
@@ -101,6 +101,9 @@ export const Home = () => {
         onSearch={handleSearch}
         onRefresh={handleRefresh}
         isLoading={isLoading}
+        onCityChange={(city) => updateSearchParams({ city })}
+        onMaxPriceChange={(maxPrice) => updateSearchParams({ maxPrice })}
+        onMinSizeChange={(minSize) => updateSearchParams({ minSize })}
       />
 
       <main className="container mx-auto px-4 py-8">
@@ -130,7 +133,7 @@ export const Home = () => {
         </div>
 
         {isLoading ? (
-          <PropertyGridSkeleton count={searchParams.count || 12} />
+          <PropertyGridSkeleton count={searchParams.count || 4} />
         ) : filteredProperties.length === 0 ? (
           <div className="text-center py-12">
             <h3 className="text-lg font-medium text-muted-foreground mb-2">

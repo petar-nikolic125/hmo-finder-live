@@ -10,19 +10,26 @@ import {
   SelectValue,
 } from '@/components/ui/select';
 import { Search, RefreshCw, Download } from 'lucide-react';
+import { getAvailableCities } from '@/lib/generator';
 
 interface HeroSectionProps {
   searchParams: PropertySearchParams;
   onSearch: () => void;
   onRefresh: () => void;
   isLoading: boolean;
+  onCityChange: (city: string) => void;
+  onMaxPriceChange: (maxPrice: number) => void;
+  onMinSizeChange: (minSize: number) => void;
 }
 
 export const HeroSection = ({ 
   searchParams, 
   onSearch, 
   onRefresh, 
-  isLoading 
+  isLoading,
+  onCityChange,
+  onMaxPriceChange,
+  onMinSizeChange
 }: HeroSectionProps) => {
   return (
     <section className="relative overflow-hidden bg-hero-gradient py-16">
@@ -48,26 +55,42 @@ export const HeroSection = ({
                 <label className="block text-sm font-medium text-gray-700 mb-2">
                   Location
                 </label>
-                <Input
-                  placeholder="e.g. Birmingham, Manchester, Leeds"
-                  defaultValue={searchParams.city || ''}
-                  readOnly
-                  className="w-full bg-gray-50"
-                />
+                <Select 
+                  value={searchParams.city || 'Birmingham'}
+                  onValueChange={onCityChange}
+                >
+                  <SelectTrigger>
+                    <SelectValue placeholder="Select a city" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {getAvailableCities().map((city) => (
+                      <SelectItem key={city} value={city}>
+                        {city}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
               </div>
               
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">
                   Max Price (£)
                 </label>
-                <Select value={searchParams.maxPrice?.toString() || '500000'}>
+                <Select 
+                  value={searchParams.maxPrice?.toString() || '500000'}
+                  onValueChange={(value) => onMaxPriceChange(parseInt(value))}
+                >
                   <SelectTrigger>
                     <SelectValue />
                   </SelectTrigger>
                   <SelectContent>
+                    <SelectItem value="800000">£800k</SelectItem>
+                    <SelectItem value="700000">£700k</SelectItem>
+                    <SelectItem value="600000">£600k</SelectItem>
                     <SelectItem value="500000">£500k</SelectItem>
                     <SelectItem value="400000">£400k</SelectItem>
                     <SelectItem value="300000">£300k</SelectItem>
+                    <SelectItem value="250000">£250k</SelectItem>
                   </SelectContent>
                 </Select>
               </div>
@@ -76,14 +99,19 @@ export const HeroSection = ({
                 <label className="block text-sm font-medium text-gray-700 mb-2">
                   Min Area (sqm)
                 </label>
-                <Select value={searchParams.minSize?.toString() || '90'}>
+                <Select 
+                  value={searchParams.minSize?.toString() || '90'}
+                  onValueChange={(value) => onMinSizeChange(parseInt(value))}
+                >
                   <SelectTrigger>
                     <SelectValue />
                   </SelectTrigger>
                   <SelectContent>
                     <SelectItem value="90">90 sqm</SelectItem>
                     <SelectItem value="100">100 sqm</SelectItem>
+                    <SelectItem value="110">110 sqm</SelectItem>
                     <SelectItem value="120">120 sqm</SelectItem>
+                    <SelectItem value="130">130 sqm</SelectItem>
                   </SelectContent>
                 </Select>
               </div>

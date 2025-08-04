@@ -1280,7 +1280,7 @@ export function generateRealisticProperty(city: string): InsertProperty & {
 /* -------------------------------------------------------------------------- */
 /* 9.  COLLECTION HELPERS                                                     */
 /* -------------------------------------------------------------------------- */
-export const generatePropertiesForCity = (city: string, count = 6) =>
+export const generatePropertiesForCity = (city: string, count = 4) =>
   Array.from({ length: count }, () => generateRealisticProperty(city));
 
 export const getAvailableCities = () => Object.keys(SEARCH_SEEDS);
