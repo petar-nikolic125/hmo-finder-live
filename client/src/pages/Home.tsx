@@ -12,6 +12,7 @@ import { RefreshFab } from '@/components/RefreshFab';
 import { Footer } from '@/components/Footer';
 import { PrivacyNoticePopup } from '@/components/PrivacyNoticePopup';
 import { SearchStatus } from '@/components/SearchStatus';
+import { QuickTutorial } from '@/components/QuickTutorial';
 import { useToast } from '@/hooks/use-toast';
 
 export const Home = () => {
@@ -33,6 +34,7 @@ export const Home = () => {
   const [lastUpdated, setLastUpdated] = useState(Date.now());
   const [showPrivacyPopup, setShowPrivacyPopup] = useState(false);
   const [hasSearched, setHasSearched] = useState(false);
+  const [showTutorial, setShowTutorial] = useState(false);
   
   // Fetch properties
   const { data: properties = [], isLoading, isError, refetch } = useProperties(searchParams);
@@ -94,6 +96,7 @@ export const Home = () => {
       <Header 
         selectedCity={searchParams.city || 'Birmingham'}
         onCityChange={(city) => updateSearchParams({ city })}
+        onShowTutorial={() => setShowTutorial(true)}
       />
       
       <HeroSection
@@ -164,6 +167,12 @@ export const Home = () => {
       {showPrivacyPopup && (
         <PrivacyNoticePopup onClose={() => setShowPrivacyPopup(false)} />
       )}
+
+      {/* Quick Tutorial */}
+      <QuickTutorial
+        isOpen={showTutorial}
+        onClose={() => setShowTutorial(false)}
+      />
     </div>
   );
 };

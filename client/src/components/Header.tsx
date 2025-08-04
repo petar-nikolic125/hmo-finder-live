@@ -1,4 +1,5 @@
-import { Home, MapPin } from 'lucide-react';
+import { Home, MapPin, HelpCircle } from 'lucide-react';
+import { Button } from '@/components/ui/button';
 import {
   Select,
   SelectContent,
@@ -11,9 +12,10 @@ import { useCities } from '@/hooks/useProperties';
 interface HeaderProps {
   selectedCity: string;
   onCityChange: (city: string) => void;
+  onShowTutorial: () => void;
 }
 
-export const Header = ({ selectedCity, onCityChange }: HeaderProps) => {
+export const Header = ({ selectedCity, onCityChange, onShowTutorial }: HeaderProps) => {
   const { data: cities = [] } = useCities();
 
   return (
@@ -29,12 +31,23 @@ export const Header = ({ selectedCity, onCityChange }: HeaderProps) => {
                 HMO HUNTER
               </h1>
               <p className="text-sm text-muted-foreground">
-                Discover profitable HMO opportunities under £500k
+                Updated weekly • UK property data compliance
               </p>
             </div>
           </div>
 
           <div className="flex items-center space-x-3">
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={onShowTutorial}
+              className="flex items-center gap-2"
+              aria-label="Open tutorial"
+            >
+              <HelpCircle className="w-4 h-4" />
+              <span className="hidden sm:inline">Tutorial</span>
+            </Button>
+            
             <div className="flex items-center space-x-2">
               <MapPin className="w-4 h-4 text-muted-foreground" />
               <Select value={selectedCity} onValueChange={onCityChange}>

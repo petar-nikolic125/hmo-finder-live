@@ -144,7 +144,10 @@ export const HeroSection = ({
                 Filter: Article 4 areas excluded · HMO-suitable only
               </p>
               <p className="text-xs text-gray-400 mt-1">
-                Properties auto-refresh every 5 minutes · Last updated: 1:33:36 AM
+                Database updated weekly · UK property data compliance · Last refresh: {new Date().toLocaleTimeString()}
+              </p>
+              <p className="text-xs text-amber-600 dark:text-amber-400 mt-1 font-medium">
+                ⚖️ Property URLs comply with UK data protection laws - see tutorial for details
               </p>
             </div>
           </div>
