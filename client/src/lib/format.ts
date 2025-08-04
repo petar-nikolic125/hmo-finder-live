@@ -8,6 +8,19 @@ export const formatPrice = (price: number): string => {
   return `£${price.toLocaleString()}`;
 };
 
+export const formatCurrency = (amount: number): string => {
+  if (amount >= 1000000) {
+    return `£${(amount / 1000000).toFixed(1)}M`;
+  }
+  if (amount >= 1000) {
+    return `£${(amount / 1000).toFixed(0)}k`;
+  }
+  if (amount < 0) {
+    return `-£${Math.abs(amount).toLocaleString()}`;
+  }
+  return `£${amount.toLocaleString()}`;
+};
+
 export const formatSize = (size: number): string => {
   return `${size} sqm`;
 };

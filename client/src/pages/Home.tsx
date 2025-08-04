@@ -7,9 +7,11 @@ import { FilterBar } from '@/components/FilterBar';
 import { SortSelect } from '@/components/SortSelect';
 import { UpdateBadge } from '@/components/UpdateBadge';
 import { PropertyCard } from '@/components/PropertyCard';
-import { PropertyGridSkeleton } from '@/components/LoadingSkeletons';
+import { PropertyGridSkeleton } from '@/components/PropertySkeletonCard';
 import { RefreshFab } from '@/components/RefreshFab';
 import { Footer } from '@/components/Footer';
+import { PrivacyNoticePopup } from '@/components/PrivacyNoticePopup';
+import { SearchStatus } from '@/components/SearchStatus';
 import { useToast } from '@/hooks/use-toast';
 
 export const Home = () => {
@@ -29,6 +31,8 @@ export const Home = () => {
   // UI state
   const [searchTerm, setSearchTerm] = useState('');
   const [lastUpdated, setLastUpdated] = useState(Date.now());
+  const [showPrivacyPopup, setShowPrivacyPopup] = useState(false);
+  const [hasSearched, setHasSearched] = useState(false);
   
   // Fetch properties
   const { data: properties = [], isLoading, isError, refetch } = useProperties(searchParams);
@@ -63,6 +67,11 @@ export const Home = () => {
   }, [isError, toast]);
 
   const handleSearch = () => {
+    // Show privacy popup on first search
+    if (!hasSearched) {
+      setShowPrivacyPopup(true);
+      setHasSearched(true);
+    }
     refetch();
     setLastUpdated(Date.now());
   };
@@ -106,14 +115,14 @@ export const Home = () => {
           onExcludeArticle4Change={(excludeArticle4) => updateSearchParams({ excludeArticle4 })}
         />
 
+        {/* Search Status */}
+        <SearchStatus 
+          count={filteredProperties.length}
+          isLoading={isLoading}
+          lastUpdated={lastUpdated}
+        />
+
         <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-6">
-          <div className="flex items-center gap-4">
-            <UpdateBadge lastUpdated={lastUpdated} />
-            <span className="text-sm text-muted-foreground">
-              {filteredProperties.length} properties found
-            </span>
-          </div>
-          
           <SortSelect
             value={searchParams.sortBy || 'profit'}
             onValueChange={(sortBy) => updateSearchParams({ sortBy: sortBy as any })}
@@ -121,20 +130,24 @@ export const Home = () => {
         </div>
 
         {isLoading ? (
-          <PropertyGridSkeleton count={12} />
+          <PropertyGridSkeleton count={searchParams.count || 12} />
         ) : filteredProperties.length === 0 ? (
           <div className="text-center py-12">
             <h3 className="text-lg font-medium text-muted-foreground mb-2">
-              No properties found
+              No HMO properties found
             </h3>
             <p className="text-sm text-muted-foreground">
-              Try adjusting your filters or search terms
+              Try adjusting your filters or search in a different city
             </p>
           </div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {filteredProperties.map((property, index) => (
-              <PropertyCard key={`${property.postcode}-${index}`} property={property} />
+              <PropertyCard 
+                key={`${property.postcode}-${index}`} 
+                property={property}
+                delay={index * 100} // Staggered animation
+              />
             ))}
           </div>
         )}
@@ -143,6 +156,11 @@ export const Home = () => {
       <Footer />
 
       <RefreshFab onRefresh={handleRefresh} isLoading={isLoading} />
+      
+      {/* Privacy Notice Popup */}
+      {showPrivacyPopup && (
+        <PrivacyNoticePopup onClose={() => setShowPrivacyPopup(false)} />
+      )}
     </div>
   );
 };
