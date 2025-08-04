@@ -34,7 +34,7 @@ export const Home = () => {
   const [lastUpdated, setLastUpdated] = useState(Date.now());
   const [showPrivacyPopup, setShowPrivacyPopup] = useState(false);
   const [hasSearched, setHasSearched] = useState(false);
-  const [showTutorial, setShowTutorial] = useState(false);
+  const [showTutorial, setShowTutorial] = useState(true); // Show tutorial on launch
   
   // Fetch properties
   const { data: properties = [], isLoading, isError, refetch } = useProperties(searchParams);

@@ -17,8 +17,8 @@ export const QuickTutorial = ({ isOpen, onClose }: QuickTutorialProps) => {
       <Card className="w-full max-w-2xl max-h-[80vh] overflow-y-auto">
         <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-4">
           <div>
-            <CardTitle className="text-xl">Quick Tutorial</CardTitle>
-            <CardDescription>Learn how to use the HMO Property Search effectively</CardDescription>
+            <CardTitle className="text-xl">Welcome to HMO Hunter</CardTitle>
+            <CardDescription>Learn how to find profitable HMO investments effectively</CardDescription>
           </div>
           <Button
             variant="ghost"
