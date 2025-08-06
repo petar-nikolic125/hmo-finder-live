@@ -510,21 +510,10 @@ export class PropertyGenerator {
     // Generate area name
     const area = cityData.areas[Math.floor(Math.random() * cityData.areas.length)];
     
-    // Replace image with city-themed architectural illustration
-    const cityImages = CITY_ARCHITECTURAL_IMAGES[city] || [];
-    const cityThemedImageUrl = cityImages.length > 0 
-      ? cityImages[Math.floor(Math.random() * cityImages.length)]
-      : DEFAULT_PROPERTY_IMAGES[Math.floor(Math.random() * DEFAULT_PROPERTY_IMAGES.length)];
-    
-    const propertyWithCityImage = {
-      ...property,
-      imageUrl: cityThemedImageUrl
-    };
-    
     console.log(`📊 PropertyGenerator: Calculating analytics for ${property.address} in ${city}`);
     
     // Calculate analytics with city context
-    return this.calculateAnalytics(propertyWithCityImage, cityData, portalUrls, area);
+    return this.calculateAnalytics(property, cityData, portalUrls, area);
   }
 
   getCities(): string[] {
