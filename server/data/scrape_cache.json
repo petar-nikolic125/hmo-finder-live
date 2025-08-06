@@ -604,5 +604,291 @@
         "scrapedAt": "2025-08-06T16:18:19.068Z"
       }
     ]
+  },
+  "84eef4bbeb863e703539794af9d40982": {
+    "searchHash": "84eef4bbeb863e703539794af9d40982",
+    "lastScraped": "2025-08-06T16:27:08.680Z",
+    "properties": [
+      {
+        "id": 860874,
+        "address": "Christina Terrace, Bristol BS8",
+        "price": 500000,
+        "bedrooms": 7,
+        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "propertyUrl": "https://www.primelocation.com/for-sale/details/70244659/?search_identifier=cff7783d80ec3871bf6d8958b8fa4c3f2075636f898c8298f76894eba255383e&featured=true",
+        "city": "Bristol",
+        "scrapedAt": "2025-08-06T16:27:08.679Z"
+      },
+      {
+        "id": 171862,
+        "address": "Warren Road, Filton, Bristol BS34",
+        "price": 220000,
+        "bedrooms": 3,
+        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "propertyUrl": "https://www.primelocation.com/for-sale/details/70878122/?search_identifier=cff7783d80ec3871bf6d8958b8fa4c3f2075636f898c8298f76894eba255383e&featured=true",
+        "city": "Bristol",
+        "scrapedAt": "2025-08-06T16:27:08.679Z"
+      },
+      {
+        "id": 284125,
+        "address": "Cranbrook Road, Redland, Bristol BS6",
+        "price": 475000,
+        "bedrooms": 4,
+        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "propertyUrl": "https://www.primelocation.com/for-sale/details/70658015/?search_identifier=cff7783d80ec3871bf6d8958b8fa4c3f2075636f898c8298f76894eba255383e&featured=true",
+        "city": "Bristol",
+        "scrapedAt": "2025-08-06T16:27:08.679Z"
+      },
+      {
+        "id": 384897,
+        "address": "Christina Terrace, Bristol BS8",
+        "price": 500000,
+        "bedrooms": 7,
+        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "propertyUrl": "https://www.primelocation.com/for-sale/details/70244659/?search_identifier=cff7783d80ec3871bf6d8958b8fa4c3f2075636f898c8298f76894eba255383e",
+        "city": "Bristol",
+        "scrapedAt": "2025-08-06T16:27:08.679Z"
+      },
+      {
+        "id": 620085,
+        "address": "Muller Road, Horfield, Bristol BS7",
+        "price": 500000,
+        "bedrooms": 6,
+        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "propertyUrl": "https://www.primelocation.com/for-sale/details/70301110/?search_identifier=cff7783d80ec3871bf6d8958b8fa4c3f2075636f898c8298f76894eba255383e",
+        "city": "Bristol",
+        "scrapedAt": "2025-08-06T16:27:08.679Z"
+      },
+      {
+        "id": 263663,
+        "address": "Arlington Villas, Bristol BS8",
+        "price": 500000,
+        "bedrooms": 4,
+        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "propertyUrl": "https://www.primelocation.com/for-sale/details/70398375/?search_identifier=cff7783d80ec3871bf6d8958b8fa4c3f2075636f898c8298f76894eba255383e",
+        "city": "Bristol",
+        "scrapedAt": "2025-08-06T16:27:08.679Z"
+      },
+      {
+        "id": 887768,
+        "address": "Vera Road, Fishponds, Bristol BS16",
+        "price": 500000,
+        "bedrooms": 4,
+        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "propertyUrl": "https://www.primelocation.com/for-sale/details/70682403/?search_identifier=cff7783d80ec3871bf6d8958b8fa4c3f2075636f898c8298f76894eba255383e",
+        "city": "Bristol",
+        "scrapedAt": "2025-08-06T16:27:08.679Z"
+      },
+      {
+        "id": 353428,
+        "address": "Wright Way, Stoke Park, Bristol BS16",
+        "price": 499950,
+        "bedrooms": 6,
+        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "propertyUrl": "https://www.primelocation.com/for-sale/details/70936611/?search_identifier=cff7783d80ec3871bf6d8958b8fa4c3f2075636f898c8298f76894eba255383e",
+        "city": "Bristol",
+        "scrapedAt": "2025-08-06T16:27:08.679Z"
+      },
+      {
+        "id": 677316,
+        "address": "Seymour Road, Bishopston, Bristol BS7",
+        "price": 495000,
+        "bedrooms": 5,
+        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "propertyUrl": "https://www.primelocation.com/for-sale/details/70220929/?search_identifier=cff7783d80ec3871bf6d8958b8fa4c3f2075636f898c8298f76894eba255383e",
+        "city": "Bristol",
+        "scrapedAt": "2025-08-06T16:27:08.679Z"
+      },
+      {
+        "id": 325325,
+        "address": "Pen Park Road, Bristol, Somerset BS10",
+        "price": 495000,
+        "bedrooms": 6,
+        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "propertyUrl": "https://www.primelocation.com/for-sale/details/70615570/?search_identifier=cff7783d80ec3871bf6d8958b8fa4c3f2075636f898c8298f76894eba255383e",
+        "city": "Bristol",
+        "scrapedAt": "2025-08-06T16:27:08.679Z"
+      },
+      {
+        "id": 531948,
+        "address": "Lynde Close, Bristol BS13",
+        "price": 485000,
+        "bedrooms": 6,
+        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "propertyUrl": "https://www.primelocation.com/for-sale/details/68716773/?search_identifier=cff7783d80ec3871bf6d8958b8fa4c3f2075636f898c8298f76894eba255383e",
+        "city": "Bristol",
+        "scrapedAt": "2025-08-06T16:27:08.679Z"
+      },
+      {
+        "id": 86987,
+        "address": "Cranbrook Road, Redland, Bristol BS6",
+        "price": 475000,
+        "bedrooms": 4,
+        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "propertyUrl": "https://www.primelocation.com/for-sale/details/70658015/?search_identifier=cff7783d80ec3871bf6d8958b8fa4c3f2075636f898c8298f76894eba255383e",
+        "city": "Bristol",
+        "scrapedAt": "2025-08-06T16:27:08.680Z"
+      },
+      {
+        "id": 730522,
+        "address": "Keys Avenue, Horfield, Bristol BS7",
+        "price": 450000,
+        "bedrooms": 6,
+        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "propertyUrl": "https://www.primelocation.com/for-sale/details/68351996/?search_identifier=cff7783d80ec3871bf6d8958b8fa4c3f2075636f898c8298f76894eba255383e",
+        "city": "Bristol",
+        "scrapedAt": "2025-08-06T16:27:08.680Z"
+      },
+      {
+        "id": 924511,
+        "address": "Cotham Park North, Bristol BS6",
+        "price": 450000,
+        "bedrooms": 3,
+        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "propertyUrl": "https://www.primelocation.com/for-sale/details/70460261/?search_identifier=cff7783d80ec3871bf6d8958b8fa4c3f2075636f898c8298f76894eba255383e",
+        "city": "Bristol",
+        "scrapedAt": "2025-08-06T16:27:08.680Z"
+      },
+      {
+        "id": 843179,
+        "address": "Frome Valley Road, Frenchay, Bristol BS16",
+        "price": 450000,
+        "bedrooms": 6,
+        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "propertyUrl": "https://www.primelocation.com/for-sale/details/70939860/?search_identifier=cff7783d80ec3871bf6d8958b8fa4c3f2075636f898c8298f76894eba255383e",
+        "city": "Bristol",
+        "scrapedAt": "2025-08-06T16:27:08.680Z"
+      },
+      {
+        "id": 307844,
+        "address": "Frome Valley Road, Frenchay, Bristol BS16",
+        "price": 450000,
+        "bedrooms": 6,
+        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "propertyUrl": "https://www.primelocation.com/for-sale/details/70939921/?search_identifier=cff7783d80ec3871bf6d8958b8fa4c3f2075636f898c8298f76894eba255383e",
+        "city": "Bristol",
+        "scrapedAt": "2025-08-06T16:27:08.680Z"
+      },
+      {
+        "id": 292359,
+        "address": "Spacious Maisonette On Linden Road, Westbury Park BS6",
+        "price": 440000,
+        "bedrooms": 4,
+        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "propertyUrl": "https://www.primelocation.com/for-sale/details/70805402/?search_identifier=cff7783d80ec3871bf6d8958b8fa4c3f2075636f898c8298f76894eba255383e",
+        "city": "Bristol",
+        "scrapedAt": "2025-08-06T16:27:08.680Z"
+      },
+      {
+        "id": 38831,
+        "address": "Allanmead Road, Bristol BS14",
+        "price": 425000,
+        "bedrooms": 6,
+        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "propertyUrl": "https://www.primelocation.com/for-sale/details/69073031/?search_identifier=cff7783d80ec3871bf6d8958b8fa4c3f2075636f898c8298f76894eba255383e",
+        "city": "Bristol",
+        "scrapedAt": "2025-08-06T16:27:08.680Z"
+      },
+      {
+        "id": 571728,
+        "address": "Claremont Avenue, Bishopston, Bristol BS7",
+        "price": 420000,
+        "bedrooms": 4,
+        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "propertyUrl": "https://www.primelocation.com/for-sale/details/70968694/?search_identifier=cff7783d80ec3871bf6d8958b8fa4c3f2075636f898c8298f76894eba255383e",
+        "city": "Bristol",
+        "scrapedAt": "2025-08-06T16:27:08.680Z"
+      },
+      {
+        "id": 90383,
+        "address": "Ramsey Road, Bristol, Somerset BS7",
+        "price": 415000,
+        "bedrooms": 3,
+        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "propertyUrl": "https://www.primelocation.com/for-sale/details/69511635/?search_identifier=cff7783d80ec3871bf6d8958b8fa4c3f2075636f898c8298f76894eba255383e",
+        "city": "Bristol",
+        "scrapedAt": "2025-08-06T16:27:08.680Z"
+      },
+      {
+        "id": 500188,
+        "address": "Westminster Road, Whitehall, Bristol BS5",
+        "price": 400000,
+        "bedrooms": 5,
+        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "propertyUrl": "https://www.primelocation.com/for-sale/details/70885003/?search_identifier=cff7783d80ec3871bf6d8958b8fa4c3f2075636f898c8298f76894eba255383e",
+        "city": "Bristol",
+        "scrapedAt": "2025-08-06T16:27:08.680Z"
+      },
+      {
+        "id": 380312,
+        "address": "537 Bath Road Brislington, Bristol, Avon BS4",
+        "price": 375000,
+        "bedrooms": 4,
+        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "propertyUrl": "https://www.primelocation.com/for-sale/details/67640057/?search_identifier=cff7783d80ec3871bf6d8958b8fa4c3f2075636f898c8298f76894eba255383e",
+        "city": "Bristol",
+        "scrapedAt": "2025-08-06T16:27:08.680Z"
+      },
+      {
+        "id": 372558,
+        "address": "Hinton Road, Easton, Bristol BS5",
+        "price": 375000,
+        "bedrooms": 1,
+        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "propertyUrl": "https://www.primelocation.com/for-sale/details/69408999/?search_identifier=cff7783d80ec3871bf6d8958b8fa4c3f2075636f898c8298f76894eba255383e",
+        "city": "Bristol",
+        "scrapedAt": "2025-08-06T16:27:08.680Z"
+      },
+      {
+        "id": 133788,
+        "address": "Maple Close, Little Stoke BS34",
+        "price": 375000,
+        "bedrooms": 6,
+        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "propertyUrl": "https://www.primelocation.com/for-sale/details/70061113/?search_identifier=cff7783d80ec3871bf6d8958b8fa4c3f2075636f898c8298f76894eba255383e",
+        "city": "Bristol",
+        "scrapedAt": "2025-08-06T16:27:08.680Z"
+      },
+      {
+        "id": 328917,
+        "address": "Filton Avenue, Filton, Bristol, Gloucestershire BS34",
+        "price": 350000,
+        "bedrooms": 4,
+        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "propertyUrl": "https://www.primelocation.com/for-sale/details/69528761/?search_identifier=cff7783d80ec3871bf6d8958b8fa4c3f2075636f898c8298f76894eba255383e",
+        "city": "Bristol",
+        "scrapedAt": "2025-08-06T16:27:08.680Z"
+      },
+      {
+        "id": 870203,
+        "address": "High Street, Kingswood, Bristol, Gloucestershire BS15",
+        "price": 325000,
+        "bedrooms": 3,
+        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "propertyUrl": "https://www.primelocation.com/for-sale/details/69517119/?search_identifier=cff7783d80ec3871bf6d8958b8fa4c3f2075636f898c8298f76894eba255383e",
+        "city": "Bristol",
+        "scrapedAt": "2025-08-06T16:27:08.680Z"
+      },
+      {
+        "id": 791788,
+        "address": "Snowdon Road, Fishponds, Bristol BS16",
+        "price": 317950,
+        "bedrooms": 3,
+        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "propertyUrl": "https://www.primelocation.com/for-sale/details/70829005/?search_identifier=cff7783d80ec3871bf6d8958b8fa4c3f2075636f898c8298f76894eba255383e",
+        "city": "Bristol",
+        "scrapedAt": "2025-08-06T16:27:08.680Z"
+      },
+      {
+        "id": 394665,
+        "address": "Greenfield Road, Bristol, Somerset BS10",
+        "price": 300000,
+        "bedrooms": 3,
+        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "propertyUrl": "https://www.primelocation.com/for-sale/details/69999658/?search_identifier=cff7783d80ec3871bf6d8958b8fa4c3f2075636f898c8298f76894eba255383e",
+        "city": "Bristol",
+        "scrapedAt": "2025-08-06T16:27:08.680Z"
+      }
+    ]
   }
 }
