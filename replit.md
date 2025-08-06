@@ -37,6 +37,9 @@ Properties include comprehensive analytics:
 ### Migration from Replit Agent to Standard Replit Environment ✅
 - **In-Memory Storage**: Replaced PostgreSQL database with MemStorage class for standalone operation
 - **Web Scraping Integration**: Implemented real Zoopla.co.uk scraper with Python/Selenium fallback
+- **Enhanced Scraper**: Added detailed property descriptions and comprehensive investment analysis
+- **Investment Analytics**: Real-time calculation of ROI, yields, cashflow, and profitability scoring
+- **Description Extraction**: Full property descriptions scraped from individual listing pages
 - **Schema Modernization**: Converted Drizzle database schemas to pure Zod schemas
 - **Cache System**: Added file-based caching for scraped property data with rate limiting
 - **Type Safety**: Maintained full TypeScript support without database dependencies

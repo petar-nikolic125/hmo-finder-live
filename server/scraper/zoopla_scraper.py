@@ -102,6 +102,214 @@ def extract_bedrooms(bed_text):
         return int(numbers[0])
     return 1
 
+def extract_square_footage(description):
+    """Izvuci kvadraturu iz opisa"""
+    if not description:
+        return None
+    
+    # Traži različite formate: sqft, sq ft, square feet, sq m, m², m2
+    patterns = [
+        r'(\d+(?:,\d+)*)\s*(?:sq\s*ft|sqft|square\s*feet)',
+        r'(\d+(?:,\d+)*)\s*(?:sq\s*m|sqm|square\s*metres|square\s*meters)',
+        r'(\d+(?:,\d+)*)\s*(?:m²|m2)',
+        r'(\d+(?:,\d+)*)\s*(?:square\s*foot|sq\.?\s*ft\.?)',
+    ]
+    
+    for pattern in patterns:
+        matches = re.findall(pattern, description, re.IGNORECASE)
+        if matches:
+            try:
+                # Ukloni zareze iz brojeva
+                area = int(matches[0].replace(',', ''))
+                # Konvertuj u square meters ako je u sq ft
+                if 'ft' in pattern or 'foot' in pattern:
+                    area = int(area * 0.092903)  # Convert sq ft to sq m
+                return area
+            except:
+                continue
+    return None
+
+def get_liverpool_rental_estimate(address, bedrooms):
+    """Proceni mesečnu rentu na osnovu lokacije u Liverpoolu"""
+    if not address:
+        address = ""
+    
+    address_lower = address.lower()
+    
+    # Premium areas - £150+ per room
+    premium_areas = ['city centre', 'albert dock', 'waterfront', 'baltic triangle', 'cavern quarter', 
+                    'ropewalks', 'georgian quarter', 'hope street', 'bold street']
+    
+    # Good areas - £120-150 per room
+    good_areas = ['smithdown', 'aigburth', 'mossley hill', 'allerton', 'woolton', 'childwall',
+                 'wavertree', 'greenbank', 'sefton park']
+    
+    # Student areas - £100-130 per room
+    student_areas = ['kensington', 'edge hill', 'fairfield', 'old swan', 'tuebrook', 
+                    'picton', 'university area', 'crown street']
+    
+    # Budget areas - £80-110 per room
+    budget_areas = ['toxteth', 'kirkdale', 'everton', 'walton', 'anfield', 'norris green',
+                   'croxteth', 'fazakerley', 'speke', 'garston']
+    
+    # Određi rent per room na osnovu lokacije
+    rent_per_room = 120  # default
+    
+    if any(area in address_lower for area in premium_areas):
+        rent_per_room = random.randint(150, 180)
+    elif any(area in address_lower for area in good_areas):
+        rent_per_room = random.randint(120, 150)
+    elif any(area in address_lower for area in student_areas):
+        rent_per_room = random.randint(100, 130)
+    elif any(area in address_lower for area in budget_areas):
+        rent_per_room = random.randint(80, 110)
+    else:
+        # Unknown area, use bedrooms as indicator
+        if bedrooms >= 5:
+            rent_per_room = random.randint(110, 140)
+        else:
+            rent_per_room = random.randint(100, 130)
+    
+    total_rent = rent_per_room * bedrooms
+    return total_rent
+
+def calculate_investment_analysis(price, bedrooms, address="", area_sqm=None):
+    """Izračunaj kompletnu investicionu analizu"""
+    
+    # Mesečna renta
+    monthly_rent = get_liverpool_rental_estimate(address, bedrooms)
+    annual_rent = monthly_rent * 12
+    
+    # Gross yield
+    gross_yield = (annual_rent / price) * 100 if price > 0 else 0
+    
+    # Investment calculations
+    deposit_25 = price * 0.25
+    mortgage_75 = price * 0.75
+    
+    # Godišnji troškovi
+    maintenance_cost = price * 0.05  # 5% od vrednosti
+    property_tax = 1200  # Fixed £1200/year
+    mortgage_interest = mortgage_75 * 0.055  # Assume 5.5% interest rate
+    
+    total_annual_costs = maintenance_cost + property_tax + mortgage_interest
+    net_annual_income = annual_rent - total_annual_costs
+    
+    # ROI na deposit
+    roi_on_deposit = (net_annual_income / deposit_25) * 100 if deposit_25 > 0 else 0
+    
+    # Price per square meter
+    price_per_sqm = price / area_sqm if area_sqm and area_sqm > 0 else None
+    
+    # Profitability score
+    if gross_yield >= 8 and roi_on_deposit >= 15:
+        profitability = "high"
+    elif gross_yield >= 6 and roi_on_deposit >= 10:
+        profitability = "medium"
+    else:
+        profitability = "low"
+    
+    return {
+        "monthly_rent": monthly_rent,
+        "annual_rent": annual_rent,
+        "gross_yield": round(gross_yield, 2),
+        "deposit_required": int(deposit_25),
+        "mortgage_amount": int(mortgage_75),
+        "annual_costs": int(total_annual_costs),
+        "net_annual_income": int(net_annual_income),
+        "roi_on_deposit": round(roi_on_deposit, 2),
+        "price_per_sqm": int(price_per_sqm) if price_per_sqm else None,
+        "profitability_score": profitability
+    }
+
+def scrape_property_details(session, property_url):
+    """Scrape detaljan opis i dodatne informacije sa stranice oglasa"""
+    if not property_url or 'http' not in property_url:
+        return None
+    
+    try:
+        print(f"🔍 Fetching details from: {property_url[:60]}...", file=sys.stderr)
+        
+        # Random delay
+        time.sleep(random.uniform(0.5, 1.5))
+        
+        response = session.get(property_url, timeout=15)
+        if response.status_code != 200:
+            print(f"❌ Failed to fetch details: HTTP {response.status_code}", file=sys.stderr)
+            return None
+            
+        soup = BeautifulSoup(response.content, 'html.parser')
+        
+        details = {}
+        
+        # Traži opis - pokušaj različite selektore
+        description_selectors = [
+            '[data-testid*="description"]',
+            '[data-testid*="details"]',
+            '.property-description',
+            '.listing-description', 
+            '.description-content',
+            '.property-details-description',
+            '[class*="Description"]',
+            '[class*="description"]',
+            'section[class*="description"] p',
+            '.text-block',
+            '.content-block p'
+        ]
+        
+        description_text = ""
+        for selector in description_selectors:
+            desc_elements = soup.select(selector)
+            if desc_elements:
+                for elem in desc_elements:
+                    text = elem.get_text(strip=True)
+                    if text and len(text) > 50:  # Minimum reasonable length
+                        description_text += " " + text
+                if description_text:
+                    break
+        
+        # Ako nije našao specifične selektore, traži paragraphs sa ključnim rečima
+        if not description_text:
+            all_paragraphs = soup.select('p')
+            for p in all_paragraphs:
+                text = p.get_text(strip=True)
+                if any(keyword in text.lower() for keyword in 
+                      ['bedroom', 'bathroom', 'property', 'reception', 'kitchen', 'garden', 'sqft', 'sq ft']):
+                    if len(text) > 30:
+                        description_text += " " + text
+        
+        if description_text:
+            details['description'] = description_text.strip()
+            
+            # Pokušaj da izvučeš kvadraturu iz opisa
+            area = extract_square_footage(description_text)
+            if area:
+                details['area_sqm'] = area
+        
+        # Traži dodatne detalje kao što su broj kupatila
+        bathroom_selectors = [
+            '[data-testid*="bathroom"]',
+            '[data-testid*="bath"]', 
+            '.bathrooms',
+            '.property-bathrooms',
+            '[class*="bathroom"]'
+        ]
+        
+        for selector in bathroom_selectors:
+            bath_elem = soup.select_one(selector)
+            if bath_elem:
+                bath_text = bath_elem.get_text(strip=True)
+                bath_numbers = re.findall(r'\d+', bath_text)
+                if bath_numbers:
+                    details['bathrooms'] = int(bath_numbers[0])
+                    break
+        
+        return details if details else None
+        
+    except Exception as e:
+        print(f"❌ Error fetching property details: {e}", file=sys.stderr)
+        return None
+
 def scrape_properties_with_requests(city, min_bedrooms, max_price, keywords):
     """Glavna funkcija za scraping sa naprednim requests pristupom"""
     print(f"🚀 Starting advanced requests scraper for {city}", file=sys.stderr)
@@ -375,8 +583,31 @@ def scrape_properties_with_requests(city, min_bedrooms, max_price, keywords):
                     
                     # Samo dodaj ako ima osnovne podatke
                     if property_data.get('title') and property_data.get('price', 0) > 0:
+                        
+                        # Scrape detailed description and additional info
+                        if property_data.get('property_url'):
+                            details = scrape_property_details(session, property_data['property_url'])
+                            if details:
+                                if 'description' in details:
+                                    property_data['description'] = details['description']
+                                if 'area_sqm' in details:
+                                    property_data['area_sqm'] = details['area_sqm']
+                                if 'bathrooms' in details:
+                                    property_data['bathrooms'] = details['bathrooms']
+                        
+                        # Calculate investment analysis
+                        investment_analysis = calculate_investment_analysis(
+                            price=property_data.get('price', 0),
+                            bedrooms=property_data.get('bedrooms', 1),
+                            address=property_data.get('address', ''),
+                            area_sqm=property_data.get('area_sqm')
+                        )
+                        
+                        # Merge investment analysis into property data
+                        property_data.update(investment_analysis)
+                        
                         properties.append(property_data)
-                        print(f"✅ Scraped property {len(properties)}: {property_data.get('title', 'Unknown')[:40]}... - £{property_data.get('price', 0)}", file=sys.stderr)
+                        print(f"✅ Scraped property {len(properties)}: {property_data.get('title', 'Unknown')[:40]}... - £{property_data.get('price', 0)} (Yield: {property_data.get('gross_yield', 0)}%)", file=sys.stderr)
                     
                     if len(properties) >= 30:  # Stop na 30 properties
                         break
@@ -404,22 +635,47 @@ def generate_fake_properties(city, min_bedrooms, max_price, count):
         "Oak Avenue", "Park Road", "Kings Road", "Queens Avenue", "Elm Grove"
     ]
     
+    # Sample descriptions for different property types
+    descriptions = [
+        "Spacious HMO property perfect for buy-to-let investors. The property comprises multiple bedrooms, modern bathrooms, and a large communal kitchen. Close to transport links and local amenities. Ideal rental potential for students and young professionals.",
+        "Victorian terrace house converted into individual rooms with shared facilities. Each room is well-appointed with modern furnishing. Property includes garden space and parking. Located in popular residential area with excellent transport connections.",
+        "Recently renovated property offering excellent rental yields. Multiple bedrooms with shared kitchen and bathroom facilities. Close to university and city center. Perfect investment opportunity with strong rental demand in the area.",
+        "Large family home converted to HMO with multiple bedrooms and bathrooms. Property features modern kitchen, garden, and parking space. Located in desirable neighborhood with good schools and transport links nearby."
+    ]
+    
     properties = []
     for i in range(count):
         street = random.choice(streets)
         house_num = random.randint(1, 200)
         bedrooms = max(min_bedrooms, random.randint(1, 6))
         price = random.randint(int(max_price * 0.6), max_price)
+        address = f"{house_num} {street}, {city}"
+        
+        # Add realistic area in square meters
+        area_sqm = random.randint(80, 200)
         
         property_data = {
-            'title': f"{house_num} {street}, {city}",
-            'address': f"{house_num} {street}, {city}",
+            'title': address,
+            'address': address,
             'price': price,
             'bedrooms': bedrooms,
             'bathrooms': max(1, bedrooms - random.randint(0, 2)),
+            'area_sqm': area_sqm,
+            'description': random.choice(descriptions),
             'property_url': f"https://www.zoopla.co.uk/for-sale/details/{random.randint(10000000, 99999999)}",
             'image_url': f"https://images.unsplash.com/photo-{random.choice(['1560518883-ce09059eeffa', '1564013799919-ab600027ffc6', '1493809842364-78817add7ffb'])}?w=800&h=600&fit=crop&crop=entropy&q=80"
         }
+        
+        # Calculate investment analysis for fake properties too
+        investment_analysis = calculate_investment_analysis(
+            price=price,
+            bedrooms=bedrooms,
+            address=address,
+            area_sqm=area_sqm
+        )
+        
+        # Merge investment analysis
+        property_data.update(investment_analysis)
         properties.append(property_data)
     
     return properties
