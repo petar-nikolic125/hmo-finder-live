@@ -2,9 +2,9 @@ export interface InsertProperty {
   address: string;
   postcode: string;
   price: number;
-  size: number;
+  size?: number; // Opciono - prikazuje se samo ako je stvarno pronađeno
   bedrooms: number;
-  bathrooms: number;
+  bathrooms?: number; // Opciono - prikazuje se samo ako je stvarno pronađeno
   latitude: number;
   longitude: number;
   imageUrl: string;

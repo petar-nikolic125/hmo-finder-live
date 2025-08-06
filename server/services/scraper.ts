@@ -148,13 +148,13 @@ export class ScrapingService {
             return;
           }
 
-          // Convert scraped data to Property format
+          // Convert scraped data to Property format - samo realni podaci
           const properties: Property[] = scrapedProperties.map((prop: any, index: number) => ({
             id: Math.floor(Math.random() * 1000000), // Generate random ID
             address: prop.address || `${prop.title || 'Unknown'}, ${params.city}`,
             price: parseInt(prop.price?.toString().replace(/[£,]/g, '')) || 0,
             bedrooms: parseInt(prop.bedrooms?.toString()) || 1,
-            bathrooms: parseInt(prop.bathrooms?.toString()) || 1,
+            bathrooms: prop.bathrooms ? parseInt(prop.bathrooms?.toString()) : undefined, // Samo ako je stvarno pronađeno
             imageUrl: prop.image_url || 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80',
             propertyUrl: prop.property_url || '',
             city: params.city,

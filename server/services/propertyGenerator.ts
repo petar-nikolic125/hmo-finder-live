@@ -11,7 +11,7 @@ export interface PropertySearchParams {
 export interface PropertyWithAnalytics extends Property {
   // Additional fields expected by client
   postcode: string;
-  size: number;
+  size?: number; // Opciono - samo ako je stvarno pronađeno
   latitude: number;
   longitude: number;
   rightmoveUrl: string;
@@ -34,6 +34,7 @@ export interface PropertyWithAnalytics extends Property {
   stampDuty: number;
   refurbCost: number;
   totalInvested: number;
+  profitabilityScore?: string;
 }
 
 interface CityData {
@@ -153,7 +154,7 @@ export class PropertyGenerator {
     const maxPrice = searchParams.maxPrice || 400000;
     
     const bedrooms = minBedrooms + Math.floor(Math.random() * 3); // +0 to +2 bedrooms
-    // Ne izmišljamo broj kupatila - ostavljamo undefined
+    // Ne izmišljamo broj kupatila - ostavljamo undefined za generisane properties
     const bathrooms = undefined;
     const price = Math.floor(Math.random() * (maxPrice * 0.4)) + (maxPrice * 0.6); // 60-100% of max price
     
@@ -215,7 +216,7 @@ export class PropertyGenerator {
       ...property,
       // Add missing client-side fields
       postcode: `${cityData.postcodePrefix}${Math.floor(Math.random() * 99) + 1} ${Math.floor(Math.random() * 9) + 1}${String.fromCharCode(65 + Math.floor(Math.random() * 26))}${String.fromCharCode(65 + Math.floor(Math.random() * 26))}`,
-      size: property.bedrooms * 150 + Math.floor(Math.random() * 200), // Estimated square feet
+      size: undefined, // Ne izmišljamo kvadraturu - koristiće se samo ako je scraped
       latitude: cityData.coordinates.lat + (Math.random() - 0.5) * 0.1,
       longitude: cityData.coordinates.lng + (Math.random() - 0.5) * 0.1,
       rightmoveUrl: portalUrls.rightmove,
