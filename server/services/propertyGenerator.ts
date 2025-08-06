@@ -6,6 +6,8 @@ export interface PropertySearchParams {
   minRooms?: number;
   maxPrice?: number;
   keywords?: string;
+  postcode?: string;  // New postcode search feature
+  stressTest?: boolean; // Flag for stress testing mode
 }
 
 export interface PropertyWithAnalytics extends Property {
