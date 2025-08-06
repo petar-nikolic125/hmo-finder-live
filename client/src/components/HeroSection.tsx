@@ -9,7 +9,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select';
-import { Search, RefreshCw, Download } from 'lucide-react';
+import { Search, RefreshCw } from 'lucide-react';
 import { getAvailableCities } from '@/lib/generator';
 
 interface HeroSectionProps {
@@ -42,7 +42,7 @@ export const HeroSection = ({
       <div className="relative container mx-auto px-4 z-10">
         <div className="text-center mb-12 animate-fade-in">
           <div className="inline-flex items-center gap-2 mb-6 px-4 py-2 bg-white/20 backdrop-blur-sm rounded-full text-white text-sm font-medium border border-white/30 shadow-lg hover:bg-white/30 transition-all duration-300">
-            <Download className="w-4 h-4 animate-pulse" />
+            <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
             Live HMO Property Finder
           </div>
           <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 leading-tight tracking-tight">
@@ -60,8 +60,8 @@ export const HeroSection = ({
         </div>
 
         <div className="max-w-5xl mx-auto animate-slide-up">
-          <div className="bg-white/95 backdrop-blur-sm rounded-3xl p-8 shadow-2xl border border-white/20 hover:shadow-3xl transition-all duration-500">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+          <div className="bg-white/95 backdrop-blur-sm rounded-3xl p-4 md:p-8 shadow-2xl border border-white/20 hover:shadow-3xl transition-all duration-500">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 mb-6 md:mb-8">
               <div>
                 <label className="block text-sm font-semibold text-gray-800 mb-3 flex items-center gap-2">
                   <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
@@ -140,14 +140,14 @@ export const HeroSection = ({
               </div>
             </div>
 
-            <div className="flex items-center gap-4">
+            <div className="flex flex-col sm:flex-row items-center gap-4">
               <Button 
                 onClick={() => {
                   console.log('🔍 HeroSection: Search button clicked');
                   onSearch();
                 }}
                 size="lg" 
-                className="flex-1 h-14 bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 text-white text-lg font-semibold shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300 rounded-xl"
+                className="w-full sm:flex-1 h-14 bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 text-white text-base sm:text-lg font-semibold shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300 rounded-xl"
                 disabled={isLoading}
               >
                 <Search className={`w-5 h-5 mr-3 ${isLoading ? 'animate-pulse' : ''}`} />
@@ -161,7 +161,7 @@ export const HeroSection = ({
                 }}
                 variant="outline" 
                 size="lg"
-                className="h-14 border-2 border-gray-300 hover:border-blue-400 hover:bg-blue-50 text-gray-700 hover:text-blue-700 transition-all duration-300 rounded-xl px-6"
+                className="w-full sm:w-auto h-14 border-2 border-gray-300 hover:border-blue-400 hover:bg-blue-50 text-gray-700 hover:text-blue-700 transition-all duration-300 rounded-xl px-6"
                 disabled={isLoading}
               >
                 <RefreshCw className={`w-5 h-5 ${isLoading ? 'animate-spin' : ''}`} />

@@ -77,7 +77,7 @@ export const PropertyCard = ({ property, delay = 0 }: PropertyCardProps) => {
       }`}
       data-testid="card-property"
     >
-      <div className="group relative bg-white rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden border border-gray-200/60 hover:border-blue-300/60 hover:-translate-y-2 backdrop-blur-sm">
+      <div className="group relative bg-white rounded-2xl md:rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden border border-gray-200/60 hover:border-blue-300/60 hover:-translate-y-1 md:hover:-translate-y-2 backdrop-blur-sm">
         
         {/* Modern Image Section */}
         <div className="relative h-80 overflow-hidden">
@@ -132,11 +132,11 @@ export const PropertyCard = ({ property, delay = 0 }: PropertyCardProps) => {
         </div>
 
         {/* Enhanced Content Section */}
-        <div className="p-6 space-y-6">
+        <div className="p-4 md:p-6 space-y-4 md:space-y-6">
           
           {/* Property Features with Modern Icons */}
           <div className="flex items-center justify-between">
-            <div className="flex items-center gap-6">
+            <div className="flex flex-wrap items-center gap-3 md:gap-6">
               <div 
                 className="flex items-center gap-2 text-gray-700"
                 data-testid="text-bedrooms"

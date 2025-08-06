@@ -383,7 +383,7 @@ export const PropertyAnalysis = ({ property, isOpen, onClose }: PropertyAnalysis
                           </div>
                           <div>
                             <div className="text-2xl font-bold text-purple-600">
-                              {formatCurrency(analysisData.netProfitPA / 12)}
+                              £{Math.round(analysisData.netProfitPA / 12).toLocaleString()}
                             </div>
                             <div className="text-sm text-gray-600">Monthly Profit</div>
                           </div>
