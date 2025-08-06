@@ -3,7 +3,8 @@ import { PropertyWithAnalytics } from '@/lib/api';
 import { formatCurrency, formatPercentage } from '@/lib/format';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { Bed, Bath, Square, TrendingUp, Percent, ExternalLink, MapPin, Star } from 'lucide-react';
+import { Bed, Bath, Square, TrendingUp, Percent, ExternalLink, MapPin, Star, Calculator } from 'lucide-react';
+import { PropertyAnalysis } from './PropertyAnalysis';
 
 interface PropertyCardProps {
   property: PropertyWithAnalytics;
@@ -12,6 +13,7 @@ interface PropertyCardProps {
 
 export const PropertyCard = ({ property, delay = 0 }: PropertyCardProps) => {
   const [isVisible, setIsVisible] = useState(false);
+  const [isAnalysisOpen, setIsAnalysisOpen] = useState(false);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -216,20 +218,37 @@ export const PropertyCard = ({ property, delay = 0 }: PropertyCardProps) => {
             </div>
           )}
 
-          {/* Modern CTA Button */}
-          <Button 
-            onClick={() => window.open(getPortalUrl(), '_blank')}
-            className="w-full h-14 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-bold text-lg rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-[1.02] flex items-center justify-center gap-3"
-            data-testid="button-view"
-          >
-            <span>View Property</span>
-            <ExternalLink className="w-5 h-5" />
-          </Button>
+          {/* Modern CTA Buttons */}
+          <div className="flex gap-3">
+            <Button 
+              onClick={() => setIsAnalysisOpen(true)}
+              className="flex-1 h-14 bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white font-bold text-lg rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-[1.02] flex items-center justify-center gap-3"
+              data-testid="button-analyze"
+            >
+              <Calculator className="w-5 h-5" />
+              <span>Analyze</span>
+            </Button>
+            <Button 
+              onClick={() => window.open(getPortalUrl(), '_blank')}
+              className="flex-1 h-14 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-bold text-lg rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-[1.02] flex items-center justify-center gap-3"
+              data-testid="button-view"
+            >
+              <span>View Property</span>
+              <ExternalLink className="w-5 h-5" />
+            </Button>
+          </div>
         </div>
 
         {/* Subtle corner decoration */}
         <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-bl from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
       </div>
+
+      {/* Property Analysis Modal */}
+      <PropertyAnalysis 
+        property={property}
+        isOpen={isAnalysisOpen}
+        onClose={() => setIsAnalysisOpen(false)}
+      />
     </div>
   );
 };

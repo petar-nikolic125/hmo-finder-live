@@ -12,6 +12,15 @@ export type PropertyWithAnalytics = InsertProperty & {
   stampDuty: number;
   refurbCost: number;
   totalInvested: number;
+  profitabilityScore?: string;
+  size?: number;
+  postcode?: string;
+  latitude?: number;
+  longitude?: number;
+  rightmoveUrl?: string;
+  zooplaUrl?: string;
+  primeLocationUrl?: string;
+  description?: string;
 };
 
 // API client that connects to the backend
