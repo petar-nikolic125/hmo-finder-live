@@ -145,7 +145,7 @@ export const PropertyCard = ({ property, delay = 0 }: PropertyCardProps) => {
                   <Bed className="w-5 h-5 text-blue-600" />
                 </div>
                 <span className="font-semibold">{property.bedrooms}</span>
-                <span className="text-sm text-gray-500">beds</span>
+                <span className="text-sm text-gray-500">bedrooms</span>
               </div>
               
               {property.bathrooms && (
@@ -219,22 +219,25 @@ export const PropertyCard = ({ property, delay = 0 }: PropertyCardProps) => {
           )}
 
           {/* Modern CTA Buttons */}
-          <div className="flex gap-3">
-            <Button 
-              onClick={() => setIsAnalysisOpen(true)}
-              className="flex-1 h-14 bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white font-bold text-lg rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-[1.02] flex items-center justify-center gap-3"
-              data-testid="button-analyze"
-            >
-              <Calculator className="w-5 h-5" />
-              <span>Analyze</span>
-            </Button>
+          <div className="space-y-3">
+            {/* Primary View Property Button - Centered */}
             <Button 
               onClick={() => window.open(getPortalUrl(), '_blank')}
-              className="flex-1 h-14 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-bold text-lg rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-[1.02] flex items-center justify-center gap-3"
+              className="w-full h-14 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-bold text-lg rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-[1.02] flex items-center justify-center gap-3"
               data-testid="button-view"
             >
               <span>View Property</span>
               <ExternalLink className="w-5 h-5" />
+            </Button>
+            
+            {/* Secondary Analyze Button - Smaller and Below */}
+            <Button 
+              onClick={() => setIsAnalysisOpen(true)}
+              className="w-full h-10 bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white font-semibold text-sm rounded-xl shadow-md hover:shadow-lg transition-all duration-300 transform hover:scale-[1.02] flex items-center justify-center gap-2"
+              data-testid="button-analyze"
+            >
+              <Calculator className="w-4 h-4" />
+              <span>Analyze</span>
             </Button>
           </div>
         </div>

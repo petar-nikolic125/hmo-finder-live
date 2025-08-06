@@ -27,7 +27,7 @@ export const Header = ({ selectedCity, onCityChange, onShowTutorial }: HeaderPro
               <Home className="w-5 h-5 text-white" />
             </div>
             <div>
-              <h1 className="text-xl font-bold bg-hero-gradient bg-clip-text text-transparent">
+              <h1 className="text-xl font-bold text-slate-800 dark:text-white">
                 HMO HUNTER
               </h1>
               <p className="text-sm text-muted-foreground">

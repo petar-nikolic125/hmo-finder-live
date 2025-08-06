@@ -289,34 +289,34 @@ export const PropertyAnalysis = ({ property, isOpen, onClose }: PropertyAnalysis
                             Investment Breakdown
                           </CardTitle>
                         </CardHeader>
-                        <CardContent className="space-y-3">
-                          <div className="flex justify-between">
+                        <CardContent className="space-y-2">
+                          <div className="flex justify-between text-sm">
                             <span>Property Sale Price:</span>
-                            <span className="font-semibold">{formatCurrency(analysisData.salePricePounds)}</span>
+                            <span className="font-semibold text-xs">{formatCurrency(analysisData.salePricePounds)}</span>
                           </div>
-                          <div className="flex justify-between">
-                            <span>HMO Evaluation ({analysisData.hmoEvaluationBeds} beds):</span>
-                            <span className="font-semibold">Max 6 beds</span>
+                          <div className="flex justify-between text-sm">
+                            <span>HMO Evaluation ({analysisData.hmoEvaluationBeds} bedrooms):</span>
+                            <span className="font-semibold text-xs">Max 6 bedrooms</span>
                           </div>
-                          <div className="flex justify-between">
-                            <span>Renovation ({analysisData.hmoEvaluationBeds} rooms):</span>
-                            <span className="font-semibold">{formatCurrency(analysisData.totalRenovation)}</span>
+                          <div className="flex justify-between text-sm">
+                            <span>Renovation ({analysisData.hmoEvaluationBeds} rooms @ £{analysisData.renovationPerRoom.toLocaleString()}):</span>
+                            <span className="font-semibold text-xs">{formatCurrency(analysisData.totalRenovation)}</span>
                           </div>
-                          <div className="flex justify-between">
-                            <span>Bridging Loan Fee:</span>
-                            <span className="font-semibold">{formatCurrency(analysisData.bridgingLoanFee)}</span>
+                          <div className="flex justify-between text-sm">
+                            <span>Bridging Loan Fee (6 months @ 1%):</span>
+                            <span className="font-semibold text-xs">{formatCurrency(analysisData.bridgingLoanFee)}</span>
                           </div>
-                          <div className="flex justify-between">
-                            <span>Legals:</span>
-                            <span className="font-semibold">{formatCurrency(analysisData.legals)}</span>
+                          <div className="flex justify-between text-sm">
+                            <span>Legal Costs & Surveys:</span>
+                            <span className="font-semibold text-xs">{formatCurrency(analysisData.legals)}</span>
                           </div>
-                          <div className="border-t pt-2 flex justify-between text-lg font-bold">
-                            <span>Total Input:</span>
-                            <span className="text-red-600">{formatCurrency(analysisData.totalInput)}</span>
+                          <div className="border-t pt-2 flex justify-between text-base font-bold">
+                            <span>Total Input Required:</span>
+                            <span className="text-red-600 text-sm">{formatCurrency(analysisData.totalInput)}</span>
                           </div>
-                          <div className="flex justify-between text-lg font-bold bg-blue-50 p-3 rounded-lg">
-                            <span>Left in Deal (25%):</span>
-                            <span className="text-blue-600">{formatCurrency(analysisData.leftInDeal)}</span>
+                          <div className="flex justify-between text-base font-bold bg-blue-50 p-3 rounded-lg">
+                            <span>Left in Deal (25% deposit):</span>
+                            <span className="text-blue-600 text-sm">{formatCurrency(analysisData.leftInDeal)}</span>
                           </div>
                         </CardContent>
                       </Card>
@@ -329,26 +329,30 @@ export const PropertyAnalysis = ({ property, isOpen, onClose }: PropertyAnalysis
                             Returns Analysis
                           </CardTitle>
                         </CardHeader>
-                        <CardContent className="space-y-3">
-                          <div className="flex justify-between">
-                            <span>Local LHA Rate:</span>
-                            <span className="font-semibold">{formatCurrency(analysisData.localLHARate)}/room/month</span>
+                        <CardContent className="space-y-2">
+                          <div className="flex justify-between text-sm">
+                            <span>Local LHA Rate (Liverpool):</span>
+                            <span className="font-semibold text-xs">{formatCurrency(analysisData.localLHARate)}/room/month</span>
                           </div>
-                          <div className="flex justify-between">
-                            <span>Total Income PA:</span>
-                            <span className="font-semibold">{formatCurrency(analysisData.totalIncomePA)}</span>
+                          <div className="flex justify-between text-sm">
+                            <span>Gross Income PA ({analysisData.hmoEvaluationBeds} rooms x 12):</span>
+                            <span className="font-semibold text-xs">{formatCurrency(analysisData.totalIncomePA)}</span>
                           </div>
-                          <div className="flex justify-between">
-                            <span>Net Profit PA (75%):</span>
-                            <span className="font-semibold text-green-600">{formatCurrency(analysisData.netProfitPA)}</span>
+                          <div className="flex justify-between text-sm">
+                            <span>Net Profit PA (after 25% expenses):</span>
+                            <span className="font-semibold text-green-600 text-xs">{formatCurrency(analysisData.netProfitPA)}</span>
+                          </div>
+                          <div className="flex justify-between text-sm">
+                            <span>Annual ROI on Deposit:</span>
+                            <span className="font-semibold text-xs">{formatPercentage((analysisData.netProfitPA / analysisData.leftInDeal) * 100)}</span>
                           </div>
                           <div className="border-t pt-2">
                             <div className="bg-green-50 p-3 rounded-lg">
                               <div className="flex items-center gap-2 mb-2">
-                                <Clock className="w-5 h-5 text-green-600" />
-                                <span className="font-semibold">Money Out Within:</span>
+                                <Clock className="w-4 h-4 text-green-600" />
+                                <span className="font-semibold text-sm">Money Out Within:</span>
                               </div>
-                              <Badge className="bg-green-100 text-green-800 text-lg px-3 py-1">
+                              <Badge className="bg-green-100 text-green-800 text-sm px-2 py-1">
                                 {analysisData.moneyOutWithin}
                               </Badge>
                             </div>

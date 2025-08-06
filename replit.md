@@ -34,6 +34,15 @@ Properties include comprehensive analytics:
 
 ## Recent Changes (August 2025)
 
+### Web Scraper Multi-City Extension & UI Improvements ✅ (August 6, 2025)
+- **Universal City Support**: Extended web scraper from 2 cities (London, Liverpool) to all 25+ cities in dropdown menu
+- **Comprehensive City Data**: Added complete geographic data, postal codes, and portal URLs for Birmingham, Manchester, Leeds, Sheffield, Bristol, Nottingham, Leicester, Newcastle, Coventry, Preston, Blackpool, Hull, Derby, Plymouth, Southampton, Portsmouth, Reading, Oxford, Cambridge, Brighton, Salford, Stockport, Wolverhampton, and London
+- **Real Property Data**: Confirmed scraping functionality across multiple cities with live Zoopla and PrimeLocation integration
+- **UI Polish**: Enhanced HMO HUNTER navbar visibility, improved button layout (View Property centered, Analyze smaller and below)
+- **PropertyAnalysis Precision**: Added detailed financial calculations with precise breakdowns (bridging loan fees, legal costs, renovation per room calculations)
+- **Typography Improvements**: Reduced font sizes in analysis panels for better space utilization and readability
+- **User Experience**: Changed "beds" to "bedrooms" for clearer property information display
+
 ### Migration from Replit Agent to Standard Replit Environment ✅
 - **In-Memory Storage**: Replaced PostgreSQL database with MemStorage class for standalone operation
 - **Web Scraping Integration**: Implemented real Zoopla.co.uk scraper with Python/Selenium fallback
