@@ -3,7 +3,7 @@ import { PropertyWithAnalytics } from '@/lib/api';
 import { formatCurrency, formatPercentage } from '@/lib/format';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { Bed, Bath, Square, TrendingUp, Percent, ExternalLink } from 'lucide-react';
+import { Bed, Bath, Square, TrendingUp, Percent, ExternalLink, MapPin, Star } from 'lucide-react';
 
 interface PropertyCardProps {
   property: PropertyWithAnalytics;
@@ -26,7 +26,6 @@ export const PropertyCard = ({ property, delay = 0 }: PropertyCardProps) => {
     console.log('🔗 PropertyCard: Getting portal URL for property:', property.address);
     console.log('🔗 PropertyCard: Property data:', property);
     console.log('🔗 PropertyCard: propertyUrl field:', property.propertyUrl);
-    console.log('🔗 PropertyCard: Is scraped URL?:', property.propertyUrl && property.propertyUrl.includes('/details/'));
     
     // Priority 1: Use real scraped property URL if it exists and points to specific property
     if (property.propertyUrl && 
@@ -55,157 +54,181 @@ export const PropertyCard = ({ property, delay = 0 }: PropertyCardProps) => {
     return '#';
   };
 
-  const getPortalName = (url: string) => {
-    if (url.includes('rightmove')) return 'Rightmove';
-    if (url.includes('zoopla')) return 'Zoopla';
-    if (url.includes('primelocation')) return 'PrimeLocation';
-    return 'View Property';
+  const getProfitabilityColor = (score: string | undefined) => {
+    const normalized = (score || '').toLowerCase();
+    if (normalized === 'high') return 'from-emerald-500 to-green-500';
+    if (normalized === 'medium') return 'from-yellow-500 to-orange-500';
+    return 'from-gray-400 to-gray-500';
   };
 
-  const portalUrl = getPortalUrl();
-  const portalName = getPortalName(portalUrl);
-  
-  // Extract identifier from URL for display
-  const getUrlIdentifier = (url: string) => {
-    try {
-      const urlObj = new URL(url);
-      
-      // For specific property URLs, extract property ID
-      if (url.includes('/details/') || url.includes('/property-for-sale/')) {
-        const pathParts = urlObj.pathname.split('/');
-        const detailsIndex = pathParts.findIndex(part => part === 'details');
-        if (detailsIndex !== -1 && pathParts[detailsIndex + 1]) {
-          return pathParts[detailsIndex + 1];
-        }
-      }
-      
-      // For search URLs, show location identifier
-      const locationId = urlObj.searchParams.get('locationIdentifier') || 
-                        urlObj.searchParams.get('location') || 
-                        urlObj.searchParams.get('search_identifier') ||
-                        urlObj.searchParams.get('ref') || 'N/A';
-      return locationId.length > 15 ? `${locationId.substring(0, 15)}...` : locationId;
-    } catch {
-      return 'N/A';
-    }
+  const getYieldColor = (yieldPercent: number | undefined) => {
+    const yield_val = yieldPercent || 0;
+    if (yield_val >= 8) return 'from-purple-600 to-blue-600';
+    if (yield_val >= 5) return 'from-blue-500 to-indigo-500';
+    return 'from-slate-500 to-gray-500';
   };
 
-  const urlIdentifier = getUrlIdentifier(portalUrl);
-  
   return (
     <div 
-      className={`
-        bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 
-        shadow-sm hover:shadow-md transition-all duration-500 overflow-hidden
-        ${isVisible ? 'opacity-100 transform translate-y-0' : 'opacity-0 transform translate-y-4'}
-      `}
-      role="article"
-      aria-label={`HMO property at ${property.address}`}
+      className={`transform transition-all duration-700 ease-out ${
+        isVisible ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'
+      }`}
+      data-testid="card-property"
     >
-      <div className="relative">
-        <img
-          src={property.imageUrl}
-          alt="Property image not available - placeholder shown"
-          className="w-full h-48 object-cover"
-          onError={(e) => {
-            // Replace broken images with placeholder
-            const target = e.target as HTMLImageElement;
-            target.src = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='300' viewBox='0 0 400 300'%3E%3Crect width='400' height='300' fill='%23f3f4f6'/%3E%3Ctext x='200' y='150' text-anchor='middle' fill='%236b7280' font-family='system-ui, sans-serif' font-size='14'%3EImage not available%3C/text%3E%3C/svg%3E";
-            target.alt = "Image not available";
-          }}
-        />
-        <div className="absolute top-2 left-2">
-          <Badge className="bg-blue-600 hover:bg-blue-700 text-white text-xs">
-            HMO's Found
-          </Badge>
-        </div>
-      </div>
-      
-      <div className="p-4">
-        <div className="flex items-start justify-between mb-2">
-          <h3 className="font-semibold text-gray-900 dark:text-gray-100 text-sm leading-tight">
-            {property.address}
-          </h3>
-          {property.isArticle4 && (
-            <Badge variant="outline" className="text-xs ml-2 flex-shrink-0">
-              Article 4
+      <div className="group relative bg-white rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden border border-gray-200/60 hover:border-blue-300/60 hover:-translate-y-2 backdrop-blur-sm">
+        
+        {/* Modern Image Section */}
+        <div className="relative h-80 overflow-hidden">
+          <img 
+            src={property.imageUrl} 
+            alt={property.address}
+            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 filter group-hover:brightness-105"
+            data-testid="img-property"
+          />
+          
+          {/* Modern gradient overlays */}
+          <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/70" />
+          <div className="absolute inset-0 bg-gradient-to-r from-blue-600/10 to-purple-600/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+          
+          {/* Floating badges */}
+          <div className="absolute top-5 left-5 flex flex-col gap-2">
+            <Badge 
+              className={`bg-gradient-to-r ${getProfitabilityColor(property.profitabilityScore)} text-white border-0 shadow-xl backdrop-blur-md px-4 py-2 font-bold text-sm flex items-center gap-1.5`}
+              data-testid="badge-profitability"
+            >
+              <Star className="w-4 h-4 fill-current" />
+              {property.profitabilityScore || 'N/A'}
             </Badge>
-          )}
-        </div>
-        
-        <p className="text-xs text-gray-600 dark:text-gray-400 mb-1">
-          {property.postcode} • {property.description}
-        </p>
-        
-        <p className="text-xs text-gray-500 dark:text-gray-500 mb-3">
-          ID: {urlIdentifier}
-        </p>
+          </div>
+          
+          <div className="absolute top-5 right-5">
+            <Badge 
+              className={`bg-gradient-to-r ${getYieldColor(property.grossYield)} text-white border-0 shadow-xl backdrop-blur-md px-4 py-2 font-bold text-sm flex items-center gap-1.5`}
+              data-testid="badge-yield"
+            >
+              <Percent className="w-4 h-4" />
+              {formatPercentage(property.grossYield)} Yield
+            </Badge>
+          </div>
 
-        <div className="grid grid-cols-3 gap-2 mb-3 text-xs">
-          <div className="flex items-center gap-1">
-            <Bed className="h-3 w-3 text-gray-500" />
-            <span>{property.bedrooms} bed</span>
-          </div>
-          <div className="flex items-center gap-1">
-            <Bath className="h-3 w-3 text-gray-500" />
-            <span>{property.bathrooms} bath</span>
-          </div>
-          <div className="flex items-center gap-1">
-            <Square className="h-3 w-3 text-gray-500" />
-            <span>{property.size}m²</span>
+          {/* Price overlay with modern styling */}
+          <div className="absolute bottom-6 left-6 right-6">
+            <div 
+              className="text-4xl font-black text-white drop-shadow-2xl mb-2 tracking-tight"
+              data-testid="text-price"
+            >
+              {formatCurrency(property.price)}
+            </div>
+            <div 
+              className="flex items-center text-white/90 text-sm font-medium"
+              data-testid="text-address"
+            >
+              <MapPin className="w-4 h-4 mr-1.5" />
+              {property.address}
+            </div>
           </div>
         </div>
 
-        <div className="space-y-2 mb-4">
-          <div className="flex justify-between text-xs">
-            <span className="text-gray-600 dark:text-gray-400">Price</span>
-            <span className="font-medium">{formatCurrency(property.price)}</span>
+        {/* Enhanced Content Section */}
+        <div className="p-6 space-y-6">
+          
+          {/* Property Features with Modern Icons */}
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-6">
+              <div 
+                className="flex items-center gap-2 text-gray-700"
+                data-testid="text-bedrooms"
+              >
+                <div className="p-2 bg-blue-50 rounded-xl">
+                  <Bed className="w-5 h-5 text-blue-600" />
+                </div>
+                <span className="font-semibold">{property.bedrooms}</span>
+                <span className="text-sm text-gray-500">beds</span>
+              </div>
+              
+              {property.bathrooms && (
+                <div 
+                  className="flex items-center gap-2 text-gray-700"
+                  data-testid="text-bathrooms"
+                >
+                  <div className="p-2 bg-emerald-50 rounded-xl">
+                    <Bath className="w-5 h-5 text-emerald-600" />
+                  </div>
+                  <span className="font-semibold">{property.bathrooms}</span>
+                  <span className="text-sm text-gray-500">baths</span>
+                </div>
+              )}
+              
+              {property.size && (
+                <div 
+                  className="flex items-center gap-2 text-gray-700"
+                  data-testid="text-area"
+                >
+                  <div className="p-2 bg-purple-50 rounded-xl">
+                    <Square className="w-5 h-5 text-purple-600" />
+                  </div>
+                  <span className="font-semibold">{property.size}</span>
+                  <span className="text-sm text-gray-500">m²</span>
+                </div>
+              )}
+            </div>
           </div>
-          <div className="flex justify-between text-xs">
-            <span className="text-gray-600 dark:text-gray-400 flex items-center gap-1">
-              <TrendingUp className="h-3 w-3" />
-              Est. Net Yield
-            </span>
-            <span className="font-medium text-green-600 dark:text-green-400">
-              {formatPercentage(property.netYield)}
-            </span>
+
+          {/* Investment Metrics with Modern Cards */}
+          <div className="grid grid-cols-2 gap-4">
+            <div className="bg-gradient-to-br from-blue-50 to-indigo-50 p-4 rounded-2xl border border-blue-100/60">
+              <div className="flex items-center gap-2 mb-2">
+                <TrendingUp className="w-5 h-5 text-blue-600" />
+                <span className="text-sm font-semibold text-blue-900">ROI</span>
+              </div>
+              <div 
+                className="text-2xl font-bold text-blue-800"
+                data-testid="text-roi"
+              >
+                {formatPercentage(property.roi)}
+              </div>
+            </div>
+            
+            <div className="bg-gradient-to-br from-emerald-50 to-green-50 p-4 rounded-2xl border border-emerald-100/60">
+              <div className="flex items-center gap-2 mb-2">
+                <Percent className="w-5 h-5 text-emerald-600" />
+                <span className="text-sm font-semibold text-emerald-900">Yield</span>
+              </div>
+              <div 
+                className="text-2xl font-bold text-emerald-800"
+                data-testid="text-yield"
+              >
+                {formatPercentage(property.grossYield)}
+              </div>
+            </div>
           </div>
-          <div className="flex justify-between text-xs">
-            <span className="text-gray-600 dark:text-gray-400 flex items-center gap-1">
-              <Percent className="h-3 w-3" />
-              Est. ROI
-            </span>
-            <span className={`font-medium ${property.roi > 0 ? 'text-green-600 dark:text-green-400' : 'text-red-600 dark:text-red-400'}`}>
-              {formatPercentage(property.roi)}
-            </span>
-          </div>
-          {property.isArticle4 === false && (
-            <div className="flex justify-between text-xs">
-              <span className="text-gray-600 dark:text-gray-400">Article 4</span>
-              <span className="font-medium text-green-600 dark:text-green-400">
-                Not restricted
-              </span>
+
+          {/* Property Description */}
+          {property.description && (
+            <div className="space-y-2">
+              <h4 className="font-semibold text-gray-900">Property Details</h4>
+              <p 
+                className="text-sm text-gray-600 leading-relaxed line-clamp-3"
+                data-testid="text-description"
+              >
+                {property.description}
+              </p>
             </div>
           )}
+
+          {/* Modern CTA Button */}
+          <Button 
+            onClick={() => window.open(getPortalUrl(), '_blank')}
+            className="w-full h-14 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-bold text-lg rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-[1.02] flex items-center justify-center gap-3"
+            data-testid="button-view"
+          >
+            <span>View Property</span>
+            <ExternalLink className="w-5 h-5" />
+          </Button>
         </div>
 
-        <Button
-          asChild
-          variant="default"
-          size="sm"
-          className="w-full text-xs bg-gray-900 hover:bg-gray-800 text-white dark:bg-gray-100 dark:hover:bg-gray-200 dark:text-gray-900"
-        >
-          <a 
-            href={portalUrl} 
-            target="_blank" 
-            rel="noopener noreferrer"
-            className="flex items-center justify-center gap-2"
-            aria-label={`View this HMO listing on ${portalName} - opens in new tab`}
-          >
-            View Listing
-            <ExternalLink className="h-3 w-3" />
-          </a>
-        </Button>
+        {/* Subtle corner decoration */}
+        <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-bl from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
       </div>
     </div>
   );

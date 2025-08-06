@@ -31,6 +31,7 @@ export interface PropertyWithAnalytics extends InsertProperty {
   stampDuty: number;
   refurbCost: number;
   totalInvested: number;
+  profitabilityScore?: string;
 }
 
 export interface PropertySearchParams {

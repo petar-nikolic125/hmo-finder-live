@@ -596,10 +596,10 @@ def scrape_properties_with_requests(city, min_bedrooms, max_price, keywords):
                         if bed_matches:
                             property_data['bedrooms'] = int(bed_matches[0])
                     
-                    # Default vrednosti
+                    # Default vrednosti - samo za spavaće sobe, ne izmišljaj kupatila
                     if 'bedrooms' not in property_data:
                         property_data['bedrooms'] = min_bedrooms or random.randint(1, 4)
-                    property_data['bathrooms'] = max(1, property_data.get('bedrooms', 1) - 1)
+                    # Ne dodajemo bathrooms automatski - samo ako se pronađe u detaljnim podacima
                     
                     # Link do oglasa - proverava da li je ceo element već a tag
                     property_url = None

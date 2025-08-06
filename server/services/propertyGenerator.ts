@@ -153,7 +153,8 @@ export class PropertyGenerator {
     const maxPrice = searchParams.maxPrice || 400000;
     
     const bedrooms = minBedrooms + Math.floor(Math.random() * 3); // +0 to +2 bedrooms
-    const bathrooms = Math.max(1, bedrooms - 1 - Math.floor(Math.random() * 2));
+    // Ne izmišljamo broj kupatila - ostavljamo undefined
+    const bathrooms = undefined;
     const price = Math.floor(Math.random() * (maxPrice * 0.4)) + (maxPrice * 0.6); // 60-100% of max price
     
     const imageUrl = PROPERTY_IMAGES[Math.floor(Math.random() * PROPERTY_IMAGES.length)];
@@ -236,7 +237,8 @@ export class PropertyGenerator {
       dscr: Math.round(dscr * 10) / 10,
       stampDuty,
       refurbCost,
-      totalInvested
+      totalInvested,
+      profitabilityScore: roi >= 15 ? 'High' : roi >= 8 ? 'Medium' : 'Low'
     };
   }
   

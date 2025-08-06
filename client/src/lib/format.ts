@@ -32,7 +32,8 @@ export const formatProfit = (profit: number): string => {
   return `£${profit.toLocaleString()}`;
 };
 
-export const formatPercentage = (value: number): string => {
+export const formatPercentage = (value?: number): string => {
+  if (value === undefined || value === null) return 'N/A';
   return `${value.toFixed(1)}%`;
 };
 

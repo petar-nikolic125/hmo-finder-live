@@ -17,7 +17,7 @@ export const propertySchema = z.object({
   address: z.string(),
   price: z.number(),
   bedrooms: z.number(),
-  bathrooms: z.number(),
+  bathrooms: z.number().optional(), // Opciono jer ne možemo uvek da ga nađemo
   imageUrl: z.string(),
   propertyUrl: z.string(),
   city: z.string(),
