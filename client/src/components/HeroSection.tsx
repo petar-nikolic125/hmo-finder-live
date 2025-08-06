@@ -11,6 +11,7 @@ import {
 } from '@/components/ui/select';
 import { Search, RefreshCw } from 'lucide-react';
 import { getAvailableCities } from '@/lib/generator';
+import ukSkylineImage from '@assets/generated_images/UK_cities_skyline_background_cab93bd3.png';
 
 interface HeroSectionProps {
   searchParams: PropertySearchParams;
@@ -32,11 +33,59 @@ export const HeroSection = ({
   onMinRoomsChange
 }: HeroSectionProps) => {
   return (
-    <section className="relative overflow-hidden bg-hero-gradient py-20 min-h-[60vh] flex items-center">
-      {/* Animated background elements */}
-      <div className="absolute inset-0 opacity-10">
-        <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-white/20 rounded-full animate-pulse"></div>
-        <div className="absolute bottom-1/4 right-1/4 w-48 h-48 bg-white/10 rounded-full animate-bounce" style={{animationDuration: '3s'}}></div>
+    <section className="relative overflow-hidden py-20 min-h-[80vh] flex items-center">
+      {/* UK Skyline Background */}
+      <div 
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+        style={{
+          backgroundImage: `linear-gradient(135deg, rgba(99, 102, 241, 0.9) 0%, rgba(168, 85, 247, 0.8) 50%, rgba(244, 114, 182, 0.7) 100%), url(${ukSkylineImage})`,
+          backgroundAttachment: 'fixed'
+        }}
+      >
+        {/* Overlay gradient for text contrast */}
+        <div className="absolute inset-0 bg-gradient-to-r from-black/40 via-transparent to-black/30"></div>
+      </div>
+
+      {/* Animated Clouds */}
+      <div className="absolute inset-0 overflow-hidden">
+        <div className="cloud cloud-1 animate-float-slow"></div>
+        <div className="cloud cloud-2 animate-float-medium"></div>
+        <div className="cloud cloud-3 animate-float-fast"></div>
+        <div className="cloud cloud-4 animate-float-slow"></div>
+        <div className="cloud cloud-5 animate-float-medium"></div>
+      </div>
+
+      {/* Twinkling City Lights */}
+      <div className="absolute inset-0 overflow-hidden">
+        <div className="city-light city-light-1 animate-twinkle-slow"></div>
+        <div className="city-light city-light-2 animate-twinkle-fast"></div>
+        <div className="city-light city-light-3 animate-twinkle-medium"></div>
+        <div className="city-light city-light-4 animate-twinkle-slow"></div>
+        <div className="city-light city-light-5 animate-twinkle-fast"></div>
+        <div className="city-light city-light-6 animate-twinkle-medium"></div>
+        <div className="city-light city-light-7 animate-twinkle-slow"></div>
+        <div className="city-light city-light-8 animate-twinkle-fast"></div>
+        <div className="city-light city-light-9 animate-twinkle-medium"></div>
+        <div className="city-light city-light-10 animate-twinkle-slow"></div>
+      </div>
+
+      {/* Floating Particles */}
+      <div className="absolute inset-0 overflow-hidden">
+        <div className="particle particle-1 animate-float-particle-1"></div>
+        <div className="particle particle-2 animate-float-particle-2"></div>
+        <div className="particle particle-3 animate-float-particle-3"></div>
+        <div className="particle particle-4 animate-float-particle-4"></div>
+        <div className="particle particle-5 animate-float-particle-5"></div>
+        <div className="particle particle-6 animate-float-particle-6"></div>
+        <div className="particle particle-7 animate-float-particle-7"></div>
+        <div className="particle particle-8 animate-float-particle-8"></div>
+      </div>
+
+      {/* Birds Animation */}
+      <div className="absolute inset-0 overflow-hidden">
+        <div className="bird bird-1 animate-fly-across"></div>
+        <div className="bird bird-2 animate-fly-across-delayed"></div>
+        <div className="bird bird-3 animate-fly-across-slow"></div>
       </div>
       
       <div className="relative container mx-auto px-4 z-10">
