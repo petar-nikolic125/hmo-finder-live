@@ -267,287 +267,287 @@
   },
   "78d184c9f5db8ecd8f234b53cd4a7fc5": {
     "searchHash": "78d184c9f5db8ecd8f234b53cd4a7fc5",
-    "lastScraped": "2025-08-06T16:53:28.255Z",
+    "lastScraped": "2025-08-06T20:45:48.618Z",
     "properties": [
       {
-        "id": 280319,
+        "id": 354067,
         "address": "Windmill Road, Croydon CR0",
         "price": 475000,
         "bedrooms": 4,
         "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
         "propertyUrl": "https://www.primelocation.com/for-sale/details/69864318/?search_identifier=6e42320e8227d180abc81c132525f6db61df486c7a94488ac3326c4ab3572f91&weekly_featured=true",
         "city": "London",
-        "scrapedAt": "2025-08-06T16:53:28.255Z"
+        "scrapedAt": "2025-08-06T20:45:48.618Z"
       },
       {
-        "id": 153157,
-        "address": "Northumberland Park, Tottenham, London N17",
-        "price": 475000,
+        "id": 505204,
+        "address": "Sanctuary Close, Harefield, Uxbridge UB9",
+        "price": 500000,
         "bedrooms": 4,
         "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
-        "propertyUrl": "https://www.primelocation.com/for-sale/details/52585644/?search_identifier=6e42320e8227d180abc81c132525f6db61df486c7a94488ac3326c4ab3572f91&featured=true",
+        "propertyUrl": "https://www.primelocation.com/for-sale/details/70440515/?search_identifier=6e42320e8227d180abc81c132525f6db61df486c7a94488ac3326c4ab3572f91&featured=true",
         "city": "London",
-        "scrapedAt": "2025-08-06T16:53:28.255Z"
+        "scrapedAt": "2025-08-06T20:45:48.618Z"
       },
       {
-        "id": 460145,
-        "address": "Bavaria Road, Archway, London N19",
-        "price": 495000,
+        "id": 750348,
+        "address": "Napier Road, South Croydon CR2",
+        "price": 400000,
         "bedrooms": 3,
         "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
-        "propertyUrl": "https://www.primelocation.com/for-sale/details/69506019/?search_identifier=6e42320e8227d180abc81c132525f6db61df486c7a94488ac3326c4ab3572f91&featured=true",
+        "propertyUrl": "https://www.primelocation.com/for-sale/details/69541208/?search_identifier=6e42320e8227d180abc81c132525f6db61df486c7a94488ac3326c4ab3572f91&featured=true",
         "city": "London",
-        "scrapedAt": "2025-08-06T16:53:28.255Z"
+        "scrapedAt": "2025-08-06T20:45:48.618Z"
       },
       {
-        "id": 665390,
+        "id": 122674,
         "address": "Park View Road, Welling, Kent DA16",
         "price": 500000,
         "bedrooms": 4,
         "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
         "propertyUrl": "https://www.primelocation.com/for-sale/details/66916330/?search_identifier=6e42320e8227d180abc81c132525f6db61df486c7a94488ac3326c4ab3572f91",
         "city": "London",
-        "scrapedAt": "2025-08-06T16:53:28.255Z"
+        "scrapedAt": "2025-08-06T20:45:48.618Z"
       },
       {
-        "id": 83969,
+        "id": 732507,
         "address": "Clarendon Road, Croydon CR0",
         "price": 500000,
         "bedrooms": 5,
         "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
         "propertyUrl": "https://www.primelocation.com/for-sale/details/69056712/?search_identifier=6e42320e8227d180abc81c132525f6db61df486c7a94488ac3326c4ab3572f91",
         "city": "London",
-        "scrapedAt": "2025-08-06T16:53:28.255Z"
+        "scrapedAt": "2025-08-06T20:45:48.618Z"
       },
       {
-        "id": 860516,
+        "id": 537325,
         "address": "Cary Road, London E11",
         "price": 500000,
         "bedrooms": 2,
         "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
         "propertyUrl": "https://www.primelocation.com/for-sale/details/69160257/?search_identifier=6e42320e8227d180abc81c132525f6db61df486c7a94488ac3326c4ab3572f91",
         "city": "London",
-        "scrapedAt": "2025-08-06T16:53:28.255Z"
+        "scrapedAt": "2025-08-06T20:45:48.618Z"
       },
       {
-        "id": 936460,
+        "id": 846995,
         "address": "Timor House, Duckett Street E1",
         "price": 500000,
         "bedrooms": 4,
         "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
         "propertyUrl": "https://www.primelocation.com/for-sale/details/70162199/?search_identifier=6e42320e8227d180abc81c132525f6db61df486c7a94488ac3326c4ab3572f91",
         "city": "London",
-        "scrapedAt": "2025-08-06T16:53:28.255Z"
+        "scrapedAt": "2025-08-06T20:45:48.618Z"
       },
       {
-        "id": 280034,
+        "id": 435245,
         "address": "Sanctuary Close, Harefield, Uxbridge UB9",
         "price": 500000,
         "bedrooms": 4,
         "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
         "propertyUrl": "https://www.primelocation.com/for-sale/details/70440515/?search_identifier=6e42320e8227d180abc81c132525f6db61df486c7a94488ac3326c4ab3572f91",
         "city": "London",
-        "scrapedAt": "2025-08-06T16:53:28.255Z"
+        "scrapedAt": "2025-08-06T20:45:48.618Z"
       },
       {
-        "id": 155718,
+        "id": 782732,
         "address": "Beavers Lane, Hounslow TW4",
         "price": 499950,
         "bedrooms": 4,
         "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
         "propertyUrl": "https://www.primelocation.com/for-sale/details/68497142/?search_identifier=6e42320e8227d180abc81c132525f6db61df486c7a94488ac3326c4ab3572f91",
         "city": "London",
-        "scrapedAt": "2025-08-06T16:53:28.255Z"
+        "scrapedAt": "2025-08-06T20:45:48.618Z"
       },
       {
-        "id": 989122,
+        "id": 767966,
         "address": "Bavaria Road, Archway, London N19",
         "price": 495000,
         "bedrooms": 3,
         "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
         "propertyUrl": "https://www.primelocation.com/for-sale/details/69506019/?search_identifier=6e42320e8227d180abc81c132525f6db61df486c7a94488ac3326c4ab3572f91",
         "city": "London",
-        "scrapedAt": "2025-08-06T16:53:28.255Z"
+        "scrapedAt": "2025-08-06T20:45:48.618Z"
       },
       {
-        "id": 236915,
+        "id": 848928,
         "address": "Byron Road, Wealdstone HA3",
         "price": 495000,
         "bedrooms": 4,
         "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
         "propertyUrl": "https://www.primelocation.com/for-sale/details/69742674/?search_identifier=6e42320e8227d180abc81c132525f6db61df486c7a94488ac3326c4ab3572f91",
         "city": "London",
-        "scrapedAt": "2025-08-06T16:53:28.255Z"
+        "scrapedAt": "2025-08-06T20:45:48.618Z"
       },
       {
-        "id": 367717,
+        "id": 42174,
         "address": "14 Page Heath Villas, Bromley, Kent BR1",
         "price": 490000,
         "bedrooms": 5,
         "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
         "propertyUrl": "https://www.primelocation.com/for-sale/details/70911195/?search_identifier=6e42320e8227d180abc81c132525f6db61df486c7a94488ac3326c4ab3572f91",
         "city": "London",
-        "scrapedAt": "2025-08-06T16:53:28.255Z"
+        "scrapedAt": "2025-08-06T20:45:48.618Z"
       },
       {
-        "id": 697728,
+        "id": 751632,
         "address": "Fulham Palace Road, London SW6",
         "price": 485000,
         "bedrooms": 3,
         "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
         "propertyUrl": "https://www.primelocation.com/for-sale/details/70738814/?search_identifier=6e42320e8227d180abc81c132525f6db61df486c7a94488ac3326c4ab3572f91",
         "city": "London",
-        "scrapedAt": "2025-08-06T16:53:28.255Z"
+        "scrapedAt": "2025-08-06T20:45:48.618Z"
       },
       {
-        "id": 581859,
+        "id": 704145,
         "address": "Fulham Palace Road, Hammersmith & Fulham, London SW6",
         "price": 485000,
         "bedrooms": 3,
         "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
         "propertyUrl": "https://www.primelocation.com/new-homes/details/70867259/?search_identifier=6e42320e8227d180abc81c132525f6db61df486c7a94488ac3326c4ab3572f91",
         "city": "London",
-        "scrapedAt": "2025-08-06T16:53:28.255Z"
+        "scrapedAt": "2025-08-06T20:45:48.618Z"
       },
       {
-        "id": 472556,
+        "id": 553813,
         "address": "Tebworth Road, Tottenham, London N17",
         "price": 480000,
         "bedrooms": 3,
         "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
         "propertyUrl": "https://www.primelocation.com/for-sale/details/46146581/?search_identifier=6e42320e8227d180abc81c132525f6db61df486c7a94488ac3326c4ab3572f91",
         "city": "London",
-        "scrapedAt": "2025-08-06T16:53:28.255Z"
+        "scrapedAt": "2025-08-06T20:45:48.618Z"
       },
       {
-        "id": 592363,
+        "id": 478694,
         "address": "Tebworth Road, London N17",
         "price": 480000,
         "bedrooms": 3,
         "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
         "propertyUrl": "https://www.primelocation.com/for-sale/details/70815809/?search_identifier=6e42320e8227d180abc81c132525f6db61df486c7a94488ac3326c4ab3572f91",
         "city": "London",
-        "scrapedAt": "2025-08-06T16:53:28.255Z"
+        "scrapedAt": "2025-08-06T20:45:48.618Z"
       },
       {
-        "id": 992132,
+        "id": 618135,
         "address": "Northumberland Park, Tottenham, London N17",
         "price": 475000,
         "bedrooms": 4,
         "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
         "propertyUrl": "https://www.primelocation.com/for-sale/details/52585644/?search_identifier=6e42320e8227d180abc81c132525f6db61df486c7a94488ac3326c4ab3572f91",
         "city": "London",
-        "scrapedAt": "2025-08-06T16:53:28.255Z"
+        "scrapedAt": "2025-08-06T20:45:48.618Z"
       },
       {
-        "id": 696466,
+        "id": 963241,
         "address": "Windmill Road, Croydon CR0",
         "price": 475000,
         "bedrooms": 4,
         "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
         "propertyUrl": "https://www.primelocation.com/for-sale/details/69864318/?search_identifier=6e42320e8227d180abc81c132525f6db61df486c7a94488ac3326c4ab3572f91",
         "city": "London",
-        "scrapedAt": "2025-08-06T16:53:28.255Z"
+        "scrapedAt": "2025-08-06T20:45:48.618Z"
       },
       {
-        "id": 933942,
+        "id": 989896,
         "address": "Strathmore Gardens, Hornchurch RM12",
         "price": 475000,
         "bedrooms": 3,
         "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
         "propertyUrl": "https://www.primelocation.com/for-sale/details/69879205/?search_identifier=6e42320e8227d180abc81c132525f6db61df486c7a94488ac3326c4ab3572f91",
         "city": "London",
-        "scrapedAt": "2025-08-06T16:53:28.255Z"
+        "scrapedAt": "2025-08-06T20:45:48.618Z"
       },
       {
-        "id": 949646,
+        "id": 499289,
         "address": "Windmill Road, Croydon CR0",
         "price": 475000,
         "bedrooms": 4,
         "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
         "propertyUrl": "https://www.primelocation.com/for-sale/details/70510277/?search_identifier=6e42320e8227d180abc81c132525f6db61df486c7a94488ac3326c4ab3572f91",
         "city": "London",
-        "scrapedAt": "2025-08-06T16:53:28.255Z"
+        "scrapedAt": "2025-08-06T20:45:48.618Z"
       },
       {
-        "id": 608070,
+        "id": 964267,
         "address": "Villier Street, Uxbridge UB8",
         "price": 470000,
         "bedrooms": 3,
         "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
         "propertyUrl": "https://www.primelocation.com/for-sale/details/67412911/?search_identifier=6e42320e8227d180abc81c132525f6db61df486c7a94488ac3326c4ab3572f91",
         "city": "London",
-        "scrapedAt": "2025-08-06T16:53:28.255Z"
+        "scrapedAt": "2025-08-06T20:45:48.618Z"
       },
       {
-        "id": 277739,
+        "id": 704118,
         "address": "Williamson Street, London N7",
         "price": 465000,
         "bedrooms": 2,
         "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
         "propertyUrl": "https://www.primelocation.com/for-sale/details/65484632/?search_identifier=6e42320e8227d180abc81c132525f6db61df486c7a94488ac3326c4ab3572f91",
         "city": "London",
-        "scrapedAt": "2025-08-06T16:53:28.255Z"
+        "scrapedAt": "2025-08-06T20:45:48.618Z"
       },
       {
-        "id": 990108,
+        "id": 36283,
         "address": "Darling Row, London E1",
         "price": 450000,
         "bedrooms": 3,
         "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
         "propertyUrl": "https://www.primelocation.com/for-sale/details/67677385/?search_identifier=6e42320e8227d180abc81c132525f6db61df486c7a94488ac3326c4ab3572f91",
         "city": "London",
-        "scrapedAt": "2025-08-06T16:53:28.255Z"
+        "scrapedAt": "2025-08-06T20:45:48.618Z"
       },
       {
-        "id": 712780,
+        "id": 672437,
         "address": "Villier Street, Uxbridge UB8",
         "price": 450000,
         "bedrooms": 3,
         "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
         "propertyUrl": "https://www.primelocation.com/for-sale/details/68727678/?search_identifier=6e42320e8227d180abc81c132525f6db61df486c7a94488ac3326c4ab3572f91",
         "city": "London",
-        "scrapedAt": "2025-08-06T16:53:28.255Z"
+        "scrapedAt": "2025-08-06T20:45:48.618Z"
       },
       {
-        "id": 50224,
+        "id": 663225,
         "address": "Acton Lane, Harlesden, London NW10",
         "price": 450000,
         "bedrooms": 5,
         "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
         "propertyUrl": "https://www.primelocation.com/for-sale/details/69632273/?search_identifier=6e42320e8227d180abc81c132525f6db61df486c7a94488ac3326c4ab3572f91",
         "city": "London",
-        "scrapedAt": "2025-08-06T16:53:28.255Z"
+        "scrapedAt": "2025-08-06T20:45:48.618Z"
       },
       {
-        "id": 558305,
+        "id": 405866,
         "address": "Westbridge Road, London SW11",
         "price": 450000,
         "bedrooms": 3,
         "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
         "propertyUrl": "https://www.primelocation.com/for-sale/details/70149775/?search_identifier=6e42320e8227d180abc81c132525f6db61df486c7a94488ac3326c4ab3572f91",
         "city": "London",
-        "scrapedAt": "2025-08-06T16:53:28.255Z"
+        "scrapedAt": "2025-08-06T20:45:48.618Z"
       },
       {
-        "id": 120653,
+        "id": 811204,
         "address": "Fenn Mansions, 20 Love Lane, Woolwich SE18",
         "price": 450000,
         "bedrooms": 3,
         "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
         "propertyUrl": "https://www.primelocation.com/for-sale/details/70425953/?search_identifier=6e42320e8227d180abc81c132525f6db61df486c7a94488ac3326c4ab3572f91",
         "city": "London",
-        "scrapedAt": "2025-08-06T16:53:28.255Z"
+        "scrapedAt": "2025-08-06T20:45:48.618Z"
       },
       {
-        "id": 719374,
+        "id": 997713,
         "address": "Gloucester Road, Manor Park, London E12",
         "price": 450000,
         "bedrooms": 6,
         "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
         "propertyUrl": "https://www.primelocation.com/for-sale/details/70431329/?search_identifier=6e42320e8227d180abc81c132525f6db61df486c7a94488ac3326c4ab3572f91",
         "city": "London",
-        "scrapedAt": "2025-08-06T16:53:28.255Z"
+        "scrapedAt": "2025-08-06T20:45:48.618Z"
       }
     ]
   },

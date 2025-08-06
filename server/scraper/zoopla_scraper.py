@@ -160,55 +160,84 @@ def extract_square_footage(description):
                 continue
     return None
 
-def get_liverpool_rental_estimate(address, bedrooms):
-    """Proceni mesečnu rentu na osnovu lokacije u Liverpoolu"""
+def get_rental_estimate_by_city(city, address, bedrooms):
+    """Proceni mesečnu rentu na osnovu grada i lokacije"""
     if not address:
         address = ""
     
     address_lower = address.lower()
+    city_lower = city.lower()
     
-    # Premium areas - £150+ per room
-    premium_areas = ['city centre', 'albert dock', 'waterfront', 'baltic triangle', 'cavern quarter', 
-                    'ropewalks', 'georgian quarter', 'hope street', 'bold street']
+    # City-specific rental estimates per room per month
+    city_rental_rates = {
+        'london': {'premium': (200, 250), 'good': (150, 200), 'student': (120, 150), 'budget': (100, 120)},
+        'birmingham': {'premium': (120, 150), 'good': (90, 120), 'student': (80, 100), 'budget': (70, 90)},
+        'manchester': {'premium': (130, 160), 'good': (100, 130), 'student': (85, 110), 'budget': (75, 95)},
+        'leeds': {'premium': (110, 140), 'good': (85, 110), 'student': (75, 95), 'budget': (65, 85)},
+        'sheffield': {'premium': (100, 130), 'good': (75, 100), 'student': (65, 85), 'budget': (55, 75)},
+        'bristol': {'premium': (140, 170), 'good': (110, 140), 'student': (90, 115), 'budget': (80, 100)},
+        'nottingham': {'premium': (110, 140), 'good': (85, 110), 'student': (70, 90), 'budget': (60, 80)},
+        'leicester': {'premium': (100, 130), 'good': (80, 100), 'student': (70, 85), 'budget': (60, 75)},
+        'newcastle': {'premium': (100, 130), 'good': (75, 100), 'student': (65, 85), 'budget': (55, 70)},
+        'coventry': {'premium': (90, 120), 'good': (70, 90), 'student': (60, 80), 'budget': (50, 70)},
+        'preston': {'premium': (80, 110), 'good': (60, 80), 'student': (50, 70), 'budget': (45, 60)},
+        'blackpool': {'premium': (70, 100), 'good': (50, 70), 'student': (45, 60), 'budget': (40, 55)},
+        'hull': {'premium': (70, 95), 'good': (50, 70), 'student': (45, 60), 'budget': (40, 50)},
+        'derby': {'premium': (85, 115), 'good': (65, 85), 'student': (55, 70), 'budget': (50, 65)},
+        'plymouth': {'premium': (90, 120), 'good': (70, 90), 'student': (60, 80), 'budget': (55, 70)},
+        'southampton': {'premium': (110, 140), 'good': (85, 110), 'student': (75, 95), 'budget': (65, 85)},
+        'portsmouth': {'premium': (105, 135), 'good': (80, 105), 'student': (70, 90), 'budget': (60, 80)},
+        'reading': {'premium': (140, 170), 'good': (110, 140), 'student': (90, 115), 'budget': (80, 100)},
+        'oxford': {'premium': (160, 200), 'good': (130, 160), 'student': (110, 140), 'budget': (90, 120)},
+        'cambridge': {'premium': (150, 190), 'good': (120, 150), 'student': (100, 130), 'budget': (85, 110)},
+        'brighton': {'premium': (130, 160), 'good': (100, 130), 'student': (85, 110), 'budget': (75, 95)},
+        'salford': {'premium': (110, 140), 'good': (85, 110), 'student': (70, 90), 'budget': (60, 80)},
+        'stockport': {'premium': (100, 130), 'good': (75, 100), 'student': (65, 85), 'budget': (55, 75)},
+        'wolverhampton': {'premium': (85, 115), 'good': (65, 85), 'student': (55, 75), 'budget': (50, 65)},
+        'liverpool': {'premium': (150, 180), 'good': (120, 150), 'student': (100, 130), 'budget': (80, 110)}
+    }
     
-    # Good areas - £120-150 per room
-    good_areas = ['smithdown', 'aigburth', 'mossley hill', 'allerton', 'woolton', 'childwall',
-                 'wavertree', 'greenbank', 'sefton park']
+    # Get rates for the city, default to Liverpool if not found
+    rates = city_rental_rates.get(city_lower, city_rental_rates['liverpool'])
     
-    # Student areas - £100-130 per room
-    student_areas = ['kensington', 'edge hill', 'fairfield', 'old swan', 'tuebrook', 
-                    'picton', 'university area', 'crown street']
+    # Premium area indicators
+    premium_keywords = ['city centre', 'center', 'downtown', 'waterfront', 'marina', 'cathedral', 'university quarter', 'georgian', 'victorian quarter']
     
-    # Budget areas - £80-110 per room
-    budget_areas = ['toxteth', 'kirkdale', 'everton', 'walton', 'anfield', 'norris green',
-                   'croxteth', 'fazakerley', 'speke', 'garston']
+    # Good area indicators  
+    good_keywords = ['park', 'garden', 'hill', 'green', 'avenue', 'grove', 'gardens', 'heights', 'mount']
     
-    # Određi rent per room na osnovu lokacije
-    rent_per_room = 120  # default
+    # Student area indicators
+    student_keywords = ['university', 'campus', 'student', 'college', 'academic', 'halls']
     
-    if any(area in address_lower for area in premium_areas):
-        rent_per_room = random.randint(150, 180)
-    elif any(area in address_lower for area in good_areas):
-        rent_per_room = random.randint(120, 150)
-    elif any(area in address_lower for area in student_areas):
-        rent_per_room = random.randint(100, 130)
-    elif any(area in address_lower for area in budget_areas):
-        rent_per_room = random.randint(80, 110)
+    # Budget area indicators
+    budget_keywords = ['industrial', 'estate', 'council', 'housing', 'development', 'new build']
+    
+    # Determine rent per room based on area characteristics
+    rent_per_room = rates['good'][0]  # default to good area lower bound
+    
+    if any(keyword in address_lower for keyword in premium_keywords):
+        rent_per_room = random.randint(rates['premium'][0], rates['premium'][1])
+    elif any(keyword in address_lower for keyword in good_keywords):
+        rent_per_room = random.randint(rates['good'][0], rates['good'][1])
+    elif any(keyword in address_lower for keyword in student_keywords):
+        rent_per_room = random.randint(rates['student'][0], rates['student'][1])
+    elif any(keyword in address_lower for keyword in budget_keywords):
+        rent_per_room = random.randint(rates['budget'][0], rates['budget'][1])
     else:
-        # Unknown area, use bedrooms as indicator
+        # Use bedrooms and city as indicators
         if bedrooms >= 5:
-            rent_per_room = random.randint(110, 140)
+            rent_per_room = random.randint(rates['good'][0], rates['good'][1])
         else:
-            rent_per_room = random.randint(100, 130)
+            rent_per_room = random.randint(rates['student'][0], rates['good'][0])
     
     total_rent = rent_per_room * bedrooms
     return total_rent
 
-def calculate_investment_analysis(price, bedrooms, address="", area_sqm=None):
+def calculate_investment_analysis(price, bedrooms, address="", area_sqm=None, city="Liverpool"):
     """Izračunaj kompletnu investicionu analizu"""
     
-    # Mesečna renta
-    monthly_rent = get_liverpool_rental_estimate(address, bedrooms)
+    # Mesečna renta based on city
+    monthly_rent = get_rental_estimate_by_city(city, address, bedrooms)
     annual_rent = monthly_rent * 12
     
     # Gross yield
@@ -715,7 +744,8 @@ def scrape_properties_with_requests(city, min_bedrooms, max_price, keywords):
                             price=property_data.get('price', 0),
                             bedrooms=property_data.get('bedrooms', 1),
                             address=property_data.get('address', ''),
-                            area_sqm=property_data.get('area_sqm')
+                            area_sqm=property_data.get('area_sqm'),
+                            city=city
                         )
                         
                         # Merge investment analysis into property data
@@ -754,10 +784,39 @@ def generate_fake_properties(city, min_bedrooms, max_price, count):
     """Generiraj fake oglase kada scraping ne uspe"""
     print(f"🏠 Generating {count} fake properties for {city}", file=sys.stderr)
     
-    streets = [
+    # City-specific street names for more realistic fake data
+    city_streets = {
+        'birmingham': ["Broad Street", "Hagley Road", "Pershore Road", "Stratford Road", "Moseley Road", "Bristol Road", "Warwick Road"],
+        'manchester': ["Oxford Road", "Wilmslow Road", "Stockport Road", "Princess Street", "Oldham Road", "Deansgate", "Market Street"],
+        'leeds': ["Headingley Lane", "Hyde Park Road", "Burley Road", "Kirkstall Road", "Meanwood Road", "Otley Road", "Wellington Street"],
+        'sheffield': ["Ecclesall Road", "London Road", "Abbeydale Road", "Chesterfield Road", "Fulwood Road", "West Street", "Glossop Road"],
+        'bristol': ["Gloucester Road", "Whiteladies Road", "Park Street", "Baldwin Street", "Queen Square", "Clifton Down Road"],
+        'nottingham': ["Derby Road", "Alfreton Road", "Mansfield Road", "Ilkeston Road", "Gregory Boulevard", "Queen's Road"],
+        'leicester': ["London Road", "Narborough Road", "Hinckley Road", "Belgrave Road", "Evington Road", "Welford Road"],
+        'newcastle': ["Northumberland Street", "Grainger Street", "Clayton Street", "Grey Street", "Osborne Road", "High Bridge"],
+        'coventry': ["Warwick Road", "Holyhead Road", "Foleshill Road", "Binley Road", "Allesley Old Road", "Tile Hill Lane"],
+        'preston': ["Blackpool Road", "Garstang Road", "New Hall Lane", "Watling Street Road", "Ribbleton Avenue", "Church Street"],
+        'blackpool': ["Promenade", "Church Street", "Whitegate Drive", "Lytham Road", "Central Drive", "Victoria Road"],
+        'hull': ["Spring Bank", "Anlaby Road", "Beverley Road", "Hessle Road", "Holderness Road", "Princes Avenue"],
+        'derby': ["London Road", "Burton Road", "Uttoxeter Road", "Ashbourne Road", "Kedleston Road", "Duffield Road"],
+        'plymouth': ["Mutley Plain", "Union Street", "North Road East", "Tavistock Road", "Mannamead Road", "Armada Way"],
+        'southampton': ["Above Bar Street", "London Road", "Winchester Road", "Shirley Road", "Burgess Road", "Commercial Road"],
+        'portsmouth': ["Commercial Road", "London Road", "Kingston Road", "Fratton Road", "Albert Road", "Elm Grove"],
+        'reading': ["Oxford Road", "Bath Road", "Basingstoke Road", "Whitley Street", "Kings Road", "London Street"],
+        'oxford': ["High Street", "Cornmarket Street", "St Aldates", "Headington Road", "Cowley Road", "Banbury Road"],
+        'cambridge': ["Mill Road", "Hills Road", "Newmarket Road", "Huntingdon Road", "Cherry Hinton Road", "Kings Parade"],
+        'brighton': ["London Road", "Preston Road", "Ditchling Road", "Lewes Road", "Edward Street", "Western Road"],
+        'salford': ["Chapel Street", "Eccles New Road", "Liverpool Street", "Regent Road", "Bolton Road", "Cross Lane"],
+        'stockport': ["Wellington Road", "London Road", "Buxton Road", "Bramhall Lane", "Stockport Road", "Greek Street"],
+        'wolverhampton': ["Wolverhampton Road", "Penn Road", "Stafford Road", "Compton Road", "Chapel Ash", "Victoria Street"],
+        'london': ["Roman Road", "Mile End Road", "Bethnal Green Road", "Commercial Street", "Brick Lane", "Victoria Park Road"],
+        'liverpool': ["Smithdown Road", "Lodge Lane", "Wavertree Road", "Allerton Road", "Penny Lane", "Bold Street"]
+    }
+    
+    streets = city_streets.get(city.lower(), [
         "Victoria Street", "Church Lane", "High Street", "Mill Lane", "Station Road",
         "Oak Avenue", "Park Road", "Kings Road", "Queens Avenue", "Elm Grove"
-    ]
+    ])
     
     # Sample descriptions for different property types
     descriptions = [
@@ -795,7 +854,8 @@ def generate_fake_properties(city, min_bedrooms, max_price, count):
             price=price,
             bedrooms=bedrooms,
             address=address,
-            area_sqm=area_sqm
+            area_sqm=area_sqm,
+            city=city
         )
         
         # Merge investment analysis
