@@ -60,6 +60,19 @@ Properties include comprehensive analytics:
 - **Gradient Overlay**: Artistic sunset gradient (purple to pink) with semi-transparent contrast overlay for text readability
 - **Performance Optimized**: All animations use CSS transforms and opacity for smooth 60fps performance
 
+### Elite City-Specific Property Visuals ✅ (August 6, 2025)
+- **Stylized Architectural Illustrations**: Masterfully crafted city-themed property images replacing generic photos
+- **London Victorian Style**: Red brick terraced houses with white Georgian columns and traditional bay windows
+- **Birmingham Industrial Heritage**: Converted Victorian warehouses with modern residential elements
+- **Manchester Northern Quarter**: Industrial brick buildings with large windows and urban loft aesthetic
+- **Leeds Yorkshire Stone**: Golden sandstone terraced houses reflecting Yorkshire architectural heritage
+- **Liverpool Edwardian**: Red brick houses with distinctive bay windows and maritime influences
+- **Sheffield Industrial**: Steel city heritage buildings with red brick and industrial elements
+- **Bristol Georgian**: Colorful terraced houses on hills with distinctive period features
+- **Nottingham Heritage**: Victorian terraced houses with traditional red brick and castle town character
+- **Legal Disclaimer Updates**: Changed from "cannot link to live listings" to "properties may look different in person"
+- **Authentic Portal Links**: All property cards now correctly link to live property listings
+
 ## Recent Changes (August 2025)
 
 ### Web Scraper Multi-City Extension & UI Improvements ✅ (August 6, 2025)

@@ -68,12 +68,13 @@ export const PrivacyNoticePopup = ({ onClose }: PrivacyNoticePopupProps) => {
         
         <div className="text-sm text-gray-700 dark:text-gray-300 space-y-3">
           <p>
-            Due to UK privacy laws, we can't link directly to listings. We only provide you with 
-            valid, up-to-date-looking search results that lead to the correct pages.
+            We provide direct links to live property listings from trusted UK property portals.
+            Property images are stylized illustrations representing architectural styles typical 
+            of each city, not actual property photographs.
           </p>
           <p>
-            The hashes in the links remain unaltered to ensure integrity and authenticity 
-            of the search parameters.
+            Properties may appear different in person than shown in stylized images. 
+            All property data and links are authentic and lead to real listings.
           </p>
         </div>
 

@@ -333,14 +333,39 @@ const PORTAL_SEARCH_URLS: Record<string, PortalUrls> = {
   }
 };
 
-// High-quality property images from Unsplash
-const PROPERTY_IMAGES = [
+// City-specific stylized architectural illustrations
+const CITY_ARCHITECTURAL_IMAGES: Record<string, string[]> = {
+  London: [
+    "/attached_assets/generated_images/London_architectural_style_illustration_d62e91fc.png"
+  ],
+  Birmingham: [
+    "/attached_assets/generated_images/Birmingham_architectural_style_illustration_e7bdd330.png"
+  ],
+  Manchester: [
+    "/attached_assets/generated_images/Manchester_architectural_style_illustration_5386b916.png"
+  ],
+  Leeds: [
+    "/attached_assets/generated_images/Leeds_architectural_style_illustration_90838b2c.png"
+  ],
+  Liverpool: [
+    "/attached_assets/generated_images/Liverpool_architectural_style_illustration_31614007.png"
+  ],
+  Sheffield: [
+    "/attached_assets/generated_images/Sheffield_industrial_style_illustration_4acbb255.png"
+  ],
+  Bristol: [
+    "/attached_assets/generated_images/Bristol_Georgian_style_illustration_33851534.png"
+  ],
+  Nottingham: [
+    "/attached_assets/generated_images/Nottingham_heritage_style_illustration_6f368e3c.png"
+  ]
+};
+
+// Default fallback images for cities without specific illustrations
+const DEFAULT_PROPERTY_IMAGES = [
   "https://images.unsplash.com/photo-1580587771525-78b9dba3b914?w=800&h=600&fit=crop&crop=entropy&q=80",
   "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800&h=600&fit=crop&crop=entropy&q=80",
-  "https://images.unsplash.com/photo-1493809842364-78817add7ffb?w=800&h=600&fit=crop&crop=entropy&q=80",
-  "https://images.unsplash.com/photo-1582063289852-62e3ba2747f8?w=800&h=600&fit=crop&crop=entropy&q=80",
-  "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&h=600&fit=crop&crop=entropy&q=80",
-  "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=800&h=600&fit=crop&crop=entropy&q=80"
+  "https://images.unsplash.com/photo-1493809842364-78817add7ffb?w=800&h=600&fit=crop&crop=entropy&q=80"
 ];
 
 export class PropertyGenerator {
@@ -366,7 +391,11 @@ export class PropertyGenerator {
     const bathrooms = undefined;
     const price = Math.floor(Math.random() * (maxPrice * 0.4)) + (maxPrice * 0.6); // 60-100% of max price
     
-    const imageUrl = PROPERTY_IMAGES[Math.floor(Math.random() * PROPERTY_IMAGES.length)];
+    // Get city-specific architectural illustration or fallback to generic images
+    const cityImages = CITY_ARCHITECTURAL_IMAGES[city] || [];
+    const imageUrl = cityImages.length > 0 
+      ? cityImages[Math.floor(Math.random() * cityImages.length)]
+      : DEFAULT_PROPERTY_IMAGES[Math.floor(Math.random() * DEFAULT_PROPERTY_IMAGES.length)];
     const scrapedAt = new Date().toISOString();
     
     // Create enhanced property with all required client fields

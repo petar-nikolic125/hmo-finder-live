@@ -78,7 +78,7 @@ export const QuickTutorial = ({ isOpen, onClose }: QuickTutorialProps) => {
               <span className="font-medium text-amber-800 dark:text-amber-200">Important Notice</span>
             </div>
             <p className="text-sm text-amber-700 dark:text-amber-300">
-              <strong>Legal Compliance:</strong> Due to UK property data protection laws, we cannot link directly to live listings. 
+              <strong>Property Disclaimer:</strong> Properties may look different in person than shown in images. 
               Our system generates realistic search URLs with authentic parameters for investment analysis. 
               Database is updated weekly to ensure current market conditions.
             </p>
