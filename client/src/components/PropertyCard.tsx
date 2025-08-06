@@ -23,10 +23,20 @@ export const PropertyCard = ({ property, delay = 0 }: PropertyCardProps) => {
 
   // Portal selection logic (70% Rightmove, 25% Zoopla, 5% PrimeLocation)
   const getPortalUrl = () => {
+    console.log('🔗 PropertyCard: Getting portal URL for property:', property.address);
+    console.log('🔗 PropertyCard: Available URLs:', {
+      rightmove: property.rightmoveUrl,
+      zoopla: property.zooplaUrl,
+      primeLocation: property.primeLocationUrl
+    });
+    
     const rand = Math.random();
-    if (rand < 0.70) return property.rightmoveUrl;
-    if (rand < 0.95) return property.zooplaUrl;
-    return property.primeLocationUrl;
+    if (rand < 0.70 && property.rightmoveUrl) return property.rightmoveUrl;
+    if (rand < 0.95 && property.zooplaUrl) return property.zooplaUrl;
+    if (property.primeLocationUrl) return property.primeLocationUrl;
+    
+    // Fallback if no URLs available
+    return (property as any).propertyUrl || '#';
   };
 
   const getPortalName = (url: string) => {

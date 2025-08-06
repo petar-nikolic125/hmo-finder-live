@@ -42,7 +42,10 @@ export const FilterBar = ({
             <Input
               placeholder="Search by postcode or street..."
               value={searchTerm}
-              onChange={(e) => onSearchChange(e.target.value)}
+              onChange={(e) => {
+                console.log('🔍 FilterBar: Search term changed to:', e.target.value);
+                onSearchChange(e.target.value);
+              }}
               className="pl-10"
             />
           </div>
@@ -72,7 +75,10 @@ export const FilterBar = ({
                 </div>
                 <Slider
                   value={[minRooms]}
-                  onValueChange={(value) => onMinRoomsChange(value[0])}
+                  onValueChange={(value) => {
+                    console.log('🛏️ FilterBar: Min rooms changed to:', value[0]);
+                    onMinRoomsChange(value[0]);
+                  }}
                   max={5}
                   min={1}
                   step={1}
@@ -94,7 +100,10 @@ export const FilterBar = ({
                 </div>
                 <Slider
                   value={[maxPrice]}
-                  onValueChange={(value) => onMaxPriceChange(value[0])}
+                  onValueChange={(value) => {
+                    console.log('💰 FilterBar: Max price changed to:', value[0]);
+                    onMaxPriceChange(value[0]);
+                  }}
                   max={500000}
                   min={250000}
                   step={25000}

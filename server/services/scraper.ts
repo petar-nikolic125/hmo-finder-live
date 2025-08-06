@@ -108,6 +108,8 @@ export class ScrapingService {
       });
 
       pythonProcess.on('close', async (code) => {
+        console.log(`Python scraper process finished with code: ${code}`);
+        
         if (code !== 0) {
           console.error(`Python scraper exited with code ${code}`);
           console.error('Error output:', errorOutput);
@@ -116,8 +118,25 @@ export class ScrapingService {
         }
 
         try {
+          console.log('Raw scraper output (first 500 chars):', output.substring(0, 500));
+          
+          // Find the JSON part in the output - Python scraper might output debug info before JSON
+          const jsonStart = output.indexOf('{');
+          if (jsonStart === -1) {
+            throw new Error('No JSON found in scraper output');
+          }
+          
+          const jsonOutput = output.substring(jsonStart);
+          console.log('Extracted JSON (first 200 chars):', jsonOutput.substring(0, 200));
+          
           // Parse the JSON output from the Python script
-          const result = JSON.parse(output);
+          const result = JSON.parse(jsonOutput);
+          console.log('Successfully parsed scraper result:', {
+            city: result.city,
+            propertyCount: result.properties?.length || 0,
+            hasProperties: !!result.properties
+          });
+          
           const scrapedProperties = result.properties;
 
           if (!scrapedProperties || scrapedProperties.length === 0) {

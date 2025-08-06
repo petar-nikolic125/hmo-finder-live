@@ -258,6 +258,24 @@ export class PropertyGenerator {
     return properties;
   }
   
+  enhancePropertyWithAnalytics(property: Property, searchParams: PropertySearchParams): PropertyWithAnalytics {
+    console.log(`🔧 PropertyGenerator: Enhancing scraped property with analytics:`, property.address);
+    
+    const city = searchParams.city || 'Liverpool';
+    const cityData = CITY_DATA[city] || CITY_DATA['Liverpool'];
+    
+    // Get portal URLs for this city
+    const portalUrls = PORTAL_SEARCH_URLS[city] || PORTAL_SEARCH_URLS['Liverpool'];
+    
+    // Generate area name
+    const area = cityData.areas[Math.floor(Math.random() * cityData.areas.length)];
+    
+    console.log(`📊 PropertyGenerator: Calculating analytics for ${property.address} in ${city}`);
+    
+    // Calculate analytics with city context
+    return this.calculateAnalytics(property, cityData, portalUrls, area);
+  }
+
   getCities(): string[] {
     return [
       "Liverpool", "Birmingham", "Manchester", "Leeds", "Sheffield", 

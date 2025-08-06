@@ -38,6 +38,15 @@ export const Home = () => {
   // Fetch properties
   const { data: properties = [], isLoading, isError, refetch } = useProperties(searchParams);
   
+  // Add console logging to track data flow
+  useEffect(() => {
+    console.log('🏠 Home: Properties data updated:', properties.length, 'properties');
+    if (properties.length > 0) {
+      console.log('🏠 Home: First property sample:', properties[0]);
+      console.log('🏠 Home: Are these scraped properties?', properties[0]?.address?.includes('Zoopla') ? 'No - Generated' : 'Maybe - Check address format');
+    }
+  }, [properties]);
+  
   // Filter properties by search term (client-side)
   const filteredProperties = useMemo(() => {
     if (!searchTerm.trim()) return properties;
@@ -68,6 +77,8 @@ export const Home = () => {
   }, [isError, toast]);
 
   const handleSearch = () => {
+    console.log('🔍 Home: Search triggered with params:', searchParams);
+    
     // Show privacy popup on first search
     if (!hasSearched) {
       setShowPrivacyPopup(true);

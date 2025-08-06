@@ -57,7 +57,10 @@ export const HeroSection = ({
                 </label>
                 <Select 
                   value={searchParams.city || 'Birmingham'}
-                  onValueChange={onCityChange}
+                  onValueChange={(value) => {
+                    console.log('🏙️ HeroSection: City changed to:', value);
+                    onCityChange(value);
+                  }}
                 >
                   <SelectTrigger>
                     <SelectValue placeholder="Select a city" />
@@ -78,7 +81,10 @@ export const HeroSection = ({
                 </label>
                 <Select 
                   value={searchParams.maxPrice?.toString() || '500000'}
-                  onValueChange={(value) => onMaxPriceChange(parseInt(value))}
+                  onValueChange={(value) => {
+                    console.log('💰 HeroSection: Max price changed to:', parseInt(value));
+                    onMaxPriceChange(parseInt(value));
+                  }}
                 >
                   <SelectTrigger>
                     <SelectValue />
@@ -101,7 +107,10 @@ export const HeroSection = ({
                 </label>
                 <Select 
                   value={searchParams.minRooms?.toString() || '1'}
-                  onValueChange={(value) => onMinRoomsChange(parseInt(value))}
+                  onValueChange={(value) => {
+                    console.log('🛏️ HeroSection: Min rooms changed to:', parseInt(value));
+                    onMinRoomsChange(parseInt(value));
+                  }}
                 >
                   <SelectTrigger>
                     <SelectValue />
@@ -119,7 +128,10 @@ export const HeroSection = ({
 
             <div className="flex items-center gap-3">
               <Button 
-                onClick={onSearch}
+                onClick={() => {
+                  console.log('🔍 HeroSection: Search button clicked');
+                  onSearch();
+                }}
                 size="lg" 
                 className="flex-1 bg-primary hover:bg-primary-glow text-white"
                 disabled={isLoading}
@@ -129,7 +141,10 @@ export const HeroSection = ({
               </Button>
               
               <Button 
-                onClick={onRefresh}
+                onClick={() => {
+                  console.log('🔄 HeroSection: Refresh button clicked');
+                  onRefresh();
+                }}
                 variant="outline" 
                 size="lg"
                 disabled={isLoading}
