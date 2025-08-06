@@ -37,10 +37,9 @@ class ApiClient {
     
     if (params.city) searchParams.append('city', params.city);
     if (params.count) searchParams.append('count', params.count.toString());
-    if (params.minSize) searchParams.append('minSize', params.minSize.toString());
+    if (params.minRooms) searchParams.append('minRooms', params.minRooms.toString());
     if (params.maxPrice) searchParams.append('maxPrice', params.maxPrice.toString());
-    if (params.excludeArticle4 !== undefined) searchParams.append('excludeArticle4', params.excludeArticle4.toString());
-    if (params.sortBy) searchParams.append('sortBy', params.sortBy);
+    if (params.keywords) searchParams.append('keywords', params.keywords);
 
     const url = `/api/properties?${searchParams.toString()}`;
     return this.request<PropertyWithAnalytics[]>(url);

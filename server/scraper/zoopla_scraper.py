@@ -133,27 +133,36 @@ class ZooplaScraper:
         
         try:
             # Navigate to the search URL
-            self.driver.get(search_url)
-            
-            # Wait for page to load and handle any cookies/popups
-            time.sleep(3)
-            
-            # Try to close cookie banner if present
-            try:
-                cookie_banner = WebDriverWait(self.driver, 5).until(
-                    EC.element_to_be_clickable((By.CSS_SELECTOR, '[data-testid="cookie-banner-accept"], .cookie-banner button, [aria-label*="Accept"]'))
-                )
-                cookie_banner.click()
-                time.sleep(1)
-            except:
-                pass  # No cookie banner found
-            
-            # Wait for property listings to load
-            time.sleep(5)
-            
-            # Get page source and parse with BeautifulSoup
-            page_source = self.driver.page_source
-            soup = BeautifulSoup(page_source, 'html.parser')
+            if self.driver:
+                self.driver.get(search_url)
+                
+                # Wait for page to load and handle any cookies/popups
+                time.sleep(3)
+                
+                # Try to close cookie banner if present
+                try:
+                    if self.driver:
+                        cookie_banner = WebDriverWait(self.driver, 5).until(
+                            EC.element_to_be_clickable((By.CSS_SELECTOR, '[data-testid="cookie-banner-accept"], .cookie-banner button, [aria-label*="Accept"]'))
+                        )
+                        cookie_banner.click()
+                        time.sleep(1)
+                except:
+                    pass  # No cookie banner found
+                
+                # Wait for property listings to load
+                time.sleep(5)
+                
+                # Get page source and parse with BeautifulSoup
+                if self.driver:
+                    page_source = self.driver.page_source
+                    soup = BeautifulSoup(page_source, 'html.parser')
+                else:
+                    print("WebDriver not available, falling back to mock data")
+                    return self.generate_mock_data(city, min_bedrooms, max_price, limit)
+            else:
+                print("WebDriver not available, falling back to mock data")
+                return self.generate_mock_data(city, min_bedrooms, max_price, limit)
             
             # Find property listings using various selectors
             property_elements = []
