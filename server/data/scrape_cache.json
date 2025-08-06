@@ -312,5 +312,633 @@
         "scrapedAt": "2025-08-06T15:32:10.407Z"
       }
     ]
+  },
+  "78d184c9f5db8ecd8f234b53cd4a7fc5": {
+    "searchHash": "78d184c9f5db8ecd8f234b53cd4a7fc5",
+    "lastScraped": "2025-08-06T15:33:44.043Z",
+    "properties": [
+      {
+        "id": 948075,
+        "address": "Gloucester Mews, London W2",
+        "price": 800000,
+        "bedrooms": 2,
+        "bathrooms": 1,
+        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "propertyUrl": "https://www.primelocation.com/for-sale/property/london/?bedrooms=1&maxPrice=500000",
+        "city": "London",
+        "scrapedAt": "2025-08-06T15:33:44.043Z"
+      },
+      {
+        "id": 285767,
+        "address": "Abercorn Place, St Johns Wood NW8",
+        "price": 465000,
+        "bedrooms": 1,
+        "bathrooms": 1,
+        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "propertyUrl": "https://www.primelocation.com/for-sale/property/london/?bedrooms=1&maxPrice=500000",
+        "city": "London",
+        "scrapedAt": "2025-08-06T15:33:44.043Z"
+      },
+      {
+        "id": 545230,
+        "address": "Bourne Street, Belgravia, London SW1W",
+        "price": 2500000,
+        "bedrooms": 1,
+        "bathrooms": 1,
+        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "propertyUrl": "https://www.primelocation.com/for-sale/property/london/?bedrooms=1&maxPrice=500000",
+        "city": "London",
+        "scrapedAt": "2025-08-06T15:33:44.043Z"
+      },
+      {
+        "id": 762480,
+        "address": "The Knightsbridge Apartments, 199 Knightsbridge, London SW7",
+        "price": 80000000,
+        "bedrooms": 5,
+        "bathrooms": 4,
+        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "propertyUrl": "https://www.primelocation.com/for-sale/property/london/?bedrooms=1&maxPrice=500000",
+        "city": "London",
+        "scrapedAt": "2025-08-06T15:33:44.043Z"
+      },
+      {
+        "id": 714197,
+        "address": "One Hyde Park, Knightsbridge SW1X",
+        "price": 60000000,
+        "bedrooms": 5,
+        "bathrooms": 4,
+        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "propertyUrl": "https://www.primelocation.com/for-sale/property/london/?bedrooms=1&maxPrice=500000",
+        "city": "London",
+        "scrapedAt": "2025-08-06T15:33:44.043Z"
+      },
+      {
+        "id": 478381,
+        "address": "One Hyde Park, Knightsbridge, London SW1X",
+        "price": 60000000,
+        "bedrooms": 5,
+        "bathrooms": 4,
+        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "propertyUrl": "https://www.primelocation.com/for-sale/property/london/?bedrooms=1&maxPrice=500000",
+        "city": "London",
+        "scrapedAt": "2025-08-06T15:33:44.043Z"
+      },
+      {
+        "id": 113790,
+        "address": "Grosvenor Crescent, London SW1X",
+        "price": 60000000,
+        "bedrooms": 6,
+        "bathrooms": 5,
+        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "propertyUrl": "https://www.primelocation.com/for-sale/property/london/?bedrooms=1&maxPrice=500000",
+        "city": "London",
+        "scrapedAt": "2025-08-06T15:33:44.043Z"
+      },
+      {
+        "id": 21233,
+        "address": "Avenue Road, St John's Wood, London NW8, United Kingdom",
+        "price": 49950000,
+        "bedrooms": 10,
+        "bathrooms": 9,
+        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "propertyUrl": "https://www.primelocation.com/for-sale/property/london/?bedrooms=1&maxPrice=500000",
+        "city": "London",
+        "scrapedAt": "2025-08-06T15:33:44.043Z"
+      },
+      {
+        "id": 564799,
+        "address": "Balfour Place, Mayfair, London W1K",
+        "price": 49500000,
+        "bedrooms": 7,
+        "bathrooms": 6,
+        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "propertyUrl": "https://www.primelocation.com/for-sale/property/london/?bedrooms=1&maxPrice=500000",
+        "city": "London",
+        "scrapedAt": "2025-08-06T15:33:44.043Z"
+      },
+      {
+        "id": 416569,
+        "address": "Whistler Square, Chelsea Barracks, London SW1W, United Kingdom",
+        "price": 47000000,
+        "bedrooms": 6,
+        "bathrooms": 5,
+        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "propertyUrl": "https://www.primelocation.com/for-sale/property/london/?bedrooms=1&maxPrice=500000",
+        "city": "London",
+        "scrapedAt": "2025-08-06T15:33:44.043Z"
+      },
+      {
+        "id": 369303,
+        "address": "One Hyde Park, Knightsbridge SW1X",
+        "price": 47000000,
+        "bedrooms": 5,
+        "bathrooms": 4,
+        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "propertyUrl": "https://www.primelocation.com/for-sale/property/london/?bedrooms=1&maxPrice=500000",
+        "city": "London",
+        "scrapedAt": "2025-08-06T15:33:44.043Z"
+      },
+      {
+        "id": 323525,
+        "address": "Buckingham Gate, London SW1E",
+        "price": 45000000,
+        "bedrooms": 9,
+        "bathrooms": 8,
+        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "propertyUrl": "https://www.primelocation.com/for-sale/property/london/?bedrooms=1&maxPrice=500000",
+        "city": "London",
+        "scrapedAt": "2025-08-06T15:33:44.043Z"
+      },
+      {
+        "id": 580418,
+        "address": "Wilton Crescent, Belgravia, London SW1X, United Kingdom",
+        "price": 44000000,
+        "bedrooms": 7,
+        "bathrooms": 6,
+        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "propertyUrl": "https://www.primelocation.com/for-sale/property/london/?bedrooms=1&maxPrice=500000",
+        "city": "London",
+        "scrapedAt": "2025-08-06T15:33:44.043Z"
+      },
+      {
+        "id": 192394,
+        "address": "Bayswater Road, London W2",
+        "price": 42000000,
+        "bedrooms": 5,
+        "bathrooms": 4,
+        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "propertyUrl": "https://www.primelocation.com/for-sale/property/london/?bedrooms=1&maxPrice=500000",
+        "city": "London",
+        "scrapedAt": "2025-08-06T15:33:44.043Z"
+      },
+      {
+        "id": 869900,
+        "address": "Eaton Place, London SW1X",
+        "price": 39000000,
+        "bedrooms": 6,
+        "bathrooms": 5,
+        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "propertyUrl": "https://www.primelocation.com/for-sale/property/london/?bedrooms=1&maxPrice=500000",
+        "city": "London",
+        "scrapedAt": "2025-08-06T15:33:44.043Z"
+      },
+      {
+        "id": 874614,
+        "address": "Merton Lane, Highgate, London N6",
+        "price": 32000000,
+        "bedrooms": 5,
+        "bathrooms": 4,
+        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "propertyUrl": "https://www.primelocation.com/for-sale/property/london/?bedrooms=1&maxPrice=500000",
+        "city": "London",
+        "scrapedAt": "2025-08-06T15:33:44.043Z"
+      },
+      {
+        "id": 49348,
+        "address": "Merton Lane, London N6",
+        "price": 32000000,
+        "bedrooms": 10,
+        "bathrooms": 9,
+        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "propertyUrl": "https://www.primelocation.com/for-sale/property/london/?bedrooms=1&maxPrice=500000",
+        "city": "London",
+        "scrapedAt": "2025-08-06T15:33:44.043Z"
+      },
+      {
+        "id": 920293,
+        "address": "Avenue Road NW8",
+        "price": 30000000,
+        "bedrooms": 8,
+        "bathrooms": 7,
+        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "propertyUrl": "https://www.primelocation.com/for-sale/property/london/?bedrooms=1&maxPrice=500000",
+        "city": "London",
+        "scrapedAt": "2025-08-06T15:33:44.043Z"
+      },
+      {
+        "id": 987062,
+        "address": "Tregunter Road, Chelsea, London SW10, United Kingdom",
+        "price": 30000000,
+        "bedrooms": 7,
+        "bathrooms": 6,
+        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "propertyUrl": "https://www.primelocation.com/for-sale/property/london/?bedrooms=1&maxPrice=500000",
+        "city": "London",
+        "scrapedAt": "2025-08-06T15:33:44.043Z"
+      },
+      {
+        "id": 777583,
+        "address": "Tregunter Road, London SW10",
+        "price": 30000000,
+        "bedrooms": 7,
+        "bathrooms": 6,
+        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "propertyUrl": "https://www.primelocation.com/for-sale/property/london/?bedrooms=1&maxPrice=500000",
+        "city": "London",
+        "scrapedAt": "2025-08-06T15:33:44.043Z"
+      },
+      {
+        "id": 227455,
+        "address": "Knightsbridge, London SW1X",
+        "price": 30000000,
+        "bedrooms": 4,
+        "bathrooms": 3,
+        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "propertyUrl": "https://www.primelocation.com/for-sale/property/london/?bedrooms=1&maxPrice=500000",
+        "city": "London",
+        "scrapedAt": "2025-08-06T15:33:44.043Z"
+      },
+      {
+        "id": 496856,
+        "address": "Cadogan Place, Knightsbridge, London SW1X",
+        "price": 29975000,
+        "bedrooms": 6,
+        "bathrooms": 5,
+        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "propertyUrl": "https://www.primelocation.com/for-sale/property/london/?bedrooms=1&maxPrice=500000",
+        "city": "London",
+        "scrapedAt": "2025-08-06T15:33:44.043Z"
+      },
+      {
+        "id": 738201,
+        "address": "Piccadilly, London W1J",
+        "price": 29950000,
+        "bedrooms": 6,
+        "bathrooms": 5,
+        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "propertyUrl": "https://www.primelocation.com/for-sale/property/london/?bedrooms=1&maxPrice=500000",
+        "city": "London",
+        "scrapedAt": "2025-08-06T15:33:44.043Z"
+      },
+      {
+        "id": 640463,
+        "address": "Brick Street, Mayfair, London W1J",
+        "price": 29500000,
+        "bedrooms": 7,
+        "bathrooms": 6,
+        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "propertyUrl": "https://www.primelocation.com/for-sale/property/london/?bedrooms=1&maxPrice=500000",
+        "city": "London",
+        "scrapedAt": "2025-08-06T15:33:44.043Z"
+      },
+      {
+        "id": 134677,
+        "address": "Brick Street, Mayfair, London W1J",
+        "price": 29500000,
+        "bedrooms": 7,
+        "bathrooms": 6,
+        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "propertyUrl": "https://www.primelocation.com/for-sale/property/london/?bedrooms=1&maxPrice=500000",
+        "city": "London",
+        "scrapedAt": "2025-08-06T15:33:44.043Z"
+      },
+      {
+        "id": 381651,
+        "address": "Brick Street, Mayfair, London, England W1J, United Kingdom",
+        "price": 29500000,
+        "bedrooms": 7,
+        "bathrooms": 6,
+        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "propertyUrl": "https://www.primelocation.com/for-sale/property/london/?bedrooms=1&maxPrice=500000",
+        "city": "London",
+        "scrapedAt": "2025-08-06T15:33:44.043Z"
+      },
+      {
+        "id": 835914,
+        "address": "Brick Street, Mayfair W1J",
+        "price": 29500000,
+        "bedrooms": 7,
+        "bathrooms": 6,
+        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "propertyUrl": "https://www.primelocation.com/for-sale/property/london/?bedrooms=1&maxPrice=500000",
+        "city": "London",
+        "scrapedAt": "2025-08-06T15:33:44.043Z"
+      },
+      {
+        "id": 903892,
+        "address": "One Hyde Park, Knightsbridge, London SW1X, United Kingdom",
+        "price": 28500000,
+        "bedrooms": 4,
+        "bathrooms": 3,
+        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "propertyUrl": "https://www.primelocation.com/for-sale/property/london/?bedrooms=1&maxPrice=500000",
+        "city": "London",
+        "scrapedAt": "2025-08-06T15:33:44.043Z"
+      }
+    ]
+  },
+  "b0dc1b210809b0e7863df6953a738d22": {
+    "searchHash": "b0dc1b210809b0e7863df6953a738d22",
+    "lastScraped": "2025-08-06T15:34:20.630Z",
+    "properties": [
+      {
+        "id": 420182,
+        "address": "Hill Quays, Commercial Street, Manchester M15",
+        "price": 180000,
+        "bedrooms": 1,
+        "bathrooms": 1,
+        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "propertyUrl": "https://www.primelocation.com/for-sale/property/manchester/?bedrooms=1&maxPrice=500000",
+        "city": "Manchester",
+        "scrapedAt": "2025-08-06T15:34:20.630Z"
+      },
+      {
+        "id": 355960,
+        "address": "Gardner Street, Salford M6",
+        "price": 120995,
+        "bedrooms": 1,
+        "bathrooms": 1,
+        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "propertyUrl": "https://www.primelocation.com/for-sale/property/manchester/?bedrooms=1&maxPrice=500000",
+        "city": "Manchester",
+        "scrapedAt": "2025-08-06T15:34:20.630Z"
+      },
+      {
+        "id": 317331,
+        "address": "Clarendon Crescent, Ellesmere Park, Manchester M30",
+        "price": 695000,
+        "bedrooms": 3,
+        "bathrooms": 2,
+        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "propertyUrl": "https://www.primelocation.com/for-sale/property/manchester/?bedrooms=1&maxPrice=500000",
+        "city": "Manchester",
+        "scrapedAt": "2025-08-06T15:34:20.630Z"
+      },
+      {
+        "id": 512180,
+        "address": "Bindloss Avenue, Eccles, Manchester M30",
+        "price": 3100000,
+        "bedrooms": 27,
+        "bathrooms": 26,
+        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "propertyUrl": "https://www.primelocation.com/for-sale/property/manchester/?bedrooms=1&maxPrice=500000",
+        "city": "Manchester",
+        "scrapedAt": "2025-08-06T15:34:20.630Z"
+      },
+      {
+        "id": 418078,
+        "address": "En-Suite Room, In Gardner Street, Salford M6",
+        "price": 2800000,
+        "bedrooms": 34,
+        "bathrooms": 33,
+        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "propertyUrl": "https://www.primelocation.com/for-sale/property/manchester/?bedrooms=1&maxPrice=500000",
+        "city": "Manchester",
+        "scrapedAt": "2025-08-06T15:34:20.630Z"
+      },
+      {
+        "id": 135038,
+        "address": "New Bailey Street, Salford M3",
+        "price": 2738000,
+        "bedrooms": 1,
+        "bathrooms": 1,
+        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "propertyUrl": "https://www.primelocation.com/for-sale/property/manchester/?bedrooms=1&maxPrice=500000",
+        "city": "Manchester",
+        "scrapedAt": "2025-08-06T15:34:20.630Z"
+      },
+      {
+        "id": 915936,
+        "address": "Century Buildings, St Mary's Parsonage, Manchester M3",
+        "price": 2400000,
+        "bedrooms": 5,
+        "bathrooms": 4,
+        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "propertyUrl": "https://www.primelocation.com/for-sale/property/manchester/?bedrooms=1&maxPrice=500000",
+        "city": "Manchester",
+        "scrapedAt": "2025-08-06T15:34:20.630Z"
+      },
+      {
+        "id": 303824,
+        "address": "Mill Brow, Worsley M28",
+        "price": 2400000,
+        "bedrooms": 4,
+        "bathrooms": 3,
+        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "propertyUrl": "https://www.primelocation.com/for-sale/property/manchester/?bedrooms=1&maxPrice=500000",
+        "city": "Manchester",
+        "scrapedAt": "2025-08-06T15:34:20.630Z"
+      },
+      {
+        "id": 679259,
+        "address": "Beetham Tower, 301 Deansgate, Manchester M3",
+        "price": 2000000,
+        "bedrooms": 4,
+        "bathrooms": 3,
+        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "propertyUrl": "https://www.primelocation.com/for-sale/property/manchester/?bedrooms=1&maxPrice=500000",
+        "city": "Manchester",
+        "scrapedAt": "2025-08-06T15:34:20.630Z"
+      },
+      {
+        "id": 806426,
+        "address": "Deansgate, Manchester M3",
+        "price": 2000000,
+        "bedrooms": 4,
+        "bathrooms": 3,
+        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "propertyUrl": "https://www.primelocation.com/for-sale/property/manchester/?bedrooms=1&maxPrice=500000",
+        "city": "Manchester",
+        "scrapedAt": "2025-08-06T15:34:20.630Z"
+      },
+      {
+        "id": 227915,
+        "address": "Fairview, Kingston Avenue, Didsbury, Manchester M20",
+        "price": 1999999,
+        "bedrooms": 5,
+        "bathrooms": 4,
+        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "propertyUrl": "https://www.primelocation.com/for-sale/property/manchester/?bedrooms=1&maxPrice=500000",
+        "city": "Manchester",
+        "scrapedAt": "2025-08-06T15:34:20.630Z"
+      },
+      {
+        "id": 499584,
+        "address": "Monton Road, Monton M30",
+        "price": 1750000,
+        "bedrooms": 33,
+        "bathrooms": 32,
+        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "propertyUrl": "https://www.primelocation.com/for-sale/property/manchester/?bedrooms=1&maxPrice=500000",
+        "city": "Manchester",
+        "scrapedAt": "2025-08-06T15:34:20.630Z"
+      },
+      {
+        "id": 52493,
+        "address": "Alexandra Road South, Manchester M16",
+        "price": 1750000,
+        "bedrooms": 8,
+        "bathrooms": 7,
+        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "propertyUrl": "https://www.primelocation.com/for-sale/property/manchester/?bedrooms=1&maxPrice=500000",
+        "city": "Manchester",
+        "scrapedAt": "2025-08-06T15:34:20.630Z"
+      },
+      {
+        "id": 314688,
+        "address": "Elm Road, Didsbury, Manchester M20",
+        "price": 1750000,
+        "bedrooms": 6,
+        "bathrooms": 5,
+        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "propertyUrl": "https://www.primelocation.com/for-sale/property/manchester/?bedrooms=1&maxPrice=500000",
+        "city": "Manchester",
+        "scrapedAt": "2025-08-06T15:34:20.630Z"
+      },
+      {
+        "id": 996254,
+        "address": "Rock House, 2 Barton Road, Worsley, Greater Manchester M28",
+        "price": 1750000,
+        "bedrooms": 5,
+        "bathrooms": 4,
+        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "propertyUrl": "https://www.primelocation.com/for-sale/property/manchester/?bedrooms=1&maxPrice=500000",
+        "city": "Manchester",
+        "scrapedAt": "2025-08-06T15:34:20.630Z"
+      },
+      {
+        "id": 19981,
+        "address": "The Blade, New Jackson M15",
+        "price": 1700000,
+        "bedrooms": 3,
+        "bathrooms": 2,
+        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "propertyUrl": "https://www.primelocation.com/for-sale/property/manchester/?bedrooms=1&maxPrice=500000",
+        "city": "Manchester",
+        "scrapedAt": "2025-08-06T15:34:20.630Z"
+      },
+      {
+        "id": 311218,
+        "address": "Silvercroft Street, Manchester M15",
+        "price": 1650000,
+        "bedrooms": 3,
+        "bathrooms": 2,
+        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "propertyUrl": "https://www.primelocation.com/for-sale/property/manchester/?bedrooms=1&maxPrice=500000",
+        "city": "Manchester",
+        "scrapedAt": "2025-08-06T15:34:20.630Z"
+      },
+      {
+        "id": 520206,
+        "address": "Demesne Road, Manchester M16",
+        "price": 1650000,
+        "bedrooms": 16,
+        "bathrooms": 15,
+        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "propertyUrl": "https://www.primelocation.com/for-sale/property/manchester/?bedrooms=1&maxPrice=500000",
+        "city": "Manchester",
+        "scrapedAt": "2025-08-06T15:34:20.630Z"
+      },
+      {
+        "id": 67124,
+        "address": "Old Broadway, Didsbury, Manchester M20",
+        "price": 1650000,
+        "bedrooms": 5,
+        "bathrooms": 4,
+        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "propertyUrl": "https://www.primelocation.com/for-sale/property/manchester/?bedrooms=1&maxPrice=500000",
+        "city": "Manchester",
+        "scrapedAt": "2025-08-06T15:34:20.630Z"
+      },
+      {
+        "id": 73040,
+        "address": "Old Hall Road, Salford M7",
+        "price": 1600000,
+        "bedrooms": 5,
+        "bathrooms": 4,
+        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "propertyUrl": "https://www.primelocation.com/for-sale/property/manchester/?bedrooms=1&maxPrice=500000",
+        "city": "Manchester",
+        "scrapedAt": "2025-08-06T15:34:20.630Z"
+      },
+      {
+        "id": 875689,
+        "address": "Leftbank, Manchester M3",
+        "price": 1490000,
+        "bedrooms": 3,
+        "bathrooms": 2,
+        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "propertyUrl": "https://www.primelocation.com/for-sale/property/manchester/?bedrooms=1&maxPrice=500000",
+        "city": "Manchester",
+        "scrapedAt": "2025-08-06T15:34:20.630Z"
+      },
+      {
+        "id": 317291,
+        "address": "New Bailey Street, Salford M3",
+        "price": 1489000,
+        "bedrooms": 1,
+        "bathrooms": 1,
+        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "propertyUrl": "https://www.primelocation.com/for-sale/property/manchester/?bedrooms=1&maxPrice=500000",
+        "city": "Manchester",
+        "scrapedAt": "2025-08-06T15:34:20.630Z"
+      },
+      {
+        "id": 894572,
+        "address": "Barton Road, Worsley, Manchester M28",
+        "price": 1450000,
+        "bedrooms": 5,
+        "bathrooms": 4,
+        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "propertyUrl": "https://www.primelocation.com/for-sale/property/manchester/?bedrooms=1&maxPrice=500000",
+        "city": "Manchester",
+        "scrapedAt": "2025-08-06T15:34:20.630Z"
+      },
+      {
+        "id": 522096,
+        "address": "Barton Road, Worsley M28",
+        "price": 1450000,
+        "bedrooms": 5,
+        "bathrooms": 4,
+        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "propertyUrl": "https://www.primelocation.com/for-sale/property/manchester/?bedrooms=1&maxPrice=500000",
+        "city": "Manchester",
+        "scrapedAt": "2025-08-06T15:34:20.630Z"
+      },
+      {
+        "id": 58937,
+        "address": "Old Hall Road, Salford M7",
+        "price": 1400000,
+        "bedrooms": 4,
+        "bathrooms": 3,
+        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "propertyUrl": "https://www.primelocation.com/for-sale/property/manchester/?bedrooms=1&maxPrice=500000",
+        "city": "Manchester",
+        "scrapedAt": "2025-08-06T15:34:20.630Z"
+      },
+      {
+        "id": 552991,
+        "address": "Old Broadway, Didsbury M20",
+        "price": 1400000,
+        "bedrooms": 5,
+        "bathrooms": 4,
+        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "propertyUrl": "https://www.primelocation.com/for-sale/property/manchester/?bedrooms=1&maxPrice=500000",
+        "city": "Manchester",
+        "scrapedAt": "2025-08-06T15:34:20.630Z"
+      },
+      {
+        "id": 203650,
+        "address": "Park Lane, Salford M7",
+        "price": 1400000,
+        "bedrooms": 6,
+        "bathrooms": 5,
+        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "propertyUrl": "https://www.primelocation.com/for-sale/property/manchester/?bedrooms=1&maxPrice=500000",
+        "city": "Manchester",
+        "scrapedAt": "2025-08-06T15:34:20.630Z"
+      },
+      {
+        "id": 5187,
+        "address": "Drywood Avenue, Worsley M28",
+        "price": 1350000,
+        "bedrooms": 6,
+        "bathrooms": 5,
+        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "propertyUrl": "https://www.primelocation.com/for-sale/property/manchester/?bedrooms=1&maxPrice=500000",
+        "city": "Manchester",
+        "scrapedAt": "2025-08-06T15:34:20.630Z"
+      }
+    ]
   }
 }
