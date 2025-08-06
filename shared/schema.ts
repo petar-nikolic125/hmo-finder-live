@@ -11,23 +11,25 @@ export const users = pgTable("users", {
 export const properties = pgTable("properties", {
   id: serial("id").primaryKey(),
   address: text("address").notNull(),
-  postcode: text("postcode").notNull(),
   price: integer("price").notNull(),
-  size: integer("size").notNull(),
   bedrooms: integer("bedrooms").notNull(),
   bathrooms: integer("bathrooms").notNull(),
-  latitude: real("latitude").notNull(),
-  longitude: real("longitude").notNull(),
   imageUrl: text("image_url").notNull(),
-  primeLocationUrl: text("prime_location_url").notNull(),
-  rightmoveUrl: text("rightmove_url").notNull(),
-  zooplaUrl: text("zoopla_url").notNull(),
-  description: text("description").notNull(),
-  hasGarden: boolean("has_garden").notNull().default(false),
-  hasParking: boolean("has_parking").notNull().default(false),
-  isArticle4: boolean("is_article4").notNull().default(false),
-  yearlyProfit: integer("yearly_profit").notNull(),
-  leftInDeal: integer("left_in_deal").notNull(),
+  propertyUrl: text("property_url").notNull(),
+  city: text("city").notNull(),
+  scrapedAt: text("scraped_at").notNull(),
+});
+
+// Search cache table to implement rate limiting
+export const searchCache = pgTable("search_cache", {
+  id: serial("id").primaryKey(),
+  city: text("city").notNull(),
+  minBedrooms: integer("min_bedrooms").notNull(),
+  maxPrice: integer("max_price").notNull(),
+  keywords: text("keywords").notNull(),
+  searchHash: text("search_hash").notNull().unique(),
+  lastScraped: text("last_scraped").notNull(),
+  resultCount: integer("result_count").notNull().default(0),
 });
 
 export const insertUserSchema = createInsertSchema(users).omit({

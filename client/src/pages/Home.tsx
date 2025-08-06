@@ -21,12 +21,11 @@ export const Home = () => {
   
   // Search parameters
   const [searchParams, setSearchParams] = useState<PropertySearchParams>({
-    city: 'Birmingham',
-    count: 4,
-    minSize: 90,
+    city: 'Liverpool',
+    count: 12,
+    minRooms: 1,
     maxPrice: 500000,
-    excludeArticle4: true,
-    sortBy: 'profit',
+    keywords: 'HMO',
   });
   
   // UI state
@@ -106,19 +105,17 @@ export const Home = () => {
         isLoading={isLoading}
         onCityChange={(city) => updateSearchParams({ city })}
         onMaxPriceChange={(maxPrice) => updateSearchParams({ maxPrice })}
-        onMinSizeChange={(minSize) => updateSearchParams({ minSize })}
+        onMinRoomsChange={(minRooms) => updateSearchParams({ minRooms })}
       />
 
       <main className="container mx-auto px-4 py-8">
         <FilterBar
           searchTerm={searchTerm}
           onSearchChange={setSearchTerm}
-          minSize={searchParams.minSize || 90}
-          onMinSizeChange={(minSize) => updateSearchParams({ minSize })}
+          minRooms={searchParams.minRooms || 1}
+          onMinRoomsChange={(minRooms) => updateSearchParams({ minRooms })}
           maxPrice={searchParams.maxPrice || 500000}
           onMaxPriceChange={(maxPrice) => updateSearchParams({ maxPrice })}
-          excludeArticle4={searchParams.excludeArticle4 || false}
-          onExcludeArticle4Change={(excludeArticle4) => updateSearchParams({ excludeArticle4 })}
         />
 
         {/* Search Status */}
@@ -128,12 +125,7 @@ export const Home = () => {
           lastUpdated={lastUpdated}
         />
 
-        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-6">
-          <SortSelect
-            value={searchParams.sortBy || 'profit'}
-            onValueChange={(sortBy) => updateSearchParams({ sortBy: sortBy as any })}
-          />
-        </div>
+        {/* Search results header with count */}
 
         {isLoading ? (
           <PropertyGridSkeleton count={searchParams.count || 4} />

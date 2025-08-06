@@ -9,10 +9,9 @@ export async function registerRoutes(app: Express): Promise<Server> {
       const searchParams: PropertySearchParams = {
         city: req.query.city as string,
         count: req.query.count ? parseInt(req.query.count as string) : undefined,
-        minSize: req.query.minSize ? parseInt(req.query.minSize as string) : undefined,
+        minRooms: req.query.minRooms ? parseInt(req.query.minRooms as string) : undefined,
         maxPrice: req.query.maxPrice ? parseInt(req.query.maxPrice as string) : undefined,
-        excludeArticle4: req.query.excludeArticle4 === 'true',
-        sortBy: req.query.sortBy as 'profit' | 'price' | 'size' | 'recent',
+        keywords: req.query.keywords as string,
       };
 
       const properties = await storage.getProperties(searchParams);

@@ -35,8 +35,7 @@ export interface PropertyWithAnalytics extends InsertProperty {
 export interface PropertySearchParams {
   city?: string;
   count?: number;
-  minSize?: number;
+  minRooms?: number;
   maxPrice?: number;
-  excludeArticle4?: boolean;
-  sortBy?: 'profit' | 'price' | 'size' | 'recent';
+  keywords?: string;
 }

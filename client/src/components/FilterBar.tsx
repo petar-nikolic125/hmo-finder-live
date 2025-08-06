@@ -16,23 +16,19 @@ import { formatPrice, formatSize } from '@/lib/format';
 interface FilterBarProps {
   searchTerm: string;
   onSearchChange: (value: string) => void;
-  minSize: number;
-  onMinSizeChange: (value: number) => void;
+  minRooms: number;
+  onMinRoomsChange: (value: number) => void;
   maxPrice: number;
   onMaxPriceChange: (value: number) => void;
-  excludeArticle4: boolean;
-  onExcludeArticle4Change: (value: boolean) => void;
 }
 
 export const FilterBar = ({
   searchTerm,
   onSearchChange,
-  minSize,
-  onMinSizeChange,
+  minRooms,
+  onMinRoomsChange,
   maxPrice,
   onMaxPriceChange,
-  excludeArticle4,
-  onExcludeArticle4Change,
 }: FilterBarProps) => {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -66,25 +62,25 @@ export const FilterBar = ({
             </CollapsibleTrigger>
             
             <CollapsibleContent className="space-y-6 pt-6">
-              {/* Size slider */}
+              {/* Bedrooms slider */}
               <div className="space-y-3">
                 <div className="flex justify-between items-center">
-                  <Label>Minimum Size</Label>
+                  <Label>Minimum Bedrooms</Label>
                   <span className="text-sm font-medium text-primary">
-                    {formatSize(minSize)}
+                    {minRooms} {minRooms === 1 ? 'bedroom' : 'bedrooms'}
                   </span>
                 </div>
                 <Slider
-                  value={[minSize]}
-                  onValueChange={(value) => onMinSizeChange(value[0])}
-                  max={150}
-                  min={90}
-                  step={5}
+                  value={[minRooms]}
+                  onValueChange={(value) => onMinRoomsChange(value[0])}
+                  max={5}
+                  min={1}
+                  step={1}
                   className="w-full"
                 />
                 <div className="flex justify-between text-xs text-muted-foreground">
-                  <span>90 sqm</span>
-                  <span>150 sqm</span>
+                  <span>1 bed</span>
+                  <span>5+ beds</span>
                 </div>
               </div>
 
@@ -110,19 +106,11 @@ export const FilterBar = ({
                 </div>
               </div>
 
-              {/* Article 4 toggle */}
-              <div className="flex items-center justify-between">
-                <div className="space-y-1">
-                  <Label htmlFor="exclude-article4">Exclude Article 4 Areas</Label>
-                  <p className="text-xs text-muted-foreground">
-                    Filter out properties in HMO-restricted zones
-                  </p>
-                </div>
-                <Switch
-                  id="exclude-article4"
-                  checked={excludeArticle4}
-                  onCheckedChange={onExcludeArticle4Change}
-                />
+              {/* HMO keywords info */}
+              <div className="p-3 bg-muted rounded-lg">
+                <p className="text-xs text-muted-foreground">
+                  🏠 Searching for HMO properties in {maxPrice >= 500000 ? 'premium' : 'budget'} range
+                </p>
               </div>
             </CollapsibleContent>
           </Collapsible>

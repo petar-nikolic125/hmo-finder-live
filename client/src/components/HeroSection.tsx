@@ -19,7 +19,7 @@ interface HeroSectionProps {
   isLoading: boolean;
   onCityChange: (city: string) => void;
   onMaxPriceChange: (maxPrice: number) => void;
-  onMinSizeChange: (minSize: number) => void;
+  onMinRoomsChange: (minRooms: number) => void;
 }
 
 export const HeroSection = ({ 
@@ -29,7 +29,7 @@ export const HeroSection = ({
   isLoading,
   onCityChange,
   onMaxPriceChange,
-  onMinSizeChange
+  onMinRoomsChange
 }: HeroSectionProps) => {
   return (
     <section className="relative overflow-hidden bg-hero-gradient py-16">
@@ -97,21 +97,21 @@ export const HeroSection = ({
 
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Min Area (sqm)
+                  Min Bedrooms
                 </label>
                 <Select 
-                  value={searchParams.minSize?.toString() || '90'}
-                  onValueChange={(value) => onMinSizeChange(parseInt(value))}
+                  value={searchParams.minRooms?.toString() || '1'}
+                  onValueChange={(value) => onMinRoomsChange(parseInt(value))}
                 >
                   <SelectTrigger>
                     <SelectValue />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="90">90 sqm</SelectItem>
-                    <SelectItem value="100">100 sqm</SelectItem>
-                    <SelectItem value="110">110 sqm</SelectItem>
-                    <SelectItem value="120">120 sqm</SelectItem>
-                    <SelectItem value="130">130 sqm</SelectItem>
+                    <SelectItem value="1">1 bedroom</SelectItem>
+                    <SelectItem value="2">2 bedrooms</SelectItem>
+                    <SelectItem value="3">3 bedrooms</SelectItem>
+                    <SelectItem value="4">4 bedrooms</SelectItem>
+                    <SelectItem value="5">5+ bedrooms</SelectItem>
                   </SelectContent>
                 </Select>
               </div>
