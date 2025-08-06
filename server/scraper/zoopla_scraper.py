@@ -46,25 +46,39 @@ def build_search_urls(city, min_bedrooms, max_price, keywords):
     """Napravi URLs za Zoopla i PrimeLocation sa filterima u ispravnom formatu"""
     city_slug = city.lower().replace(" ", "-")
     
-    # Zoopla URL format: https://www.zoopla.co.uk/for-sale/property/liverpool/?beds_min=1&keywords=HMO&price_max=500000
+    # Sanitize price - ensure it's within reasonable bounds
+    if max_price:
+        max_price = max(50000, min(2000000, int(max_price)))  # Between £50k and £2M
+    
+    # Sanitize bedrooms
+    if min_bedrooms:
+        min_bedrooms = max(1, min(10, int(min_bedrooms)))  # Between 1 and 10
+    
+    print(f"🔧 Building URLs for {city}: bedrooms={min_bedrooms}+, price=£{max_price}, keywords={keywords}", file=sys.stderr)
+    
+    # Zoopla URL format with enhanced parameters for better results
     zoopla_params = []
     if min_bedrooms:
         zoopla_params.append(f"beds_min={min_bedrooms}")
-    if keywords:
+    if keywords and keywords.lower() != 'none':
         zoopla_params.append(f"keywords={keywords}")
     if max_price:
         zoopla_params.append(f"price_max={max_price}")
     
+    # Add additional filters for better results
+    zoopla_params.append("property_type=houses")
+    zoopla_params.append("q=" + city.replace(" ", "+"))
+    
     zoopla_url = f"https://www.zoopla.co.uk/for-sale/property/{city_slug}/?" + "&".join(zoopla_params)
     
-    # PrimeLocation URL format: https://www.primelocation.com/for-sale/property/manchester/?beds_min=1&is_auction=include&is_retirement_home=include&is_shared_ownership=include&keywords=HMO&price_max=500000&q=Manchester&radius=0&results_sort=highest_price&search_source=for-sale
+    # PrimeLocation URL format with robust parameters
     prime_params = []
     if min_bedrooms:
         prime_params.append(f"beds_min={min_bedrooms}")
     prime_params.append("is_auction=include")
     prime_params.append("is_retirement_home=include")
     prime_params.append("is_shared_ownership=include")
-    if keywords:
+    if keywords and keywords.lower() != 'none':
         prime_params.append(f"keywords={keywords}")
     if max_price:
         prime_params.append(f"price_max={max_price}")
@@ -75,7 +89,24 @@ def build_search_urls(city, min_bedrooms, max_price, keywords):
     
     prime_url = f"https://www.primelocation.com/for-sale/property/{city_slug}/?" + "&".join(prime_params)
     
-    return [zoopla_url, prime_url]
+    # Add alternative search URLs with different sorting for better coverage
+    alternative_urls = []
+    
+    # Zoopla with different sorting
+    zoopla_params_alt = zoopla_params.copy()
+    zoopla_params_alt.append("results_sort=newest")
+    alt_zoopla_url = f"https://www.zoopla.co.uk/for-sale/property/{city_slug}/?" + "&".join(zoopla_params_alt)
+    alternative_urls.append(alt_zoopla_url)
+    
+    # PrimeLocation with price sorting
+    prime_params_alt = [p for p in prime_params if "results_sort" not in p]
+    prime_params_alt.append("results_sort=price")
+    alt_prime_url = f"https://www.primelocation.com/for-sale/property/{city_slug}/?" + "&".join(prime_params_alt)
+    alternative_urls.append(alt_prime_url)
+    
+    print(f"🔗 Generated {len(alternative_urls) + 2} search URLs", file=sys.stderr)
+    
+    return [zoopla_url, prime_url] + alternative_urls
 
 def extract_price(price_text):
     """Izvuci cenu iz teksta"""
@@ -387,14 +418,19 @@ def scrape_property_details(session, property_url):
 def scrape_properties_with_requests(city, min_bedrooms, max_price, keywords):
     """Glavna funkcija za scraping sa naprednim requests pristupom"""
     print(f"🚀 Starting advanced requests scraper for {city}", file=sys.stderr)
+    print(f"🎯 Search params: bedrooms={min_bedrooms}+, max_price=£{max_price}, keywords='{keywords}'", file=sys.stderr)
     
     properties = []
     session = setup_session()
     urls = build_search_urls(city, min_bedrooms, max_price, keywords)
     
+    # Track success rate
+    successful_urls = 0
+    total_properties_found = 0
+    
     for attempt, url in enumerate(urls):
         try:
-            print(f"📍 Pokušaj #{attempt + 1}: {url}", file=sys.stderr)
+            print(f"📍 Pokušaj #{attempt + 1}/{len(urls)}: {url[:80]}...", file=sys.stderr)
             
             # Random delay između zahteva
             time.sleep(random.uniform(1, 3))
@@ -406,7 +442,7 @@ def scrape_properties_with_requests(city, min_bedrooms, max_price, keywords):
                     response = session.get(url, timeout=30, allow_redirects=True)
                     
                     if response.status_code == 200:
-                        print(f"✅ Uspešan HTTP {response.status_code} za {url}", file=sys.stderr)
+                        print(f"✅ HTTP {response.status_code} - sadržaj: {len(response.content)} bytes", file=sys.stderr)
                         break
                     elif response.status_code == 403:
                         print(f"⚠️ HTTP 403 - pokušavam drugi pristup", file=sys.stderr)
@@ -417,6 +453,10 @@ def scrape_properties_with_requests(city, min_bedrooms, max_price, keywords):
                             'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/121.0'
                         ])
                         time.sleep(random.uniform(2, 5))
+                        continue
+                    elif response.status_code == 429:
+                        print(f"⚠️ HTTP 429 Rate limit - čekam duže", file=sys.stderr)
+                        time.sleep(random.uniform(10, 20))
                         continue
                     else:
                         print(f"⚠️ HTTP {response.status_code} - pokušavam ponovo", file=sys.stderr)
@@ -429,7 +469,7 @@ def scrape_properties_with_requests(city, min_bedrooms, max_price, keywords):
                     continue
                     
             if not response or response.status_code != 200:
-                print(f"❌ Failed to get {url} after 3 retries", file=sys.stderr)
+                print(f"❌ Failed to get {url} after 3 retries - HTTP {response.status_code if response else 'None'}", file=sys.stderr)
                 continue
                 
             soup = BeautifulSoup(response.content, 'html.parser')
@@ -484,19 +524,17 @@ def scrape_properties_with_requests(city, min_bedrooms, max_price, keywords):
                         break
             
             if not listings:
-                print(f"⚠️ Nema oglasa na {url}, pokušavam sledeći sajt", file=sys.stderr)
+                print(f"⚠️ No listings found on {url[:50]}...", file=sys.stderr)
+                # Continue to next URL instead of giving up
                 continue
+            
+            print(f"🎯 Found {len(listings)} potential listings", file=sys.stderr)
+            successful_urls += 1
             
             # Debug: Prikaži strukuru prvog oglasa
             if listings and len(listings) > 0:
                 first_listing = listings[0]
-                print(f"🔍 DEBUG: First listing HTML snippet:", file=sys.stderr)
-                print(str(first_listing)[:500], file=sys.stderr)
-                
-                # Debug: Pokušaj da nađeš link u prvom oglasu
-                first_link = first_listing.select_one('a[href*="/details/"]')
-                if first_link:
-                    print(f"🔗 DEBUG: Found details link: {first_link.get('href')}", file=sys.stderr)
+                print(f"🔍 First listing preview: {str(first_listing)[:200]}...", file=sys.stderr)
             
             # Scrape svaki oglas
             for i, listing in enumerate(listings[:30]):
@@ -693,14 +731,23 @@ def scrape_properties_with_requests(city, min_bedrooms, max_price, keywords):
                     print(f"❌ Error scraping property {i+1}: {e}", file=sys.stderr)
                     continue
             
+            total_properties_found = len(properties)
             if len(properties) >= 12:  # Imamo dovoljno properties
+                print(f"🎯 Target reached: {len(properties)} properties found", file=sys.stderr)
                 break
                 
         except Exception as e:
-            print(f"❌ Error sa URL {url}: {e}", file=sys.stderr)
+            print(f"❌ Error processing URL {url[:50]}...: {e}", file=sys.stderr)
             continue
     
-    print(f"🏁 Scraping completed. Found {len(properties)} valid properties", file=sys.stderr)
+    # Final summary
+    print(f"📊 Scraping Summary for {city}:", file=sys.stderr)
+    print(f"   🔗 URLs tried: {len(urls)}", file=sys.stderr)  
+    print(f"   ✅ Successful URLs: {successful_urls}", file=sys.stderr)
+    print(f"   🏠 Properties found: {len(properties)}", file=sys.stderr)
+    print(f"   💰 Price range: £{min(prop['price'] for prop in properties) if properties else 0} - £{max(prop['price'] for prop in properties) if properties else 0}", file=sys.stderr)
+    print(f"   🛏️ Bedroom range: {min(prop['bedrooms'] for prop in properties) if properties else 0} - {max(prop['bedrooms'] for prop in properties) if properties else 0}", file=sys.stderr)
+    
     return properties
 
 def generate_fake_properties(city, min_bedrooms, max_price, count):

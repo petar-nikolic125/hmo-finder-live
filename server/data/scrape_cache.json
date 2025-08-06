@@ -1986,5 +1986,467 @@
         "scrapedAt": "2025-08-06T16:49:21.080Z"
       }
     ]
+  },
+  "132e1c6bddd8838e77d71e8014113b16": {
+    "searchHash": "132e1c6bddd8838e77d71e8014113b16",
+    "lastScraped": "2025-08-06T17:21:28.751Z",
+    "properties": [
+      {
+        "id": 946997,
+        "address": "Russell Road, Mossley Hill, Liverpool L18",
+        "price": 300000,
+        "bedrooms": 3,
+        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "propertyUrl": "https://www.primelocation.com/for-sale/details/70109958/?search_identifier=b87b1bf0fd9fde47ea92e269ae52cd772a1bfe817d4c108d679f4f21c49b2ee7",
+        "city": "Liverpool",
+        "scrapedAt": "2025-08-06T17:21:28.751Z"
+      },
+      {
+        "id": 373505,
+        "address": "Molyneux Road, Kensington, Liverpool L6",
+        "price": 300000,
+        "bedrooms": 7,
+        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "propertyUrl": "https://www.primelocation.com/for-sale/details/70619866/?search_identifier=b87b1bf0fd9fde47ea92e269ae52cd772a1bfe817d4c108d679f4f21c49b2ee7",
+        "city": "Liverpool",
+        "scrapedAt": "2025-08-06T17:21:28.751Z"
+      },
+      {
+        "id": 40700,
+        "address": "Bagot Street, Liverpool L15",
+        "price": 300000,
+        "bedrooms": 5,
+        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "propertyUrl": "https://www.primelocation.com/for-sale/details/70664714/?search_identifier=b87b1bf0fd9fde47ea92e269ae52cd772a1bfe817d4c108d679f4f21c49b2ee7",
+        "city": "Liverpool",
+        "scrapedAt": "2025-08-06T17:21:28.751Z"
+      },
+      {
+        "id": 283967,
+        "address": "Molyneux Road, Kensington, Liverpool L6",
+        "price": 300000,
+        "bedrooms": 7,
+        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "propertyUrl": "https://www.primelocation.com/for-sale/details/70776511/?search_identifier=b87b1bf0fd9fde47ea92e269ae52cd772a1bfe817d4c108d679f4f21c49b2ee7",
+        "city": "Liverpool",
+        "scrapedAt": "2025-08-06T17:21:28.751Z"
+      },
+      {
+        "id": 608488,
+        "address": "Island Road, Garston, Liverpool L19",
+        "price": 295000,
+        "bedrooms": 5,
+        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "propertyUrl": "https://www.primelocation.com/for-sale/details/69376819/?search_identifier=b87b1bf0fd9fde47ea92e269ae52cd772a1bfe817d4c108d679f4f21c49b2ee7",
+        "city": "Liverpool",
+        "scrapedAt": "2025-08-06T17:21:28.751Z"
+      },
+      {
+        "id": 601123,
+        "address": "Albany Road, Kensington, Liverpool L7",
+        "price": 295000,
+        "bedrooms": 5,
+        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "propertyUrl": "https://www.primelocation.com/for-sale/details/70884572/?search_identifier=b87b1bf0fd9fde47ea92e269ae52cd772a1bfe817d4c108d679f4f21c49b2ee7",
+        "city": "Liverpool",
+        "scrapedAt": "2025-08-06T17:21:28.751Z"
+      },
+      {
+        "id": 850496,
+        "address": "Esher Road, Kensington, Liverpool L6",
+        "price": 295000,
+        "bedrooms": 6,
+        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "propertyUrl": "https://www.primelocation.com/for-sale/details/70934109/?search_identifier=b87b1bf0fd9fde47ea92e269ae52cd772a1bfe817d4c108d679f4f21c49b2ee7",
+        "city": "Liverpool",
+        "scrapedAt": "2025-08-06T17:21:28.751Z"
+      },
+      {
+        "id": 552758,
+        "address": "Sheil Road, Kensington, Liverpool L6",
+        "price": 270000,
+        "bedrooms": 6,
+        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "propertyUrl": "https://www.primelocation.com/for-sale/details/70237085/?search_identifier=b87b1bf0fd9fde47ea92e269ae52cd772a1bfe817d4c108d679f4f21c49b2ee7",
+        "city": "Liverpool",
+        "scrapedAt": "2025-08-06T17:21:28.751Z"
+      },
+      {
+        "id": 752388,
+        "address": "Brookdale Road, Liverpool L15",
+        "price": 255000,
+        "bedrooms": 4,
+        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "propertyUrl": "https://www.primelocation.com/for-sale/details/70630047/?search_identifier=b87b1bf0fd9fde47ea92e269ae52cd772a1bfe817d4c108d679f4f21c49b2ee7",
+        "city": "Liverpool",
+        "scrapedAt": "2025-08-06T17:21:28.751Z"
+      },
+      {
+        "id": 44565,
+        "address": "Halsbury Road, Liverpool, Merseyside L6",
+        "price": 250000,
+        "bedrooms": 5,
+        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "propertyUrl": "https://www.primelocation.com/for-sale/details/69956722/?search_identifier=b87b1bf0fd9fde47ea92e269ae52cd772a1bfe817d4c108d679f4f21c49b2ee7",
+        "city": "Liverpool",
+        "scrapedAt": "2025-08-06T17:21:28.751Z"
+      },
+      {
+        "id": 723976,
+        "address": "Arkles Lane, Liverpool, Merseyside L4",
+        "price": 250000,
+        "bedrooms": 6,
+        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "propertyUrl": "https://www.primelocation.com/for-sale/details/70660117/?search_identifier=b87b1bf0fd9fde47ea92e269ae52cd772a1bfe817d4c108d679f4f21c49b2ee7",
+        "city": "Liverpool",
+        "scrapedAt": "2025-08-06T17:21:28.751Z"
+      },
+      {
+        "id": 124566,
+        "address": "Colebrooke Road, Aigburth, Liverpool L17",
+        "price": 240000,
+        "bedrooms": 6,
+        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "propertyUrl": "https://www.primelocation.com/for-sale/details/67642595/?search_identifier=b87b1bf0fd9fde47ea92e269ae52cd772a1bfe817d4c108d679f4f21c49b2ee7",
+        "city": "Liverpool",
+        "scrapedAt": "2025-08-06T17:21:28.751Z"
+      },
+      {
+        "id": 510681,
+        "address": "Granville Road, Wavertree L15",
+        "price": 230000,
+        "bedrooms": 4,
+        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "propertyUrl": "https://www.primelocation.com/for-sale/details/68733422/?search_identifier=b87b1bf0fd9fde47ea92e269ae52cd772a1bfe817d4c108d679f4f21c49b2ee7",
+        "city": "Liverpool",
+        "scrapedAt": "2025-08-06T17:21:28.751Z"
+      },
+      {
+        "id": 163645,
+        "address": "Connaught Road, Liverpool L7",
+        "price": 225000,
+        "bedrooms": 4,
+        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "propertyUrl": "https://www.primelocation.com/for-sale/details/69248444/?search_identifier=b87b1bf0fd9fde47ea92e269ae52cd772a1bfe817d4c108d679f4f21c49b2ee7",
+        "city": "Liverpool",
+        "scrapedAt": "2025-08-06T17:21:28.751Z"
+      },
+      {
+        "id": 260200,
+        "address": "Bradfield Street, Liverpool, Merseyside L7",
+        "price": 180000,
+        "bedrooms": 4,
+        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "propertyUrl": "https://www.primelocation.com/for-sale/details/64395347/?search_identifier=b87b1bf0fd9fde47ea92e269ae52cd772a1bfe817d4c108d679f4f21c49b2ee7",
+        "city": "Liverpool",
+        "scrapedAt": "2025-08-06T17:21:28.751Z"
+      },
+      {
+        "id": 532743,
+        "address": "Boaler Street, Liverpool, Merseyside L6",
+        "price": 170000,
+        "bedrooms": 4,
+        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "propertyUrl": "https://www.primelocation.com/for-sale/details/66696068/?search_identifier=b87b1bf0fd9fde47ea92e269ae52cd772a1bfe817d4c108d679f4f21c49b2ee7",
+        "city": "Liverpool",
+        "scrapedAt": "2025-08-06T17:21:28.751Z"
+      },
+      {
+        "id": 95994,
+        "address": "Lisburn Lane, Liverpool L13",
+        "price": 160000,
+        "bedrooms": 4,
+        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "propertyUrl": "https://www.primelocation.com/for-sale/details/70728358/?search_identifier=b87b1bf0fd9fde47ea92e269ae52cd772a1bfe817d4c108d679f4f21c49b2ee7",
+        "city": "Liverpool",
+        "scrapedAt": "2025-08-06T17:21:28.751Z"
+      },
+      {
+        "id": 295830,
+        "address": "119 Sandhurst Street, Aigburth, Liverpool L17",
+        "price": 150000,
+        "bedrooms": 3,
+        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "propertyUrl": "https://www.primelocation.com/for-sale/details/70887212/?search_identifier=b87b1bf0fd9fde47ea92e269ae52cd772a1bfe817d4c108d679f4f21c49b2ee7",
+        "city": "Liverpool",
+        "scrapedAt": "2025-08-06T17:21:28.751Z"
+      },
+      {
+        "id": 368372,
+        "address": "Apartment, Candia Tower, Jason Street, Liverpool L5",
+        "price": 66500,
+        "bedrooms": 5003,
+        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "propertyUrl": "https://www.primelocation.com/for-sale/details/67117627/?search_identifier=b87b1bf0fd9fde47ea92e269ae52cd772a1bfe817d4c108d679f4f21c49b2ee7",
+        "city": "Liverpool",
+        "scrapedAt": "2025-08-06T17:21:28.751Z"
+      }
+    ]
+  },
+  "8a738274327a0d5baf5d72863f2c45a8": {
+    "searchHash": "8a738274327a0d5baf5d72863f2c45a8",
+    "lastScraped": "2025-08-06T17:21:40.554Z",
+    "properties": [
+      {
+        "id": 975341,
+        "address": "Ramilies Road, Mossley Hill L18",
+        "price": 325000,
+        "bedrooms": 5,
+        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "propertyUrl": "https://www.primelocation.com/for-sale/details/70233562/?search_identifier=c2c42904a770288f7038653a9bd3e90ed3f47d05bbfbe1deddd96ceebff10c47&featured=true",
+        "city": "Liverpool",
+        "scrapedAt": "2025-08-06T17:21:40.554Z"
+      },
+      {
+        "id": 382959,
+        "address": "Norma Road, Liverpool L22",
+        "price": 498000,
+        "bedrooms": 6,
+        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "propertyUrl": "https://www.primelocation.com/for-sale/details/69313971/?search_identifier=c2c42904a770288f7038653a9bd3e90ed3f47d05bbfbe1deddd96ceebff10c47",
+        "city": "Liverpool",
+        "scrapedAt": "2025-08-06T17:21:40.554Z"
+      },
+      {
+        "id": 52955,
+        "address": "Leopold Road, Liverpool L7",
+        "price": 495000,
+        "bedrooms": 6,
+        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "propertyUrl": "https://www.primelocation.com/for-sale/details/69929912/?search_identifier=c2c42904a770288f7038653a9bd3e90ed3f47d05bbfbe1deddd96ceebff10c47",
+        "city": "Liverpool",
+        "scrapedAt": "2025-08-06T17:21:40.554Z"
+      },
+      {
+        "id": 691884,
+        "address": "Grove Street, Edge Hill, Liverpool, Merseyside L7",
+        "price": 490000,
+        "bedrooms": 5,
+        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "propertyUrl": "https://www.primelocation.com/for-sale/details/70155507/?search_identifier=c2c42904a770288f7038653a9bd3e90ed3f47d05bbfbe1deddd96ceebff10c47",
+        "city": "Liverpool",
+        "scrapedAt": "2025-08-06T17:21:40.554Z"
+      },
+      {
+        "id": 69526,
+        "address": "Seymour Street, Liverpool, Merseyside L3",
+        "price": 485000,
+        "bedrooms": 5,
+        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "propertyUrl": "https://www.primelocation.com/for-sale/details/68134798/?search_identifier=c2c42904a770288f7038653a9bd3e90ed3f47d05bbfbe1deddd96ceebff10c47",
+        "city": "Liverpool",
+        "scrapedAt": "2025-08-06T17:21:40.554Z"
+      },
+      {
+        "id": 593626,
+        "address": "Halkyn Avenue, Liverpool, Merseyside L17",
+        "price": 475000,
+        "bedrooms": 7,
+        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "propertyUrl": "https://www.primelocation.com/for-sale/details/67835487/?search_identifier=c2c42904a770288f7038653a9bd3e90ed3f47d05bbfbe1deddd96ceebff10c47",
+        "city": "Liverpool",
+        "scrapedAt": "2025-08-06T17:21:40.554Z"
+      },
+      {
+        "id": 121123,
+        "address": "Newsham Drive, Liverpool, Merseyside L6",
+        "price": 430000,
+        "bedrooms": 9,
+        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "propertyUrl": "https://www.primelocation.com/for-sale/details/70064888/?search_identifier=c2c42904a770288f7038653a9bd3e90ed3f47d05bbfbe1deddd96ceebff10c47",
+        "city": "Liverpool",
+        "scrapedAt": "2025-08-06T17:21:40.554Z"
+      },
+      {
+        "id": 484963,
+        "address": "Rutland Avenue, Sefton Park, Liverpool, Merseyside L17",
+        "price": 425000,
+        "bedrooms": 6,
+        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "propertyUrl": "https://www.primelocation.com/for-sale/details/70862281/?search_identifier=c2c42904a770288f7038653a9bd3e90ed3f47d05bbfbe1deddd96ceebff10c47",
+        "city": "Liverpool",
+        "scrapedAt": "2025-08-06T17:21:40.554Z"
+      },
+      {
+        "id": 638885,
+        "address": "Jubilee Drive, Liverpool L7",
+        "price": 395000,
+        "bedrooms": 5,
+        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "propertyUrl": "https://www.primelocation.com/for-sale/details/70280366/?search_identifier=c2c42904a770288f7038653a9bd3e90ed3f47d05bbfbe1deddd96ceebff10c47",
+        "city": "Liverpool",
+        "scrapedAt": "2025-08-06T17:21:40.554Z"
+      },
+      {
+        "id": 313754,
+        "address": "Sandown Lane, Liverpool, Merseyside L15",
+        "price": 380000,
+        "bedrooms": 8,
+        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "propertyUrl": "https://www.primelocation.com/for-sale/details/67913721/?search_identifier=c2c42904a770288f7038653a9bd3e90ed3f47d05bbfbe1deddd96ceebff10c47",
+        "city": "Liverpool",
+        "scrapedAt": "2025-08-06T17:21:40.554Z"
+      },
+      {
+        "id": 76034,
+        "address": "Gilroy Road, Liverpool L6",
+        "price": 360000,
+        "bedrooms": 6,
+        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "propertyUrl": "https://www.primelocation.com/for-sale/details/69868972/?search_identifier=c2c42904a770288f7038653a9bd3e90ed3f47d05bbfbe1deddd96ceebff10c47",
+        "city": "Liverpool",
+        "scrapedAt": "2025-08-06T17:21:40.554Z"
+      },
+      {
+        "id": 52826,
+        "address": "Arkles Lane, Liverpool, Merseyside L4",
+        "price": 350000,
+        "bedrooms": 8,
+        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "propertyUrl": "https://www.primelocation.com/for-sale/details/70887293/?search_identifier=c2c42904a770288f7038653a9bd3e90ed3f47d05bbfbe1deddd96ceebff10c47",
+        "city": "Liverpool",
+        "scrapedAt": "2025-08-06T17:21:40.554Z"
+      },
+      {
+        "id": 362336,
+        "address": "Ramilies Road, Mossley Hill L18",
+        "price": 325000,
+        "bedrooms": 5,
+        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "propertyUrl": "https://www.primelocation.com/for-sale/details/70233562/?search_identifier=c2c42904a770288f7038653a9bd3e90ed3f47d05bbfbe1deddd96ceebff10c47",
+        "city": "Liverpool",
+        "scrapedAt": "2025-08-06T17:21:40.554Z"
+      },
+      {
+        "id": 954342,
+        "address": "Spellow Lane, Liverpool L4",
+        "price": 310000,
+        "bedrooms": 6,
+        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "propertyUrl": "https://www.primelocation.com/for-sale/details/70380672/?search_identifier=c2c42904a770288f7038653a9bd3e90ed3f47d05bbfbe1deddd96ceebff10c47",
+        "city": "Liverpool",
+        "scrapedAt": "2025-08-06T17:21:40.554Z"
+      },
+      {
+        "id": 315525,
+        "address": "Russell Road, Mossley Hill, Liverpool L18",
+        "price": 300000,
+        "bedrooms": 3,
+        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "propertyUrl": "https://www.primelocation.com/for-sale/details/70109958/?search_identifier=c2c42904a770288f7038653a9bd3e90ed3f47d05bbfbe1deddd96ceebff10c47",
+        "city": "Liverpool",
+        "scrapedAt": "2025-08-06T17:21:40.554Z"
+      },
+      {
+        "id": 79235,
+        "address": "Molyneux Road, Kensington, Liverpool L6",
+        "price": 300000,
+        "bedrooms": 7,
+        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "propertyUrl": "https://www.primelocation.com/for-sale/details/70619866/?search_identifier=c2c42904a770288f7038653a9bd3e90ed3f47d05bbfbe1deddd96ceebff10c47",
+        "city": "Liverpool",
+        "scrapedAt": "2025-08-06T17:21:40.554Z"
+      },
+      {
+        "id": 336735,
+        "address": "Bagot Street, Liverpool L15",
+        "price": 300000,
+        "bedrooms": 5,
+        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "propertyUrl": "https://www.primelocation.com/for-sale/details/70664714/?search_identifier=c2c42904a770288f7038653a9bd3e90ed3f47d05bbfbe1deddd96ceebff10c47",
+        "city": "Liverpool",
+        "scrapedAt": "2025-08-06T17:21:40.554Z"
+      },
+      {
+        "id": 179600,
+        "address": "Molyneux Road, Kensington, Liverpool L6",
+        "price": 300000,
+        "bedrooms": 7,
+        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "propertyUrl": "https://www.primelocation.com/for-sale/details/70776511/?search_identifier=c2c42904a770288f7038653a9bd3e90ed3f47d05bbfbe1deddd96ceebff10c47",
+        "city": "Liverpool",
+        "scrapedAt": "2025-08-06T17:21:40.554Z"
+      },
+      {
+        "id": 863089,
+        "address": "Island Road, Garston, Liverpool L19",
+        "price": 295000,
+        "bedrooms": 5,
+        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "propertyUrl": "https://www.primelocation.com/for-sale/details/69376819/?search_identifier=c2c42904a770288f7038653a9bd3e90ed3f47d05bbfbe1deddd96ceebff10c47",
+        "city": "Liverpool",
+        "scrapedAt": "2025-08-06T17:21:40.554Z"
+      },
+      {
+        "id": 238182,
+        "address": "Albany Road, Kensington, Liverpool L7",
+        "price": 295000,
+        "bedrooms": 5,
+        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "propertyUrl": "https://www.primelocation.com/for-sale/details/70884572/?search_identifier=c2c42904a770288f7038653a9bd3e90ed3f47d05bbfbe1deddd96ceebff10c47",
+        "city": "Liverpool",
+        "scrapedAt": "2025-08-06T17:21:40.554Z"
+      },
+      {
+        "id": 230724,
+        "address": "Esher Road, Kensington, Liverpool L6",
+        "price": 295000,
+        "bedrooms": 6,
+        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "propertyUrl": "https://www.primelocation.com/for-sale/details/70934109/?search_identifier=c2c42904a770288f7038653a9bd3e90ed3f47d05bbfbe1deddd96ceebff10c47",
+        "city": "Liverpool",
+        "scrapedAt": "2025-08-06T17:21:40.554Z"
+      },
+      {
+        "id": 661207,
+        "address": "Sheil Road, Kensington, Liverpool L6",
+        "price": 270000,
+        "bedrooms": 6,
+        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "propertyUrl": "https://www.primelocation.com/for-sale/details/70237085/?search_identifier=c2c42904a770288f7038653a9bd3e90ed3f47d05bbfbe1deddd96ceebff10c47",
+        "city": "Liverpool",
+        "scrapedAt": "2025-08-06T17:21:40.554Z"
+      },
+      {
+        "id": 383193,
+        "address": "Brookdale Road, Liverpool L15",
+        "price": 255000,
+        "bedrooms": 4,
+        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "propertyUrl": "https://www.primelocation.com/for-sale/details/70630047/?search_identifier=c2c42904a770288f7038653a9bd3e90ed3f47d05bbfbe1deddd96ceebff10c47",
+        "city": "Liverpool",
+        "scrapedAt": "2025-08-06T17:21:40.554Z"
+      },
+      {
+        "id": 624742,
+        "address": "Halsbury Road, Liverpool, Merseyside L6",
+        "price": 250000,
+        "bedrooms": 5,
+        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "propertyUrl": "https://www.primelocation.com/for-sale/details/69956722/?search_identifier=c2c42904a770288f7038653a9bd3e90ed3f47d05bbfbe1deddd96ceebff10c47",
+        "city": "Liverpool",
+        "scrapedAt": "2025-08-06T17:21:40.554Z"
+      },
+      {
+        "id": 813956,
+        "address": "Arkles Lane, Liverpool, Merseyside L4",
+        "price": 250000,
+        "bedrooms": 6,
+        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "propertyUrl": "https://www.primelocation.com/for-sale/details/70660117/?search_identifier=c2c42904a770288f7038653a9bd3e90ed3f47d05bbfbe1deddd96ceebff10c47",
+        "city": "Liverpool",
+        "scrapedAt": "2025-08-06T17:21:40.554Z"
+      },
+      {
+        "id": 821501,
+        "address": "Colebrooke Road, Aigburth, Liverpool L17",
+        "price": 240000,
+        "bedrooms": 6,
+        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "propertyUrl": "https://www.primelocation.com/for-sale/details/67642595/?search_identifier=c2c42904a770288f7038653a9bd3e90ed3f47d05bbfbe1deddd96ceebff10c47",
+        "city": "Liverpool",
+        "scrapedAt": "2025-08-06T17:21:40.554Z"
+      }
+    ]
   }
 }
