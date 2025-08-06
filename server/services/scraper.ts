@@ -1,9 +1,8 @@
 import { spawn } from "child_process";
 import path from "path";
 import crypto from "crypto";
-import { db } from "../db";
-import { properties, searchCache, type Property, type InsertProperty } from "@shared/schema";
-import { eq, and, desc } from "drizzle-orm";
+import fs from "fs/promises";
+import { type Property } from "@shared/schema";
 
 export interface SearchParams {
   city: string;
@@ -12,8 +11,43 @@ export interface SearchParams {
   keywords: string;
 }
 
+interface CachedSearch {
+  searchHash: string;
+  lastScraped: string;
+  properties: Property[];
+}
+
 export class ScrapingService {
   private readonly RATE_LIMIT_MINUTES = 5; // 5 minutes between scraping sessions
+  private readonly CACHE_FILE = path.join(process.cwd(), 'server/data/scrape_cache.json');
+  private cache: Record<string, CachedSearch> = {};
+
+  constructor() {
+    this.loadCache();
+  }
+
+  private async loadCache() {
+    try {
+      // Ensure the data directory exists
+      await fs.mkdir(path.dirname(this.CACHE_FILE), { recursive: true });
+      
+      const data = await fs.readFile(this.CACHE_FILE, 'utf-8');
+      this.cache = JSON.parse(data);
+      console.log('📁 Loaded scrape cache with', Object.keys(this.cache).length, 'entries');
+    } catch (error) {
+      console.log('📁 No existing cache found, starting fresh');
+      this.cache = {};
+    }
+  }
+
+  private async saveCache() {
+    try {
+      await fs.writeFile(this.CACHE_FILE, JSON.stringify(this.cache, null, 2));
+      console.log('💾 Saved scrape cache');
+    } catch (error) {
+      console.error('❌ Error saving cache:', error);
+    }
+  }
 
   private generateSearchHash(params: SearchParams): string {
     const searchString = `${params.city}-${params.minBedrooms}-${params.maxPrice}-${params.keywords}`;
@@ -22,60 +56,30 @@ export class ScrapingService {
 
   async canScrapeNow(params: SearchParams): Promise<boolean> {
     const searchHash = this.generateSearchHash(params);
+    const cached = this.cache[searchHash];
     
-    try {
-      const lastSearch = await db
-        .select()
-        .from(searchCache)
-        .where(eq(searchCache.searchHash, searchHash))
-        .limit(1);
-
-      if (lastSearch.length === 0) {
-        return true; // No previous search found
-      }
-
-      const lastScrapedTime = new Date(lastSearch[0].lastScraped);
-      const now = new Date();
-      const timeDiff = now.getTime() - lastScrapedTime.getTime();
-      const minutesDiff = timeDiff / (1000 * 60);
-
-      return minutesDiff >= this.RATE_LIMIT_MINUTES;
-    } catch (error) {
-      console.error('Error checking scrape rate limit:', error);
-      return false;
+    if (!cached) {
+      return true; // No previous search found
     }
+
+    const lastScrapedTime = new Date(cached.lastScraped);
+    const now = new Date();
+    const timeDiff = now.getTime() - lastScrapedTime.getTime();
+    const minutesDiff = timeDiff / (1000 * 60);
+
+    return minutesDiff >= this.RATE_LIMIT_MINUTES;
   }
 
   async getCachedResults(params: SearchParams): Promise<Property[]> {
     const searchHash = this.generateSearchHash(params);
+    const cached = this.cache[searchHash];
     
-    try {
-      const cachedSearch = await db
-        .select()
-        .from(searchCache)
-        .where(eq(searchCache.searchHash, searchHash))
-        .limit(1);
-
-      if (cachedSearch.length === 0) {
-        return [];
-      }
-
-      // Get properties from the last search
-      const cachedProperties = await db
-        .select()
-        .from(properties)
-        .where(and(
-          eq(properties.city, params.city),
-          eq(properties.bedrooms, params.minBedrooms)
-        ))
-        .orderBy(desc(properties.scrapedAt))
-        .limit(30);
-
-      return cachedProperties;
-    } catch (error) {
-      console.error('Error getting cached results:', error);
+    if (!cached) {
       return [];
     }
+
+    console.log(`📦 Returning ${cached.properties.length} cached properties for ${params.city}`);
+    return cached.properties;
   }
 
   async scrapeProperties(params: SearchParams): Promise<Property[]> {
@@ -89,10 +93,11 @@ export class ScrapingService {
         params.keywords
       ];
 
-      console.log(`Running Python scraper with args:`, args);
+      console.log(`🚀 Pokretam Zoopla scraper za ${params.city}, sobe: ${params.minBedrooms}+, cena: £${params.maxPrice}`);
 
-      const pythonProcess = spawn('python', args, {
-        stdio: ['pipe', 'pipe', 'pipe']
+      const pythonProcess = spawn('python3', args, {
+        stdio: ['pipe', 'pipe', 'pipe'],
+        cwd: process.cwd()
       });
 
       let output = '';
@@ -121,23 +126,21 @@ export class ScrapingService {
           console.log('Raw scraper output (first 500 chars):', output.substring(0, 500));
           
           // Find the JSON part in the output - Python scraper might output debug info before JSON
-          const jsonStart = output.indexOf('{');
+          const jsonStart = output.indexOf('[');
           if (jsonStart === -1) {
-            throw new Error('No JSON found in scraper output');
+            console.log('No JSON array found, trying to find object');
+            const objStart = output.indexOf('{');
+            if (objStart === -1) {
+              throw new Error('No JSON found in scraper output');
+            }
           }
           
-          const jsonOutput = output.substring(jsonStart);
+          const jsonOutput = output.substring(jsonStart !== -1 ? jsonStart : output.indexOf('{'));
           console.log('Extracted JSON (first 200 chars):', jsonOutput.substring(0, 200));
           
           // Parse the JSON output from the Python script
-          const result = JSON.parse(jsonOutput);
-          console.log('Successfully parsed scraper result:', {
-            city: result.city,
-            propertyCount: result.properties?.length || 0,
-            hasProperties: !!result.properties
-          });
-          
-          const scrapedProperties = result.properties;
+          const scrapedProperties = JSON.parse(jsonOutput);
+          console.log(`✅ Successfully parsed ${scrapedProperties.length} properties`);
 
           if (!scrapedProperties || scrapedProperties.length === 0) {
             console.log('No properties found during scraping');
@@ -145,54 +148,31 @@ export class ScrapingService {
             return;
           }
 
-          // Save properties to database
-          const propertiesToInsert: InsertProperty[] = scrapedProperties.map((prop: any) => ({
-            address: prop.address,
-            price: prop.price,
-            bedrooms: prop.bedrooms,
-            bathrooms: prop.bathrooms,
-            imageUrl: prop.image_url,
-            propertyUrl: prop.property_url,
+          // Convert scraped data to Property format
+          const properties: Property[] = scrapedProperties.map((prop: any, index: number) => ({
+            id: Math.floor(Math.random() * 1000000), // Generate random ID
+            address: prop.address || `${prop.title || 'Unknown'}, ${params.city}`,
+            price: parseInt(prop.price?.toString().replace(/[£,]/g, '')) || 0,
+            bedrooms: parseInt(prop.bedrooms?.toString()) || 1,
+            bathrooms: parseInt(prop.bathrooms?.toString()) || 1,
+            imageUrl: prop.image_url || 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80',
+            propertyUrl: prop.property_url || '',
             city: params.city,
-            scrapedAt: prop.scraped_at
+            scrapedAt: new Date().toISOString()
           }));
 
-          // Clear old properties for this city to avoid duplication
-          await db
-            .delete(properties)
-            .where(eq(properties.city, params.city));
-
-          // Insert new properties
-          const insertedProperties = await db
-            .insert(properties)
-            .values(propertiesToInsert)
-            .returning();
-
-          // Update search cache
+          // Cache the results
           const searchHash = this.generateSearchHash(params);
-          const now = new Date().toISOString();
-
-          await db
-            .insert(searchCache)
-            .values({
-              city: params.city,
-              minBedrooms: params.minBedrooms,
-              maxPrice: params.maxPrice,
-              keywords: params.keywords,
-              searchHash,
-              lastScraped: now,
-              resultCount: insertedProperties.length
-            })
-            .onConflictDoUpdate({
-              target: searchCache.searchHash,
-              set: {
-                lastScraped: now,
-                resultCount: insertedProperties.length
-              }
-            });
-
-          console.log(`Successfully scraped and saved ${insertedProperties.length} properties for ${params.city}`);
-          resolve(insertedProperties);
+          this.cache[searchHash] = {
+            searchHash,
+            lastScraped: new Date().toISOString(),
+            properties
+          };
+          
+          await this.saveCache();
+          console.log(`💾 Cached ${properties.length} scraped properties for ${params.city}`);
+          
+          resolve(properties);
 
         } catch (parseError) {
           console.error('Error parsing scraper output:', parseError);
