@@ -43,30 +43,35 @@ def setup_session():
     return session
 
 def build_search_urls(city, min_bedrooms, max_price, keywords):
-    """Napravi URLs za Zoopla i PrimeLocation sa filterima"""
+    """Napravi URLs za Zoopla i PrimeLocation sa filterima u ispravnom formatu"""
     city_slug = city.lower().replace(" ", "-")
     
-    # Zoopla URL
+    # Zoopla URL format: https://www.zoopla.co.uk/for-sale/property/liverpool/?beds_min=1&keywords=HMO&price_max=500000
     zoopla_params = []
     if min_bedrooms:
         zoopla_params.append(f"beds_min={min_bedrooms}")
-    if max_price:
-        zoopla_params.append(f"price_max={max_price}")
     if keywords:
         zoopla_params.append(f"keywords={keywords}")
-        zoopla_params.append(f"q={city}")
-    zoopla_params.append("search_source=for-sale")
+    if max_price:
+        zoopla_params.append(f"price_max={max_price}")
     
     zoopla_url = f"https://www.zoopla.co.uk/for-sale/property/{city_slug}/?" + "&".join(zoopla_params)
     
-    # PrimeLocation URL
+    # PrimeLocation URL format: https://www.primelocation.com/for-sale/property/manchester/?beds_min=1&is_auction=include&is_retirement_home=include&is_shared_ownership=include&keywords=HMO&price_max=500000&q=Manchester&radius=0&results_sort=highest_price&search_source=for-sale
     prime_params = []
     if min_bedrooms:
-        prime_params.append(f"bedrooms={min_bedrooms}")
-    if max_price:
-        prime_params.append(f"maxPrice={max_price}")
-    if keywords and keywords.upper() != 'HMO':
+        prime_params.append(f"beds_min={min_bedrooms}")
+    prime_params.append("is_auction=include")
+    prime_params.append("is_retirement_home=include")
+    prime_params.append("is_shared_ownership=include")
+    if keywords:
         prime_params.append(f"keywords={keywords}")
+    if max_price:
+        prime_params.append(f"price_max={max_price}")
+    prime_params.append(f"q={city}")
+    prime_params.append("radius=0")
+    prime_params.append("results_sort=highest_price")
+    prime_params.append("search_source=for-sale")
     
     prime_url = f"https://www.primelocation.com/for-sale/property/{city_slug}/?" + "&".join(prime_params)
     
@@ -113,6 +118,7 @@ def scrape_properties_with_requests(city, min_bedrooms, max_price, keywords):
             time.sleep(random.uniform(1, 3))
             
             # Pokušaj različite request strategije
+            response = None
             for retry in range(3):
                 try:
                     response = session.get(url, timeout=30, allow_redirects=True)
@@ -140,7 +146,7 @@ def scrape_properties_with_requests(city, min_bedrooms, max_price, keywords):
                     time.sleep(random.uniform(2, 5))
                     continue
                     
-            if response.status_code != 200:
+            if not response or response.status_code != 200:
                 print(f"❌ Failed to get {url} after 3 retries", file=sys.stderr)
                 continue
                 
@@ -204,6 +210,11 @@ def scrape_properties_with_requests(city, min_bedrooms, max_price, keywords):
                 first_listing = listings[0]
                 print(f"🔍 DEBUG: First listing HTML snippet:", file=sys.stderr)
                 print(str(first_listing)[:500], file=sys.stderr)
+                
+                # Debug: Pokušaj da nađeš link u prvom oglasu
+                first_link = first_listing.select_one('a[href*="/details/"]')
+                if first_link:
+                    print(f"🔗 DEBUG: Found details link: {first_link.get('href')}", file=sys.stderr)
             
             # Scrape svaki oglas
             for i, listing in enumerate(listings[:30]):
@@ -308,35 +319,52 @@ def scrape_properties_with_requests(city, min_bedrooms, max_price, keywords):
                         property_data['bedrooms'] = min_bedrooms or random.randint(1, 4)
                     property_data['bathrooms'] = max(1, property_data.get('bedrooms', 1) - 1)
                     
-                    # Link do oglasa
-                    link_selectors = [
-                        'a[href*="/details/"]', 
-                        'a[href*="/property/"]', 
-                        'a[href*="/for-sale/"]',
-                        'a[href*="/houses-for-sale/"]'
-                    ]
+                    # Link do oglasa - proverava da li je ceo element već a tag
+                    property_url = None
                     
-                    for sel in link_selectors:
-                        link_elem = listing.select_one(sel)
-                        if link_elem:
-                            href = link_elem.get('href', '')
-                            if href:
-                                if not href.startswith('http'):
-                                    if 'zoopla' in url:
-                                        href = urljoin('https://www.zoopla.co.uk', href)
-                                    elif 'primelocation' in url:
-                                        href = urljoin('https://www.primelocation.com', href)
-                                property_data['property_url'] = href
-                                break
+                    # Prva opcija: Da li je ceo listing element a tag?
+                    if listing.name == 'a':
+                        href = listing.get('href')
+                        if href and isinstance(href, str):
+                            if not href.startswith('http'):
+                                if 'zoopla' in url:
+                                    property_url = urljoin('https://www.zoopla.co.uk', href)
+                                elif 'primelocation' in url:
+                                    property_url = urljoin('https://www.primelocation.com', href)
+                            else:
+                                property_url = href
                     
-                    if 'property_url' not in property_data:
-                        property_data['property_url'] = url
+                    # Druga opcija: Traži a tag unutar listing elementa
+                    if not property_url:
+                        link_selectors = [
+                            'a[href*="/details/"]', 
+                            'a[href*="/property/"]', 
+                            'a[href*="/for-sale/"]',
+                            'a[href*="/houses-for-sale/"]',
+                            'a[href*="/new-homes/"]'
+                        ]
+                        
+                        for sel in link_selectors:
+                            link_elem = listing.select_one(sel)
+                            if link_elem:
+                                href = link_elem.get('href')
+                                if href and isinstance(href, str):
+                                    if not href.startswith('http'):
+                                        if 'zoopla' in url:
+                                            property_url = urljoin('https://www.zoopla.co.uk', href)
+                                        elif 'primelocation' in url:
+                                            property_url = urljoin('https://www.primelocation.com', href)
+                                    else:
+                                        property_url = href
+                                    break
+                    
+                    property_data['property_url'] = property_url or url
                     
                     # Slika
                     img_elem = listing.select_one('img')
-                    if img_elem and img_elem.get('src'):
+                    if img_elem:
                         img_src = img_elem.get('src')
-                        if img_src and 'placeholder' not in img_src.lower() and (img_src.startswith('http') or img_src.startswith('//')):
+                        if img_src and isinstance(img_src, str) and 'placeholder' not in img_src.lower() and (img_src.startswith('http') or img_src.startswith('//')):
                             if img_src.startswith('//'):
                                 img_src = 'https:' + img_src
                             property_data['image_url'] = img_src

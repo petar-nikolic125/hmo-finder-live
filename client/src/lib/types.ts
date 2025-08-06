@@ -8,6 +8,7 @@ export interface InsertProperty {
   latitude: number;
   longitude: number;
   imageUrl: string;
+  propertyUrl: string;
   primeLocationUrl: string;
   rightmoveUrl: string;
   zooplaUrl: string;

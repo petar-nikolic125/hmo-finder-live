@@ -21,10 +21,26 @@ export const PropertyCard = ({ property, delay = 0 }: PropertyCardProps) => {
     return () => clearTimeout(timer);
   }, [delay]);
 
-  // Portal selection logic (70% Rightmove, 25% Zoopla, 5% PrimeLocation)
+  // Use real scraped property URL if available, otherwise use portal search URLs
   const getPortalUrl = () => {
     console.log('🔗 PropertyCard: Getting portal URL for property:', property.address);
-    console.log('🔗 PropertyCard: Available URLs:', {
+    console.log('🔗 PropertyCard: Property data:', property);
+    console.log('🔗 PropertyCard: propertyUrl field:', property.propertyUrl);
+    console.log('🔗 PropertyCard: Is scraped URL?:', property.propertyUrl && property.propertyUrl.includes('/details/'));
+    
+    // Priority 1: Use real scraped property URL if it exists and points to specific property
+    if (property.propertyUrl && 
+        property.propertyUrl !== '#' &&
+        (property.propertyUrl.includes('/details/') || 
+         property.propertyUrl.includes('/property-for-sale/') ||
+         property.propertyUrl.includes('/for-sale/details/'))) {
+      console.log('🔗 PropertyCard: Using real scraped property URL:', property.propertyUrl);
+      return property.propertyUrl;
+    }
+    
+    // Priority 2: Use portal search URLs (for generated properties)
+    console.log('🔗 PropertyCard: Using portal search URLs - propertyUrl not found or invalid');
+    console.log('🔗 PropertyCard: Available portal URLs:', {
       rightmove: property.rightmoveUrl,
       zoopla: property.zooplaUrl,
       primeLocation: property.primeLocationUrl
@@ -35,30 +51,38 @@ export const PropertyCard = ({ property, delay = 0 }: PropertyCardProps) => {
     if (rand < 0.95 && property.zooplaUrl) return property.zooplaUrl;
     if (property.primeLocationUrl) return property.primeLocationUrl;
     
-    // Fallback if no URLs available
-    return (property as any).propertyUrl || '#';
+    // Fallback
+    return '#';
   };
 
   const getPortalName = (url: string) => {
     if (url.includes('rightmove')) return 'Rightmove';
     if (url.includes('zoopla')) return 'Zoopla';
-    return 'PrimeLocation';
+    if (url.includes('primelocation')) return 'PrimeLocation';
+    return 'View Property';
   };
 
   const portalUrl = getPortalUrl();
   const portalName = getPortalName(portalUrl);
   
-  // Extract hash/identifier from URL for display
+  // Extract identifier from URL for display
   const getUrlIdentifier = (url: string) => {
     try {
       const urlObj = new URL(url);
-      // Show the hash if present, otherwise show a query param
-      if (urlObj.hash) {
-        const hash = urlObj.hash.substring(1); // Remove the # symbol
-        return hash.length > 15 ? `${hash.substring(0, 15)}...` : hash;
+      
+      // For specific property URLs, extract property ID
+      if (url.includes('/details/') || url.includes('/property-for-sale/')) {
+        const pathParts = urlObj.pathname.split('/');
+        const detailsIndex = pathParts.findIndex(part => part === 'details');
+        if (detailsIndex !== -1 && pathParts[detailsIndex + 1]) {
+          return pathParts[detailsIndex + 1];
+        }
       }
+      
+      // For search URLs, show location identifier
       const locationId = urlObj.searchParams.get('locationIdentifier') || 
                         urlObj.searchParams.get('location') || 
+                        urlObj.searchParams.get('search_identifier') ||
                         urlObj.searchParams.get('ref') || 'N/A';
       return locationId.length > 15 ? `${locationId.substring(0, 15)}...` : locationId;
     } catch {
