@@ -44,7 +44,21 @@ def setup_session():
 
 def build_search_urls(city, min_bedrooms, max_price, keywords):
     """Napravi URLs za Zoopla i PrimeLocation sa filterima u ispravnom formatu"""
-    city_slug = city.lower().replace(" ", "-")
+    
+    # Enhanced city mappings for problematic cities
+    city_mappings = {
+        'newcastle': 'newcastle-upon-tyne',
+        'newcastle upon tyne': 'newcastle-upon-tyne',
+        'brighton': 'brighton-and-hove', 
+        'brighton and hove': 'brighton-and-hove',
+        'cambridge': 'cambridge',
+        'leeds': 'leeds',
+        'blackpool': 'blackpool', 
+        'salford': 'salford'
+    }
+    
+    city_lower = city.lower()
+    city_slug = city_mappings.get(city_lower, city_lower.replace(" ", "-"))
     
     # Sanitize price - ensure it's within reasonable bounds
     if max_price:
@@ -55,6 +69,7 @@ def build_search_urls(city, min_bedrooms, max_price, keywords):
         min_bedrooms = max(1, min(10, int(min_bedrooms)))  # Between 1 and 10
     
     print(f"🔧 Building URLs for {city}: bedrooms={min_bedrooms}+, price=£{max_price}, keywords={keywords}", file=sys.stderr)
+    print(f"🎯 Using city slug: {city_slug}", file=sys.stderr)
     
     # Zoopla URL format with enhanced parameters for better results
     zoopla_params = []
@@ -89,20 +104,41 @@ def build_search_urls(city, min_bedrooms, max_price, keywords):
     
     prime_url = f"https://www.primelocation.com/for-sale/property/{city_slug}/?" + "&".join(prime_params)
     
-    # Add alternative search URLs with different sorting for better coverage
+    # Add alternative search URLs with different sorting and parameters for better coverage
     alternative_urls = []
     
-    # Zoopla with different sorting
-    zoopla_params_alt = zoopla_params.copy()
-    zoopla_params_alt.append("results_sort=newest")
-    alt_zoopla_url = f"https://www.zoopla.co.uk/for-sale/property/{city_slug}/?" + "&".join(zoopla_params_alt)
+    # Zoopla alternatives - remove restrictive keywords for broader search
+    zoopla_broad_params = []
+    if min_bedrooms:
+        zoopla_broad_params.append(f"beds_min={min_bedrooms}")
+    if max_price:
+        zoopla_broad_params.append(f"price_max={max_price}")
+    zoopla_broad_params.append("property_type=houses")
+    zoopla_broad_params.append("results_sort=newest")
+    
+    alt_zoopla_url = f"https://www.zoopla.co.uk/for-sale/property/{city_slug}/?" + "&".join(zoopla_broad_params)
     alternative_urls.append(alt_zoopla_url)
     
-    # PrimeLocation with price sorting
-    prime_params_alt = [p for p in prime_params if "results_sort" not in p]
-    prime_params_alt.append("results_sort=price")
-    alt_prime_url = f"https://www.primelocation.com/for-sale/property/{city_slug}/?" + "&".join(prime_params_alt)
+    # PrimeLocation alternatives - broader search without HMO keywords
+    prime_broad_params = []
+    if min_bedrooms:
+        prime_broad_params.append(f"beds_min={min_bedrooms}")
+    if max_price:
+        prime_broad_params.append(f"price_max={max_price}")
+    prime_broad_params.append("propertyType=terraced")
+    prime_broad_params.append("results_sort=price")
+    
+    alt_prime_url = f"https://www.primelocation.com/for-sale/property/{city_slug}/?" + "&".join(prime_broad_params)
     alternative_urls.append(alt_prime_url)
+    
+    # Additional searches for specific problematic cities
+    if city_lower in ['leeds', 'newcastle', 'blackpool', 'cambridge', 'brighton', 'salford']:
+        # Try without bedroom restrictions for these cities
+        zoopla_minimal = f"https://www.zoopla.co.uk/for-sale/property/{city_slug}/?price_max={max_price}&property_type=houses"
+        alternative_urls.append(zoopla_minimal)
+        
+        prime_minimal = f"https://www.primelocation.com/for-sale/property/{city_slug}/?price_max={max_price}&propertyType=terraced"
+        alternative_urls.append(prime_minimal)
     
     print(f"🔗 Generated {len(alternative_urls) + 2} search URLs", file=sys.stderr)
     
