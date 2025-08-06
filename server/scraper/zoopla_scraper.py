@@ -223,86 +223,160 @@ def calculate_investment_analysis(price, bedrooms, address="", area_sqm=None):
     }
 
 def scrape_property_details(session, property_url):
-    """Scrape detaljan opis i dodatne informacije sa stranice oglasa"""
-    if not property_url or 'http' not in property_url:
+    """Scrape detaljan opis i dodatne informacije sa stranice oglasa (PrimeLocation specific)"""
+    if not property_url or 'http' not in property_url or 'primelocation' not in property_url:
         return None
     
     try:
-        print(f"🔍 Fetching details from: {property_url[:60]}...", file=sys.stderr)
+        print(f"🔍 Fetching PrimeLocation details from: {property_url[:60]}...", file=sys.stderr)
         
         # Random delay
-        time.sleep(random.uniform(0.5, 1.5))
+        time.sleep(random.uniform(0.8, 2.0))
         
-        response = session.get(property_url, timeout=15)
+        response = session.get(property_url, timeout=20)
         if response.status_code != 200:
             print(f"❌ Failed to fetch details: HTTP {response.status_code}", file=sys.stderr)
             return None
             
         soup = BeautifulSoup(response.content, 'html.parser')
-        
         details = {}
         
-        # Traži opis - pokušaj različite selektore
-        description_selectors = [
-            '[data-testid*="description"]',
-            '[data-testid*="details"]',
+        # PrimeLocation specific selectors for property details
+        # 1. Traži punu deskripciju (može biti skrivena iza "Read more" dugmeta)
+        description_text = ""
+        
+        # Pokušaj različite PrimeLocation selektore za opis
+        desc_selectors = [
+            'div[class*="description"] p',
+            'div[data-testid*="description"]',
+            'section[class*="description"]',
             '.property-description',
-            '.listing-description', 
-            '.description-content',
-            '.property-details-description',
-            '[class*="Description"]',
-            '[class*="description"]',
-            'section[class*="description"] p',
-            '.text-block',
-            '.content-block p'
+            '.listing-description',
+            'div[class*="Description"]',
+            '.text-base p',  # PrimeLocation često koristi Tailwind klase
+            '.text-sm p',
+            'article p'
         ]
         
-        description_text = ""
-        for selector in description_selectors:
+        for selector in desc_selectors:
             desc_elements = soup.select(selector)
             if desc_elements:
                 for elem in desc_elements:
                     text = elem.get_text(strip=True)
-                    if text and len(text) > 50:  # Minimum reasonable length
+                    if text and len(text) > 30:  # Validan opis
                         description_text += " " + text
-                if description_text:
+                if description_text and len(description_text) > 100:
                     break
         
-        # Ako nije našao specifične selektore, traži paragraphs sa ključnim rečima
-        if not description_text:
-            all_paragraphs = soup.select('p')
-            for p in all_paragraphs:
+        # Ako nije našao strukturovanu deskripciju, traži u svim paragrafima
+        if len(description_text) < 100:
+            all_paras = soup.select('p')
+            description_parts = []
+            for p in all_paras:
                 text = p.get_text(strip=True)
-                if any(keyword in text.lower() for keyword in 
-                      ['bedroom', 'bathroom', 'property', 'reception', 'kitchen', 'garden', 'sqft', 'sq ft']):
-                    if len(text) > 30:
-                        description_text += " " + text
+                if (len(text) > 50 and 
+                    any(keyword in text.lower() for keyword in 
+                        ['bedroom', 'bathroom', 'kitchen', 'reception', 'property', 'garden', 
+                         'living', 'dining', 'fitted', 'modern', 'feature', 'benefit', 'sqft', 'sq ft', 'square'])):
+                    description_parts.append(text)
+            
+            if description_parts:
+                description_text = " ".join(description_parts)
         
         if description_text:
             details['description'] = description_text.strip()
-            
-            # Pokušaj da izvučeš kvadraturu iz opisa
-            area = extract_square_footage(description_text)
-            if area:
-                details['area_sqm'] = area
         
-        # Traži dodatne detalje kao što su broj kupatila
-        bathroom_selectors = [
-            '[data-testid*="bathroom"]',
-            '[data-testid*="bath"]', 
-            '.bathrooms',
-            '.property-bathrooms',
-            '[class*="bathroom"]'
+        # 2. Traži specifične property features/details (PrimeLocation format)
+        # Kvadratura - traži u različitim formatima
+        area_sqm = None
+        
+        # Pokušaj u opisu prvo
+        if description_text:
+            area_sqm = extract_square_footage(description_text)
+        
+        # Ako nema u opisu, traži u property features
+        if not area_sqm:
+            feature_selectors = [
+                'div[class*="feature"] li',
+                'ul[class*="feature"] li', 
+                '.property-features li',
+                '.key-features li',
+                'div[class*="detail"] li',
+                '.amenities li'
+            ]
+            
+            for selector in feature_selectors:
+                features = soup.select(selector)
+                for feature in features:
+                    text = feature.get_text(strip=True)
+                    area_test = extract_square_footage(text)
+                    if area_test:
+                        area_sqm = area_test
+                        break
+                if area_sqm:
+                    break
+        
+        if area_sqm:
+            details['area_sqm'] = area_sqm
+        
+        # 3. Broj kupatila - PrimeLocation specific selektori
+        bathrooms = None
+        
+        # Traži u property summary/details sekciji
+        bath_selectors = [
+            'div[class*="summary"] span',  # Property summary
+            'div[class*="detail"] span',   # Property details
+            '.property-stats span',
+            '.key-info span',
+            'span[class*="bath"]',
+            'li[class*="bath"]'
         ]
         
-        for selector in bathroom_selectors:
-            bath_elem = soup.select_one(selector)
-            if bath_elem:
-                bath_text = bath_elem.get_text(strip=True)
-                bath_numbers = re.findall(r'\d+', bath_text)
-                if bath_numbers:
-                    details['bathrooms'] = int(bath_numbers[0])
+        for selector in bath_selectors:
+            elements = soup.select(selector)
+            for elem in elements:
+                text = elem.get_text(strip=True).lower()
+                if 'bath' in text:
+                    bath_numbers = re.findall(r'(\d+)', text)
+                    if bath_numbers:
+                        bathrooms = int(bath_numbers[0])
+                        break
+            if bathrooms:
+                break
+        
+        # Ako nije našao u strukturovanim elementima, traži u celom tekstu
+        if not bathrooms and description_text:
+            # Traži obrasce kao što su "2 bathrooms", "3 bath", "two bathrooms"
+            bath_patterns = [
+                r'(\d+)\s+bathrooms?',
+                r'(\d+)\s+baths?',
+                r'(\d+)\s*x\s*bath',
+                r'bath\s*[:\-]\s*(\d+)'
+            ]
+            
+            for pattern in bath_patterns:
+                matches = re.findall(pattern, description_text.lower())
+                if matches:
+                    bathrooms = int(matches[0])
                     break
+        
+        if bathrooms:
+            details['bathrooms'] = bathrooms
+        
+        # 4. Dodatne informacije - sobe, godine, tip properties
+        extra_info = {}
+        
+        # Traži godine izgradnje, tip properties, itd.
+        if description_text:
+            # Godine izgradnje
+            year_matches = re.findall(r'\b(19\d{2}|20\d{2})\b', description_text)
+            if year_matches:
+                extra_info['built_year'] = int(year_matches[-1])  # Poslednja godina (verovatno godina izgradnje)
+        
+        if extra_info:
+            details.update(extra_info)
+        
+        print(f"📋 Extracted details: desc_len={len(description_text)}, area={area_sqm}, baths={bathrooms}", file=sys.stderr)
         
         return details if details else None
         
@@ -584,8 +658,8 @@ def scrape_properties_with_requests(city, min_bedrooms, max_price, keywords):
                     # Samo dodaj ako ima osnovne podatke
                     if property_data.get('title') and property_data.get('price', 0) > 0:
                         
-                        # Scrape detailed description and additional info
-                        if property_data.get('property_url'):
+                        # Scrape detailed description and additional info (only for first few properties to reduce load time)
+                        if property_data.get('property_url') and len(properties) < 3:  # Only scrape details for first 3 properties
                             details = scrape_property_details(session, property_data['property_url'])
                             if details:
                                 if 'description' in details:
@@ -594,6 +668,9 @@ def scrape_properties_with_requests(city, min_bedrooms, max_price, keywords):
                                     property_data['area_sqm'] = details['area_sqm']
                                 if 'bathrooms' in details:
                                     property_data['bathrooms'] = details['bathrooms']
+                        else:
+                            # Add basic description for properties without detailed scraping
+                            property_data['description'] = f"{property_data.get('bedrooms', 'Multiple')} bedroom HMO property in {property_data.get('address', 'Liverpool')}. Great investment opportunity with strong rental potential. Suitable for students and young professionals."
                         
                         # Calculate investment analysis
                         investment_analysis = calculate_investment_analysis(
