@@ -70,6 +70,44 @@ export class ScrapingService {
     return minutesDiff >= this.RATE_LIMIT_MINUTES;
   }
 
+  // Enhanced method to find flexible cache matches for dynamic filtering
+  private findFlexibleCacheMatch(params: SearchParams): { key: string; data: Property[] } | null {
+    const targetPrice = params.maxPrice;
+    const targetBedrooms = params.minBedrooms;
+    
+    for (const [key, cached] of Object.entries(this.cache)) {
+      // Parse the cache key to extract parameters
+      const keyParts = key.split('-');
+      if (keyParts.length >= 3 && keyParts[0] === params.city) {
+        try {
+          const cachedBedrooms = parseInt(keyParts[keyParts.length - 2]);
+          const cachedPrice = parseInt(keyParts[keyParts.length - 1]);
+          
+          // Check if parameters are within acceptable range (±20% price, ±1 bedroom)
+          const priceRange = targetPrice * 0.2;
+          const bedroomRange = 1;
+          
+          if (Math.abs(cachedPrice - targetPrice) <= priceRange &&
+              Math.abs(cachedBedrooms - targetBedrooms) <= bedroomRange) {
+            
+            // Check if cache is still fresh
+            const lastScrapedTime = new Date(cached.lastScraped);
+            const now = new Date();
+            const timeDiff = now.getTime() - lastScrapedTime.getTime();
+            const minutesDiff = timeDiff / (1000 * 60);
+            
+            if (minutesDiff < this.RATE_LIMIT_MINUTES) {
+              return { key, data: cached.properties };
+            }
+          }
+        } catch (e) {
+          continue; // Skip malformed cache keys
+        }
+      }
+    }
+    return null;
+  }
+
   async getCachedResults(params: SearchParams): Promise<Property[]> {
     const searchHash = this.generateSearchHash(params);
     const cached = this.cache[searchHash];

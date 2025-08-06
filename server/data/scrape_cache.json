@@ -1,267 +1,267 @@
 {
   "69e2105161a5956300b8bf5843037ed0": {
     "searchHash": "69e2105161a5956300b8bf5843037ed0",
-    "lastScraped": "2025-08-06T21:29:44.392Z",
+    "lastScraped": "2025-08-06T21:29:53.604Z",
     "properties": [
       {
-        "id": 58832,
+        "id": 460523,
         "address": "Ramilies Road, Mossley Hill L18",
         "price": 325000,
         "bedrooms": 5,
         "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
         "propertyUrl": "https://www.primelocation.com/for-sale/details/70233562/?search_identifier=6541506db1474d17d583b16be70c2ab7b0fdedeb652c495ee7f4782061bdf151&featured=true",
         "city": "Liverpool",
-        "scrapedAt": "2025-08-06T21:29:44.392Z"
+        "scrapedAt": "2025-08-06T21:29:53.603Z"
       },
       {
-        "id": 443203,
+        "id": 664861,
         "address": "Norma Road, Liverpool L22",
         "price": 498000,
         "bedrooms": 6,
         "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
         "propertyUrl": "https://www.primelocation.com/for-sale/details/69313971/?search_identifier=6541506db1474d17d583b16be70c2ab7b0fdedeb652c495ee7f4782061bdf151",
         "city": "Liverpool",
-        "scrapedAt": "2025-08-06T21:29:44.392Z"
+        "scrapedAt": "2025-08-06T21:29:53.603Z"
       },
       {
-        "id": 125020,
+        "id": 371636,
         "address": "Leopold Road, Liverpool L7",
         "price": 495000,
         "bedrooms": 6,
         "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
         "propertyUrl": "https://www.primelocation.com/for-sale/details/69929912/?search_identifier=6541506db1474d17d583b16be70c2ab7b0fdedeb652c495ee7f4782061bdf151",
         "city": "Liverpool",
-        "scrapedAt": "2025-08-06T21:29:44.392Z"
+        "scrapedAt": "2025-08-06T21:29:53.603Z"
       },
       {
-        "id": 852068,
+        "id": 593009,
         "address": "Grove Street, Edge Hill, Liverpool, Merseyside L7",
         "price": 490000,
         "bedrooms": 5,
         "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
         "propertyUrl": "https://www.primelocation.com/for-sale/details/70155507/?search_identifier=6541506db1474d17d583b16be70c2ab7b0fdedeb652c495ee7f4782061bdf151",
         "city": "Liverpool",
-        "scrapedAt": "2025-08-06T21:29:44.392Z"
+        "scrapedAt": "2025-08-06T21:29:53.603Z"
       },
       {
-        "id": 959649,
+        "id": 151168,
         "address": "Seymour Street, Liverpool, Merseyside L3",
         "price": 485000,
         "bedrooms": 5,
         "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
         "propertyUrl": "https://www.primelocation.com/for-sale/details/68134798/?search_identifier=6541506db1474d17d583b16be70c2ab7b0fdedeb652c495ee7f4782061bdf151",
         "city": "Liverpool",
-        "scrapedAt": "2025-08-06T21:29:44.392Z"
+        "scrapedAt": "2025-08-06T21:29:53.603Z"
       },
       {
-        "id": 245264,
+        "id": 535902,
         "address": "Halkyn Avenue, Liverpool, Merseyside L17",
         "price": 475000,
         "bedrooms": 7,
         "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
         "propertyUrl": "https://www.primelocation.com/for-sale/details/67835487/?search_identifier=6541506db1474d17d583b16be70c2ab7b0fdedeb652c495ee7f4782061bdf151",
         "city": "Liverpool",
-        "scrapedAt": "2025-08-06T21:29:44.392Z"
+        "scrapedAt": "2025-08-06T21:29:53.603Z"
       },
       {
-        "id": 537091,
+        "id": 298721,
         "address": "Newsham Drive, Liverpool, Merseyside L6",
         "price": 430000,
         "bedrooms": 9,
         "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
         "propertyUrl": "https://www.primelocation.com/for-sale/details/70064888/?search_identifier=6541506db1474d17d583b16be70c2ab7b0fdedeb652c495ee7f4782061bdf151",
         "city": "Liverpool",
-        "scrapedAt": "2025-08-06T21:29:44.392Z"
+        "scrapedAt": "2025-08-06T21:29:53.603Z"
       },
       {
-        "id": 454409,
+        "id": 143018,
         "address": "Rutland Avenue, Sefton Park, Liverpool, Merseyside L17",
         "price": 425000,
         "bedrooms": 6,
         "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
         "propertyUrl": "https://www.primelocation.com/for-sale/details/70862281/?search_identifier=6541506db1474d17d583b16be70c2ab7b0fdedeb652c495ee7f4782061bdf151",
         "city": "Liverpool",
-        "scrapedAt": "2025-08-06T21:29:44.392Z"
+        "scrapedAt": "2025-08-06T21:29:53.603Z"
       },
       {
-        "id": 226988,
+        "id": 872756,
         "address": "Jubilee Drive, Liverpool L7",
         "price": 395000,
         "bedrooms": 5,
         "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
         "propertyUrl": "https://www.primelocation.com/for-sale/details/70280366/?search_identifier=6541506db1474d17d583b16be70c2ab7b0fdedeb652c495ee7f4782061bdf151",
         "city": "Liverpool",
-        "scrapedAt": "2025-08-06T21:29:44.392Z"
+        "scrapedAt": "2025-08-06T21:29:53.603Z"
       },
       {
-        "id": 573901,
+        "id": 610456,
         "address": "Sandown Lane, Liverpool, Merseyside L15",
         "price": 380000,
         "bedrooms": 8,
         "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
         "propertyUrl": "https://www.primelocation.com/for-sale/details/67913721/?search_identifier=6541506db1474d17d583b16be70c2ab7b0fdedeb652c495ee7f4782061bdf151",
         "city": "Liverpool",
-        "scrapedAt": "2025-08-06T21:29:44.392Z"
+        "scrapedAt": "2025-08-06T21:29:53.603Z"
       },
       {
-        "id": 573597,
+        "id": 710079,
         "address": "Gilroy Road, Liverpool L6",
         "price": 360000,
         "bedrooms": 6,
         "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
         "propertyUrl": "https://www.primelocation.com/for-sale/details/69868972/?search_identifier=6541506db1474d17d583b16be70c2ab7b0fdedeb652c495ee7f4782061bdf151",
         "city": "Liverpool",
-        "scrapedAt": "2025-08-06T21:29:44.392Z"
+        "scrapedAt": "2025-08-06T21:29:53.603Z"
       },
       {
-        "id": 57601,
+        "id": 441482,
         "address": "Arkles Lane, Liverpool, Merseyside L4",
         "price": 350000,
         "bedrooms": 8,
         "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
         "propertyUrl": "https://www.primelocation.com/for-sale/details/70887293/?search_identifier=6541506db1474d17d583b16be70c2ab7b0fdedeb652c495ee7f4782061bdf151",
         "city": "Liverpool",
-        "scrapedAt": "2025-08-06T21:29:44.392Z"
+        "scrapedAt": "2025-08-06T21:29:53.603Z"
       },
       {
-        "id": 296859,
+        "id": 155346,
         "address": "Ramilies Road, Mossley Hill L18",
         "price": 325000,
         "bedrooms": 5,
         "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
         "propertyUrl": "https://www.primelocation.com/for-sale/details/70233562/?search_identifier=6541506db1474d17d583b16be70c2ab7b0fdedeb652c495ee7f4782061bdf151",
         "city": "Liverpool",
-        "scrapedAt": "2025-08-06T21:29:44.392Z"
+        "scrapedAt": "2025-08-06T21:29:53.603Z"
       },
       {
-        "id": 539695,
+        "id": 538057,
         "address": "Spellow Lane, Liverpool L4",
         "price": 310000,
         "bedrooms": 6,
         "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
         "propertyUrl": "https://www.primelocation.com/for-sale/details/70380672/?search_identifier=6541506db1474d17d583b16be70c2ab7b0fdedeb652c495ee7f4782061bdf151",
         "city": "Liverpool",
-        "scrapedAt": "2025-08-06T21:29:44.392Z"
+        "scrapedAt": "2025-08-06T21:29:53.603Z"
       },
       {
-        "id": 764578,
+        "id": 617222,
         "address": "Russell Road, Mossley Hill, Liverpool L18",
         "price": 300000,
         "bedrooms": 3,
         "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
         "propertyUrl": "https://www.primelocation.com/for-sale/details/70109958/?search_identifier=6541506db1474d17d583b16be70c2ab7b0fdedeb652c495ee7f4782061bdf151",
         "city": "Liverpool",
-        "scrapedAt": "2025-08-06T21:29:44.392Z"
+        "scrapedAt": "2025-08-06T21:29:53.603Z"
       },
       {
-        "id": 464806,
+        "id": 272787,
         "address": "Molyneux Road, Kensington, Liverpool L6",
         "price": 300000,
         "bedrooms": 7,
         "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
         "propertyUrl": "https://www.primelocation.com/for-sale/details/70619866/?search_identifier=6541506db1474d17d583b16be70c2ab7b0fdedeb652c495ee7f4782061bdf151",
         "city": "Liverpool",
-        "scrapedAt": "2025-08-06T21:29:44.392Z"
+        "scrapedAt": "2025-08-06T21:29:53.603Z"
       },
       {
-        "id": 613453,
+        "id": 947419,
         "address": "Bagot Street, Liverpool L15",
         "price": 300000,
         "bedrooms": 5,
         "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
         "propertyUrl": "https://www.primelocation.com/for-sale/details/70664714/?search_identifier=6541506db1474d17d583b16be70c2ab7b0fdedeb652c495ee7f4782061bdf151",
         "city": "Liverpool",
-        "scrapedAt": "2025-08-06T21:29:44.392Z"
+        "scrapedAt": "2025-08-06T21:29:53.603Z"
       },
       {
-        "id": 849734,
+        "id": 359768,
         "address": "Molyneux Road, Kensington, Liverpool L6",
         "price": 300000,
         "bedrooms": 7,
         "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
         "propertyUrl": "https://www.primelocation.com/for-sale/details/70776511/?search_identifier=6541506db1474d17d583b16be70c2ab7b0fdedeb652c495ee7f4782061bdf151",
         "city": "Liverpool",
-        "scrapedAt": "2025-08-06T21:29:44.392Z"
+        "scrapedAt": "2025-08-06T21:29:53.603Z"
       },
       {
-        "id": 592028,
+        "id": 429702,
         "address": "Island Road, Garston, Liverpool L19",
         "price": 295000,
         "bedrooms": 5,
         "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
         "propertyUrl": "https://www.primelocation.com/for-sale/details/69376819/?search_identifier=6541506db1474d17d583b16be70c2ab7b0fdedeb652c495ee7f4782061bdf151",
         "city": "Liverpool",
-        "scrapedAt": "2025-08-06T21:29:44.392Z"
+        "scrapedAt": "2025-08-06T21:29:53.603Z"
       },
       {
-        "id": 676392,
+        "id": 283250,
         "address": "Albany Road, Kensington, Liverpool L7",
         "price": 295000,
         "bedrooms": 5,
         "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
         "propertyUrl": "https://www.primelocation.com/for-sale/details/70884572/?search_identifier=6541506db1474d17d583b16be70c2ab7b0fdedeb652c495ee7f4782061bdf151",
         "city": "Liverpool",
-        "scrapedAt": "2025-08-06T21:29:44.392Z"
+        "scrapedAt": "2025-08-06T21:29:53.603Z"
       },
       {
-        "id": 103762,
+        "id": 716099,
         "address": "Esher Road, Kensington, Liverpool L6",
         "price": 295000,
         "bedrooms": 6,
         "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
         "propertyUrl": "https://www.primelocation.com/for-sale/details/70934109/?search_identifier=6541506db1474d17d583b16be70c2ab7b0fdedeb652c495ee7f4782061bdf151",
         "city": "Liverpool",
-        "scrapedAt": "2025-08-06T21:29:44.392Z"
+        "scrapedAt": "2025-08-06T21:29:53.603Z"
       },
       {
-        "id": 709404,
+        "id": 891625,
         "address": "Sheil Road, Kensington, Liverpool L6",
         "price": 270000,
         "bedrooms": 6,
         "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
         "propertyUrl": "https://www.primelocation.com/for-sale/details/70237085/?search_identifier=6541506db1474d17d583b16be70c2ab7b0fdedeb652c495ee7f4782061bdf151",
         "city": "Liverpool",
-        "scrapedAt": "2025-08-06T21:29:44.392Z"
+        "scrapedAt": "2025-08-06T21:29:53.603Z"
       },
       {
-        "id": 687129,
+        "id": 747520,
         "address": "Brookdale Road, Liverpool L15",
         "price": 255000,
         "bedrooms": 4,
         "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
         "propertyUrl": "https://www.primelocation.com/for-sale/details/70630047/?search_identifier=6541506db1474d17d583b16be70c2ab7b0fdedeb652c495ee7f4782061bdf151",
         "city": "Liverpool",
-        "scrapedAt": "2025-08-06T21:29:44.392Z"
+        "scrapedAt": "2025-08-06T21:29:53.603Z"
       },
       {
-        "id": 251907,
+        "id": 802035,
         "address": "Halsbury Road, Liverpool, Merseyside L6",
         "price": 250000,
         "bedrooms": 5,
         "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
         "propertyUrl": "https://www.primelocation.com/for-sale/details/69956722/?search_identifier=6541506db1474d17d583b16be70c2ab7b0fdedeb652c495ee7f4782061bdf151",
         "city": "Liverpool",
-        "scrapedAt": "2025-08-06T21:29:44.392Z"
+        "scrapedAt": "2025-08-06T21:29:53.603Z"
       },
       {
-        "id": 594432,
+        "id": 326467,
         "address": "Arkles Lane, Liverpool, Merseyside L4",
         "price": 250000,
         "bedrooms": 6,
         "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
         "propertyUrl": "https://www.primelocation.com/for-sale/details/70660117/?search_identifier=6541506db1474d17d583b16be70c2ab7b0fdedeb652c495ee7f4782061bdf151",
         "city": "Liverpool",
-        "scrapedAt": "2025-08-06T21:29:44.392Z"
+        "scrapedAt": "2025-08-06T21:29:53.603Z"
       },
       {
-        "id": 266287,
+        "id": 999360,
         "address": "Colebrooke Road, Aigburth, Liverpool L17",
         "price": 240000,
         "bedrooms": 6,
         "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
         "propertyUrl": "https://www.primelocation.com/for-sale/details/67642595/?search_identifier=6541506db1474d17d583b16be70c2ab7b0fdedeb652c495ee7f4782061bdf151",
         "city": "Liverpool",
-        "scrapedAt": "2025-08-06T21:29:44.392Z"
+        "scrapedAt": "2025-08-06T21:29:53.603Z"
       }
     ]
   },
@@ -3959,139 +3959,139 @@
   },
   "49a9e49df07f50e7ddf6e2e3bcf33fe2": {
     "searchHash": "49a9e49df07f50e7ddf6e2e3bcf33fe2",
-    "lastScraped": "2025-08-06T21:09:02.296Z",
+    "lastScraped": "2025-08-06T21:31:46.846Z",
     "properties": [
       {
-        "id": 134023,
-        "address": "182 Wellington Street, Leeds",
-        "price": 383952,
-        "bedrooms": 5,
-        "bathrooms": 4,
-        "imageUrl": "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800&h=600&fit=crop&crop=entropy&q=80",
-        "propertyUrl": "https://www.zoopla.co.uk/for-sale/details/73225843",
-        "city": "Leeds",
-        "scrapedAt": "2025-08-06T21:09:02.296Z"
-      },
-      {
-        "id": 285099,
-        "address": "114 Otley Road, Leeds",
-        "price": 455143,
-        "bedrooms": 5,
-        "bathrooms": 3,
-        "imageUrl": "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800&h=600&fit=crop&crop=entropy&q=80",
-        "propertyUrl": "https://www.zoopla.co.uk/for-sale/details/90640019",
-        "city": "Leeds",
-        "scrapedAt": "2025-08-06T21:09:02.296Z"
-      },
-      {
-        "id": 323471,
-        "address": "163 Otley Road, Leeds",
-        "price": 353719,
-        "bedrooms": 5,
-        "bathrooms": 4,
-        "imageUrl": "https://images.unsplash.com/photo-1493809842364-78817add7ffb?w=800&h=600&fit=crop&crop=entropy&q=80",
-        "propertyUrl": "https://www.zoopla.co.uk/for-sale/details/34538919",
-        "city": "Leeds",
-        "scrapedAt": "2025-08-06T21:09:02.296Z"
-      },
-      {
-        "id": 161950,
-        "address": "147 Headingley Lane, Leeds",
-        "price": 399522,
-        "bedrooms": 1,
-        "bathrooms": 1,
-        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
-        "propertyUrl": "https://www.zoopla.co.uk/for-sale/details/75416345",
-        "city": "Leeds",
-        "scrapedAt": "2025-08-06T21:09:02.296Z"
-      },
-      {
-        "id": 642720,
-        "address": "93 Wellington Street, Leeds",
-        "price": 391006,
-        "bedrooms": 1,
-        "bathrooms": 1,
-        "imageUrl": "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800&h=600&fit=crop&crop=entropy&q=80",
-        "propertyUrl": "https://www.zoopla.co.uk/for-sale/details/95206720",
-        "city": "Leeds",
-        "scrapedAt": "2025-08-06T21:09:02.296Z"
-      },
-      {
-        "id": 6524,
-        "address": "137 Otley Road, Leeds",
-        "price": 396274,
-        "bedrooms": 1,
-        "bathrooms": 1,
-        "imageUrl": "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800&h=600&fit=crop&crop=entropy&q=80",
-        "propertyUrl": "https://www.zoopla.co.uk/for-sale/details/66389981",
-        "city": "Leeds",
-        "scrapedAt": "2025-08-06T21:09:02.296Z"
-      },
-      {
-        "id": 529400,
-        "address": "123 Wellington Street, Leeds",
-        "price": 349418,
+        "id": 852105,
+        "address": "39 Otley Road, Leeds",
+        "price": 486739,
         "bedrooms": 2,
         "bathrooms": 1,
         "imageUrl": "https://images.unsplash.com/photo-1493809842364-78817add7ffb?w=800&h=600&fit=crop&crop=entropy&q=80",
-        "propertyUrl": "https://www.zoopla.co.uk/for-sale/details/37092137",
+        "propertyUrl": "https://www.zoopla.co.uk/for-sale/details/63730573",
         "city": "Leeds",
-        "scrapedAt": "2025-08-06T21:09:02.296Z"
+        "scrapedAt": "2025-08-06T21:31:46.846Z"
       },
       {
-        "id": 82470,
-        "address": "195 Wellington Street, Leeds",
-        "price": 319170,
+        "id": 612741,
+        "address": "56 Wellington Street, Leeds",
+        "price": 320863,
+        "bedrooms": 2,
+        "bathrooms": 1,
+        "imageUrl": "https://images.unsplash.com/photo-1493809842364-78817add7ffb?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "propertyUrl": "https://www.zoopla.co.uk/for-sale/details/73326882",
+        "city": "Leeds",
+        "scrapedAt": "2025-08-06T21:31:46.846Z"
+      },
+      {
+        "id": 782632,
+        "address": "139 Otley Road, Leeds",
+        "price": 442815,
+        "bedrooms": 3,
+        "bathrooms": 2,
+        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "propertyUrl": "https://www.zoopla.co.uk/for-sale/details/10314842",
+        "city": "Leeds",
+        "scrapedAt": "2025-08-06T21:31:46.846Z"
+      },
+      {
+        "id": 135187,
+        "address": "152 Kirkstall Road, Leeds",
+        "price": 470638,
         "bedrooms": 4,
-        "bathrooms": 4,
+        "bathrooms": 2,
         "imageUrl": "https://images.unsplash.com/photo-1493809842364-78817add7ffb?w=800&h=600&fit=crop&crop=entropy&q=80",
-        "propertyUrl": "https://www.zoopla.co.uk/for-sale/details/79052780",
+        "propertyUrl": "https://www.zoopla.co.uk/for-sale/details/38020257",
         "city": "Leeds",
-        "scrapedAt": "2025-08-06T21:09:02.296Z"
+        "scrapedAt": "2025-08-06T21:31:46.846Z"
       },
       {
-        "id": 389573,
-        "address": "101 Meanwood Road, Leeds",
-        "price": 399386,
-        "bedrooms": 5,
-        "bathrooms": 5,
-        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
-        "propertyUrl": "https://www.zoopla.co.uk/for-sale/details/63824323",
+        "id": 443261,
+        "address": "166 Burley Road, Leeds",
+        "price": 337929,
+        "bedrooms": 2,
+        "bathrooms": 2,
+        "imageUrl": "https://images.unsplash.com/photo-1493809842364-78817add7ffb?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "propertyUrl": "https://www.zoopla.co.uk/for-sale/details/54799293",
         "city": "Leeds",
-        "scrapedAt": "2025-08-06T21:09:02.296Z"
+        "scrapedAt": "2025-08-06T21:31:46.846Z"
       },
       {
-        "id": 41744,
-        "address": "145 Burley Road, Leeds",
-        "price": 461654,
+        "id": 894149,
+        "address": "7 Meanwood Road, Leeds",
+        "price": 310761,
+        "bedrooms": 1,
+        "bathrooms": 1,
+        "imageUrl": "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "propertyUrl": "https://www.zoopla.co.uk/for-sale/details/63281625",
+        "city": "Leeds",
+        "scrapedAt": "2025-08-06T21:31:46.846Z"
+      },
+      {
+        "id": 289610,
+        "address": "158 Meanwood Road, Leeds",
+        "price": 460199,
+        "bedrooms": 2,
+        "bathrooms": 2,
+        "imageUrl": "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "propertyUrl": "https://www.zoopla.co.uk/for-sale/details/47723319",
+        "city": "Leeds",
+        "scrapedAt": "2025-08-06T21:31:46.846Z"
+      },
+      {
+        "id": 583198,
+        "address": "148 Kirkstall Road, Leeds",
+        "price": 403402,
         "bedrooms": 2,
         "bathrooms": 1,
-        "imageUrl": "https://images.unsplash.com/photo-1493809842364-78817add7ffb?w=800&h=600&fit=crop&crop=entropy&q=80",
-        "propertyUrl": "https://www.zoopla.co.uk/for-sale/details/16528106",
+        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "propertyUrl": "https://www.zoopla.co.uk/for-sale/details/27005919",
         "city": "Leeds",
-        "scrapedAt": "2025-08-06T21:09:02.296Z"
+        "scrapedAt": "2025-08-06T21:31:46.846Z"
       },
       {
-        "id": 274784,
-        "address": "57 Burley Road, Leeds",
-        "price": 318634,
+        "id": 754158,
+        "address": "130 Wellington Street, Leeds",
+        "price": 430673,
+        "bedrooms": 3,
+        "bathrooms": 3,
+        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "propertyUrl": "https://www.zoopla.co.uk/for-sale/details/65113795",
+        "city": "Leeds",
+        "scrapedAt": "2025-08-06T21:31:46.846Z"
+      },
+      {
+        "id": 572183,
+        "address": "141 Hyde Park Road, Leeds",
+        "price": 350321,
+        "bedrooms": 1,
+        "bathrooms": 1,
+        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "propertyUrl": "https://www.zoopla.co.uk/for-sale/details/85399584",
+        "city": "Leeds",
+        "scrapedAt": "2025-08-06T21:31:46.846Z"
+      },
+      {
+        "id": 758122,
+        "address": "142 Otley Road, Leeds",
+        "price": 355086,
+        "bedrooms": 1,
+        "bathrooms": 1,
+        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "propertyUrl": "https://www.zoopla.co.uk/for-sale/details/26445357",
+        "city": "Leeds",
+        "scrapedAt": "2025-08-06T21:31:46.846Z"
+      },
+      {
+        "id": 326207,
+        "address": "106 Headingley Lane, Leeds",
+        "price": 397245,
         "bedrooms": 6,
         "bathrooms": 6,
-        "imageUrl": "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800&h=600&fit=crop&crop=entropy&q=80",
-        "propertyUrl": "https://www.zoopla.co.uk/for-sale/details/56703550",
+        "imageUrl": "https://images.unsplash.com/photo-1493809842364-78817add7ffb?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "propertyUrl": "https://www.zoopla.co.uk/for-sale/details/57292372",
         "city": "Leeds",
-        "scrapedAt": "2025-08-06T21:09:02.296Z"
-      },
-      {
-        "id": 422018,
-        "address": "8 Otley Road, Leeds",
-        "price": 351667,
-        "bedrooms": 5,
-        "bathrooms": 5,
-        "imageUrl": "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800&h=600&fit=crop&crop=entropy&q=80",
-        "propertyUrl": "https://www.zoopla.co.uk/for-sale/details/58515096",
-        "city": "Leeds",
-        "scrapedAt": "2025-08-06T21:09:02.296Z"
+        "scrapedAt": "2025-08-06T21:31:46.846Z"
       }
     ]
   },
@@ -6205,139 +6205,139 @@
   },
   "a72d9b730a82da7163f8fe53a7c78266": {
     "searchHash": "a72d9b730a82da7163f8fe53a7c78266",
-    "lastScraped": "2025-08-06T21:20:03.556Z",
+    "lastScraped": "2025-08-06T21:38:21.085Z",
     "properties": [
       {
-        "id": 417718,
-        "address": "200 Newmarket Road, Cambridge",
-        "price": 484538,
-        "bedrooms": 6,
-        "bathrooms": 6,
-        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
-        "propertyUrl": "https://www.zoopla.co.uk/for-sale/details/29426271",
+        "id": 640249,
+        "address": "195 Newmarket Road, Cambridge",
+        "price": 463569,
+        "bedrooms": 1,
+        "bathrooms": 1,
+        "imageUrl": "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "propertyUrl": "https://www.zoopla.co.uk/for-sale/details/14432312",
         "city": "Cambridge",
-        "scrapedAt": "2025-08-06T21:20:03.556Z"
+        "scrapedAt": "2025-08-06T21:38:21.084Z"
       },
       {
-        "id": 333605,
-        "address": "32 Newmarket Road, Cambridge",
-        "price": 334451,
+        "id": 566390,
+        "address": "49 Huntingdon Road, Cambridge",
+        "price": 337234,
+        "bedrooms": 5,
+        "bathrooms": 5,
+        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "propertyUrl": "https://www.zoopla.co.uk/for-sale/details/41203692",
+        "city": "Cambridge",
+        "scrapedAt": "2025-08-06T21:38:21.084Z"
+      },
+      {
+        "id": 535212,
+        "address": "8 Huntingdon Road, Cambridge",
+        "price": 497686,
+        "bedrooms": 5,
+        "bathrooms": 3,
+        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "propertyUrl": "https://www.zoopla.co.uk/for-sale/details/86645165",
+        "city": "Cambridge",
+        "scrapedAt": "2025-08-06T21:38:21.084Z"
+      },
+      {
+        "id": 576164,
+        "address": "108 Hills Road, Cambridge",
+        "price": 329165,
+        "bedrooms": 1,
+        "bathrooms": 1,
+        "imageUrl": "https://images.unsplash.com/photo-1493809842364-78817add7ffb?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "propertyUrl": "https://www.zoopla.co.uk/for-sale/details/88858535",
+        "city": "Cambridge",
+        "scrapedAt": "2025-08-06T21:38:21.084Z"
+      },
+      {
+        "id": 292004,
+        "address": "179 Newmarket Road, Cambridge",
+        "price": 405696,
         "bedrooms": 4,
-        "bathrooms": 3,
-        "imageUrl": "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800&h=600&fit=crop&crop=entropy&q=80",
-        "propertyUrl": "https://www.zoopla.co.uk/for-sale/details/94037683",
-        "city": "Cambridge",
-        "scrapedAt": "2025-08-06T21:20:03.556Z"
-      },
-      {
-        "id": 992739,
-        "address": "103 Newmarket Road, Cambridge",
-        "price": 345804,
-        "bedrooms": 6,
-        "bathrooms": 6,
+        "bathrooms": 2,
         "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
-        "propertyUrl": "https://www.zoopla.co.uk/for-sale/details/91297072",
+        "propertyUrl": "https://www.zoopla.co.uk/for-sale/details/97472027",
         "city": "Cambridge",
-        "scrapedAt": "2025-08-06T21:20:03.556Z"
+        "scrapedAt": "2025-08-06T21:38:21.084Z"
       },
       {
-        "id": 885771,
-        "address": "7 Newmarket Road, Cambridge",
-        "price": 312968,
+        "id": 967293,
+        "address": "70 Mill Road, Cambridge",
+        "price": 403041,
         "bedrooms": 3,
-        "bathrooms": 3,
-        "imageUrl": "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800&h=600&fit=crop&crop=entropy&q=80",
-        "propertyUrl": "https://www.zoopla.co.uk/for-sale/details/76212442",
+        "bathrooms": 1,
+        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "propertyUrl": "https://www.zoopla.co.uk/for-sale/details/33267981",
         "city": "Cambridge",
-        "scrapedAt": "2025-08-06T21:20:03.556Z"
+        "scrapedAt": "2025-08-06T21:38:21.084Z"
       },
       {
-        "id": 302464,
-        "address": "163 Kings Parade, Cambridge",
-        "price": 330605,
+        "id": 790814,
+        "address": "127 Kings Parade, Cambridge",
+        "price": 343286,
         "bedrooms": 1,
         "bathrooms": 1,
         "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
-        "propertyUrl": "https://www.zoopla.co.uk/for-sale/details/88083009",
+        "propertyUrl": "https://www.zoopla.co.uk/for-sale/details/89537306",
         "city": "Cambridge",
-        "scrapedAt": "2025-08-06T21:20:03.556Z"
+        "scrapedAt": "2025-08-06T21:38:21.084Z"
       },
       {
-        "id": 98303,
-        "address": "111 Mill Road, Cambridge",
-        "price": 453950,
-        "bedrooms": 1,
-        "bathrooms": 1,
-        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
-        "propertyUrl": "https://www.zoopla.co.uk/for-sale/details/87435837",
-        "city": "Cambridge",
-        "scrapedAt": "2025-08-06T21:20:03.556Z"
-      },
-      {
-        "id": 547919,
-        "address": "84 Kings Parade, Cambridge",
-        "price": 401494,
-        "bedrooms": 3,
+        "id": 435928,
+        "address": "163 Newmarket Road, Cambridge",
+        "price": 413428,
+        "bedrooms": 4,
         "bathrooms": 2,
         "imageUrl": "https://images.unsplash.com/photo-1493809842364-78817add7ffb?w=800&h=600&fit=crop&crop=entropy&q=80",
-        "propertyUrl": "https://www.zoopla.co.uk/for-sale/details/71019989",
+        "propertyUrl": "https://www.zoopla.co.uk/for-sale/details/50443432",
         "city": "Cambridge",
-        "scrapedAt": "2025-08-06T21:20:03.556Z"
+        "scrapedAt": "2025-08-06T21:38:21.084Z"
       },
       {
-        "id": 926711,
-        "address": "11 Hills Road, Cambridge",
-        "price": 358896,
-        "bedrooms": 3,
-        "bathrooms": 1,
-        "imageUrl": "https://images.unsplash.com/photo-1493809842364-78817add7ffb?w=800&h=600&fit=crop&crop=entropy&q=80",
-        "propertyUrl": "https://www.zoopla.co.uk/for-sale/details/39804245",
-        "city": "Cambridge",
-        "scrapedAt": "2025-08-06T21:20:03.556Z"
-      },
-      {
-        "id": 415597,
-        "address": "143 Huntingdon Road, Cambridge",
-        "price": 378118,
+        "id": 975059,
+        "address": "134 Cherry Hinton Road, Cambridge",
+        "price": 379429,
         "bedrooms": 4,
-        "bathrooms": 3,
+        "bathrooms": 4,
         "imageUrl": "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800&h=600&fit=crop&crop=entropy&q=80",
-        "propertyUrl": "https://www.zoopla.co.uk/for-sale/details/48238965",
+        "propertyUrl": "https://www.zoopla.co.uk/for-sale/details/79423093",
         "city": "Cambridge",
-        "scrapedAt": "2025-08-06T21:20:03.556Z"
+        "scrapedAt": "2025-08-06T21:38:21.084Z"
       },
       {
-        "id": 468965,
-        "address": "50 Newmarket Road, Cambridge",
-        "price": 442539,
-        "bedrooms": 5,
-        "bathrooms": 3,
-        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
-        "propertyUrl": "https://www.zoopla.co.uk/for-sale/details/53006744",
-        "city": "Cambridge",
-        "scrapedAt": "2025-08-06T21:20:03.556Z"
-      },
-      {
-        "id": 914697,
-        "address": "138 Newmarket Road, Cambridge",
-        "price": 459583,
-        "bedrooms": 5,
-        "bathrooms": 5,
-        "imageUrl": "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800&h=600&fit=crop&crop=entropy&q=80",
-        "propertyUrl": "https://www.zoopla.co.uk/for-sale/details/20892505",
-        "city": "Cambridge",
-        "scrapedAt": "2025-08-06T21:20:03.556Z"
-      },
-      {
-        "id": 221411,
-        "address": "29 Mill Road, Cambridge",
-        "price": 316686,
+        "id": 851986,
+        "address": "68 Mill Road, Cambridge",
+        "price": 410252,
         "bedrooms": 6,
-        "bathrooms": 5,
-        "imageUrl": "https://images.unsplash.com/photo-1493809842364-78817add7ffb?w=800&h=600&fit=crop&crop=entropy&q=80",
-        "propertyUrl": "https://www.zoopla.co.uk/for-sale/details/74980117",
+        "bathrooms": 4,
+        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "propertyUrl": "https://www.zoopla.co.uk/for-sale/details/70369513",
         "city": "Cambridge",
-        "scrapedAt": "2025-08-06T21:20:03.556Z"
+        "scrapedAt": "2025-08-06T21:38:21.084Z"
+      },
+      {
+        "id": 195375,
+        "address": "139 Hills Road, Cambridge",
+        "price": 324297,
+        "bedrooms": 1,
+        "bathrooms": 1,
+        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "propertyUrl": "https://www.zoopla.co.uk/for-sale/details/71285670",
+        "city": "Cambridge",
+        "scrapedAt": "2025-08-06T21:38:21.084Z"
+      },
+      {
+        "id": 999461,
+        "address": "114 Cherry Hinton Road, Cambridge",
+        "price": 463376,
+        "bedrooms": 5,
+        "bathrooms": 5,
+        "imageUrl": "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "propertyUrl": "https://www.zoopla.co.uk/for-sale/details/68752247",
+        "city": "Cambridge",
+        "scrapedAt": "2025-08-06T21:38:21.084Z"
       }
     ]
   },

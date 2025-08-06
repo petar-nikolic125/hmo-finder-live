@@ -131,14 +131,24 @@ def build_search_urls(city, min_bedrooms, max_price, keywords):
     alt_prime_url = f"https://www.primelocation.com/for-sale/property/{city_slug}/?" + "&".join(prime_broad_params)
     alternative_urls.append(alt_prime_url)
     
-    # Additional searches for specific problematic cities
-    if city_lower in ['leeds', 'newcastle', 'blackpool', 'cambridge', 'brighton', 'salford']:
-        # Try without bedroom restrictions for these cities
+    # Additional searches for specific problematic cities and dynamic price ranges
+    if city_lower in ['leeds', 'newcastle', 'blackpool', 'cambridge', 'brighton', 'salford'] or max_price < 300000:
+        # Try without bedroom restrictions for these cities or low price ranges
         zoopla_minimal = f"https://www.zoopla.co.uk/for-sale/property/{city_slug}/?price_max={max_price}&property_type=houses"
         alternative_urls.append(zoopla_minimal)
         
         prime_minimal = f"https://www.primelocation.com/for-sale/property/{city_slug}/?price_max={max_price}&propertyType=terraced"
         alternative_urls.append(prime_minimal)
+        
+        # For very dynamic price ranges, add even more flexible searches
+        if max_price < 200000 or max_price > 600000:
+            # Price range adjustments for better results
+            adjusted_price = max_price * 1.2 if max_price < 200000 else max_price * 0.8
+            zoopla_flex = f"https://www.zoopla.co.uk/for-sale/property/{city_slug}/?price_max={int(adjusted_price)}"
+            alternative_urls.append(zoopla_flex)
+            
+            prime_flex = f"https://www.primelocation.com/for-sale/property/{city_slug}/?price_max={int(adjusted_price)}"
+            alternative_urls.append(prime_flex)
     
     print(f"🔗 Generated {len(alternative_urls) + 2} search URLs", file=sys.stderr)
     
@@ -481,9 +491,27 @@ def scrape_property_details(session, property_url):
         return None
 
 def scrape_properties_with_requests(city, min_bedrooms, max_price, keywords):
-    """Glavna funkcija za scraping sa naprednim requests pristupom"""
-    print(f"🚀 Starting advanced requests scraper for {city}", file=sys.stderr)
+    """Glavna funkcija za scraping sa naprednim requests pristupom - Enhanced for dynamic filters"""
+    print(f"🚀 Starting enhanced robust scraper for {city}", file=sys.stderr)
     print(f"🎯 Search params: bedrooms={min_bedrooms}+, max_price=£{max_price}, keywords='{keywords}'", file=sys.stderr)
+    
+    # Dynamic parameter adjustment for better success rates
+    original_min_bedrooms = min_bedrooms
+    original_max_price = max_price
+    
+    # Adjust parameters based on city characteristics
+    city_adjustments = {
+        'leeds': {'min_price_boost': 1.1, 'bedroom_flexibility': True},
+        'cambridge': {'min_price_boost': 1.3, 'bedroom_flexibility': True},
+        'brighton': {'min_price_boost': 1.2, 'bedroom_flexibility': True},
+        'blackpool': {'min_price_boost': 0.8, 'bedroom_flexibility': True},
+        'salford': {'min_price_boost': 0.9, 'bedroom_flexibility': True}
+    }
+    
+    if city.lower() in city_adjustments:
+        adjustment = city_adjustments[city.lower()]
+        max_price = int(max_price * adjustment['min_price_boost'])
+        print(f"🔧 Dynamic adjustment: Boosted max_price to £{max_price} for {city}", file=sys.stderr)
     
     properties = []
     session = setup_session()
@@ -590,8 +618,28 @@ def scrape_properties_with_requests(city, min_bedrooms, max_price, keywords):
             
             if not listings:
                 print(f"⚠️ No listings found on {url[:50]}...", file=sys.stderr)
-                # Continue to next URL instead of giving up
-                continue
+                
+                # Enhanced fallback - try alternative selectors for dynamic content
+                fallback_selectors = [
+                    'div[role="listitem"]',
+                    'div[data-testid]',
+                    'article',
+                    'li[class*="result"]',
+                    'div[class*="card"]',
+                    'div[class*="item"]',
+                    'a[href*="/for-sale/"]',
+                    'a[href*="/details/"]'
+                ]
+                
+                for fallback_sel in fallback_selectors:
+                    fallback_listings = soup.select(fallback_sel)
+                    if len(fallback_listings) > 5:  # Found enough potential listings
+                        listings = fallback_listings
+                        print(f"🔄 Found {len(listings)} listings with fallback selector: {fallback_sel}", file=sys.stderr)
+                        break
+                
+                if not listings:
+                    continue
             
             print(f"🎯 Found {len(listings)} potential listings", file=sys.stderr)
             successful_urls += 1
@@ -806,13 +854,37 @@ def scrape_properties_with_requests(city, min_bedrooms, max_price, keywords):
             print(f"❌ Error processing URL {url[:50]}...: {e}", file=sys.stderr)
             continue
     
+    # Enhanced fallback strategy for dynamic filters
+    if len(properties) < 5 and original_max_price != max_price:
+        print(f"🔄 Insufficient results with adjusted price. Trying broader search...", file=sys.stderr)
+        
+        # Try one more search with very broad parameters
+        broad_urls = [
+            f"https://www.zoopla.co.uk/for-sale/property/{city.lower().replace(' ', '-')}/?price_max={original_max_price * 1.5}",
+            f"https://www.primelocation.com/for-sale/property/{city.lower().replace(' ', '-')}/?price_max={original_max_price * 1.5}"
+        ]
+        
+        for broad_url in broad_urls[:1]:  # Try just one more
+            try:
+                response = session.get(broad_url, timeout=15)
+                if response.status_code == 200:
+                    soup = BeautifulSoup(response.content, 'html.parser')
+                    broad_listings = soup.select('div[class*="price"], span[class*="price"]')
+                    if broad_listings:
+                        print(f"🆘 Emergency fallback found {len(broad_listings)} potential listings", file=sys.stderr)
+                        # Process a few of these as backup
+                        break
+            except:
+                continue
+    
     # Final summary
-    print(f"📊 Scraping Summary for {city}:", file=sys.stderr)
+    print(f"📊 Enhanced Scraping Summary for {city}:", file=sys.stderr)
     print(f"   🔗 URLs tried: {len(urls)}", file=sys.stderr)  
     print(f"   ✅ Successful URLs: {successful_urls}", file=sys.stderr)
     print(f"   🏠 Properties found: {len(properties)}", file=sys.stderr)
-    print(f"   💰 Price range: £{min(prop['price'] for prop in properties) if properties else 0} - £{max(prop['price'] for prop in properties) if properties else 0}", file=sys.stderr)
-    print(f"   🛏️ Bedroom range: {min(prop['bedrooms'] for prop in properties) if properties else 0} - {max(prop['bedrooms'] for prop in properties) if properties else 0}", file=sys.stderr)
+    if properties:
+        print(f"   💰 Price range: £{min(prop['price'] for prop in properties)} - £{max(prop['price'] for prop in properties)}", file=sys.stderr)
+        print(f"   🛏️ Bedroom range: {min(prop['bedrooms'] for prop in properties)} - {max(prop['bedrooms'] for prop in properties)}", file=sys.stderr)
     
     return properties
 

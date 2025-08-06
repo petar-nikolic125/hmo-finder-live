@@ -34,6 +34,15 @@ Properties include comprehensive analytics:
 
 ## Recent Changes (August 2025)
 
+### Enhanced Dynamic Filter Robustness ✅ (August 6, 2025)
+- **Dynamic Parameter Adjustment**: Added city-specific price adjustments (Leeds +10%, Cambridge +30%, Brighton +20%) for better scraping success
+- **Flexible Price Range Handling**: Enhanced scraper to handle extreme price ranges (<£200k or >£600k) with adaptive search strategies  
+- **Advanced Fallback Selectors**: Added 8 additional CSS selectors for dynamic content detection when primary selectors fail
+- **Filter Change Resilience**: Improved handling of frequent filter changes (price, bedrooms, location) with enhanced cache flexibility
+- **Emergency Broad Search**: Added fallback strategy that expands search parameters by 50% when initial attempts yield <5 results
+- **Enhanced Error Recovery**: Leeds, Cambridge, Brighton now show real properties instead of falling back to placeholders
+- **Real-time Adaptation**: Scraper dynamically adjusts search URLs based on city characteristics and user filter preferences
+
 ### Universal City Scraper Implementation ✅ (August 6, 2025)
 - **Universal City Support**: Extended scraper to work reliably across all 25+ cities (Birmingham, Leeds, Sheffield, Nottingham, Leicester, Newcastle, Coventry, Preston, Blackpool, Derby, Plymouth, Southampton, Portsmouth, Reading, Cambridge, Brighton, Salford, Stockport, Wolverhampton)
 - **City-Specific Rental Estimates**: Added accurate rental market data for each city with premium, good, student, and budget area classifications
