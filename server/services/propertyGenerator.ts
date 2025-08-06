@@ -93,6 +93,114 @@ const CITY_DATA: Record<string, CityData> = {
     postcodePrefix: "E",
     areas: ["Stratford", "Mile End", "Bethnal Green", "Hackney", "Tower Hamlets"],
     streets: ["Roman Road", "Mile End Road", "Bethnal Green Road", "Commercial Street", "Brick Lane"]
+  },
+  Nottingham: {
+    coordinates: { lat: 52.9548, lng: -1.1581 },
+    postcodePrefix: "NG",
+    areas: ["Lenton", "Beeston", "Radford", "Forest Fields", "Hyson Green"],
+    streets: ["Derby Road", "Alfreton Road", "Mansfield Road", "Ilkeston Road", "Gregory Boulevard"]
+  },
+  Leicester: {
+    coordinates: { lat: 52.6369, lng: -1.1398 },
+    postcodePrefix: "LE",
+    areas: ["Stoneygate", "Clarendon Park", "West End", "Highfields", "Evington"],
+    streets: ["London Road", "Narborough Road", "Hinckley Road", "Belgrave Road", "Evington Road"]
+  },
+  Newcastle: {
+    coordinates: { lat: 54.9783, lng: -1.6178 },
+    postcodePrefix: "NE",
+    areas: ["Jesmond", "Heaton", "Byker", "Sandyford", "Fenham"],
+    streets: ["Northumberland Street", "Grainger Street", "Clayton Street", "Grey Street", "Osborne Road"]
+  },
+  Coventry: {
+    coordinates: { lat: 52.4068, lng: -1.5197 },
+    postcodePrefix: "CV",
+    areas: ["Earlsdon", "Chapelfields", "Stoke", "Radford", "Hillfields"],
+    streets: ["Warwick Road", "Holyhead Road", "Foleshill Road", "Binley Road", "Allesley Old Road"]
+  },
+  Preston: {
+    coordinates: { lat: 53.7632, lng: -2.7031 },
+    postcodePrefix: "PR",
+    areas: ["Ribbleton", "Fulwood", "Ashton", "Deepdale", "Fishwick"],
+    streets: ["Blackpool Road", "Garstang Road", "New Hall Lane", "Watling Street Road", "Ribbleton Avenue"]
+  },
+  Blackpool: {
+    coordinates: { lat: 53.8175, lng: -3.0357 },
+    postcodePrefix: "FY",
+    areas: ["South Shore", "Marton", "Bispham", "Layton", "Stanley Park"],
+    streets: ["Promenade", "Church Street", "Whitegate Drive", "Lytham Road", "Central Drive"]
+  },
+  Hull: {
+    coordinates: { lat: 53.7676, lng: -0.3274 },
+    postcodePrefix: "HU",
+    areas: ["Newland", "Boulevard", "Avenues", "Spring Bank", "Anlaby Road"],
+    streets: ["Spring Bank", "Anlaby Road", "Beverley Road", "Hessle Road", "Holderness Road"]
+  },
+  Derby: {
+    coordinates: { lat: 52.9225, lng: -1.4746 },
+    postcodePrefix: "DE",
+    areas: ["Normanton", "Chaddesden", "Allestree", "Mackworth", "Spondon"],
+    streets: ["London Road", "Burton Road", "Uttoxeter Road", "Ashbourne Road", "Kedleston Road"]
+  },
+  Plymouth: {
+    coordinates: { lat: 50.3755, lng: -4.1427 },
+    postcodePrefix: "PL",
+    areas: ["Mutley", "St Judes", "Greenbank", "Peverell", "Ford"],
+    streets: ["Mutley Plain", "Union Street", "North Road East", "Tavistock Road", "Mannamead Road"]
+  },
+  Southampton: {
+    coordinates: { lat: 50.9097, lng: -1.4044 },
+    postcodePrefix: "SO",
+    areas: ["Portswood", "Highfield", "Swaythling", "Shirley", "Millbrook"],
+    streets: ["Above Bar Street", "London Road", "Winchester Road", "Shirley Road", "Burgess Road"]
+  },
+  Portsmouth: {
+    coordinates: { lat: 50.8198, lng: -1.0880 },
+    postcodePrefix: "PO",
+    areas: ["Southsea", "Fratton", "Copnor", "Milton", "Buckland"],
+    streets: ["Commercial Road", "London Road", "Kingston Road", "Fratton Road", "Albert Road"]
+  },
+  Reading: {
+    coordinates: { lat: 51.4543, lng: -0.9781 },
+    postcodePrefix: "RG",
+    areas: ["Coley", "Whitley", "Tilehurst", "Caversham", "Earley"],
+    streets: ["Oxford Road", "Bath Road", "Basingstoke Road", "Whitley Street", "Kings Road"]
+  },
+  Oxford: {
+    coordinates: { lat: 51.7520, lng: -1.2577 },
+    postcodePrefix: "OX",
+    areas: ["Jericho", "Cowley", "Headington", "Summertown", "Iffley"],
+    streets: ["High Street", "Cornmarket Street", "St Aldates", "Headington Road", "Cowley Road"]
+  },
+  Cambridge: {
+    coordinates: { lat: 52.2053, lng: 0.1218 },
+    postcodePrefix: "CB",
+    areas: ["Mill Road", "Romsey", "Cherry Hinton", "Chesterton", "Petersfield"],
+    streets: ["Mill Road", "Hills Road", "Newmarket Road", "Huntingdon Road", "Cherry Hinton Road"]
+  },
+  Brighton: {
+    coordinates: { lat: 50.8225, lng: -0.1372 },
+    postcodePrefix: "BN",
+    areas: ["Kemptown", "Hanover", "Preston Park", "Moulsecoomb", "Whitehawk"],
+    streets: ["London Road", "Preston Road", "Ditchling Road", "Lewes Road", "Edward Street"]
+  },
+  Salford: {
+    coordinates: { lat: 53.4875, lng: -2.2901 },
+    postcodePrefix: "M",
+    areas: ["Ordsall", "Pendleton", "Weaste", "Seedley", "Little Hulton"],
+    streets: ["Chapel Street", "Eccles New Road", "Liverpool Street", "Regent Road", "Bolton Road"]
+  },
+  Stockport: {
+    coordinates: { lat: 53.4106, lng: -2.1575 },
+    postcodePrefix: "SK",
+    areas: ["Edgeley", "Shaw Heath", "Davenport", "Cheadle Heath", "Reddish"],
+    streets: ["Wellington Road", "London Road", "Buxton Road", "Bramhall Lane", "Stockport Road"]
+  },
+  Wolverhampton: {
+    coordinates: { lat: 52.5864, lng: -2.1285 },
+    postcodePrefix: "WV",
+    areas: ["Whitmore Reans", "Park Village", "Dunstall Hill", "Penn", "Tettenhall"],
+    streets: ["Wolverhampton Road", "Penn Road", "Stafford Road", "Compton Road", "Chapel Ash"]
   }
 };
 
@@ -122,6 +230,106 @@ const PORTAL_SEARCH_URLS: Record<string, PortalUrls> = {
     rightmove: "https://www.rightmove.co.uk/property-for-sale/find.html?locationIdentifier=REGION%5E61406&minBedrooms=4&maxPrice=200000&sortType=6",
     zoopla: "https://www.zoopla.co.uk/for-sale/property/sheffield/?beds_min=4&price_max=200000&q=HMO",
     primelocation: "https://www.primelocation.com/for-sale/property/sheffield/?bedrooms=4&maxPrice=200000"
+  },
+  Bristol: {
+    rightmove: "https://www.rightmove.co.uk/property-for-sale/find.html?locationIdentifier=REGION%5E61268&minBedrooms=3&maxPrice=500000&sortType=6",
+    zoopla: "https://www.zoopla.co.uk/for-sale/property/bristol/?beds_min=3&price_max=500000&q=HMO",
+    primelocation: "https://www.primelocation.com/for-sale/property/bristol/?bedrooms=3&maxPrice=500000"
+  },
+  Nottingham: {
+    rightmove: "https://www.rightmove.co.uk/property-for-sale/find.html?locationIdentifier=REGION%5E61384&minBedrooms=4&maxPrice=250000&sortType=6",
+    zoopla: "https://www.zoopla.co.uk/for-sale/property/nottingham/?beds_min=4&price_max=250000&q=HMO",
+    primelocation: "https://www.primelocation.com/for-sale/property/nottingham/?bedrooms=4&maxPrice=250000"
+  },
+  Leicester: {
+    rightmove: "https://www.rightmove.co.uk/property-for-sale/find.html?locationIdentifier=REGION%5E61378&minBedrooms=3&maxPrice=200000&sortType=6",
+    zoopla: "https://www.zoopla.co.uk/for-sale/property/leicester/?beds_min=3&price_max=200000&q=HMO",
+    primelocation: "https://www.primelocation.com/for-sale/property/leicester/?bedrooms=3&maxPrice=200000"
+  },
+  Newcastle: {
+    rightmove: "https://www.rightmove.co.uk/property-for-sale/find.html?locationIdentifier=REGION%5E87490&minBedrooms=3&maxPrice=180000&sortType=6",
+    zoopla: "https://www.zoopla.co.uk/for-sale/property/newcastle/?beds_min=3&price_max=180000&q=HMO",
+    primelocation: "https://www.primelocation.com/for-sale/property/newcastle/?bedrooms=3&maxPrice=180000"
+  },
+  Coventry: {
+    rightmove: "https://www.rightmove.co.uk/property-for-sale/find.html?locationIdentifier=REGION%5E61281&minBedrooms=4&maxPrice=220000&sortType=6",
+    zoopla: "https://www.zoopla.co.uk/for-sale/property/coventry/?beds_min=4&price_max=220000&q=HMO",
+    primelocation: "https://www.primelocation.com/for-sale/property/coventry/?bedrooms=4&maxPrice=220000"
+  },
+  Preston: {
+    rightmove: "https://www.rightmove.co.uk/property-for-sale/find.html?locationIdentifier=REGION%5E61389&minBedrooms=5&maxPrice=150000&sortType=6",
+    zoopla: "https://www.zoopla.co.uk/for-sale/property/preston/?beds_min=5&price_max=150000&q=HMO",
+    primelocation: "https://www.primelocation.com/for-sale/property/preston/?bedrooms=5&maxPrice=150000"
+  },
+  Blackpool: {
+    rightmove: "https://www.rightmove.co.uk/property-for-sale/find.html?locationIdentifier=REGION%5E61264&minBedrooms=4&maxPrice=120000&sortType=6",
+    zoopla: "https://www.zoopla.co.uk/for-sale/property/blackpool/?beds_min=4&price_max=120000&q=HMO",
+    primelocation: "https://www.primelocation.com/for-sale/property/blackpool/?bedrooms=4&maxPrice=120000"
+  },
+  Hull: {
+    rightmove: "https://www.rightmove.co.uk/property-for-sale/find.html?locationIdentifier=REGION%5E61371&minBedrooms=3&maxPrice=100000&sortType=6",
+    zoopla: "https://www.zoopla.co.uk/for-sale/property/hull/?beds_min=3&price_max=100000&q=HMO",
+    primelocation: "https://www.primelocation.com/for-sale/property/hull/?bedrooms=3&maxPrice=100000"
+  },
+  Derby: {
+    rightmove: "https://www.rightmove.co.uk/property-for-sale/find.html?locationIdentifier=REGION%5E61282&minBedrooms=4&maxPrice=180000&sortType=6",
+    zoopla: "https://www.zoopla.co.uk/for-sale/property/derby/?beds_min=4&price_max=180000&q=HMO",
+    primelocation: "https://www.primelocation.com/for-sale/property/derby/?bedrooms=4&maxPrice=180000"
+  },
+  Plymouth: {
+    rightmove: "https://www.rightmove.co.uk/property-for-sale/find.html?locationIdentifier=REGION%5E61388&minBedrooms=3&maxPrice=250000&sortType=6",
+    zoopla: "https://www.zoopla.co.uk/for-sale/property/plymouth/?beds_min=3&price_max=250000&q=HMO",
+    primelocation: "https://www.primelocation.com/for-sale/property/plymouth/?bedrooms=3&maxPrice=250000"
+  },
+  Southampton: {
+    rightmove: "https://www.rightmove.co.uk/property-for-sale/find.html?locationIdentifier=REGION%5E61408&minBedrooms=3&maxPrice=350000&sortType=6",
+    zoopla: "https://www.zoopla.co.uk/for-sale/property/southampton/?beds_min=3&price_max=350000&q=HMO",
+    primelocation: "https://www.primelocation.com/for-sale/property/southampton/?bedrooms=3&maxPrice=350000"
+  },
+  Portsmouth: {
+    rightmove: "https://www.rightmove.co.uk/property-for-sale/find.html?locationIdentifier=REGION%5E61389&minBedrooms=3&maxPrice=300000&sortType=6",
+    zoopla: "https://www.zoopla.co.uk/for-sale/property/portsmouth/?beds_min=3&price_max=300000&q=HMO",
+    primelocation: "https://www.primelocation.com/for-sale/property/portsmouth/?bedrooms=3&maxPrice=300000"
+  },
+  Reading: {
+    rightmove: "https://www.rightmove.co.uk/property-for-sale/find.html?locationIdentifier=REGION%5E61393&minBedrooms=3&maxPrice=500000&sortType=6",
+    zoopla: "https://www.zoopla.co.uk/for-sale/property/reading/?beds_min=3&price_max=500000&q=HMO",
+    primelocation: "https://www.primelocation.com/for-sale/property/reading/?bedrooms=3&maxPrice=500000"
+  },
+  Oxford: {
+    rightmove: "https://www.rightmove.co.uk/property-for-sale/find.html?locationIdentifier=REGION%5E61385&minBedrooms=3&maxPrice=600000&sortType=6",
+    zoopla: "https://www.zoopla.co.uk/for-sale/property/oxford/?beds_min=3&price_max=600000&q=HMO",
+    primelocation: "https://www.primelocation.com/for-sale/property/oxford/?bedrooms=3&maxPrice=600000"
+  },
+  Cambridge: {
+    rightmove: "https://www.rightmove.co.uk/property-for-sale/find.html?locationIdentifier=REGION%5E61270&minBedrooms=3&maxPrice=650000&sortType=6",
+    zoopla: "https://www.zoopla.co.uk/for-sale/property/cambridge/?beds_min=3&price_max=650000&q=HMO",
+    primelocation: "https://www.primelocation.com/for-sale/property/cambridge/?bedrooms=3&maxPrice=650000"
+  },
+  Brighton: {
+    rightmove: "https://www.rightmove.co.uk/property-for-sale/find.html?locationIdentifier=REGION%5E61267&minBedrooms=3&maxPrice=450000&sortType=6",
+    zoopla: "https://www.zoopla.co.uk/for-sale/property/brighton/?beds_min=3&price_max=450000&q=HMO",
+    primelocation: "https://www.primelocation.com/for-sale/property/brighton/?bedrooms=3&maxPrice=450000"
+  },
+  Salford: {
+    rightmove: "https://www.rightmove.co.uk/property-for-sale/find.html?locationIdentifier=REGION%5E61401&minBedrooms=3&maxPrice=220000&sortType=6",
+    zoopla: "https://www.zoopla.co.uk/for-sale/property/salford/?beds_min=3&price_max=220000&q=HMO",
+    primelocation: "https://www.primelocation.com/for-sale/property/salford/?bedrooms=3&maxPrice=220000"
+  },
+  Stockport: {
+    rightmove: "https://www.rightmove.co.uk/property-for-sale/find.html?locationIdentifier=REGION%5E61414&minBedrooms=4&maxPrice=250000&sortType=6",
+    zoopla: "https://www.zoopla.co.uk/for-sale/property/stockport/?beds_min=4&price_max=250000&q=HMO",
+    primelocation: "https://www.primelocation.com/for-sale/property/stockport/?bedrooms=4&maxPrice=250000"
+  },
+  Wolverhampton: {
+    rightmove: "https://www.rightmove.co.uk/property-for-sale/find.html?locationIdentifier=REGION%5E61428&minBedrooms=4&maxPrice=180000&sortType=6",
+    zoopla: "https://www.zoopla.co.uk/for-sale/property/wolverhampton/?beds_min=4&price_max=180000&q=HMO",
+    primelocation: "https://www.primelocation.com/for-sale/property/wolverhampton/?bedrooms=4&maxPrice=180000"
+  },
+  London: {
+    rightmove: "https://www.rightmove.co.uk/property-for-sale/find.html?locationIdentifier=REGION%5E87490&minBedrooms=3&maxPrice=800000&sortType=6",
+    zoopla: "https://www.zoopla.co.uk/for-sale/property/london/?beds_min=3&price_max=800000&q=HMO",
+    primelocation: "https://www.primelocation.com/for-sale/property/london/?bedrooms=3&maxPrice=800000"
   }
 };
 
