@@ -43,6 +43,14 @@ Properties include comprehensive analytics:
 - **Multi-Source Strategy**: Extended to use both Zoopla and PrimeLocation with alternative search patterns
 - **Performance Optimization**: Improved success rate from 60% to 90%+ across all price ranges
 
+### Professional Footer Enhancement ✅ (August 6, 2025)
+- **Developer Credits**: Added both Petar Nikolić & Vasilije Stankovic with individual portfolio links
+- **Professional Contact Links**: Direct links to https://pnikolic-dev.vercel.app and https://vasilijestankovic.tech
+- **Legal Compliance**: Comprehensive Terms of Service and Privacy Policy in modal dialogs
+- **Professional Styling**: Three-column responsive layout with company info, legal links, and technical specs
+- **Enhanced UX**: Social media icons, tooltips, and proper accessibility attributes
+- **Brand Consistency**: Professional color scheme matching the application design
+
 ## Recent Changes (August 2025)
 
 ### Web Scraper Multi-City Extension & UI Improvements ✅ (August 6, 2025)
