@@ -718,9 +718,9 @@ def scrape_properties_with_requests(city, min_bedrooms, max_price, keywords):
                                 img_src = 'https:' + img_src
                             property_data['image_url'] = img_src
                         else:
-                            property_data['image_url'] = 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80'
+                            property_data['image_url'] = get_city_themed_image(city)
                     else:
-                        property_data['image_url'] = 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80'
+                        property_data['image_url'] = get_city_themed_image(city)
                     
                     # Samo dodaj ako ima osnovne podatke
                     if property_data.get('title') and property_data.get('price', 0) > 0:
@@ -779,6 +779,22 @@ def scrape_properties_with_requests(city, min_bedrooms, max_price, keywords):
     print(f"   🛏️ Bedroom range: {min(prop['bedrooms'] for prop in properties) if properties else 0} - {max(prop['bedrooms'] for prop in properties) if properties else 0}", file=sys.stderr)
     
     return properties
+
+def get_city_themed_image(city):
+    """Get city-specific themed architectural image"""
+    city_images = {
+        'london': "/attached_assets/generated_images/London_architectural_style_illustration_d62e91fc.png",
+        'birmingham': "/attached_assets/generated_images/Birmingham_architectural_style_illustration_e7bdd330.png", 
+        'manchester': "/attached_assets/generated_images/Manchester_architectural_style_illustration_5386b916.png",
+        'leeds': "/attached_assets/generated_images/Leeds_architectural_style_illustration_90838b2c.png",
+        'liverpool': "/attached_assets/generated_images/Liverpool_architectural_style_illustration_31614007.png",
+        'sheffield': "/attached_assets/generated_images/Sheffield_industrial_style_illustration_4acbb255.png",
+        'bristol': "/attached_assets/generated_images/Bristol_Georgian_style_illustration_33851534.png",
+        'nottingham': "/attached_assets/generated_images/Nottingham_heritage_style_illustration_6f368e3c.png"
+    }
+    
+    # Return city-specific image or fallback to default
+    return city_images.get(city.lower(), "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80")
 
 def generate_fake_properties(city, min_bedrooms, max_price, count):
     """Generiraj fake oglase kada scraping ne uspe"""
@@ -846,7 +862,7 @@ def generate_fake_properties(city, min_bedrooms, max_price, count):
             'area_sqm': area_sqm,
             'description': random.choice(descriptions),
             'property_url': f"https://www.zoopla.co.uk/for-sale/details/{random.randint(10000000, 99999999)}",
-            'image_url': f"https://images.unsplash.com/photo-{random.choice(['1560518883-ce09059eeffa', '1564013799919-ab600027ffc6', '1493809842364-78817add7ffb'])}?w=800&h=600&fit=crop&crop=entropy&q=80"
+            'image_url': get_city_themed_image(city)
         }
         
         # Calculate investment analysis for fake properties too
