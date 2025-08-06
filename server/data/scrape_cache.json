@@ -1,0 +1,316 @@
+{
+  "69e2105161a5956300b8bf5843037ed0": {
+    "searchHash": "69e2105161a5956300b8bf5843037ed0",
+    "lastScraped": "2025-08-06T15:32:10.407Z",
+    "properties": [
+      {
+        "id": 143393,
+        "address": "Soapworks, Price Increase Imminent, Liverpool L3",
+        "price": 180000,
+        "bedrooms": 1,
+        "bathrooms": 1,
+        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "propertyUrl": "https://www.primelocation.com/for-sale/property/liverpool/?bedrooms=1&maxPrice=500000",
+        "city": "Liverpool",
+        "scrapedAt": "2025-08-06T15:32:10.407Z"
+      },
+      {
+        "id": 80651,
+        "address": "York Avenue, Crosby, Liverpool L23",
+        "price": 450000,
+        "bedrooms": 5,
+        "bathrooms": 4,
+        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "propertyUrl": "https://www.primelocation.com/for-sale/property/liverpool/?bedrooms=1&maxPrice=500000",
+        "city": "Liverpool",
+        "scrapedAt": "2025-08-06T15:32:10.407Z"
+      },
+      {
+        "id": 640651,
+        "address": "Sandringham Road, Waterloo, Liverpool L22",
+        "price": 325000,
+        "bedrooms": 4,
+        "bathrooms": 3,
+        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "propertyUrl": "https://www.primelocation.com/for-sale/property/liverpool/?bedrooms=1&maxPrice=500000",
+        "city": "Liverpool",
+        "scrapedAt": "2025-08-06T15:32:10.407Z"
+      },
+      {
+        "id": 859298,
+        "address": "Victoria Road, Freshfield L37",
+        "price": 4000000,
+        "bedrooms": 6,
+        "bathrooms": 5,
+        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "propertyUrl": "https://www.primelocation.com/for-sale/property/liverpool/?bedrooms=1&maxPrice=500000",
+        "city": "Liverpool",
+        "scrapedAt": "2025-08-06T15:32:10.407Z"
+      },
+      {
+        "id": 836679,
+        "address": "Larkhill Lane, Formby, Merseyside L37",
+        "price": 3200000,
+        "bedrooms": 6,
+        "bathrooms": 5,
+        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "propertyUrl": "https://www.primelocation.com/for-sale/property/liverpool/?bedrooms=1&maxPrice=500000",
+        "city": "Liverpool",
+        "scrapedAt": "2025-08-06T15:32:10.407Z"
+      },
+      {
+        "id": 391644,
+        "address": "Shireburn Road, Formby, Liverpool L37",
+        "price": 2900000,
+        "bedrooms": 5,
+        "bathrooms": 4,
+        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "propertyUrl": "https://www.primelocation.com/for-sale/property/liverpool/?bedrooms=1&maxPrice=500000",
+        "city": "Liverpool",
+        "scrapedAt": "2025-08-06T15:32:10.407Z"
+      },
+      {
+        "id": 925327,
+        "address": "Massams Lane, Formby L37",
+        "price": 2600000,
+        "bedrooms": 5,
+        "bathrooms": 4,
+        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "propertyUrl": "https://www.primelocation.com/for-sale/property/liverpool/?bedrooms=1&maxPrice=500000",
+        "city": "Liverpool",
+        "scrapedAt": "2025-08-06T15:32:10.407Z"
+      },
+      {
+        "id": 378261,
+        "address": "Knowsley, Prescot, Merseyside L34",
+        "price": 2500000,
+        "bedrooms": 4,
+        "bathrooms": 3,
+        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "propertyUrl": "https://www.primelocation.com/for-sale/property/liverpool/?bedrooms=1&maxPrice=500000",
+        "city": "Liverpool",
+        "scrapedAt": "2025-08-06T15:32:10.407Z"
+      },
+      {
+        "id": 901472,
+        "address": "Argarmeols Road, Formby, Liverpool, Merseyside L37",
+        "price": 2500000,
+        "bedrooms": 5,
+        "bathrooms": 4,
+        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "propertyUrl": "https://www.primelocation.com/for-sale/property/liverpool/?bedrooms=1&maxPrice=500000",
+        "city": "Liverpool",
+        "scrapedAt": "2025-08-06T15:32:10.407Z"
+      },
+      {
+        "id": 251136,
+        "address": "Quarry Street, Liverpool, Merseyside L25",
+        "price": 2400000,
+        "bedrooms": 6,
+        "bathrooms": 5,
+        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "propertyUrl": "https://www.primelocation.com/for-sale/property/liverpool/?bedrooms=1&maxPrice=500000",
+        "city": "Liverpool",
+        "scrapedAt": "2025-08-06T15:32:10.407Z"
+      },
+      {
+        "id": 860507,
+        "address": "Quarry Street, Liverpool L25",
+        "price": 2400000,
+        "bedrooms": 5,
+        "bathrooms": 4,
+        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "propertyUrl": "https://www.primelocation.com/for-sale/property/liverpool/?bedrooms=1&maxPrice=500000",
+        "city": "Liverpool",
+        "scrapedAt": "2025-08-06T15:32:10.407Z"
+      },
+      {
+        "id": 189373,
+        "address": "Quarry Street, Woolton, Liverpool L25",
+        "price": 2400000,
+        "bedrooms": 5,
+        "bathrooms": 4,
+        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "propertyUrl": "https://www.primelocation.com/for-sale/property/liverpool/?bedrooms=1&maxPrice=500000",
+        "city": "Liverpool",
+        "scrapedAt": "2025-08-06T15:32:10.407Z"
+      },
+      {
+        "id": 715199,
+        "address": "College Path, Formby, Merseyside L37",
+        "price": 2400000,
+        "bedrooms": 5,
+        "bathrooms": 4,
+        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "propertyUrl": "https://www.primelocation.com/for-sale/property/liverpool/?bedrooms=1&maxPrice=500000",
+        "city": "Liverpool",
+        "scrapedAt": "2025-08-06T15:32:10.407Z"
+      },
+      {
+        "id": 413631,
+        "address": "Kirklake Road, Formby, Liverpool, Merseyside L37",
+        "price": 2000000,
+        "bedrooms": 4,
+        "bathrooms": 3,
+        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "propertyUrl": "https://www.primelocation.com/for-sale/property/liverpool/?bedrooms=1&maxPrice=500000",
+        "city": "Liverpool",
+        "scrapedAt": "2025-08-06T15:32:10.407Z"
+      },
+      {
+        "id": 350388,
+        "address": "Woolton Mount, Woolton, Liverpool L25",
+        "price": 2000000,
+        "bedrooms": 5,
+        "bathrooms": 4,
+        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "propertyUrl": "https://www.primelocation.com/for-sale/property/liverpool/?bedrooms=1&maxPrice=500000",
+        "city": "Liverpool",
+        "scrapedAt": "2025-08-06T15:32:10.407Z"
+      },
+      {
+        "id": 829900,
+        "address": "‘Inverleith’, Menlove Avenue, Liverpool. L25",
+        "price": 2000000,
+        "bedrooms": 5,
+        "bathrooms": 4,
+        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "propertyUrl": "https://www.primelocation.com/for-sale/property/liverpool/?bedrooms=1&maxPrice=500000",
+        "city": "Liverpool",
+        "scrapedAt": "2025-08-06T15:32:10.407Z"
+      },
+      {
+        "id": 135576,
+        "address": "Green Lane, Formby, Liverpool, Merseyside L37",
+        "price": 2000000,
+        "bedrooms": 7,
+        "bathrooms": 6,
+        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "propertyUrl": "https://www.primelocation.com/for-sale/property/liverpool/?bedrooms=1&maxPrice=500000",
+        "city": "Liverpool",
+        "scrapedAt": "2025-08-06T15:32:10.407Z"
+      },
+      {
+        "id": 600152,
+        "address": "St. Andrews Road, Liverpool L23",
+        "price": 2000000,
+        "bedrooms": 5,
+        "bathrooms": 4,
+        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "propertyUrl": "https://www.primelocation.com/for-sale/property/liverpool/?bedrooms=1&maxPrice=500000",
+        "city": "Liverpool",
+        "scrapedAt": "2025-08-06T15:32:10.407Z"
+      },
+      {
+        "id": 814119,
+        "address": "Briarwood, Blundellsands, Liverpool L23",
+        "price": 1999000,
+        "bedrooms": 6,
+        "bathrooms": 5,
+        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "propertyUrl": "https://www.primelocation.com/for-sale/property/liverpool/?bedrooms=1&maxPrice=500000",
+        "city": "Liverpool",
+        "scrapedAt": "2025-08-06T15:32:10.407Z"
+      },
+      {
+        "id": 347567,
+        "address": "Badgers Rake, Formby, Liverpool L37",
+        "price": 1900000,
+        "bedrooms": 5,
+        "bathrooms": 4,
+        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "propertyUrl": "https://www.primelocation.com/for-sale/property/liverpool/?bedrooms=1&maxPrice=500000",
+        "city": "Liverpool",
+        "scrapedAt": "2025-08-06T15:32:10.407Z"
+      },
+      {
+        "id": 807931,
+        "address": "Victoria Road, Formby, Liverpool, Merseyside L37",
+        "price": 1750000,
+        "bedrooms": 7,
+        "bathrooms": 6,
+        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "propertyUrl": "https://www.primelocation.com/for-sale/property/liverpool/?bedrooms=1&maxPrice=500000",
+        "city": "Liverpool",
+        "scrapedAt": "2025-08-06T15:32:10.407Z"
+      },
+      {
+        "id": 565695,
+        "address": "Plato House, 11 Greek Street, Liverpool L3",
+        "price": 1750000,
+        "bedrooms": 1,
+        "bathrooms": 1,
+        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "propertyUrl": "https://www.primelocation.com/for-sale/property/liverpool/?bedrooms=1&maxPrice=500000",
+        "city": "Liverpool",
+        "scrapedAt": "2025-08-06T15:32:10.407Z"
+      },
+      {
+        "id": 662716,
+        "address": "West Tower, Liverpool L3",
+        "price": 1750000,
+        "bedrooms": 2,
+        "bathrooms": 1,
+        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "propertyUrl": "https://www.primelocation.com/for-sale/property/liverpool/?bedrooms=1&maxPrice=500000",
+        "city": "Liverpool",
+        "scrapedAt": "2025-08-06T15:32:10.407Z"
+      },
+      {
+        "id": 32533,
+        "address": "Seabank House, Albert Road, Formby, Liverpool, Merseyside L37",
+        "price": 1600000,
+        "bedrooms": 6,
+        "bathrooms": 5,
+        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "propertyUrl": "https://www.primelocation.com/for-sale/property/liverpool/?bedrooms=1&maxPrice=500000",
+        "city": "Liverpool",
+        "scrapedAt": "2025-08-06T15:32:10.407Z"
+      },
+      {
+        "id": 793318,
+        "address": "Herculaneum Quay, Royden Way, Riverside Drive, Liverpool L3",
+        "price": 1500000,
+        "bedrooms": 3,
+        "bathrooms": 2,
+        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "propertyUrl": "https://www.primelocation.com/for-sale/property/liverpool/?bedrooms=1&maxPrice=500000",
+        "city": "Liverpool",
+        "scrapedAt": "2025-08-06T15:32:10.407Z"
+      },
+      {
+        "id": 643097,
+        "address": "Kirklake Road, Formby, Liverpool L37",
+        "price": 1500000,
+        "bedrooms": 1,
+        "bathrooms": 1,
+        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "propertyUrl": "https://www.primelocation.com/for-sale/property/liverpool/?bedrooms=1&maxPrice=500000",
+        "city": "Liverpool",
+        "scrapedAt": "2025-08-06T15:32:10.407Z"
+      },
+      {
+        "id": 604253,
+        "address": "Dowhills Road, Blundellsands L23",
+        "price": 1500000,
+        "bedrooms": 15,
+        "bathrooms": 14,
+        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "propertyUrl": "https://www.primelocation.com/for-sale/property/liverpool/?bedrooms=1&maxPrice=500000",
+        "city": "Liverpool",
+        "scrapedAt": "2025-08-06T15:32:10.407Z"
+      },
+      {
+        "id": 527677,
+        "address": "Far Moss Road, Blundellsands L23",
+        "price": 1500000,
+        "bedrooms": 4,
+        "bathrooms": 3,
+        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "propertyUrl": "https://www.primelocation.com/for-sale/property/liverpool/?bedrooms=1&maxPrice=500000",
+        "city": "Liverpool",
+        "scrapedAt": "2025-08-06T15:32:10.407Z"
+      }
+    ]
+  }
+}
