@@ -3673,287 +3673,287 @@
   },
   "c9e4a49ca321bfa76eecc489ed27c619": {
     "searchHash": "c9e4a49ca321bfa76eecc489ed27c619",
-    "lastScraped": "2025-08-06T20:58:49.485Z",
+    "lastScraped": "2025-08-06T21:05:23.071Z",
     "properties": [
       {
-        "id": 423116,
+        "id": 970731,
         "address": "Washwood Heath Road, Birmingham, West Midlands B8",
         "price": 340000,
         "bedrooms": 6,
-        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "imageUrl": "/attached_assets/generated_images/Birmingham_architectural_style_illustration_e7bdd330.png",
         "propertyUrl": "https://www.primelocation.com/for-sale/details/69345545/?search_identifier=fb6c8e96da6af0d45efe8fb50a73bb380fa709d8c9e08e420a2dbdaff8550d85&weekly_featured=true",
         "city": "Birmingham",
-        "scrapedAt": "2025-08-06T20:58:49.484Z"
+        "scrapedAt": "2025-08-06T21:05:23.071Z"
       },
       {
-        "id": 615751,
-        "address": "Heeley Road, Birmingham, West Midlands B29",
-        "price": 450000,
-        "bedrooms": 5,
-        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
-        "propertyUrl": "https://www.primelocation.com/for-sale/details/70396311/?search_identifier=fb6c8e96da6af0d45efe8fb50a73bb380fa709d8c9e08e420a2dbdaff8550d85&featured=true",
-        "city": "Birmingham",
-        "scrapedAt": "2025-08-06T20:58:49.484Z"
-      },
-      {
-        "id": 182566,
+        "id": 21198,
         "address": "Shenley Fields Road, Birmingham B29",
         "price": 325000,
         "bedrooms": 4,
-        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "imageUrl": "/attached_assets/generated_images/Birmingham_architectural_style_illustration_e7bdd330.png",
         "propertyUrl": "https://www.primelocation.com/for-sale/details/70396404/?search_identifier=fb6c8e96da6af0d45efe8fb50a73bb380fa709d8c9e08e420a2dbdaff8550d85&featured=true",
         "city": "Birmingham",
-        "scrapedAt": "2025-08-06T20:58:49.484Z"
+        "scrapedAt": "2025-08-06T21:05:23.071Z"
       },
       {
-        "id": 365317,
+        "id": 199382,
+        "address": "Heeley Road, Birmingham, West Midlands B29",
+        "price": 450000,
+        "bedrooms": 5,
+        "imageUrl": "/attached_assets/generated_images/Birmingham_architectural_style_illustration_e7bdd330.png",
+        "propertyUrl": "https://www.primelocation.com/for-sale/details/70396311/?search_identifier=fb6c8e96da6af0d45efe8fb50a73bb380fa709d8c9e08e420a2dbdaff8550d85&featured=true",
+        "city": "Birmingham",
+        "scrapedAt": "2025-08-06T21:05:23.071Z"
+      },
+      {
+        "id": 457609,
         "address": "Tiverton Road, Birmingham, West Midlands B29",
         "price": 495000,
         "bedrooms": 6,
-        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "imageUrl": "/attached_assets/generated_images/Birmingham_architectural_style_illustration_e7bdd330.png",
         "propertyUrl": "https://www.primelocation.com/for-sale/details/70533946/?search_identifier=fb6c8e96da6af0d45efe8fb50a73bb380fa709d8c9e08e420a2dbdaff8550d85",
         "city": "Birmingham",
-        "scrapedAt": "2025-08-06T20:58:49.484Z"
+        "scrapedAt": "2025-08-06T21:05:23.071Z"
       },
       {
-        "id": 412763,
+        "id": 95701,
         "address": "Stanford Avenue - 14% Net Yield, Great Barr, Birmingham B42",
         "price": 469950,
         "bedrooms": 9506,
-        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "imageUrl": "/attached_assets/generated_images/Birmingham_architectural_style_illustration_e7bdd330.png",
         "propertyUrl": "https://www.primelocation.com/for-sale/details/70593514/?search_identifier=fb6c8e96da6af0d45efe8fb50a73bb380fa709d8c9e08e420a2dbdaff8550d85",
         "city": "Birmingham",
-        "scrapedAt": "2025-08-06T20:58:49.484Z"
+        "scrapedAt": "2025-08-06T21:05:23.071Z"
       },
       {
-        "id": 281098,
+        "id": 385798,
         "address": "Gillott Road, Birmingham B16",
         "price": 460000,
         "bedrooms": 8,
-        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "imageUrl": "/attached_assets/generated_images/Birmingham_architectural_style_illustration_e7bdd330.png",
         "propertyUrl": "https://www.primelocation.com/for-sale/details/70395810/?search_identifier=fb6c8e96da6af0d45efe8fb50a73bb380fa709d8c9e08e420a2dbdaff8550d85",
         "city": "Birmingham",
-        "scrapedAt": "2025-08-06T20:58:49.484Z"
+        "scrapedAt": "2025-08-06T21:05:23.071Z"
       },
       {
-        "id": 99733,
+        "id": 727634,
         "address": "Heeley Road, Birmingham, West Midlands B29",
         "price": 450000,
         "bedrooms": 5,
-        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "imageUrl": "/attached_assets/generated_images/Birmingham_architectural_style_illustration_e7bdd330.png",
         "propertyUrl": "https://www.primelocation.com/for-sale/details/70396311/?search_identifier=fb6c8e96da6af0d45efe8fb50a73bb380fa709d8c9e08e420a2dbdaff8550d85",
         "city": "Birmingham",
-        "scrapedAt": "2025-08-06T20:58:49.484Z"
+        "scrapedAt": "2025-08-06T21:05:23.071Z"
       },
       {
-        "id": 807345,
+        "id": 897264,
         "address": "City Road, Edgbaston B16",
         "price": 450000,
         "bedrooms": 8,
-        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "imageUrl": "/attached_assets/generated_images/Birmingham_architectural_style_illustration_e7bdd330.png",
         "propertyUrl": "https://www.primelocation.com/for-sale/details/70468844/?search_identifier=fb6c8e96da6af0d45efe8fb50a73bb380fa709d8c9e08e420a2dbdaff8550d85",
         "city": "Birmingham",
-        "scrapedAt": "2025-08-06T20:58:49.484Z"
+        "scrapedAt": "2025-08-06T21:05:23.071Z"
       },
       {
-        "id": 908265,
+        "id": 553970,
         "address": "Hallewell Road, Edgbaston B16",
         "price": 425000,
         "bedrooms": 6,
-        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "imageUrl": "/attached_assets/generated_images/Birmingham_architectural_style_illustration_e7bdd330.png",
         "propertyUrl": "https://www.primelocation.com/for-sale/details/69822975/?search_identifier=fb6c8e96da6af0d45efe8fb50a73bb380fa709d8c9e08e420a2dbdaff8550d85",
         "city": "Birmingham",
-        "scrapedAt": "2025-08-06T20:58:49.484Z"
+        "scrapedAt": "2025-08-06T21:05:23.071Z"
       },
       {
-        "id": 133314,
+        "id": 796324,
         "address": "Station Road, Kings Heath, Birmingham B14",
         "price": 425000,
         "bedrooms": 4,
-        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "imageUrl": "/attached_assets/generated_images/Birmingham_architectural_style_illustration_e7bdd330.png",
         "propertyUrl": "https://www.primelocation.com/for-sale/details/70216061/?search_identifier=fb6c8e96da6af0d45efe8fb50a73bb380fa709d8c9e08e420a2dbdaff8550d85",
         "city": "Birmingham",
-        "scrapedAt": "2025-08-06T20:58:49.484Z"
+        "scrapedAt": "2025-08-06T21:05:23.071Z"
       },
       {
-        "id": 102035,
+        "id": 762783,
         "address": "Oak Tree Lane, Selly Oak, Birmingham, West Midlands B29",
         "price": 425000,
         "bedrooms": 5,
-        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "imageUrl": "/attached_assets/generated_images/Birmingham_architectural_style_illustration_e7bdd330.png",
         "propertyUrl": "https://www.primelocation.com/for-sale/details/70779224/?search_identifier=fb6c8e96da6af0d45efe8fb50a73bb380fa709d8c9e08e420a2dbdaff8550d85",
         "city": "Birmingham",
-        "scrapedAt": "2025-08-06T20:58:49.484Z"
+        "scrapedAt": "2025-08-06T21:05:23.071Z"
       },
       {
-        "id": 112533,
+        "id": 235516,
         "address": "Chester Road, Birmingham B23",
         "price": 415000,
         "bedrooms": 6,
-        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "imageUrl": "/attached_assets/generated_images/Birmingham_architectural_style_illustration_e7bdd330.png",
         "propertyUrl": "https://www.primelocation.com/for-sale/details/69147214/?search_identifier=fb6c8e96da6af0d45efe8fb50a73bb380fa709d8c9e08e420a2dbdaff8550d85",
         "city": "Birmingham",
-        "scrapedAt": "2025-08-06T20:58:49.484Z"
+        "scrapedAt": "2025-08-06T21:05:23.071Z"
       },
       {
-        "id": 62886,
+        "id": 764896,
         "address": "Dawlish Road, Birmingham B29",
         "price": 415000,
         "bedrooms": 6,
-        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "imageUrl": "/attached_assets/generated_images/Birmingham_architectural_style_illustration_e7bdd330.png",
         "propertyUrl": "https://www.primelocation.com/for-sale/details/70396319/?search_identifier=fb6c8e96da6af0d45efe8fb50a73bb380fa709d8c9e08e420a2dbdaff8550d85",
         "city": "Birmingham",
-        "scrapedAt": "2025-08-06T20:58:49.484Z"
+        "scrapedAt": "2025-08-06T21:05:23.071Z"
       },
       {
-        "id": 912690,
+        "id": 973953,
         "address": "Barnsley Road, Birmingham B17",
         "price": 410000,
         "bedrooms": 4,
-        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "imageUrl": "/attached_assets/generated_images/Birmingham_architectural_style_illustration_e7bdd330.png",
         "propertyUrl": "https://www.primelocation.com/for-sale/details/70395803/?search_identifier=fb6c8e96da6af0d45efe8fb50a73bb380fa709d8c9e08e420a2dbdaff8550d85",
         "city": "Birmingham",
-        "scrapedAt": "2025-08-06T20:58:49.484Z"
+        "scrapedAt": "2025-08-06T21:05:23.071Z"
       },
       {
-        "id": 6135,
+        "id": 737964,
         "address": "Gillott Road, Birmingham B16",
         "price": 400000,
         "bedrooms": 5,
-        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "imageUrl": "/attached_assets/generated_images/Birmingham_architectural_style_illustration_e7bdd330.png",
         "propertyUrl": "https://www.primelocation.com/for-sale/details/69431191/?search_identifier=fb6c8e96da6af0d45efe8fb50a73bb380fa709d8c9e08e420a2dbdaff8550d85",
         "city": "Birmingham",
-        "scrapedAt": "2025-08-06T20:58:49.484Z"
+        "scrapedAt": "2025-08-06T21:05:23.071Z"
       },
       {
-        "id": 386636,
+        "id": 944997,
         "address": "Broadfield Walk, Birmingham B16",
         "price": 395000,
         "bedrooms": 4,
-        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "imageUrl": "/attached_assets/generated_images/Birmingham_architectural_style_illustration_e7bdd330.png",
         "propertyUrl": "https://www.primelocation.com/for-sale/details/70766547/?search_identifier=fb6c8e96da6af0d45efe8fb50a73bb380fa709d8c9e08e420a2dbdaff8550d85",
         "city": "Birmingham",
-        "scrapedAt": "2025-08-06T20:58:49.484Z"
+        "scrapedAt": "2025-08-06T21:05:23.071Z"
       },
       {
-        "id": 818378,
+        "id": 613037,
         "address": "Elmdon Road, Acocks Green, Birmingham, West Midlands B27",
         "price": 375000,
         "bedrooms": 6,
-        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "imageUrl": "/attached_assets/generated_images/Birmingham_architectural_style_illustration_e7bdd330.png",
         "propertyUrl": "https://www.primelocation.com/for-sale/details/70608591/?search_identifier=fb6c8e96da6af0d45efe8fb50a73bb380fa709d8c9e08e420a2dbdaff8550d85",
         "city": "Birmingham",
-        "scrapedAt": "2025-08-06T20:58:49.484Z"
+        "scrapedAt": "2025-08-06T21:05:23.071Z"
       },
       {
-        "id": 309162,
+        "id": 568519,
         "address": "Birchfield Road, Lozells, West Midlands B19",
         "price": 370000,
         "bedrooms": 7,
-        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "imageUrl": "/attached_assets/generated_images/Birmingham_architectural_style_illustration_e7bdd330.png",
         "propertyUrl": "https://www.primelocation.com/for-sale/details/57538982/?search_identifier=fb6c8e96da6af0d45efe8fb50a73bb380fa709d8c9e08e420a2dbdaff8550d85",
         "city": "Birmingham",
-        "scrapedAt": "2025-08-06T20:58:49.484Z"
+        "scrapedAt": "2025-08-06T21:05:23.071Z"
       },
       {
-        "id": 929757,
+        "id": 629363,
         "address": "Mere Road, Birmingham B23",
         "price": 365000,
         "bedrooms": 6,
-        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "imageUrl": "/attached_assets/generated_images/Birmingham_architectural_style_illustration_e7bdd330.png",
         "propertyUrl": "https://www.primelocation.com/for-sale/details/69425766/?search_identifier=fb6c8e96da6af0d45efe8fb50a73bb380fa709d8c9e08e420a2dbdaff8550d85",
         "city": "Birmingham",
-        "scrapedAt": "2025-08-06T20:58:49.484Z"
+        "scrapedAt": "2025-08-06T21:05:23.071Z"
       },
       {
-        "id": 623937,
+        "id": 149074,
         "address": "Selly Hill Road, Birmingham, West Midlands B29",
         "price": 360000,
         "bedrooms": 3,
-        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "imageUrl": "/attached_assets/generated_images/Birmingham_architectural_style_illustration_e7bdd330.png",
         "propertyUrl": "https://www.primelocation.com/for-sale/details/70910460/?search_identifier=fb6c8e96da6af0d45efe8fb50a73bb380fa709d8c9e08e420a2dbdaff8550d85",
         "city": "Birmingham",
-        "scrapedAt": "2025-08-06T20:58:49.484Z"
+        "scrapedAt": "2025-08-06T21:05:23.071Z"
       },
       {
-        "id": 885934,
+        "id": 169195,
         "address": "194 Albert Road, Stechford B33",
         "price": 350000,
         "bedrooms": 5,
-        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "imageUrl": "/attached_assets/generated_images/Birmingham_architectural_style_illustration_e7bdd330.png",
         "propertyUrl": "https://www.primelocation.com/for-sale/details/63835238/?search_identifier=fb6c8e96da6af0d45efe8fb50a73bb380fa709d8c9e08e420a2dbdaff8550d85",
         "city": "Birmingham",
-        "scrapedAt": "2025-08-06T20:58:49.484Z"
+        "scrapedAt": "2025-08-06T21:05:23.071Z"
       },
       {
-        "id": 397542,
+        "id": 765478,
         "address": "Hallewell Road, Birmingham B16",
         "price": 350000,
         "bedrooms": 5,
-        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "imageUrl": "/attached_assets/generated_images/Birmingham_architectural_style_illustration_e7bdd330.png",
         "propertyUrl": "https://www.primelocation.com/for-sale/details/68550861/?search_identifier=fb6c8e96da6af0d45efe8fb50a73bb380fa709d8c9e08e420a2dbdaff8550d85",
         "city": "Birmingham",
-        "scrapedAt": "2025-08-06T20:58:49.484Z"
+        "scrapedAt": "2025-08-06T21:05:23.071Z"
       },
       {
-        "id": 695457,
+        "id": 438953,
         "address": "Wyndham Road, Edgbaston B16",
         "price": 350000,
         "bedrooms": 6,
-        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "imageUrl": "/attached_assets/generated_images/Birmingham_architectural_style_illustration_e7bdd330.png",
         "propertyUrl": "https://www.primelocation.com/for-sale/details/70788240/?search_identifier=fb6c8e96da6af0d45efe8fb50a73bb380fa709d8c9e08e420a2dbdaff8550d85",
         "city": "Birmingham",
-        "scrapedAt": "2025-08-06T20:58:49.484Z"
+        "scrapedAt": "2025-08-06T21:05:23.071Z"
       },
       {
-        "id": 914721,
+        "id": 605006,
         "address": "Washwood Heath Road, Birmingham, West Midlands B8",
         "price": 340000,
         "bedrooms": 6,
-        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "imageUrl": "/attached_assets/generated_images/Birmingham_architectural_style_illustration_e7bdd330.png",
         "propertyUrl": "https://www.primelocation.com/for-sale/details/69345545/?search_identifier=fb6c8e96da6af0d45efe8fb50a73bb380fa709d8c9e08e420a2dbdaff8550d85",
         "city": "Birmingham",
-        "scrapedAt": "2025-08-06T20:58:49.484Z"
+        "scrapedAt": "2025-08-06T21:05:23.071Z"
       },
       {
-        "id": 525420,
+        "id": 900673,
         "address": "Exeter Road, Birmingham, West Midlands B29",
         "price": 340000,
         "bedrooms": 4,
-        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "imageUrl": "/attached_assets/generated_images/Birmingham_architectural_style_illustration_e7bdd330.png",
         "propertyUrl": "https://www.primelocation.com/for-sale/details/70220180/?search_identifier=fb6c8e96da6af0d45efe8fb50a73bb380fa709d8c9e08e420a2dbdaff8550d85",
         "city": "Birmingham",
-        "scrapedAt": "2025-08-06T20:58:49.484Z"
+        "scrapedAt": "2025-08-06T21:05:23.071Z"
       },
       {
-        "id": 947872,
+        "id": 122245,
         "address": "Harleston Road - 16% Net Yield, Birmingham B44",
         "price": 340000,
         "bedrooms": 5,
-        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "imageUrl": "/attached_assets/generated_images/Birmingham_architectural_style_illustration_e7bdd330.png",
         "propertyUrl": "https://www.primelocation.com/for-sale/details/70727875/?search_identifier=fb6c8e96da6af0d45efe8fb50a73bb380fa709d8c9e08e420a2dbdaff8550d85",
         "city": "Birmingham",
-        "scrapedAt": "2025-08-06T20:58:49.484Z"
+        "scrapedAt": "2025-08-06T21:05:23.071Z"
       },
       {
-        "id": 166000,
+        "id": 937181,
         "address": "Frances Road, Erdington, Birmingham B23",
         "price": 325000,
         "bedrooms": 6,
-        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "imageUrl": "/attached_assets/generated_images/Birmingham_architectural_style_illustration_e7bdd330.png",
         "propertyUrl": "https://www.primelocation.com/for-sale/details/70003101/?search_identifier=fb6c8e96da6af0d45efe8fb50a73bb380fa709d8c9e08e420a2dbdaff8550d85",
         "city": "Birmingham",
-        "scrapedAt": "2025-08-06T20:58:49.484Z"
+        "scrapedAt": "2025-08-06T21:05:23.071Z"
       },
       {
-        "id": 883045,
+        "id": 905760,
         "address": "Shenley Fields Road, Birmingham B29",
         "price": 325000,
         "bedrooms": 4,
-        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "imageUrl": "/attached_assets/generated_images/Birmingham_architectural_style_illustration_e7bdd330.png",
         "propertyUrl": "https://www.primelocation.com/for-sale/details/70396404/?search_identifier=fb6c8e96da6af0d45efe8fb50a73bb380fa709d8c9e08e420a2dbdaff8550d85",
         "city": "Birmingham",
-        "scrapedAt": "2025-08-06T20:58:49.484Z"
+        "scrapedAt": "2025-08-06T21:05:23.071Z"
       }
     ]
   },
