@@ -94,34 +94,33 @@ def build_search_urls(city, min_bedrooms, max_price, keywords, postcode=None):
     if max_price:
         zoopla_params.append(f"price_max={max_price}")
     
-    # Add additional filters for better results
+    # Add property type filter only
     zoopla_params.append("property_type=houses")
-    zoopla_params.append("q=" + city.replace(" ", "+"))
     
     zoopla_url = f"https://www.zoopla.co.uk/for-sale/property/{city_slug}/?" + "&".join(zoopla_params)
     
-    # PrimeLocation URL format with robust parameters
+    # PrimeLocation URL format - simplified for speed
     prime_params = []
     if min_bedrooms:
         prime_params.append(f"beds_min={min_bedrooms}")
-    prime_params.append("is_auction=include")
-    prime_params.append("is_retirement_home=include")
-    prime_params.append("is_shared_ownership=include")
     if keywords and keywords.lower() != 'none':
         prime_params.append(f"keywords={keywords}")
     if max_price:
         prime_params.append(f"price_max={max_price}")
     prime_params.append(f"q={city}")
-    prime_params.append("radius=0")
-    prime_params.append("results_sort=highest_price")
-    prime_params.append("search_source=for-sale")
     
     prime_url = f"https://www.primelocation.com/for-sale/property/{city_slug}/?" + "&".join(prime_params)
     
-    # Add alternative search URLs with different sorting and parameters for better coverage
+    # OPTIMIZED: Only add 2-3 alternative URLs for speed
     alternative_urls = []
     
-    # Zoopla alternatives - remove restrictive keywords for broader search
+    # One flexible search with reduced bedrooms if possible
+    if min_bedrooms > 2:
+        flexible_beds = min_bedrooms - 1
+        zoopla_flex = f"https://www.zoopla.co.uk/for-sale/property/{city_slug}/?beds_min={flexible_beds}&price_max={max_price}"
+        alternative_urls.append(zoopla_flex)
+    
+    # Skip all other alternatives for speed
     zoopla_broad_params = []
     if min_bedrooms:
         zoopla_broad_params.append(f"beds_min={min_bedrooms}")
@@ -200,19 +199,12 @@ def build_search_urls(city, min_bedrooms, max_price, keywords, postcode=None):
     prime_wide = f"https://www.primelocation.com/for-sale/property/{city_slug}/?price_max={max_price}"
     alternative_urls.append(prime_wide)
     
-    print(f"🔗 Generated {len(alternative_urls) + 2} search URLs for MAXIMUM coverage", file=sys.stderr)
+    print(f"🔗 Generated {len(alternative_urls) + 2} search URLs for FAST results", file=sys.stderr)
     
-    # Remove duplicates while preserving order
-    all_urls = [zoopla_url, prime_url] + alternative_urls
-    seen = set()
-    unique_urls = []
-    for url in all_urls:
-        if url not in seen:
-            seen.add(url)
-            unique_urls.append(url)
-    
-    print(f"🎯 Final URL count after dedup: {len(unique_urls)}", file=sys.stderr)
-    return unique_urls
+    # Return limited URL set for performance - only most promising URLs
+    all_urls = [zoopla_url, prime_url] + alternative_urls[:2]  # Limit alternatives
+    print(f"🎯 Final URL count: {len(all_urls)}", file=sys.stderr)
+    return all_urls
     
     return [zoopla_url, prime_url] + alternative_urls
 
@@ -616,8 +608,8 @@ def scrape_properties_with_requests(city, min_bedrooms, max_price, keywords, pos
         try:
             print(f"📍 Pokušaj #{attempt + 1}/{len(urls)}: {url[:80]}...", file=sys.stderr)
             
-            # Random delay između zahteva
-            time.sleep(random.uniform(1, 3))
+            # Faster delays for speed optimization
+            time.sleep(random.uniform(0.5, 1.5))
             
             # Pokušaj različite request strategije
             response = None
@@ -636,12 +628,11 @@ def scrape_properties_with_requests(city, min_bedrooms, max_price, keywords, pos
                             'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
                             'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/121.0'
                         ])
-                        time.sleep(random.uniform(2, 5))
+                        time.sleep(random.uniform(1, 2))
                         continue
                     elif response.status_code == 429:
-                        print(f"⚠️ HTTP 429 Rate limit - čekam duže", file=sys.stderr)
-                        time.sleep(random.uniform(10, 20))
-                        continue
+                        print(f"⚠️ HTTP 429 Rate limit - skipping URL", file=sys.stderr)
+                        break  # Skip this URL instead of waiting
                     else:
                         print(f"⚠️ HTTP {response.status_code} - pokušavam ponovo", file=sys.stderr)
                         time.sleep(random.uniform(1, 3))
@@ -649,7 +640,7 @@ def scrape_properties_with_requests(city, min_bedrooms, max_price, keywords, pos
                         
                 except requests.exceptions.RequestException as e:
                     print(f"❌ Network error (retry {retry + 1}/3): {e}", file=sys.stderr)
-                    time.sleep(random.uniform(2, 5))
+                    time.sleep(random.uniform(1, 2))
                     continue
                     
             if not response or response.status_code != 200:
@@ -742,8 +733,8 @@ def scrape_properties_with_requests(city, min_bedrooms, max_price, keywords, pos
                 first_listing = listings[0]
                 print(f"🔍 First listing preview: {str(first_listing)[:200]}...", file=sys.stderr)
             
-            # Scrape svaki oglas - MAXIMIZED limit for diverse results
-            for i, listing in enumerate(listings[:300]):
+            # Scrape svaki oglas - OPTIMIZED limit for speed
+            for i, listing in enumerate(listings[:50]):
                 try:
                     property_data = {}
                     
