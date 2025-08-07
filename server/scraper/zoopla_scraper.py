@@ -45,7 +45,7 @@ def setup_session():
 def build_search_urls(city, min_bedrooms, max_price, keywords, postcode=None):
     """Napravi URLs za Zoopla i PrimeLocation sa filterima u ispravnom formatu"""
     
-    # Enhanced city mappings for problematic cities
+    # Enhanced city mappings for problematic cities with better URL slugs
     city_mappings = {
         'newcastle': 'newcastle-upon-tyne',
         'newcastle upon tyne': 'newcastle-upon-tyne',
@@ -54,7 +54,20 @@ def build_search_urls(city, min_bedrooms, max_price, keywords, postcode=None):
         'cambridge': 'cambridge',
         'leeds': 'leeds',
         'blackpool': 'blackpool', 
-        'salford': 'salford'
+        'salford': 'salford',
+        'oxford': 'oxford',
+        'portsmouth': 'portsmouth',
+        'southampton': 'southampton',
+        'reading': 'reading',
+        'plymouth': 'plymouth',
+        'hull': 'kingston-upon-hull',
+        'kingston upon hull': 'kingston-upon-hull',
+        'derby': 'derby',
+        'coventry': 'coventry',
+        'leicester': 'leicester',
+        'preston': 'preston',
+        'wolverhampton': 'wolverhampton',
+        'stockport': 'stockport'
     }
     
     city_lower = city.lower()
@@ -132,7 +145,7 @@ def build_search_urls(city, min_bedrooms, max_price, keywords, postcode=None):
     alternative_urls.append(alt_prime_url)
     
     # Additional searches for specific problematic cities and dynamic price ranges
-    if city_lower in ['leeds', 'newcastle', 'blackpool', 'cambridge', 'brighton', 'salford'] or max_price < 300000:
+    if city_lower in ['leeds', 'cambridge', 'oxford', 'newcastle', 'blackpool', 'brighton', 'salford', 'reading', 'portsmouth', 'hull'] or max_price < 300000:
         # Try without bedroom restrictions for these cities or low price ranges
         zoopla_minimal = f"https://www.zoopla.co.uk/for-sale/property/{city_slug}/?price_max={max_price}&property_type=houses"
         alternative_urls.append(zoopla_minimal)
@@ -590,28 +603,30 @@ def scrape_properties_with_requests(city, min_bedrooms, max_price, keywords, pos
                 
             soup = BeautifulSoup(response.content, 'html.parser')
             
-            # Pokušaj različite selektore za kompletne oglase (ne samo cene)
+            # Enhanced selectors for better property extraction from UK portals
             selectors_list = [
-                # Pokušaj da nađeš roditelje cena kao oglase
-                '[data-testid*="listing-price"]', 
-                # Zoopla selektori
-                '[data-testid*="listing"]:not([data-testid*="listing-price"])',
-                '[data-testid*="search-result"]', 
-                '.listing-results-wrapper [data-testid]',
-                'article[data-testid]',
-                '.search-results .property-listing',
-                # PrimeLocation selektori
-                '.property-card',
-                '.search-property-result',
-                '.property-item',
-                '[class*="PropertyCard"]',
-                '[class*="property-card"]',
-                # Generički selektori
-                'article',
+                # Primary property listing selectors (most specific first)
+                'article[data-testid*="search-result"]',
+                '[data-testid*="listing-card"]',
+                '[data-testid*="property-listing"]',
                 '.property-listing',
-                'li[data-testid*="result"]',
-                # Pokušaj containerore price elemenata
-                '[data-testid*="listing-price"]'
+                '.property-card', 
+                # Zoopla specific selectors
+                '[data-testid*="listing"]:not([data-testid*="price"])',
+                '.listing-results-wrapper > div',
+                '.search-results > div',
+                # PrimeLocation specific selectors  
+                '.search-property-result',
+                '[class*="SearchResultCard"]',
+                '[class*="property-item"]',
+                'div[data-testid*="card"]',
+                # Generic fallback selectors that often contain property info
+                'article',
+                'li[data-testid]',
+                'div[class*="card"]:has(a[href*="/for-sale/"])',
+                # Last resort: find containers with property URLs
+                'div:has(a[href*="/for-sale/details/"])',
+                'div:has(a[href*="/property/"])'
             ]
             
             listings = []

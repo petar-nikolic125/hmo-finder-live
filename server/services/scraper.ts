@@ -18,7 +18,7 @@ interface CachedSearch {
 }
 
 export class ScrapingService {
-  private readonly RATE_LIMIT_MINUTES = 5; // 5 minutes between scraping sessions
+  private readonly RATE_LIMIT_MINUTES = 2; // 2 minutes between scraping sessions for better performance
   private readonly CACHE_FILE = path.join(process.cwd(), 'server/data/scrape_cache.json');
   private cache: Record<string, CachedSearch> = {};
 

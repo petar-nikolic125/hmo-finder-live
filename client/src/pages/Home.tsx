@@ -8,6 +8,7 @@ import { SortSelect } from '@/components/SortSelect';
 import { UpdateBadge } from '@/components/UpdateBadge';
 import { PropertyCard } from '@/components/PropertyCard';
 import { PropertyGridSkeleton } from '@/components/PropertySkeletonCard';
+import { IntelligentLoadingScreen } from '@/components/IntelligentLoadingScreen';
 import { RefreshFab } from '@/components/RefreshFab';
 import { Footer } from '@/components/Footer';
 import { PrivacyNoticePopup } from '@/components/PrivacyNoticePopup';
@@ -133,7 +134,17 @@ export const Home = () => {
         {/* Search results header with count */}
 
         {isLoading ? (
-          <PropertyGridSkeleton count={searchParams.count || 4} />
+          <>
+            <IntelligentLoadingScreen 
+              isVisible={isLoading} 
+              city={searchParams.city}
+              searchParams={{
+                minRooms: searchParams.minRooms,
+                maxPrice: searchParams.maxPrice
+              }}
+            />
+            <PropertyGridSkeleton count={searchParams.count || 4} />
+          </>
         ) : filteredProperties.length === 0 ? (
           <div className="text-center py-12">
             <h3 className="text-lg font-medium text-muted-foreground mb-2">
