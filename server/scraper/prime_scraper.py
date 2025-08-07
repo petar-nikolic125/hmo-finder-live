@@ -84,7 +84,7 @@ def build_search_urls(city, min_bedrooms, max_price, keywords, postcode=None):
     print(f"🔧 Building URLs for {city}: bedrooms={min_bedrooms}+, price=£{max_price}, keywords={keywords}", file=sys.stderr)
     print(f"🎯 Using city slug: {city_slug}", file=sys.stderr)
     
-    # Zoopla URL format with enhanced parameters for better results
+    # Zoopla URL format - using your exact format example  
     zoopla_params = []
     if min_bedrooms:
         zoopla_params.append(f"beds_min={min_bedrooms}")
@@ -92,9 +92,8 @@ def build_search_urls(city, min_bedrooms, max_price, keywords, postcode=None):
         zoopla_params.append(f"keywords={keywords}")
     if max_price:
         zoopla_params.append(f"price_max={max_price}")
-    
-    # Add property type filter only
-    zoopla_params.append("property_type=houses")
+    zoopla_params.append(f"q={city}")
+    zoopla_params.append("search_source=for-sale")
     
     zoopla_url = f"https://www.zoopla.co.uk/for-sale/property/{city_slug}/?" + "&".join(zoopla_params)
     
@@ -110,16 +109,20 @@ def build_search_urls(city, min_bedrooms, max_price, keywords, postcode=None):
     
     prime_url = f"https://www.primelocation.com/for-sale/property/{city_slug}/?" + "&".join(prime_params)
     
-    # OPTIMIZED: Only add 2-3 alternative URLs for speed
+    # OPTIMIZED: Focus primarily on PrimeLocation when Zoopla fails
     alternative_urls = []
     
-    # One flexible search with reduced bedrooms if possible
-    if min_bedrooms > 2:
+    # Add main PrimeLocation search first (most reliable)
+    prime_main = f"https://www.primelocation.com/for-sale/property/{city_slug}/?beds_min={min_bedrooms}&price_max={max_price}&search_source=for-sale"
+    alternative_urls.append(prime_main)
+    
+    # Only add one flexible Zoopla search as backup
+    if min_bedrooms > 1:
         flexible_beds = min_bedrooms - 1
-        zoopla_flex = f"https://www.zoopla.co.uk/for-sale/property/{city_slug}/?beds_min={flexible_beds}&price_max={max_price}"
+        zoopla_flex = f"https://www.zoopla.co.uk/for-sale/property/{city_slug}/?beds_min={flexible_beds}&price_max={max_price}&q={city}&search_source=for-sale"
         alternative_urls.append(zoopla_flex)
     
-    # Skip all other alternatives for speed
+    # Skip complex alternatives - keep it simple
     zoopla_broad_params = []
     if min_bedrooms:
         zoopla_broad_params.append(f"beds_min={min_bedrooms}")
@@ -200,12 +203,11 @@ def build_search_urls(city, min_bedrooms, max_price, keywords, postcode=None):
     
     print(f"🔗 Generated {len(alternative_urls) + 2} search URLs for FAST results", file=sys.stderr)
     
-    # Return limited URL set for performance - only most promising URLs
-    all_urls = [zoopla_url, prime_url] + alternative_urls[:2]  # Limit alternatives
-    print(f"🎯 Final URL count: {len(all_urls)}", file=sys.stderr)
-    return all_urls
-    
-    return [zoopla_url, prime_url] + alternative_urls
+    # PRIORITY: Start with PrimeLocation since it's more reliable than Zoopla
+    # Return URLs in order of reliability
+    priority_urls = [prime_url, zoopla_url] + alternative_urls[:2]  # PrimeLocation first
+    print(f"🎯 Final URL count: {len(priority_urls)} (PrimeLocation prioritized)", file=sys.stderr)
+    return priority_urls
 
 def extract_price(price_text):
     """Izvuci cenu iz teksta"""
@@ -1023,16 +1025,60 @@ def scrape_properties_with_requests(city, min_bedrooms, max_price, keywords, pos
                 except:
                     continue
     
+    # Enhanced deduplication before returning
+    unique_properties = []
+    seen_signatures = set()
+    address_price_combinations = set()  # Track address + price combinations
+    
+    print(f"🔄 Deduplicating {len(properties)} scraped properties...", file=sys.stderr)
+    
+    for prop in properties:
+        address = prop.get('address', '').lower().strip()
+        price = prop.get('price', 0)
+        bedrooms = prop.get('bedrooms', 0)
+        
+        # Skip properties with invalid addresses
+        if (not address or 
+            address in ['related searches', 'property in', 'bed property in'] or
+            len(address) < 5):
+            print(f"🚫 Skipping invalid address: {address}", file=sys.stderr)
+            continue
+        
+        # Clean address for comparison
+        address_clean = re.sub(r'\s+', ' ', address)
+        address_clean = re.sub(r',\s*$', '', address_clean)
+        
+        # Create signature for duplicate detection
+        signature = f"{address_clean}_{price}_{bedrooms}"
+        address_price_combo = f"{address_clean}_{price}"
+        
+        # Skip exact duplicates
+        if signature in seen_signatures:
+            print(f"🔄 Skipping exact duplicate: {address_clean} (£{price}) - identical signature", file=sys.stderr)
+            continue
+            
+        # Skip same address with same price (different bedroom count variations)
+        if address_price_combo in address_price_combinations:
+            print(f"🔄 Skipping address/price duplicate: {address_clean} (£{price}) - same address and price", file=sys.stderr)
+            continue
+        
+        # Add to unique collection
+        seen_signatures.add(signature)
+        address_price_combinations.add(address_price_combo)
+        unique_properties.append(prop)
+    
+    print(f"✅ After strict deduplication: {len(unique_properties)} unique properties (from {len(properties)} scraped)", file=sys.stderr)
+    
     # Final summary
     print(f"📊 Enhanced Scraping Summary for {city}:", file=sys.stderr)
     print(f"   🔗 URLs tried: {len(urls)}", file=sys.stderr)  
     print(f"   ✅ Successful URLs: {successful_urls}", file=sys.stderr)
-    print(f"   🏠 Properties found: {len(properties)}", file=sys.stderr)
-    if properties:
-        print(f"   💰 Price range: £{min(prop['price'] for prop in properties)} - £{max(prop['price'] for prop in properties)}", file=sys.stderr)
-        print(f"   🛏️ Bedroom range: {min(prop['bedrooms'] for prop in properties)} - {max(prop['bedrooms'] for prop in properties)}", file=sys.stderr)
+    print(f"   🏠 Properties found: {len(unique_properties)}", file=sys.stderr)
+    if unique_properties:
+        print(f"   💰 Price range: £{min(prop['price'] for prop in unique_properties)} - £{max(prop['price'] for prop in unique_properties)}", file=sys.stderr)
+        print(f"   🛏️ Bedroom range: {min(prop['bedrooms'] for prop in unique_properties)} - {max(prop['bedrooms'] for prop in unique_properties)}", file=sys.stderr)
     
-    return properties
+    return unique_properties
 
 # Removed fake property generation - we only use real scraped data
 
