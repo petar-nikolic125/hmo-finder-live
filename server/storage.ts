@@ -102,7 +102,7 @@ export class MemStorage implements IStorage {
   }
 
   private enhancePropertyWithAnalytics(property: Property, params: PropertySearchParams): PropertyWithAnalytics {
-    // Calculate real analytics based on scraped property data
+    // Calculate JARVIS-accurate analytics based on scraped property data to match analysis modal
     const price = property.price;
     const bedrooms = property.bedrooms || 4;
     const city = property.city || params.city || 'Liverpool';
@@ -139,25 +139,40 @@ export class MemStorage implements IStorage {
     const monthlyRent = lhaWeekly * 4.33 * bedrooms; // Weekly to monthly conversion
     const yearlyRent = monthlyRent * 12;
     
-    // Real financial calculations
+    // JARVIS-accurate financial calculations matching analysis modal
     const stampDuty = price * 0.03; // 3% stamp duty
-    const refurbCost = 15000; // Conservative refurb estimate
-    const totalInvested = price + stampDuty + refurbCost;
+    const refurbCost = Math.floor(price * 0.04); // 4% of property value for refurb
+    const legalCosts = 1500; // Legal and survey costs
+    const totalInvested = price + stampDuty + refurbCost + legalCosts;
     
-    // Real yield calculations
+    // Enhanced yield calculations to match JARVIS analysis
     const grossYield = (yearlyRent / price) * 100;
-    const yearlyExpenses = price * 0.25; // 25% expenses (realistic for HMO)
-    const netYearlyIncome = yearlyRent - yearlyExpenses;
+    
+    // Realistic HMO running costs
+    const managementFees = yearlyRent * 0.10; // 10% management
+    const insurance = price * 0.004; // 0.4% of property value
+    const maintenance = yearlyRent * 0.15; // 15% for maintenance
+    const voids = yearlyRent * 0.05; // 5% for void periods
+    const totalExpenses = managementFees + insurance + maintenance + voids;
+    
+    const netYearlyIncome = yearlyRent - totalExpenses;
     const netYield = (netYearlyIncome / price) * 100;
     
-    // ROI on cash invested (25% deposit typically)
+    // ROI calculation matching JARVIS (25% deposit + costs)
     const deposit = price * 0.25;
-    const roi = (netYearlyIncome / deposit) * 100;
+    const totalCashInvested = deposit + stampDuty + refurbCost + legalCosts;
+    const roi = (netYearlyIncome / totalCashInvested) * 100;
     
-    // Other metrics
-    const paybackYears = deposit / netYearlyIncome;
+    // Additional JARVIS metrics
+    const paybackYears = totalCashInvested / Math.max(netYearlyIncome, 1); // Prevent division by zero
     const monthlyCashflow = netYearlyIncome / 12;
-    const dscr = monthlyRent / (price * 0.004); // Debt service coverage ratio
+    const mortgagePayment = (price * 0.75) * 0.05 / 12; // 5% interest rate monthly
+    const dscr = monthlyRent / mortgagePayment; // Debt service coverage ratio
+    
+    // Profitability scoring to match JARVIS analysis
+    let profitabilityScore = 'low';
+    if (roi > 15 && grossYield > 8) profitabilityScore = 'high';
+    else if (roi > 10 && grossYield > 6) profitabilityScore = 'medium';
     
     // Generate postcode and coordinates based on city
     const cityCoords: Record<string, {lat: number, lng: number, prefix: string}> = {
@@ -192,18 +207,19 @@ export class MemStorage implements IStorage {
       hasParking: Math.random() > 0.7,
       isArticle4: Math.random() > 0.8,
       yearlyProfit: Math.round(netYearlyIncome),
-      leftInDeal: Math.round(deposit),
+      leftInDeal: Math.round(totalCashInvested),
+      // JARVIS-accurate analytics
       lhaWeekly,
-      grossYield: Math.round(grossYield * 100) / 100,
-      netYield: Math.round(netYield * 100) / 100,
-      roi: Math.round(roi * 100) / 100,
-      paybackYears: Math.round(paybackYears * 100) / 100,
+      grossYield: Math.round(grossYield * 10) / 10, // One decimal place like JARVIS
+      netYield: Math.round(netYield * 10) / 10,
+      roi: Math.round(roi * 10) / 10, // Match JARVIS precision (15.8%)
+      paybackYears: Math.round(paybackYears * 10) / 10,
       monthlyCashflow: Math.round(monthlyCashflow),
-      dscr: Math.round(dscr * 100) / 100,
+      dscr: Math.round(dscr * 10) / 10,
       stampDuty: Math.round(stampDuty),
       refurbCost,
       totalInvested: Math.round(totalInvested),
-      profitabilityScore: grossYield >= 8 ? 'high' : grossYield >= 6 ? 'medium' : 'low'
+      profitabilityScore
     };
   }
 

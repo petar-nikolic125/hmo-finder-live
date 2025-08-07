@@ -50,18 +50,18 @@ export const IntelligentLoadingScreen = ({ isVisible, city, searchParams }: Inte
     let progressInterval: NodeJS.Timeout;
     let remarkTimeout: NodeJS.Timeout;
 
-    // Progress animation
+    // Progress animation - faster progress
     progressInterval = setInterval(() => {
       setProgress(prev => {
-        const newProgress = prev + Math.random() * 8 + 2;
+        const newProgress = prev + Math.random() * 12 + 4;
         return Math.min(newProgress, 95);
       });
-    }, 300);
+    }, 200);
 
-    // AI thoughts progression
+    // AI thoughts progression - faster for shorter experience
     thoughtInterval = setInterval(() => {
       setCurrentThought(prev => (prev + 1) % aiThoughts.length);
-    }, 2500);
+    }, 1800);
 
     // Single remark at a time to prevent overlapping
     let remarkIndex = 0;
@@ -72,13 +72,13 @@ export const IntelligentLoadingScreen = ({ isVisible, city, searchParams }: Inte
         
         remarkTimeout = setTimeout(() => {
           setCurrentRemark(-1);
-          setTimeout(showNextRemark, 1000); // Gap between remarks
-        }, 3000);
+          setTimeout(showNextRemark, 500); // Shorter gap between remarks
+        }, 2000); // Shorter display time
       }
     };
     
-    // Start showing remarks after initial delay
-    setTimeout(showNextRemark, 3000);
+    // Start showing remarks after shorter delay
+    setTimeout(showNextRemark, 2000);
 
     return () => {
       clearInterval(thoughtInterval);
