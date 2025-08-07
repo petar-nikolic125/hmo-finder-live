@@ -35,11 +35,8 @@ export const Home = () => {
   const [hasSearched, setHasSearched] = useState(false);
   const [showTutorial, setShowTutorial] = useState(true);
 
-  // Search trigger state
-  const [searchTrigger, setSearchTrigger] = useState(false);
-  
-  // Fetch properties with enhanced messaging - only when triggered
-  const { data: searchResult, isLoading, isError, refetch } = useProperties(searchParams, searchTrigger);
+  // Fetch properties with enhanced messaging
+  const { data: searchResult, isLoading, isError, refetch } = useProperties(searchParams);
   const properties = searchResult?.properties || [];
   const expandedResultsMessage = searchResult?.message;
   const hasExpandedResults = searchResult?.hasExpandedResults || false;
@@ -54,13 +51,6 @@ export const Home = () => {
       (property.postcode && property.postcode.toLowerCase().includes(term))
     );
   }, [properties, searchTerm]);
-
-  // Search handler
-  const handleSearch = () => {
-    console.log('🔍 Triggering new search with params:', searchParams);
-    setSearchTrigger(true);
-    setHasSearched(true);
-  };
 
   // Update updated time when properties change
   useEffect(() => {
@@ -92,12 +82,6 @@ export const Home = () => {
       href: window.location.href,
       searchParams
     });
-    
-    // Production environment detection
-    if (window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1') {
-      console.log('🌐 Production environment detected');
-      console.log('💡 Tip: Check console for detailed API debug messages');
-    }
   }, []);
 
   useEffect(() => {
@@ -105,17 +89,12 @@ export const Home = () => {
       console.log('📊 Search result received:', {
         propertiesCount: searchResult.properties?.length || 0,
         hasMessage: !!searchResult.message,
-        hasExpandedResults: searchResult.hasExpandedResults,
-        rawResult: searchResult
-      });
-      console.log('🔍 Properties array details:', {
-        isArray: Array.isArray(searchResult.properties),
-        properties: searchResult.properties
+        hasExpandedResults: searchResult.hasExpandedResults
       });
     }
   }, [searchResult]);
 
-  const handleSearchClick = () => {
+  const handleSearch = () => {
     if (!hasSearched) {
       setShowPrivacyPopup(true);
       setHasSearched(true);
@@ -187,7 +166,7 @@ export const Home = () => {
           
           <div className="flex items-center gap-3">
             <UpdateBadge lastUpdated={lastUpdated} />
-            <SortSelect value="price" onValueChange={() => {}} />
+            <SortSelect />
           </div>
         </div>
 
@@ -205,23 +184,13 @@ export const Home = () => {
           </div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {filteredProperties.map((property, index) => {
-              console.log(`🏡 Rendering property ${index + 1}:`, {
-                hasProperty: !!property,
-                address: property?.address,
-                price: property?.price,
-                postcode: property?.postcode,
-                keys: property ? Object.keys(property) : 'no property'
-              });
-              
-              return (
-                <PropertyCard 
-                  key={`${property.postcode}-${index}`} 
-                  property={property}
-                  delay={150 + (index * 200)}
-                />
-              );
-            })}
+            {filteredProperties.map((property, index) => (
+              <PropertyCard 
+                key={`${property.postcode}-${index}`} 
+                property={property}
+                delay={150 + (index * 200)}
+              />
+            ))}
           </div>
         )}
       </main>
