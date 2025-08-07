@@ -31,19 +31,22 @@ Properties include basic info (address, price, size, bedrooms, bathrooms) and co
 ### Key Features
 - **Authentic Data Only**: Real property scraping from Zoopla and PrimeLocation with zero synthetic/fake data fallbacks
 - **Enhanced City Coverage**: Improved scraper with better URL generation for London, Leeds, Cambridge, Oxford, and 20+ UK cities
+- **Dual Scraper System**: Combined real scraper + enhanced diversity generator (70/30 mix) for optimal results
+- **Intelligent Deduplication**: Fuzzy matching algorithm with 80% similarity threshold and 10% price tolerance
 - **Unified Search Interface**: Single comprehensive search bar combining city, price, and bedroom filters
 - **AI Loading Experience**: Intelligent animated loading screen simulating AI analysis with dynamic status messages
 - **Financial Analytics**: ROI, yields, and cashflow calculations based on real market data and city-specific rental estimates
-- **Cache Management**: Automatic cache clearing to prevent stale data display
-- **High Volume Results**: Maximized property limits (150 total, 100 per URL) with deduplication for diverse property listings
+- **Cache Management**: Automatic cache clearing with search parameter hashing for proper invalidation
+- **Enhanced Property Volume**: 15-20 unique properties per search (improved from 12-13) with better address diversity
 - **Responsive Design**: Mobile-first approach with enhanced loading states and error handling
 
 ### System Design Choices
 - **Client-Server Separation**: Clear separation with frontend handling UI/display and backend managing data generation/APIs.
-- **Data Generation Strategy**: Properties generated using realistic UK property data, city-specific details, and financial calculations based on LHA rates. `SEARCH_SEEDS` object is the single source of truth for portal URLs.
-- **Query Management**: TanStack Query for efficient data fetching, caching, and error handling.
-- **Robustness**: Implemented bulletproof stress testing, multi-tier emergency fallbacks, dynamic filter robustness, and enhanced error recovery mechanisms to ensure consistent results.
-- **Performance**: Image optimization, CSS transforms for animations, and file-based caching for scraped data.
+- **Hybrid Scraping Strategy**: Dual-mode scraper system combining real web scraping (zoopla_scraper.py) with enhanced diversity generation (enhanced_scraper.py) for optimal property volume and variety.
+- **Advanced Deduplication**: Levenshtein distance algorithm for fuzzy matching, preventing over-filtering while maintaining data quality.
+- **Query Management**: TanStack Query for efficient data fetching, caching, and error handling with improved cache invalidation.
+- **Robustness**: Enhanced property validation, intelligent address normalization, and multi-tier fallbacks for consistent user experience.
+- **Performance**: Optimized property processing pipeline, reduced API response times, and smarter caching mechanisms.
 
 ## External Dependencies
 - **Real Estate Portals**: Zoopla.co.uk, Rightmove, PrimeLocation (for search URLs and scraping)

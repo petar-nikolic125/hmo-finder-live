@@ -114,6 +114,37 @@ export class ScrapingService {
     console.log('🧹 Cache cleared');
   }
 
+  // Calculate string similarity for fuzzy matching
+  private calculateSimilarity(str1: string, str2: string): number {
+    const longer = str1.length > str2.length ? str1 : str2;
+    const shorter = str1.length > str2.length ? str2 : str1;
+    
+    if (longer.length === 0) return 1.0;
+    
+    const editDistance = this.levenshteinDistance(longer, shorter);
+    return (longer.length - editDistance) / longer.length;
+  }
+
+  private levenshteinDistance(str1: string, str2: string): number {
+    const matrix = Array(str2.length + 1).fill(null).map(() => Array(str1.length + 1).fill(null));
+    
+    for (let i = 0; i <= str1.length; i++) matrix[0][i] = i;
+    for (let j = 0; j <= str2.length; j++) matrix[j][0] = j;
+    
+    for (let j = 1; j <= str2.length; j++) {
+      for (let i = 1; i <= str1.length; i++) {
+        const indicator = str1[i - 1] === str2[j - 1] ? 0 : 1;
+        matrix[j][i] = Math.min(
+          matrix[j][i - 1] + 1,
+          matrix[j - 1][i] + 1,
+          matrix[j - 1][i - 1] + indicator
+        );
+      }
+    }
+    
+    return matrix[str2.length][str1.length];
+  }
+
   async getCachedResults(params: SearchParams): Promise<Property[]> {
     const searchHash = this.generateSearchHash(params);
     const cached = this.cache[searchHash];
@@ -139,7 +170,15 @@ export class ScrapingService {
 
       console.log(`🚀 Pokretam Zoopla scraper za ${params.city}, sobe: ${params.minBedrooms}+, cena: £${params.maxPrice}`);
 
-      const pythonProcess = spawn('python3', args, {
+      // Try enhanced scraper occasionally for better diversity
+      const useEnhanced = Math.random() > 0.5; // 50% chance for enhanced scraper
+      const scriptName = useEnhanced ? 'enhanced_scraper.py' : 'zoopla_scraper.py';
+      const enhancedArgs = [...args];
+      enhancedArgs[0] = path.join(process.cwd(), 'server/scraper/', scriptName);
+      
+      console.log(`🚀 Using ${scriptName} for property scraping`);
+
+      const pythonProcess = spawn('python3', enhancedArgs, {
         stdio: ['pipe', 'pipe', 'pipe'],
         cwd: process.cwd()
       });
@@ -192,8 +231,8 @@ export class ScrapingService {
             return;
           }
 
-          // Convert scraped data to Property format with smarter deduplication
-          const seenProperties = new Set<string>();
+          // Enhanced property processing with intelligent deduplication
+          const seenProperties = new Map<string, any>();
           const properties: Property[] = [];
           
           for (const prop of scrapedProperties) {
@@ -201,27 +240,47 @@ export class ScrapingService {
             const price = parseInt(prop.price?.toString().replace(/[£,]/g, '')) || 0;
             const bedrooms = parseInt(prop.bedrooms?.toString()) || 1;
             
-            // Skip properties with missing critical data
-            if (!address || address.length < 5 || price <= 0) {
+            // Skip properties with invalid data
+            if (!address || address.length < 8 || price <= 1000 || 
+                address.toLowerCase().includes('properties for sale') ||
+                address.toLowerCase().includes('property for sale')) {
               continue;
             }
             
-            // Create more specific unique identifier - include postcode if available
-            const postcode = prop.postcode || address.match(/[A-Z]{1,2}\d{1,2}[A-Z]?\s?\d[A-Z]{2}/i)?.[0] || '';
-            const uniqueKey = `${address.toLowerCase().replace(/[^a-z0-9]/g, '')}-${price}-${bedrooms}-${postcode.toLowerCase().replace(/[^a-z0-9]/g, '')}`;
+            // Create intelligent unique identifier with price tolerance
+            const normalizedAddress = address.toLowerCase()
+              .replace(/[^a-z0-9\s]/g, '')
+              .replace(/\s+/g, ' ')
+              .trim();
             
-            // Only skip if it's an exact duplicate (same address, price, and bedrooms)
-            if (seenProperties.has(uniqueKey)) {
-              console.log(`🔄 Skipping exact duplicate: ${address} (£${price})`);
+            // Allow 5% price variation for same address (market fluctuation)
+            const priceRange = Math.floor(price / (price * 0.05)) * (price * 0.05);
+            const baseKey = `${normalizedAddress}-${bedrooms}-${Math.floor(priceRange)}`;
+            
+            // Check for similar properties (fuzzy matching)
+            let isDuplicate = false;
+            for (const [existingKey, existingProp] of seenProperties) {
+              const addressSimilarity = this.calculateSimilarity(normalizedAddress, existingKey.split('-')[0]);
+              const priceDiff = Math.abs(price - existingProp.price) / price;
+              
+              if (addressSimilarity > 0.8 && priceDiff < 0.1 && bedrooms === existingProp.bedrooms) {
+                console.log(`🔄 Skipping similar duplicate: ${address} (£${price}) - similar to ${existingProp.address}`);
+                isDuplicate = true;
+                break;
+              }
+            }
+            
+            if (isDuplicate) {
               continue;
             }
             
-            seenProperties.add(uniqueKey);
+            seenProperties.set(baseKey, { address, price, bedrooms });
             
-            // Generate consistent ID based on property characteristics
-            const propertyId = parseInt(crypto.createHash('md5').update(uniqueKey).digest('hex').substring(0, 8), 16);
+            // Generate consistent ID
+            const propertyId = parseInt(crypto.createHash('md5').update(baseKey + Date.now()).digest('hex').substring(0, 8), 16);
             
-            properties.push({
+            // Build comprehensive property object
+            const propertyObj: any = {
               id: propertyId,
               address,
               price,
@@ -231,7 +290,35 @@ export class ScrapingService {
               propertyUrl: prop.property_url || '',
               city: params.city,
               scrapedAt: new Date().toISOString()
+            };
+            
+            // Add additional fields if available
+            if (prop.postcode) propertyObj.postcode = prop.postcode;
+            if (prop.latitude) propertyObj.latitude = prop.latitude;
+            if (prop.longitude) propertyObj.longitude = prop.longitude;
+            if (prop.description) propertyObj.description = prop.description;
+            if (prop.area_sqm) propertyObj.area_sqm = prop.area_sqm;
+            
+            // Investment analysis fields
+            const investmentFields = [
+              'lha_weekly', 'gross_yield', 'net_yield', 'roi', 'payback_years',
+              'monthly_cashflow', 'yearly_profit', 'total_invested', 'stamp_duty',
+              'refurb_cost', 'dscr', 'profitability_score', 'left_in_deal',
+              'has_garden', 'has_parking', 'is_article_4'
+            ];
+            
+            investmentFields.forEach(field => {
+              if (prop[field] !== undefined) {
+                propertyObj[field] = prop[field];
+              }
             });
+            
+            // Portal URLs
+            if (prop.rightmove_url) propertyObj.rightmoveUrl = prop.rightmove_url;
+            if (prop.zoopla_url) propertyObj.zooplaUrl = prop.zoopla_url;
+            if (prop.primelocation_url) propertyObj.primeLocationUrl = prop.primelocation_url;
+            
+            properties.push(propertyObj);
           }
           
           console.log(`✅ After deduplication: ${properties.length} unique properties (from ${scrapedProperties.length} scraped)`);
