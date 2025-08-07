@@ -47,6 +47,7 @@ def build_search_urls(city, min_bedrooms, max_price, keywords, postcode=None):
     
     # Enhanced city mappings for problematic cities with better URL slugs
     city_mappings = {
+        'london': 'london',
         'newcastle': 'newcastle-upon-tyne',
         'newcastle upon tyne': 'newcastle-upon-tyne',
         'brighton': 'brighton-and-hove', 

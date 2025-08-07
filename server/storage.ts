@@ -226,7 +226,7 @@ export class MemStorage implements IStorage {
   async getCities(): Promise<string[]> {
     // Return list of UK cities supported by our scraper
     return [
-      'Liverpool', 'Birmingham', 'Manchester', 'Leeds', 'Sheffield', 
+      'London', 'Liverpool', 'Birmingham', 'Manchester', 'Leeds', 'Sheffield', 
       'Bristol', 'Newcastle', 'Nottingham', 'Leicester', 'Coventry',
       'Brighton', 'Cambridge', 'Oxford', 'Reading', 'Portsmouth',
       'Southampton', 'Plymouth', 'Derby', 'Hull', 'Preston',

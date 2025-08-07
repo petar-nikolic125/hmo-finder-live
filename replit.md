@@ -30,7 +30,7 @@ Properties include basic info (address, price, size, bedrooms, bathrooms) and co
 
 ### Key Features
 - **Authentic Data Only**: Real property scraping from Zoopla and PrimeLocation with zero synthetic/fake data fallbacks
-- **Enhanced City Coverage**: Improved scraper with better URL generation for Leeds, Cambridge, Oxford, and 20+ UK cities
+- **Enhanced City Coverage**: Improved scraper with better URL generation for London, Leeds, Cambridge, Oxford, and 20+ UK cities
 - **Unified Search Interface**: Single comprehensive search bar combining city, price, and bedroom filters
 - **AI Loading Experience**: Intelligent animated loading screen simulating AI analysis with dynamic status messages
 - **Financial Analytics**: ROI, yields, and cashflow calculations based on real market data and city-specific rental estimates
