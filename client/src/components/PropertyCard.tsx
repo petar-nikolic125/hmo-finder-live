@@ -109,7 +109,7 @@ export const PropertyCard = ({ property, delay = 0 }: PropertyCardProps) => {
               data-testid="badge-yield"
             >
               <Percent className="w-4 h-4" />
-              {formatPercentage(property.grossYield)} Yield
+              {formatPercentage(property.grossYield / 100)} Yield
             </Badge>
           </div>
 
@@ -187,7 +187,7 @@ export const PropertyCard = ({ property, delay = 0 }: PropertyCardProps) => {
                 className="text-2xl font-bold text-blue-800"
                 data-testid="text-roi"
               >
-                {formatPercentage(property.roi)}
+                {formatPercentage(property.roi / 100)}
               </div>
             </div>
             
@@ -200,7 +200,7 @@ export const PropertyCard = ({ property, delay = 0 }: PropertyCardProps) => {
                 className="text-2xl font-bold text-emerald-800"
                 data-testid="text-yield"
               >
-                {formatPercentage(property.grossYield)}
+                {formatPercentage(property.grossYield / 100)}
               </div>
             </div>
           </div>

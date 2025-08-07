@@ -143,21 +143,12 @@ export const Home = () => {
           count={filteredProperties.length}
           isLoading={isLoading}
           lastUpdated={lastUpdated}
+          city={searchParams.city}
         />
 
         {/* Search results header with count */}
 
-        {showLoadingScreen ? (
-          <IntelligentLoadingScreen 
-            isVisible={showLoadingScreen}
-            city={searchParams.city}
-            searchParams={{
-              minRooms: searchParams.minRooms,
-              maxPrice: searchParams.maxPrice
-            }}
-            onComplete={() => setShowLoadingScreen(false)}
-          />
-        ) : isLoading ? (
+        {isLoading ? (
           <PropertyGridSkeleton count={searchParams.count || 4} />
         ) : filteredProperties.length === 0 ? (
           <div className="text-center py-12">
@@ -170,13 +161,17 @@ export const Home = () => {
           </div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {filteredProperties.map((property, index) => (
-              <PropertyCard 
-                key={`${property.postcode}-${index}`} 
-                property={property}
-                delay={150 + (index * 200)} // Staggered reveal: 150-300ms range
-              />
-            ))}
+            {filteredProperties
+              .filter((property, index, self) => 
+                index === self.findIndex(p => p.address === property.address && p.price === property.price)
+              )
+              .map((property, index) => (
+                <PropertyCard 
+                  key={`${property.id}-${property.address}-${property.price}`} 
+                  property={property}
+                  delay={150 + (index * 200)} // Staggered reveal: 150-300ms range
+                />
+              ))}
           </div>
         )}
       </main>
