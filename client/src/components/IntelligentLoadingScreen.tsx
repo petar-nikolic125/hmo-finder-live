@@ -48,7 +48,7 @@ export const IntelligentLoadingScreen = ({ isVisible, city, searchParams }: Inte
 
     let thoughtInterval: NodeJS.Timeout;
     let progressInterval: NodeJS.Timeout;
-    let remarkTimeouts: NodeJS.Timeout[] = [];
+    let remarkTimeout: NodeJS.Timeout;
 
     // Progress animation
     progressInterval = setInterval(() => {
@@ -60,38 +60,30 @@ export const IntelligentLoadingScreen = ({ isVisible, city, searchParams }: Inte
 
     // AI thoughts progression
     thoughtInterval = setInterval(() => {
-      setCurrentThought(prev => {
-        const next = (prev + 1) % aiThoughts.length;
-        return next;
-      });
+      setCurrentThought(prev => (prev + 1) % aiThoughts.length);
     }, 2500);
 
-    // Smart remarks with delays
-    smartRemarks.forEach((remark, index) => {
-      const timeout = setTimeout(() => {
-        setShowRemarks(prev => {
-          const newRemarks = [...prev];
-          newRemarks[index] = true;
-          return newRemarks;
-        });
+    // Single remark at a time to prevent overlapping
+    let remarkIndex = 0;
+    const showNextRemark = () => {
+      if (remarkIndex < smartRemarks.length) {
+        setCurrentRemark(remarkIndex);
+        remarkIndex++;
         
-        // Hide after showing for a while
-        setTimeout(() => {
-          setShowRemarks(prev => {
-            const newRemarks = [...prev];
-            newRemarks[index] = false;
-            return newRemarks;
-          });
+        remarkTimeout = setTimeout(() => {
+          setCurrentRemark(-1);
+          setTimeout(showNextRemark, 1000); // Gap between remarks
         }, 3000);
-      }, remark.delay);
-      
-      remarkTimeouts.push(timeout);
-    });
+      }
+    };
+    
+    // Start showing remarks after initial delay
+    setTimeout(showNextRemark, 3000);
 
     return () => {
       clearInterval(thoughtInterval);
       clearInterval(progressInterval);
-      remarkTimeouts.forEach(timeout => clearTimeout(timeout));
+      clearTimeout(remarkTimeout);
     };
   }, [isVisible]);
 
@@ -109,22 +101,23 @@ export const IntelligentLoadingScreen = ({ isVisible, city, searchParams }: Inte
       >
         {/* Animated background particles */}
         <div className="absolute inset-0 overflow-hidden">
-          {[...Array(20)].map((_, i) => (
+          {[...Array(8)].map((_, i) => (
             <motion.div
-              key={i}
-              className="absolute w-1 h-1 bg-purple-400 rounded-full opacity-30"
+              key={`particle-${i}`}
+              className="absolute w-1 h-1 bg-purple-400 rounded-full opacity-20"
               animate={{
-                x: [Math.random() * window.innerWidth, Math.random() * window.innerWidth],
-                y: [Math.random() * window.innerHeight, Math.random() * window.innerHeight],
+                x: [0, 100, 200, 0],
+                y: [0, 150, 100, 0],
               }}
               transition={{
-                duration: Math.random() * 10 + 10,
+                duration: 15 + i * 2,
                 repeat: Infinity,
-                repeatType: "reverse",
+                repeatType: "loop",
+                ease: "linear",
               }}
               style={{
-                left: Math.random() * 100 + '%',
-                top: Math.random() * 100 + '%',
+                left: (i * 12.5) + '%',
+                top: (i * 10) + '%',
               }}
             />
           ))}
@@ -162,7 +155,7 @@ export const IntelligentLoadingScreen = ({ isVisible, city, searchParams }: Inte
               {/* Pulse rings */}
               {[...Array(3)].map((_, i) => (
                 <motion.div
-                  key={i}
+                  key={`pulse-${i}`}
                   className="absolute inset-0 border-2 border-purple-400 rounded-full"
                   animate={{ 
                     scale: [1, 2, 2.5],
@@ -179,29 +172,26 @@ export const IntelligentLoadingScreen = ({ isVisible, city, searchParams }: Inte
           </motion.div>
 
           {/* Main Status */}
-          <motion.h1 
-            className="text-3xl md:text-4xl font-bold text-white mb-4"
-            key={currentThought}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-          >
+          <h1 className="text-3xl md:text-4xl font-bold text-white mb-4">
             AI Property Analysis
-          </motion.h1>
+          </h1>
 
           {/* Current AI Thought */}
-          <motion.div
-            className="mb-6"
-            key={currentThought}
-            initial={{ opacity: 0, x: -30 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6 }}
-          >
-            <p className="text-xl text-purple-200 flex items-center justify-center gap-3">
-              <CurrentIcon className="w-6 h-6 animate-pulse" />
-              {aiThoughts[currentThought]?.text}
-            </p>
-          </motion.div>
+          <div className="mb-6 min-h-[32px]">
+            <AnimatePresence mode="wait">
+              <motion.p 
+                key={`thought-${currentThought}`}
+                className="text-xl text-purple-200 flex items-center justify-center gap-3"
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -10 }}
+                transition={{ duration: 0.3 }}
+              >
+                <CurrentIcon className="w-6 h-6 animate-pulse" />
+                {aiThoughts[currentThought]?.text}
+              </motion.p>
+            </AnimatePresence>
+          </div>
 
           {/* Search Context */}
           {city && (
@@ -249,32 +239,31 @@ export const IntelligentLoadingScreen = ({ isVisible, city, searchParams }: Inte
           </div>
 
           {/* Smart AI Remarks */}
-          <div className="min-h-[60px] flex items-center justify-center">
-            <AnimatePresence>
-              {smartRemarks.map((remark, index) => 
-                showRemarks[index] && (
-                  <motion.div
-                    key={index}
-                    initial={{ opacity: 0, y: 20, scale: 0.9 }}
-                    animate={{ opacity: 1, y: 0, scale: 1 }}
-                    exit={{ opacity: 0, y: -20, scale: 0.9 }}
-                    className="absolute"
-                  >
-                    <div className={`px-4 py-2 rounded-full border backdrop-blur-sm ${
-                      remark.type === 'positive' ? 'bg-green-500/20 border-green-400/50 text-green-200' :
-                      remark.type === 'thinking' ? 'bg-yellow-500/20 border-yellow-400/50 text-yellow-200' :
-                      remark.type === 'analyzing' ? 'bg-blue-500/20 border-blue-400/50 text-blue-200' :
-                      'bg-purple-500/20 border-purple-400/50 text-purple-200'
-                    }`}>
-                      <p className="text-sm font-medium flex items-center gap-2">
-                        {remark.type === 'positive' && <CheckCircle className="w-4 h-4" />}
-                        {remark.type === 'thinking' && <Brain className="w-4 h-4" />}
-                        {remark.type === 'analyzing' && <Search className="w-4 h-4" />}
-                        "{remark.text}"
-                      </p>
-                    </div>
-                  </motion.div>
-                )
+          <div className="min-h-[60px] flex items-center justify-center relative">
+            <AnimatePresence mode="wait">
+              {currentRemark >= 0 && (
+                <motion.div
+                  key={`remark-${currentRemark}`}
+                  initial={{ opacity: 0, y: 20, scale: 0.9 }}
+                  animate={{ opacity: 1, y: 0, scale: 1 }}
+                  exit={{ opacity: 0, y: -20, scale: 0.9 }}
+                  transition={{ duration: 0.3 }}
+                  className="absolute inset-0 flex items-center justify-center"
+                >
+                  <div className={`px-4 py-2 rounded-full border backdrop-blur-sm ${
+                    smartRemarks[currentRemark].type === 'positive' ? 'bg-green-500/20 border-green-400/50 text-green-200' :
+                    smartRemarks[currentRemark].type === 'thinking' ? 'bg-yellow-500/20 border-yellow-400/50 text-yellow-200' :
+                    smartRemarks[currentRemark].type === 'analyzing' ? 'bg-blue-500/20 border-blue-400/50 text-blue-200' :
+                    'bg-purple-500/20 border-purple-400/50 text-purple-200'
+                  }`}>
+                    <p className="text-sm font-medium flex items-center gap-2">
+                      {smartRemarks[currentRemark].type === 'positive' && <CheckCircle className="w-4 h-4" />}
+                      {smartRemarks[currentRemark].type === 'thinking' && <Brain className="w-4 h-4" />}
+                      {smartRemarks[currentRemark].type === 'analyzing' && <Search className="w-4 h-4" />}
+                      "{smartRemarks[currentRemark].text}"
+                    </p>
+                  </div>
+                </motion.div>
               )}
             </AnimatePresence>
           </div>

@@ -17,25 +17,25 @@ A full-stack TypeScript application for searching HMO (House in Multiple Occupat
 - **UI**: Shadcn/ui components with Tailwind CSS
 - **State Management**: TanStack Query for server state
 - **Build Tool**: Vite
-- **UI/UX Decisions**: Professional color scheme, three-column responsive footer layout, full-width UK skyline hero section with dynamic animations (floating clouds, twinkling city lights, floating particles, flying birds, gradient overlay), and stylized architectural illustrations for property visuals (city-specific styles like London Victorian, Birmingham Industrial, Manchester Northern Quarter). Typography improvements for readability.
+- **UI/UX Decisions**: Professional color scheme, unified search interface (merged Hero and Filter sections), AI-powered animated loading screen with intelligent analysis stages, three-column responsive footer layout, full-width UK skyline hero section with dynamic animations. Enhanced property visuals with city-specific architectural illustrations.
 
 ### Backend
 - **Framework**: Express.js
-- **Storage**: In-memory storage with MemStorage class
+- **Storage**: Real-time scraping only (no synthetic data fallbacks)
 - **API Endpoints**: `/api/properties` (search with filters), `/api/cities` (available cities list), `/api/ping` (health check)
+- **Scraping**: Enhanced Python scraper with improved city mappings for Leeds, Cambridge, and 20+ UK cities
 
 ### Data Model
 Properties include basic info (address, price, size, bedrooms, bathrooms) and comprehensive financial analytics (ROI, yields, cashflow, DSCR, payback years). Portal integration uses `SEARCH_SEEDS` for Rightmove and Zoopla URLs.
 
 ### Key Features
-- City-based property search with realistic generated data and multi-tier fallback for robust results.
-- Advanced filtering by size, price, and Article 4 restrictions, with dynamic parameter adjustment for city-specific pricing.
-- Financial analytics including ROI, yields, and cashflow calculations, with city-specific rental estimates.
-- Portal integration using authentic `SEARCH_SEEDS` URLs.
-- Responsive design with loading states and error handling.
-- Postcode search functionality with radius-based property discovery.
-- Universal city support for web scraping across 25+ cities.
-- Enhanced web scraper robustness with universal price range support, advanced URL generation, retry logic, and multi-source strategy (Zoopla, PrimeLocation).
+- **Authentic Data Only**: Real property scraping from Zoopla and PrimeLocation with zero synthetic/fake data fallbacks
+- **Enhanced City Coverage**: Improved scraper with better URL generation for Leeds, Cambridge, Oxford, and 20+ UK cities
+- **Unified Search Interface**: Single comprehensive search bar combining city, price, and bedroom filters
+- **AI Loading Experience**: Intelligent animated loading screen simulating AI analysis with dynamic status messages
+- **Financial Analytics**: ROI, yields, and cashflow calculations based on real market data and city-specific rental estimates
+- **Cache Management**: Automatic cache clearing to prevent stale data display
+- **Responsive Design**: Mobile-first approach with enhanced loading states and error handling
 
 ### System Design Choices
 - **Client-Server Separation**: Clear separation with frontend handling UI/display and backend managing data generation/APIs.
