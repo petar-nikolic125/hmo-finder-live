@@ -1,0 +1,1001 @@
+
+> rest-express@1.0.0 dev
+> NODE_ENV=development tsx server/index.ts
+
+📁 No existing cache found, starting fresh
+11:51:51 AM [express] serving on port 5000
+11:51:58 AM [express] GET /api/cities 200 in 5ms :: ["London","Liverpool","Birmingham","Manchester","…
+🔍 MemStorage: Searching properties with params: {
+  city: 'Liverpool',
+  postcode: undefined,
+  count: 50,
+  minRooms: 4,
+  maxPrice: 500000,
+  keywords: 'HMO',
+  stressTest: false
+}
+🔍 Using prime_scraper.py for REAL property data - NO FAKE DATA
+Python scraper stderr: 🚀 Starting bulletproof scraper for Liverpool
+
+Python scraper stderr: 🎯 Search params: bedrooms=4+, max_price=£500000, keywords='HMO'
+
+Python scraper stderr: 🔧 Building URLs for Liverpool: bedrooms=4+, price=£500000, keywords=HMO
+🎯 Using city slug: liverpool
+🔗 Generated 10 search URLs for MAXIMUM coverage
+🎯 Final URL count after dedup: 9
+📍 Pokušaj #1/9: https://www.zoopla.co.uk/for-sale/property/liverpool/?beds_min=4&keywords=HMO&pr...
+
+11:51:59 AM [express] GET /api/cities 304 in 1ms :: ["London","Liverpool","Birmingham","Manchester","…
+🔍 MemStorage: Searching properties with params: {
+  city: 'Liverpool',
+  postcode: undefined,
+  count: 50,
+  minRooms: 4,
+  maxPrice: 500000,
+  keywords: 'HMO',
+  stressTest: false
+}
+🔍 Using prime_scraper.py for REAL property data - NO FAKE DATA
+Python scraper stderr: 🚀 Starting bulletproof scraper for Liverpool
+
+Python scraper stderr: 🎯 Search params: bedrooms=4+, max_price=£500000, keywords='HMO'
+
+Python scraper stderr: 🔧 Building URLs for Liverpool: bedrooms=4+, price=£500000, keywords=HMO
+
+Python scraper stderr: 🎯 Using city slug: liverpool
+
+Python scraper stderr: 🔗 Generated 10 search URLs for MAXIMUM coverage
+
+Python scraper stderr: 🎯 Final URL count after dedup: 9
+
+Python scraper stderr: 📍 Pokušaj #1/9: https://www.zoopla.co.uk/for-sale/property/liverpool/?beds_min=4&keywords=HMO&pr...
+
+Python scraper stderr: ⚠️ HTTP 403 - pokušavam drugi pristup
+
+Python scraper stderr: ⚠️ HTTP 502 - pokušavam ponovo
+
+Python scraper stderr: ⚠️ HTTP 502 - pokušavam ponovo
+
+Python scraper stderr: ⚠️ HTTP 502 - pokušavam ponovo
+
+Python scraper stderr: ⚠️ HTTP 502 - pokušavam ponovo
+
+Python scraper stderr: ❌ Failed to get https://www.zoopla.co.uk/for-sale/property/liverpool/?beds_min=4&keywords=HMO&price_max=500000&property_type=houses&q=Liverpool after 3 retries - HTTP None
+📍 Pokušaj #2/9: https://www.primelocation.com/for-sale/property/liverpool/?beds_min=4&is_auction...
+
+Python scraper stderr: ✅ HTTP 200 - sadržaj: 1038973 bytes
+
+Python scraper stderr: ✅ Pronašao 215 oglasa sa selektorom: div:has(a[href*="/for-sale/details/"])
+🎯 Found 215 potential listings
+
+Python scraper stderr: 🔍 First listing preview: <div class="_1qnoa4c0"><main class="_1qnoa4c5" id="main-content" style="background-color:var(--colors-graphicBackgroundDefault)"><div class="_1qnoa4c3" style="background-position:center"><div class="_...
+
+Python scraper stderr: ✅ Scraped property 1: Related searches... - £325000 (Yield: 2.36%)
+
+Python scraper stderr: ✅ Scraped property 2: Related searches... - £325000 (Yield: 2.42%)
+
+Python scraper stderr: ✅ Scraped property 3: Related searches... - £325000 (Yield: 2.71%)
+
+Python scraper stderr: ✅ Scraped property 4: Related searches... - £325000 (Yield: 2.66%)
+
+Python scraper stderr: ✅ Scraped property 5: Related searches... - £325000 (Yield: 2.46%)
+
+Python scraper stderr: ✅ Scraped property 6: Related searches... - £325000 (Yield: 2.66%)
+
+Python scraper stderr: ✅ Scraped property 7: Ramilies Road, Mossley Hill L18... - £325000 (Yield: 2.55%)
+
+Python scraper stderr: ✅ Scraped property 8: Ramilies Road, Mossley Hill L18... - £325000 (Yield: 2.42%)
+
+Python scraper stderr: ✅ Scraped property 9: Ramilies Road, Mossley Hill L18... - £325000 (Yield: 2.73%)
+
+Python scraper stderr: ✅ Scraped property 10: 4+ bed property in Liverpool - Price on ... - £500000 (Yield: 1.05%)
+
+Python scraper stderr: ✅ Scraped property 11: 4+ bed property in Liverpool - Price on ... - £500000 (Yield: 1.15%)
+
+Python scraper stderr: ✅ Scraped property 12: Ramilies Road, Mossley Hill L18... - £325000 (Yield: 2.71%)
+
+Python scraper stderr: ✅ Scraped property 13: Ramilies Road, Mossley Hill L18... - £325000 (Yield: 2.57%)
+
+Python scraper stderr: ✅ Scraped property 14: Ramilies Road, Mossley Hill L18... - £325000 (Yield: 2.62%)
+
+Python scraper stderr: ✅ Scraped property 15: Ramilies Road, Mossley Hill L18... - £325000 (Yield: 2.6%)
+
+Python scraper stderr: ✅ Scraped property 16: Norma Road, Liverpool L22... - £498000 (Yield: 1.76%)
+
+Python scraper stderr: ✅ Scraped property 17: Norma Road, Liverpool L22... - £498000 (Yield: 1.97%)
+
+Python scraper stderr: ✅ Scraped property 18: 4+ bed property in Liverpool - Price on ... - £441681 (Yield: 1.13%)
+
+Python scraper stderr: ✅ Scraped property 19: 4+ bed property in Liverpool - Price on ... - £351944 (Yield: 1.64%)
+
+Python scraper stderr: ✅ Scraped property 20: Norma Road, Liverpool L22... - £498000 (Yield: 1.84%)
+
+Python scraper stderr: ✅ Scraped property 21: Norma Road, Liverpool L22... - £498000 (Yield: 1.98%)
+
+Python scraper stderr: ✅ Scraped property 22: Norma Road, Liverpool L22... - £498000 (Yield: 2.14%)
+
+Python scraper stderr: ✅ Scraped property 23: Norma Road, Liverpool L22... - £498000 (Yield: 1.94%)
+
+Python scraper stderr: ✅ Scraped property 24: Leopold Road, Liverpool L7... - £495000 (Yield: 1.95%)
+
+Python scraper stderr: ✅ Scraped property 25: Leopold Road, Liverpool L7... - £495000 (Yield: 1.76%)
+
+Python scraper stderr: ✅ Scraped property 26: 4+ bed property in Liverpool - Price on ... - £500000 (Yield: 1.04%)
+
+Python scraper stderr: ✅ Scraped property 27: 4+ bed property in Liverpool - Price on ... - £441775 (Yield: 1.22%)
+
+Python scraper stderr: ✅ Scraped property 28: Leopold Road, Liverpool L7... - £495000 (Yield: 2.18%)
+
+Python scraper stderr: ✅ Scraped property 29: Leopold Road, Liverpool L7... - £495000 (Yield: 1.96%)
+
+Python scraper stderr: ✅ Scraped property 30: Leopold Road, Liverpool L7... - £495000 (Yield: 2.01%)
+
+Python scraper stderr: ✅ Scraped property 31: Leopold Road, Liverpool L7... - £495000 (Yield: 2.17%)
+
+Python scraper stderr: ✅ Scraped property 32: Grove Street, Edge Hill, Liverpool, Mers... - £490000 (Yield: 1.68%)
+
+Python scraper stderr: ✅ Scraped property 33: Grove Street, Edge Hill, Liverpool, Mers... - £490000 (Yield: 1.48%)
+
+Python scraper stderr: ✅ Scraped property 34: 4+ bed property in Liverpool - Price on ... - £445571 (Yield: 1.13%)
+
+Python scraper stderr: ✅ Scraped property 35: 4+ bed property in Liverpool - Price on ... - £364976 (Yield: 1.45%)
+
+Python scraper stderr: ✅ Scraped property 36: Grove Street, Edge Hill, Liverpool, Mers... - £490000 (Yield: 1.65%)
+
+Python scraper stderr: ✅ Scraped property 37: Grove Street, Edge Hill, Liverpool, Mers... - £490000 (Yield: 1.53%)
+
+Python scraper stderr: ✅ Scraped property 38: Grove Street, Edge Hill, Liverpool, Mers... - £490000 (Yield: 1.63%)
+
+Python scraper stderr: ✅ Scraped property 39: Grove Street, Edge Hill, Liverpool, Mers... - £490000 (Yield: 1.7%)
+
+Python scraper stderr: ✅ Scraped property 40: Seymour Street, Liverpool, Merseyside L3... - £485000 (Yield: 1.77%)
+
+Python scraper stderr: ✅ Scraped property 41: Seymour Street, Liverpool, Merseyside L3... - £485000 (Yield: 1.52%)
+
+Python scraper stderr: ✅ Scraped property 42: 4+ bed property in Liverpool - Price on ... - £378442 (Yield: 1.4%)
+
+Python scraper stderr: ✅ Scraped property 43: 4+ bed property in Liverpool - Price on ... - £472318 (Yield: 1.1%)
+
+Python scraper stderr: ✅ Scraped property 44: Seymour Street, Liverpool, Merseyside L3... - £485000 (Yield: 1.72%)
+
+Python scraper stderr: ✅ Scraped property 45: Seymour Street, Liverpool, Merseyside L3... - £485000 (Yield: 1.72%)
+
+Python scraper stderr: ✅ Scraped property 46: Seymour Street, Liverpool, Merseyside L3... - £485000 (Yield: 1.86%)
+
+Python scraper stderr: ✅ Scraped property 47: Seymour Street, Liverpool, Merseyside L3... - £485000 (Yield: 1.48%)
+
+Python scraper stderr: ✅ Scraped property 48: Halkyn Avenue, Liverpool, Merseyside L17... - £475000 (Yield: 2.55%)
+
+Python scraper stderr: ✅ Scraped property 49: Halkyn Avenue, Liverpool, Merseyside L17... - £475000 (Yield: 2.23%)
+
+Python scraper stderr: ✅ Scraped property 50: 4+ bed property in Liverpool - Price on ... - £366313 (Yield: 1.53%)
+
+Python scraper stderr: ✅ Scraped property 51: 4+ bed property in Liverpool - Price on ... - £500000 (Yield: 1.0%)
+
+Python scraper stderr: ✅ Scraped property 52: Halkyn Avenue, Liverpool, Merseyside L17... - £475000 (Yield: 2.21%)
+
+Python scraper stderr: ✅ Scraped property 53: Halkyn Avenue, Liverpool, Merseyside L17... - £475000 (Yield: 2.16%)
+
+Python scraper stderr: ✅ Scraped property 54: Halkyn Avenue, Liverpool, Merseyside L17... - £475000 (Yield: 2.49%)
+
+Python scraper stderr: ✅ Scraped property 55: Halkyn Avenue, Liverpool, Merseyside L17... - £475000 (Yield: 2.25%)
+
+Python scraper stderr: ✅ Scraped property 56: Newsham Drive, Liverpool, Merseyside L6... - £430000 (Yield: 3.69%)
+
+Python scraper stderr: ✅ Scraped property 57: Newsham Drive, Liverpool, Merseyside L6... - £430000 (Yield: 3.37%)
+
+Python scraper stderr: ✅ Scraped property 58: 4+ bed property in Liverpool - Price on ... - £438916 (Yield: 1.14%)
+
+Python scraper stderr: ✅ Scraped property 59: 4+ bed property in Liverpool - Price on ... - £463500 (Yield: 1.08%)
+
+Python scraper stderr: ✅ Scraped property 60: Newsham Drive, Liverpool, Merseyside L6... - £430000 (Yield: 3.29%)
+
+Python scraper stderr: ✅ Scraped property 61: Newsham Drive, Liverpool, Merseyside L6... - £430000 (Yield: 3.32%)
+
+Python scraper stderr: ✅ Scraped property 62: Newsham Drive, Liverpool, Merseyside L6... - £430000 (Yield: 3.29%)
+
+Python scraper stderr: ✅ Scraped property 63: Newsham Drive, Liverpool, Merseyside L6... - £430000 (Yield: 3.32%)
+
+Python scraper stderr: ✅ Scraped property 64: Rutland Avenue, Sefton Park, Liverpool, ... - £425000 (Yield: 2.15%)
+
+Python scraper stderr: ✅ Scraped property 65: Rutland Avenue, Sefton Park, Liverpool, ... - £425000 (Yield: 2.51%)
+
+Python scraper stderr: ✅ Scraped property 66: 4+ bed property in Liverpool - Price on ... - £426796 (Yield: 1.35%)
+
+Python scraper stderr: ✅ Scraped property 67: 4+ bed property in Liverpool - Price on ... - £359555 (Yield: 1.51%)
+
+Python scraper stderr: ✅ Scraped property 68: Rutland Avenue, Sefton Park, Liverpool, ... - £425000 (Yield: 2.49%)
+
+Python scraper stderr: ✅ Scraped property 69: Rutland Avenue, Sefton Park, Liverpool, ... - £425000 (Yield: 2.35%)
+
+Python scraper stderr: ✅ Scraped property 70: Rutland Avenue, Sefton Park, Liverpool, ... - £425000 (Yield: 2.15%)
+
+Python scraper stderr: ✅ Scraped property 71: Rutland Avenue, Sefton Park, Liverpool, ... - £425000 (Yield: 2.42%)
+
+Python scraper stderr: ✅ Scraped property 72: Jubilee Drive, Liverpool L7... - £395000 (Yield: 2.1%)
+
+Python scraper stderr: ✅ Scraped property 73: Jubilee Drive, Liverpool L7... - £395000 (Yield: 2.05%)
+
+Python scraper stderr: ✅ Scraped property 74: 4+ bed property in Liverpool - Price on ... - £500000 (Yield: 1.07%)
+
+Python scraper stderr: ✅ Scraped property 75: 4+ bed property in Liverpool - Price on ... - £500000 (Yield: 0.97%)
+
+Python scraper stderr: ✅ Scraped property 76: Jubilee Drive, Liverpool L7... - £395000 (Yield: 1.88%)
+
+Python scraper stderr: ✅ Scraped property 77: Jubilee Drive, Liverpool L7... - £395000 (Yield: 2.07%)
+
+Python scraper stderr: ✅ Scraped property 78: Jubilee Drive, Liverpool L7... - £395000 (Yield: 2.11%)
+
+Python scraper stderr: ✅ Scraped property 79: Jubilee Drive, Liverpool L7... - £395000 (Yield: 2.28%)
+
+Python scraper stderr: ✅ Scraped property 80: Sandown Lane, Liverpool, Merseyside L15... - £380000 (Yield: 3.18%)
+
+Python scraper stderr: ✅ Scraped property 81: Sandown Lane, Liverpool, Merseyside L15... - £380000 (Yield: 3.46%)
+
+Python scraper stderr: ✅ Scraped property 82: 4+ bed property in Liverpool - Price on ... - £436843 (Yield: 1.29%)
+
+Python scraper stderr: ✅ Scraped property 83: 4+ bed property in Liverpool - Price on ... - £358763 (Yield: 1.36%)
+
+Python scraper stderr: ✅ Scraped property 84: Sandown Lane, Liverpool, Merseyside L15... - £380000 (Yield: 3.21%)
+✅ Scraped property 85: Sandown Lane, Liverpool, Merseyside L15... - £380000 (Yield: 3.44%)
+
+Python scraper stderr: ✅ Scraped property 86: Sandown Lane, Liverpool, Merseyside L15... - £380000 (Yield: 3.18%)
+
+Python scraper stderr: ✅ Scraped property 87: Sandown Lane, Liverpool, Merseyside L15... - £380000 (Yield: 3.13%)
+
+Python scraper stderr: ✅ Scraped property 88: Gilroy Road, Liverpool L6... - £360000 (Yield: 2.78%)
+
+Python scraper stderr: ✅ Scraped property 89: Gilroy Road, Liverpool L6... - £360000 (Yield: 2.46%)
+
+Python scraper stderr: ✅ Scraped property 90: 4+ bed property in Liverpool - Price on ... - £500000 (Yield: 0.99%)
+✅ Scraped property 91: 4+ bed property in Liverpool - Price on ... - £380629 (Yield: 1.31%)
+✅ Scraped property 92: Gilroy Road, Liverpool L6... - £360000 (Yield: 2.74%)
+✅ Scraped property 93: Gilroy Road, Liverpool L6... - £360000 (Yield: 2.98%)
+✅ Scraped property 94: Gilroy Road, Liverpool L6... - £360000 (Yield: 2.68%)
+
+Python scraper stderr: ✅ Scraped property 95: Gilroy Road, Liverpool L6... - £360000 (Yield: 2.5%)
+
+Python scraper stderr: ✅ Scraped property 96: Arkles Lane, Liverpool, Merseyside L4... - £350000 (Yield: 3.92%)
+
+Python scraper stderr: ✅ Scraped property 97: Arkles Lane, Liverpool, Merseyside L4... - £350000 (Yield: 3.43%)
+✅ Scraped property 98: 4+ bed property in Liverpool - Price on ... - £439273 (Yield: 1.11%)
+✅ Scraped property 99: 4+ bed property in Liverpool - Price on ... - £500000 (Yield: 1.0%)
+✅ Scraped property 100: Arkles Lane, Liverpool, Merseyside L4... - £350000 (Yield: 3.62%)
+✅ Scraped property 101: Arkles Lane, Liverpool, Merseyside L4... - £350000 (Yield: 4.11%)
+✅ Scraped property 102: Arkles Lane, Liverpool, Merseyside L4... - £350000 (Yield: 3.98%)
+✅ Scraped property 103: Arkles Lane, Liverpool, Merseyside L4... - £350000 (Yield: 3.54%)
+✅ Scraped property 104: Ramilies Road, Mossley Hill L18... - £325000 (Yield: 2.29%)
+✅ Scraped property 105: Ramilies Road, Mossley Hill L18... - £325000 (Yield: 2.23%)
+✅ Scraped property 106: 4+ bed property in Liverpool - Price on ... - £499227 (Yield: 1.13%)
+
+Python scraper stderr: ✅ Scraped property 107: 4+ bed property in Liverpool - Price on ... - £404226 (Yield: 1.26%)
+
+Python scraper stderr: ✅ Scraped property 108: Ramilies Road, Mossley Hill L18... - £325000 (Yield: 2.58%)
+
+Python scraper stderr: ✅ Scraped property 109: Ramilies Road, Mossley Hill L18... - £325000 (Yield: 2.47%)
+
+Python scraper stderr: ✅ Scraped property 110: Ramilies Road, Mossley Hill L18... - £325000 (Yield: 2.6%)
+
+Python scraper stderr: ✅ Scraped property 111: Ramilies Road, Mossley Hill L18... - £325000 (Yield: 2.23%)
+
+Python scraper stderr: ✅ Scraped property 112: Spellow Lane, Liverpool L4... - £310000 (Yield: 3.41%)
+
+Python scraper stderr: ✅ Scraped property 113: Spellow Lane, Liverpool L4... - £310000 (Yield: 2.97%)
+
+Python scraper stderr: ✅ Scraped property 114: 4+ bed property in Liverpool - Price on ... - £500000 (Yield: 1.07%)
+
+Python scraper stderr: ✅ Scraped property 115: 4+ bed property in Liverpool - Price on ... - £343891 (Yield: 1.55%)
+
+Python scraper stderr: ✅ Scraped property 116: Spellow Lane, Liverpool L4... - £310000 (Yield: 2.86%)
+
+Python scraper stderr: ✅ Scraped property 117: Spellow Lane, Liverpool L4... - £310000 (Yield: 3.34%)
+
+Python scraper stderr: ✅ Scraped property 118: Spellow Lane, Liverpool L4... - £310000 (Yield: 3.07%)
+
+Python scraper stderr: ✅ Scraped property 119: Spellow Lane, Liverpool L4... - £310000 (Yield: 3.21%)
+
+Python scraper stderr: ✅ Scraped property 120: Molyneux Road, Kensington, Liverpool L6... - £300000 (Yield: 4.12%)
+
+Python scraper stderr: ✅ Scraped property 121: Molyneux Road, Kensington, Liverpool L6... - £300000 (Yield: 3.53%)
+
+Python scraper stderr: ✅ Scraped property 122: 4+ bed property in Liverpool - Price on ... - £452324 (Yield: 1.09%)
+
+Python scraper stderr: ✅ Scraped property 123: 4+ bed property in Liverpool - Price on ... - £500000 (Yield: 1.08%)
+
+Python scraper stderr: ✅ Scraped property 124: Molyneux Road, Kensington, Liverpool L6... - £300000 (Yield: 3.67%)
+
+Python scraper stderr: ✅ Scraped property 125: Molyneux Road, Kensington, Liverpool L6... - £300000 (Yield: 3.5%)
+
+Python scraper stderr: ✅ Scraped property 126: Molyneux Road, Kensington, Liverpool L6... - £300000 (Yield: 3.56%)
+
+Python scraper stderr: ✅ Scraped property 127: Molyneux Road, Kensington, Liverpool L6... - £300000 (Yield: 3.5%)
+
+Python scraper stderr: ✅ Scraped property 128: Bagot Street, Liverpool L15... - £300000 (Yield: 2.42%)
+
+Python scraper stderr: ✅ Scraped property 129: Bagot Street, Liverpool L15... - £300000 (Yield: 2.98%)
+
+Python scraper stderr: ✅ Scraped property 130: 4+ bed property in Liverpool - Price on ... - £362024 (Yield: 1.41%)
+
+Python scraper stderr: ✅ Scraped property 131: 4+ bed property in Liverpool - Price on ... - £500000 (Yield: 1.05%)
+
+Python scraper stderr: ✅ Scraped property 132: Bagot Street, Liverpool L15... - £300000 (Yield: 3.0%)
+
+Python scraper stderr: ✅ Scraped property 133: Bagot Street, Liverpool L15... - £300000 (Yield: 2.4%)
+
+Python scraper stderr: ✅ Scraped property 134: Bagot Street, Liverpool L15... - £300000 (Yield: 2.78%)
+
+Python scraper stderr: ✅ Scraped property 135: Bagot Street, Liverpool L15... - £300000 (Yield: 2.94%)
+
+Python scraper stderr: ✅ Scraped property 136: Molyneux Road, Kensington, Liverpool L6... - £300000 (Yield: 3.72%)
+
+Python scraper stderr: ✅ Scraped property 137: Molyneux Road, Kensington, Liverpool L6... - £300000 (Yield: 3.47%)
+
+Python scraper stderr: ✅ Scraped property 138: 4+ bed property in Liverpool - Price on ... - £500000 (Yield: 1.12%)
+
+Python scraper stderr: ✅ Scraped property 139: 4+ bed property in Liverpool - Price on ... - £500000 (Yield: 1.14%)
+
+Python scraper stderr: ✅ Scraped property 140: Molyneux Road, Kensington, Liverpool L6... - £300000 (Yield: 3.84%)
+
+Python scraper stderr: ✅ Scraped property 141: Molyneux Road, Kensington, Liverpool L6... - £300000 (Yield: 3.98%)
+
+Python scraper stderr: ✅ Scraped property 142: Molyneux Road, Kensington, Liverpool L6... - £300000 (Yield: 3.56%)
+
+Python scraper stderr: ✅ Scraped property 143: Molyneux Road, Kensington, Liverpool L6... - £300000 (Yield: 3.39%)
+
+Python scraper stderr: ✅ Scraped property 144: Island Road, Garston, Liverpool L19... - £295000 (Yield: 2.62%)
+
+Python scraper stderr: ✅ Scraped property 145: Island Road, Garston, Liverpool L19... - £295000 (Yield: 2.95%)
+
+Python scraper stderr: ✅ Scraped property 146: 4+ bed property in Liverpool - Price on ... - £500000 (Yield: 1.02%)
+
+Python scraper stderr: ✅ Scraped property 147: 4+ bed property in Liverpool - Price on ... - £394433 (Yield: 1.46%)
+
+Python scraper stderr: ✅ Scraped property 148: Island Road, Garston, Liverpool L19... - £295000 (Yield: 2.93%)
+
+Python scraper stderr: ✅ Scraped property 149: Island Road, Garston, Liverpool L19... - £295000 (Yield: 2.79%)
+
+Python scraper stderr: ✅ Scraped property 150: Island Road, Garston, Liverpool L19... - £295000 (Yield: 2.91%)
+
+Python scraper stderr: ✅ Scraped property 151: Island Road, Garston, Liverpool L19... - £295000 (Yield: 2.73%)
+
+Python scraper stderr: ✅ Scraped property 152: Albany Road, Kensington, Liverpool L7... - £295000 (Yield: 2.75%)
+
+Python scraper stderr: ✅ Scraped property 153: Albany Road, Kensington, Liverpool L7... - £295000 (Yield: 2.56%)
+
+Python scraper stderr: ✅ Scraped property 154: 4+ bed property in Liverpool - Price on ... - £472979 (Yield: 1.13%)
+
+Python scraper stderr: ✅ Scraped property 155: 4+ bed property in Liverpool - Price on ... - £500000 (Yield: 1.06%)
+
+Python scraper stderr: ✅ Scraped property 156: Albany Road, Kensington, Liverpool L7... - £295000 (Yield: 2.6%)
+
+Python scraper stderr: ✅ Scraped property 157: Albany Road, Kensington, Liverpool L7... - £295000 (Yield: 2.71%)
+
+Python scraper stderr: ✅ Scraped property 158: Albany Road, Kensington, Liverpool L7... - £295000 (Yield: 2.52%)
+
+Python scraper stderr: ✅ Scraped property 159: Albany Road, Kensington, Liverpool L7... - £295000 (Yield: 2.73%)
+
+Python scraper stderr: ✅ Scraped property 160: Esher Road, Kensington, Liverpool L6... - £295000 (Yield: 3.32%)
+
+Python scraper stderr: ✅ Scraped property 161: Esher Road, Kensington, Liverpool L6... - £295000 (Yield: 3.61%)
+
+Python scraper stderr: ✅ Scraped property 162: 4+ bed property in Liverpool - Price on ... - £500000 (Yield: 1.14%)
+
+Python scraper stderr: ✅ Scraped property 163: 4+ bed property in Liverpool - Price on ... - £500000 (Yield: 1.01%)
+
+Python scraper stderr: ✅ Scraped property 164: Esher Road, Kensington, Liverpool L6... - £295000 (Yield: 3.42%)
+
+Python scraper stderr: ✅ Scraped property 165: Esher Road, Kensington, Liverpool L6... - £295000 (Yield: 3.51%)
+
+Python scraper stderr: ✅ Scraped property 166: Esher Road, Kensington, Liverpool L6... - £295000 (Yield: 3.47%)
+
+Python scraper stderr: ✅ Scraped property 167: Esher Road, Kensington, Liverpool L6... - £295000 (Yield: 3.37%)
+
+Python scraper stderr: ✅ Scraped property 168: Sheil Road, Kensington, Liverpool L6... - £270000 (Yield: 3.31%)
+
+Python scraper stderr: ✅ Scraped property 169: Sheil Road, Kensington, Liverpool L6... - £270000 (Yield: 3.33%)
+
+Python scraper stderr: ✅ Scraped property 170: 4+ bed property in Liverpool - Price on ... - £500000 (Yield: 1.01%)
+
+Python scraper stderr: ✅ Scraped property 171: 4+ bed property in Liverpool - Price on ... - £398935 (Yield: 1.26%)
+
+Python scraper stderr: ✅ Scraped property 172: Sheil Road, Kensington, Liverpool L6... - £270000 (Yield: 3.81%)
+
+Python scraper stderr: ✅ Scraped property 173: Sheil Road, Kensington, Liverpool L6... - £270000 (Yield: 3.84%)
+
+Python scraper stderr: ✅ Scraped property 174: Sheil Road, Kensington, Liverpool L6... - £270000 (Yield: 3.95%)
+
+Python scraper stderr: ✅ Scraped property 175: Sheil Road, Kensington, Liverpool L6... - £270000 (Yield: 3.41%)
+
+Python scraper stderr: ✅ Scraped property 176: Brookdale Road, Liverpool L15... - £255000 (Yield: 2.24%)
+
+Python scraper stderr: ✅ Scraped property 177: Brookdale Road, Liverpool L15... - £255000 (Yield: 1.9%)
+
+Python scraper stderr: ✅ Scraped property 178: 4+ bed property in Liverpool - Price on ... - £500000 (Yield: 0.99%)
+
+Python scraper stderr: ✅ Scraped property 179: 4+ bed property in Liverpool - Price on ... - £500000 (Yield: 1.15%)
+
+Python scraper stderr: ✅ Scraped property 180: Brookdale Road, Liverpool L15... - £255000 (Yield: 1.96%)
+
+Python scraper stderr: ✅ Scraped property 181: Brookdale Road, Liverpool L15... - £255000 (Yield: 1.88%)
+
+Python scraper stderr: ✅ Scraped property 182: Brookdale Road, Liverpool L15... - £255000 (Yield: 1.88%)
+
+Python scraper stderr: ✅ Scraped property 183: Brookdale Road, Liverpool L15... - £255000 (Yield: 1.9%)
+
+Python scraper stderr: ✅ Scraped property 184: Halsbury Road, Liverpool, Merseyside L6... - £250000 (Yield: 3.58%)
+
+Python scraper stderr: ✅ Scraped property 185: Halsbury Road, Liverpool, Merseyside L6... - £250000 (Yield: 3.29%)
+
+Python scraper stderr: ✅ Scraped property 186: 4+ bed property in Liverpool - Price on ... - £500000 (Yield: 1.03%)
+
+Python scraper stderr: ✅ Scraped property 187: 4+ bed property in Liverpool - Price on ... - £500000 (Yield: 1.09%)
+
+Python scraper stderr: ✅ Scraped property 188: Halsbury Road, Liverpool, Merseyside L6... - £250000 (Yield: 2.9%)
+
+Python scraper stderr: ✅ Scraped property 189: Halsbury Road, Liverpool, Merseyside L6... - £250000 (Yield: 3.26%)
+
+Python scraper stderr: ✅ Scraped property 190: Halsbury Road, Liverpool, Merseyside L6... - £250000 (Yield: 3.22%)
+
+Python scraper stderr: ✅ Scraped property 191: Halsbury Road, Liverpool, Merseyside L6... - £250000 (Yield: 3.17%)
+
+Python scraper stderr: ✅ Scraped property 192: Arkles Lane, Liverpool, Merseyside L4... - £250000 (Yield: 3.63%)
+
+Python scraper stderr: ✅ Scraped property 193: Arkles Lane, Liverpool, Merseyside L4... - £250000 (Yield: 4.0%)
+✅ Scraped property 194: 4+ bed property in Liverpool - Price on ... - £500000 (Yield: 1.02%)
+✅ Scraped property 195: 4+ bed property in Liverpool - Price on ... - £500000 (Yield: 1.07%)
+
+Python scraper stderr: ✅ Scraped property 196: Arkles Lane, Liverpool, Merseyside L4... - £250000 (Yield: 4.0%)
+
+Python scraper stderr: ✅ Scraped property 197: Arkles Lane, Liverpool, Merseyside L4... - £250000 (Yield: 3.66%)
+
+Python scraper stderr: ✅ Scraped property 198: Arkles Lane, Liverpool, Merseyside L4... - £250000 (Yield: 4.03%)
+
+Python scraper stderr: ✅ Scraped property 199: Arkles Lane, Liverpool, Merseyside L4... - £250000 (Yield: 4.06%)
+
+Python scraper stderr: ✅ Scraped property 200: Colebrooke Road, Aigburth, Liverpool L17... - £240000 (Yield: 4.14%)
+
+Python scraper stderr: ✅ Scraped property 201: Colebrooke Road, Aigburth, Liverpool L17... - £240000 (Yield: 4.08%)
+
+Python scraper stderr: ✅ Scraped property 202: 4+ bed property in Liverpool - Price on ... - £500000 (Yield: 1.02%)
+
+Python scraper stderr: ✅ Scraped property 203: 4+ bed property in Liverpool - Price on ... - £500000 (Yield: 1.06%)
+
+Python scraper stderr: ✅ Scraped property 204: Colebrooke Road, Aigburth, Liverpool L17... - £240000 (Yield: 3.81%)
+✅ Scraped property 205: Colebrooke Road, Aigburth, Liverpool L17... - £240000 (Yield: 4.47%)
+
+Python scraper stderr: ✅ Scraped property 206: Colebrooke Road, Aigburth, Liverpool L17... - £240000 (Yield: 4.11%)
+
+Python scraper stderr: ✅ Scraped property 207: Colebrooke Road, Aigburth, Liverpool L17... - £240000 (Yield: 3.78%)
+
+Python scraper stderr: ✅ Scraped property 208: Granville Road, Wavertree L15... - £230000 (Yield: 2.25%)
+
+Python scraper stderr: ✅ Scraped property 209: Granville Road, Wavertree L15... - £230000 (Yield: 2.13%)
+
+Python scraper stderr: ✅ Scraped property 210: 4+ bed property in Liverpool - Price on ... - £500000 (Yield: 0.97%)
+
+Python scraper stderr: ✅ Scraped property 211: 4+ bed property in Liverpool - Price on ... - £359366 (Yield: 1.48%)
+
+Python scraper stderr: ✅ Scraped property 212: Granville Road, Wavertree L15... - £230000 (Yield: 2.11%)
+
+Python scraper stderr: ✅ Scraped property 213: Granville Road, Wavertree L15... - £230000 (Yield: 2.32%)
+
+Python scraper stderr: ✅ Scraped property 214: Granville Road, Wavertree L15... - £230000 (Yield: 2.5%)
+
+Python scraper stderr: ✅ Scraped property 215: Granville Road, Wavertree L15... - £230000 (Yield: 2.46%)
+
+Python scraper stderr: 📍 Pokušaj #3/9: https://www.zoopla.co.uk/for-sale/property/liverpool/?beds_min=4&price_max=50000...
+
+Python scraper stderr: ❌ Network error (retry 3/3): HTTPSConnectionPool(host='www.zoopla.co.uk', port=443): Read timed out. (read timeout=30)
+
+Python scraper stderr: ❌ Failed to get https://www.zoopla.co.uk/for-sale/property/liverpool/?beds_min=4&keywords=HMO&price_max=500000&property_type=houses&q=Liverpool after 3 retries - HTTP None
+📍 Pokušaj #2/9: https://www.primelocation.com/for-sale/property/liverpool/?beds_min=4&is_auction...
+
+Python scraper process finished with code: null
+Python scraper exited with code null
+Error output: 🚀 Starting bulletproof scraper for Liverpool
+🎯 Search params: bedrooms=4+, max_price=£500000, keywords='HMO'
+🔧 Building URLs for Liverpool: bedrooms=4+, price=£500000, keywords=HMO
+🎯 Using city slug: liverpool
+🔗 Generated 10 search URLs for MAXIMUM coverage
+🎯 Final URL count after dedup: 9
+📍 Pokušaj #1/9: https://www.zoopla.co.uk/for-sale/property/liverpool/?beds_min=4&keywords=HMO&pr...
+⚠️ HTTP 403 - pokušavam drugi pristup
+⚠️ HTTP 502 - pokušavam ponovo
+⚠️ HTTP 502 - pokušavam ponovo
+❌ Failed to get https://www.zoopla.co.uk/for-sale/property/liverpool/?beds_min=4&keywords=HMO&price_max=500000&property_type=houses&q=Liverpool after 3 retries - HTTP None
+📍 Pokušaj #2/9: https://www.primelocation.com/for-sale/property/liverpool/?beds_min=4&is_auction...
+✅ HTTP 200 - sadržaj: 1038973 bytes
+✅ Pronašao 215 oglasa sa selektorom: div:has(a[href*="/for-sale/details/"])
+🎯 Found 215 potential listings
+🔍 First listing preview: <div class="_1qnoa4c0"><main class="_1qnoa4c5" id="main-content" style="background-color:var(--colors-graphicBackgroundDefault)"><div class="_1qnoa4c3" style="background-position:center"><div class="_...
+✅ Scraped property 1: Related searches... - £325000 (Yield: 2.36%)
+✅ Scraped property 2: Related searches... - £325000 (Yield: 2.42%)
+✅ Scraped property 3: Related searches... - £325000 (Yield: 2.71%)
+✅ Scraped property 4: Related searches... - £325000 (Yield: 2.66%)
+✅ Scraped property 5: Related searches... - £325000 (Yield: 2.46%)
+✅ Scraped property 6: Related searches... - £325000 (Yield: 2.66%)
+✅ Scraped property 7: Ramilies Road, Mossley Hill L18... - £325000 (Yield: 2.55%)
+✅ Scraped property 8: Ramilies Road, Mossley Hill L18... - £325000 (Yield: 2.42%)
+✅ Scraped property 9: Ramilies Road, Mossley Hill L18... - £325000 (Yield: 2.73%)
+✅ Scraped property 10: 4+ bed property in Liverpool - Price on ... - £500000 (Yield: 1.05%)
+✅ Scraped property 11: 4+ bed property in Liverpool - Price on ... - £500000 (Yield: 1.15%)
+✅ Scraped property 12: Ramilies Road, Mossley Hill L18... - £325000 (Yield: 2.71%)
+✅ Scraped property 13: Ramilies Road, Mossley Hill L18... - £325000 (Yield: 2.57%)
+✅ Scraped property 14: Ramilies Road, Mossley Hill L18... - £325000 (Yield: 2.62%)
+✅ Scraped property 15: Ramilies Road, Mossley Hill L18... - £325000 (Yield: 2.6%)
+✅ Scraped property 16: Norma Road, Liverpool L22... - £498000 (Yield: 1.76%)
+✅ Scraped property 17: Norma Road, Liverpool L22... - £498000 (Yield: 1.97%)
+✅ Scraped property 18: 4+ bed property in Liverpool - Price on ... - £441681 (Yield: 1.13%)
+✅ Scraped property 19: 4+ bed property in Liverpool - Price on ... - £351944 (Yield: 1.64%)
+✅ Scraped property 20: Norma Road, Liverpool L22... - £498000 (Yield: 1.84%)
+✅ Scraped property 21: Norma Road, Liverpool L22... - £498000 (Yield: 1.98%)
+✅ Scraped property 22: Norma Road, Liverpool L22... - £498000 (Yield: 2.14%)
+✅ Scraped property 23: Norma Road, Liverpool L22... - £498000 (Yield: 1.94%)
+✅ Scraped property 24: Leopold Road, Liverpool L7... - £495000 (Yield: 1.95%)
+✅ Scraped property 25: Leopold Road, Liverpool L7... - £495000 (Yield: 1.76%)
+✅ Scraped property 26: 4+ bed property in Liverpool - Price on ... - £500000 (Yield: 1.04%)
+✅ Scraped property 27: 4+ bed property in Liverpool - Price on ... - £441775 (Yield: 1.22%)
+✅ Scraped property 28: Leopold Road, Liverpool L7... - £495000 (Yield: 2.18%)
+✅ Scraped property 29: Leopold Road, Liverpool L7... - £495000 (Yield: 1.96%)
+✅ Scraped property 30: Leopold Road, Liverpool L7... - £495000 (Yield: 2.01%)
+✅ Scraped property 31: Leopold Road, Liverpool L7... - £495000 (Yield: 2.17%)
+✅ Scraped property 32: Grove Street, Edge Hill, Liverpool, Mers... - £490000 (Yield: 1.68%)
+✅ Scraped property 33: Grove Street, Edge Hill, Liverpool, Mers... - £490000 (Yield: 1.48%)
+✅ Scraped property 34: 4+ bed property in Liverpool - Price on ... - £445571 (Yield: 1.13%)
+✅ Scraped property 35: 4+ bed property in Liverpool - Price on ... - £364976 (Yield: 1.45%)
+✅ Scraped property 36: Grove Street, Edge Hill, Liverpool, Mers... - £490000 (Yield: 1.65%)
+✅ Scraped property 37: Grove Street, Edge Hill, Liverpool, Mers... - £490000 (Yield: 1.53%)
+✅ Scraped property 38: Grove Street, Edge Hill, Liverpool, Mers... - £490000 (Yield: 1.63%)
+✅ Scraped property 39: Grove Street, Edge Hill, Liverpool, Mers... - £490000 (Yield: 1.7%)
+✅ Scraped property 40: Seymour Street, Liverpool, Merseyside L3... - £485000 (Yield: 1.77%)
+✅ Scraped property 41: Seymour Street, Liverpool, Merseyside L3... - £485000 (Yield: 1.52%)
+✅ Scraped property 42: 4+ bed property in Liverpool - Price on ... - £378442 (Yield: 1.4%)
+✅ Scraped property 43: 4+ bed property in Liverpool - Price on ... - £472318 (Yield: 1.1%)
+✅ Scraped property 44: Seymour Street, Liverpool, Merseyside L3... - £485000 (Yield: 1.72%)
+✅ Scraped property 45: Seymour Street, Liverpool, Merseyside L3... - £485000 (Yield: 1.72%)
+✅ Scraped property 46: Seymour Street, Liverpool, Merseyside L3... - £485000 (Yield: 1.86%)
+✅ Scraped property 47: Seymour Street, Liverpool, Merseyside L3... - £485000 (Yield: 1.48%)
+✅ Scraped property 48: Halkyn Avenue, Liverpool, Merseyside L17... - £475000 (Yield: 2.55%)
+✅ Scraped property 49: Halkyn Avenue, Liverpool, Merseyside L17... - £475000 (Yield: 2.23%)
+✅ Scraped property 50: 4+ bed property in Liverpool - Price on ... - £366313 (Yield: 1.53%)
+✅ Scraped property 51: 4+ bed property in Liverpool - Price on ... - £500000 (Yield: 1.0%)
+✅ Scraped property 52: Halkyn Avenue, Liverpool, Merseyside L17... - £475000 (Yield: 2.21%)
+✅ Scraped property 53: Halkyn Avenue, Liverpool, Merseyside L17... - £475000 (Yield: 2.16%)
+✅ Scraped property 54: Halkyn Avenue, Liverpool, Merseyside L17... - £475000 (Yield: 2.49%)
+✅ Scraped property 55: Halkyn Avenue, Liverpool, Merseyside L17... - £475000 (Yield: 2.25%)
+✅ Scraped property 56: Newsham Drive, Liverpool, Merseyside L6... - £430000 (Yield: 3.69%)
+✅ Scraped property 57: Newsham Drive, Liverpool, Merseyside L6... - £430000 (Yield: 3.37%)
+✅ Scraped property 58: 4+ bed property in Liverpool - Price on ... - £438916 (Yield: 1.14%)
+✅ Scraped property 59: 4+ bed property in Liverpool - Price on ... - £463500 (Yield: 1.08%)
+✅ Scraped property 60: Newsham Drive, Liverpool, Merseyside L6... - £430000 (Yield: 3.29%)
+✅ Scraped property 61: Newsham Drive, Liverpool, Merseyside L6... - £430000 (Yield: 3.32%)
+✅ Scraped property 62: Newsham Drive, Liverpool, Merseyside L6... - £430000 (Yield: 3.29%)
+✅ Scraped property 63: Newsham Drive, Liverpool, Merseyside L6... - £430000 (Yield: 3.32%)
+✅ Scraped property 64: Rutland Avenue, Sefton Park, Liverpool, ... - £425000 (Yield: 2.15%)
+✅ Scraped property 65: Rutland Avenue, Sefton Park, Liverpool, ... - £425000 (Yield: 2.51%)
+✅ Scraped property 66: 4+ bed property in Liverpool - Price on ... - £426796 (Yield: 1.35%)
+✅ Scraped property 67: 4+ bed property in Liverpool - Price on ... - £359555 (Yield: 1.51%)
+✅ Scraped property 68: Rutland Avenue, Sefton Park, Liverpool, ... - £425000 (Yield: 2.49%)
+✅ Scraped property 69: Rutland Avenue, Sefton Park, Liverpool, ... - £425000 (Yield: 2.35%)
+✅ Scraped property 70: Rutland Avenue, Sefton Park, Liverpool, ... - £425000 (Yield: 2.15%)
+✅ Scraped property 71: Rutland Avenue, Sefton Park, Liverpool, ... - £425000 (Yield: 2.42%)
+✅ Scraped property 72: Jubilee Drive, Liverpool L7... - £395000 (Yield: 2.1%)
+✅ Scraped property 73: Jubilee Drive, Liverpool L7... - £395000 (Yield: 2.05%)
+✅ Scraped property 74: 4+ bed property in Liverpool - Price on ... - £500000 (Yield: 1.07%)
+✅ Scraped property 75: 4+ bed property in Liverpool - Price on ... - £500000 (Yield: 0.97%)
+✅ Scraped property 76: Jubilee Drive, Liverpool L7... - £395000 (Yield: 1.88%)
+✅ Scraped property 77: Jubilee Drive, Liverpool L7... - £395000 (Yield: 2.07%)
+✅ Scraped property 78: Jubilee Drive, Liverpool L7... - £395000 (Yield: 2.11%)
+✅ Scraped property 79: Jubilee Drive, Liverpool L7... - £395000 (Yield: 2.28%)
+✅ Scraped property 80: Sandown Lane, Liverpool, Merseyside L15... - £380000 (Yield: 3.18%)
+✅ Scraped property 81: Sandown Lane, Liverpool, Merseyside L15... - £380000 (Yield: 3.46%)
+✅ Scraped property 82: 4+ bed property in Liverpool - Price on ... - £436843 (Yield: 1.29%)
+✅ Scraped property 83: 4+ bed property in Liverpool - Price on ... - £358763 (Yield: 1.36%)
+✅ Scraped property 84: Sandown Lane, Liverpool, Merseyside L15... - £380000 (Yield: 3.21%)
+✅ Scraped property 85: Sandown Lane, Liverpool, Merseyside L15... - £380000 (Yield: 3.44%)
+✅ Scraped property 86: Sandown Lane, Liverpool, Merseyside L15... - £380000 (Yield: 3.18%)
+✅ Scraped property 87: Sandown Lane, Liverpool, Merseyside L15... - £380000 (Yield: 3.13%)
+✅ Scraped property 88: Gilroy Road, Liverpool L6... - £360000 (Yield: 2.78%)
+✅ Scraped property 89: Gilroy Road, Liverpool L6... - £360000 (Yield: 2.46%)
+✅ Scraped property 90: 4+ bed property in Liverpool - Price on ... - £500000 (Yield: 0.99%)
+✅ Scraped property 91: 4+ bed property in Liverpool - Price on ... - £380629 (Yield: 1.31%)
+✅ Scraped property 92: Gilroy Road, Liverpool L6... - £360000 (Yield: 2.74%)
+✅ Scraped property 93: Gilroy Road, Liverpool L6... - £360000 (Yield: 2.98%)
+✅ Scraped property 94: Gilroy Road, Liverpool L6... - £360000 (Yield: 2.68%)
+✅ Scraped property 95: Gilroy Road, Liverpool L6... - £360000 (Yield: 2.5%)
+✅ Scraped property 96: Arkles Lane, Liverpool, Merseyside L4... - £350000 (Yield: 3.92%)
+✅ Scraped property 97: Arkles Lane, Liverpool, Merseyside L4... - £350000 (Yield: 3.43%)
+✅ Scraped property 98: 4+ bed property in Liverpool - Price on ... - £439273 (Yield: 1.11%)
+✅ Scraped property 99: 4+ bed property in Liverpool - Price on ... - £500000 (Yield: 1.0%)
+✅ Scraped property 100: Arkles Lane, Liverpool, Merseyside L4... - £350000 (Yield: 3.62%)
+✅ Scraped property 101: Arkles Lane, Liverpool, Merseyside L4... - £350000 (Yield: 4.11%)
+✅ Scraped property 102: Arkles Lane, Liverpool, Merseyside L4... - £350000 (Yield: 3.98%)
+✅ Scraped property 103: Arkles Lane, Liverpool, Merseyside L4... - £350000 (Yield: 3.54%)
+✅ Scraped property 104: Ramilies Road, Mossley Hill L18... - £325000 (Yield: 2.29%)
+✅ Scraped property 105: Ramilies Road, Mossley Hill L18... - £325000 (Yield: 2.23%)
+✅ Scraped property 106: 4+ bed property in Liverpool - Price on ... - £499227 (Yield: 1.13%)
+✅ Scraped property 107: 4+ bed property in Liverpool - Price on ... - £404226 (Yield: 1.26%)
+✅ Scraped property 108: Ramilies Road, Mossley Hill L18... - £325000 (Yield: 2.58%)
+✅ Scraped property 109: Ramilies Road, Mossley Hill L18... - £325000 (Yield: 2.47%)
+✅ Scraped property 110: Ramilies Road, Mossley Hill L18... - £325000 (Yield: 2.6%)
+✅ Scraped property 111: Ramilies Road, Mossley Hill L18... - £325000 (Yield: 2.23%)
+✅ Scraped property 112: Spellow Lane, Liverpool L4... - £310000 (Yield: 3.41%)
+✅ Scraped property 113: Spellow Lane, Liverpool L4... - £310000 (Yield: 2.97%)
+✅ Scraped property 114: 4+ bed property in Liverpool - Price on ... - £500000 (Yield: 1.07%)
+✅ Scraped property 115: 4+ bed property in Liverpool - Price on ... - £343891 (Yield: 1.55%)
+✅ Scraped property 116: Spellow Lane, Liverpool L4... - £310000 (Yield: 2.86%)
+✅ Scraped property 117: Spellow Lane, Liverpool L4... - £310000 (Yield: 3.34%)
+✅ Scraped property 118: Spellow Lane, Liverpool L4... - £310000 (Yield: 3.07%)
+✅ Scraped property 119: Spellow Lane, Liverpool L4... - £310000 (Yield: 3.21%)
+✅ Scraped property 120: Molyneux Road, Kensington, Liverpool L6... - £300000 (Yield: 4.12%)
+✅ Scraped property 121: Molyneux Road, Kensington, Liverpool L6... - £300000 (Yield: 3.53%)
+✅ Scraped property 122: 4+ bed property in Liverpool - Price on ... - £452324 (Yield: 1.09%)
+✅ Scraped property 123: 4+ bed property in Liverpool - Price on ... - £500000 (Yield: 1.08%)
+✅ Scraped property 124: Molyneux Road, Kensington, Liverpool L6... - £300000 (Yield: 3.67%)
+✅ Scraped property 125: Molyneux Road, Kensington, Liverpool L6... - £300000 (Yield: 3.5%)
+✅ Scraped property 126: Molyneux Road, Kensington, Liverpool L6... - £300000 (Yield: 3.56%)
+✅ Scraped property 127: Molyneux Road, Kensington, Liverpool L6... - £300000 (Yield: 3.5%)
+✅ Scraped property 128: Bagot Street, Liverpool L15... - £300000 (Yield: 2.42%)
+✅ Scraped property 129: Bagot Street, Liverpool L15... - £300000 (Yield: 2.98%)
+✅ Scraped property 130: 4+ bed property in Liverpool - Price on ... - £362024 (Yield: 1.41%)
+✅ Scraped property 131: 4+ bed property in Liverpool - Price on ... - £500000 (Yield: 1.05%)
+✅ Scraped property 132: Bagot Street, Liverpool L15... - £300000 (Yield: 3.0%)
+✅ Scraped property 133: Bagot Street, Liverpool L15... - £300000 (Yield: 2.4%)
+✅ Scraped property 134: Bagot Street, Liverpool L15... - £300000 (Yield: 2.78%)
+✅ Scraped property 135: Bagot Street, Liverpool L15... - £300000 (Yield: 2.94%)
+✅ Scraped property 136: Molyneux Road, Kensington, Liverpool L6... - £300000 (Yield: 3.72%)
+✅ Scraped property 137: Molyneux Road, Kensington, Liverpool L6... - £300000 (Yield: 3.47%)
+✅ Scraped property 138: 4+ bed property in Liverpool - Price on ... - £500000 (Yield: 1.12%)
+✅ Scraped property 139: 4+ bed property in Liverpool - Price on ... - £500000 (Yield: 1.14%)
+✅ Scraped property 140: Molyneux Road, Kensington, Liverpool L6... - £300000 (Yield: 3.84%)
+✅ Scraped property 141: Molyneux Road, Kensington, Liverpool L6... - £300000 (Yield: 3.98%)
+✅ Scraped property 142: Molyneux Road, Kensington, Liverpool L6... - £300000 (Yield: 3.56%)
+✅ Scraped property 143: Molyneux Road, Kensington, Liverpool L6... - £300000 (Yield: 3.39%)
+✅ Scraped property 144: Island Road, Garston, Liverpool L19... - £295000 (Yield: 2.62%)
+✅ Scraped property 145: Island Road, Garston, Liverpool L19... - £295000 (Yield: 2.95%)
+✅ Scraped property 146: 4+ bed property in Liverpool - Price on ... - £500000 (Yield: 1.02%)
+✅ Scraped property 147: 4+ bed property in Liverpool - Price on ... - £394433 (Yield: 1.46%)
+✅ Scraped property 148: Island Road, Garston, Liverpool L19... - £295000 (Yield: 2.93%)
+✅ Scraped property 149: Island Road, Garston, Liverpool L19... - £295000 (Yield: 2.79%)
+✅ Scraped property 150: Island Road, Garston, Liverpool L19... - £295000 (Yield: 2.91%)
+✅ Scraped property 151: Island Road, Garston, Liverpool L19... - £295000 (Yield: 2.73%)
+✅ Scraped property 152: Albany Road, Kensington, Liverpool L7... - £295000 (Yield: 2.75%)
+✅ Scraped property 153: Albany Road, Kensington, Liverpool L7... - £295000 (Yield: 2.56%)
+✅ Scraped property 154: 4+ bed property in Liverpool - Price on ... - £472979 (Yield: 1.13%)
+✅ Scraped property 155: 4+ bed property in Liverpool - Price on ... - £500000 (Yield: 1.06%)
+✅ Scraped property 156: Albany Road, Kensington, Liverpool L7... - £295000 (Yield: 2.6%)
+✅ Scraped property 157: Albany Road, Kensington, Liverpool L7... - £295000 (Yield: 2.71%)
+✅ Scraped property 158: Albany Road, Kensington, Liverpool L7... - £295000 (Yield: 2.52%)
+✅ Scraped property 159: Albany Road, Kensington, Liverpool L7... - £295000 (Yield: 2.73%)
+✅ Scraped property 160: Esher Road, Kensington, Liverpool L6... - £295000 (Yield: 3.32%)
+✅ Scraped property 161: Esher Road, Kensington, Liverpool L6... - £295000 (Yield: 3.61%)
+✅ Scraped property 162: 4+ bed property in Liverpool - Price on ... - £500000 (Yield: 1.14%)
+✅ Scraped property 163: 4+ bed property in Liverpool - Price on ... - £500000 (Yield: 1.01%)
+✅ Scraped property 164: Esher Road, Kensington, Liverpool L6... - £295000 (Yield: 3.42%)
+✅ Scraped property 165: Esher Road, Kensington, Liverpool L6... - £295000 (Yield: 3.51%)
+✅ Scraped property 166: Esher Road, Kensington, Liverpool L6... - £295000 (Yield: 3.47%)
+✅ Scraped property 167: Esher Road, Kensington, Liverpool L6... - £295000 (Yield: 3.37%)
+✅ Scraped property 168: Sheil Road, Kensington, Liverpool L6... - £270000 (Yield: 3.31%)
+✅ Scraped property 169: Sheil Road, Kensington, Liverpool L6... - £270000 (Yield: 3.33%)
+✅ Scraped property 170: 4+ bed property in Liverpool - Price on ... - £500000 (Yield: 1.01%)
+✅ Scraped property 171: 4+ bed property in Liverpool - Price on ... - £398935 (Yield: 1.26%)
+✅ Scraped property 172: Sheil Road, Kensington, Liverpool L6... - £270000 (Yield: 3.81%)
+✅ Scraped property 173: Sheil Road, Kensington, Liverpool L6... - £270000 (Yield: 3.84%)
+✅ Scraped property 174: Sheil Road, Kensington, Liverpool L6... - £270000 (Yield: 3.95%)
+✅ Scraped property 175: Sheil Road, Kensington, Liverpool L6... - £270000 (Yield: 3.41%)
+✅ Scraped property 176: Brookdale Road, Liverpool L15... - £255000 (Yield: 2.24%)
+✅ Scraped property 177: Brookdale Road, Liverpool L15... - £255000 (Yield: 1.9%)
+✅ Scraped property 178: 4+ bed property in Liverpool - Price on ... - £500000 (Yield: 0.99%)
+✅ Scraped property 179: 4+ bed property in Liverpool - Price on ... - £500000 (Yield: 1.15%)
+✅ Scraped property 180: Brookdale Road, Liverpool L15... - £255000 (Yield: 1.96%)
+✅ Scraped property 181: Brookdale Road, Liverpool L15... - £255000 (Yield: 1.88%)
+✅ Scraped property 182: Brookdale Road, Liverpool L15... - £255000 (Yield: 1.88%)
+✅ Scraped property 183: Brookdale Road, Liverpool L15... - £255000 (Yield: 1.9%)
+✅ Scraped property 184: Halsbury Road, Liverpool, Merseyside L6... - £250000 (Yield: 3.58%)
+✅ Scraped property 185: Halsbury Road, Liverpool, Merseyside L6... - £250000 (Yield: 3.29%)
+✅ Scraped property 186: 4+ bed property in Liverpool - Price on ... - £500000 (Yield: 1.03%)
+✅ Scraped property 187: 4+ bed property in Liverpool - Price on ... - £500000 (Yield: 1.09%)
+✅ Scraped property 188: Halsbury Road, Liverpool, Merseyside L6... - £250000 (Yield: 2.9%)
+✅ Scraped property 189: Halsbury Road, Liverpool, Merseyside L6... - £250000 (Yield: 3.26%)
+✅ Scraped property 190: Halsbury Road, Liverpool, Merseyside L6... - £250000 (Yield: 3.22%)
+✅ Scraped property 191: Halsbury Road, Liverpool, Merseyside L6... - £250000 (Yield: 3.17%)
+✅ Scraped property 192: Arkles Lane, Liverpool, Merseyside L4... - £250000 (Yield: 3.63%)
+✅ Scraped property 193: Arkles Lane, Liverpool, Merseyside L4... - £250000 (Yield: 4.0%)
+✅ Scraped property 194: 4+ bed property in Liverpool - Price on ... - £500000 (Yield: 1.02%)
+✅ Scraped property 195: 4+ bed property in Liverpool - Price on ... - £500000 (Yield: 1.07%)
+✅ Scraped property 196: Arkles Lane, Liverpool, Merseyside L4... - £250000 (Yield: 4.0%)
+✅ Scraped property 197: Arkles Lane, Liverpool, Merseyside L4... - £250000 (Yield: 3.66%)
+✅ Scraped property 198: Arkles Lane, Liverpool, Merseyside L4... - £250000 (Yield: 4.03%)
+✅ Scraped property 199: Arkles Lane, Liverpool, Merseyside L4... - £250000 (Yield: 4.06%)
+✅ Scraped property 200: Colebrooke Road, Aigburth, Liverpool L17... - £240000 (Yield: 4.14%)
+✅ Scraped property 201: Colebrooke Road, Aigburth, Liverpool L17... - £240000 (Yield: 4.08%)
+✅ Scraped property 202: 4+ bed property in Liverpool - Price on ... - £500000 (Yield: 1.02%)
+✅ Scraped property 203: 4+ bed property in Liverpool - Price on ... - £500000 (Yield: 1.06%)
+✅ Scraped property 204: Colebrooke Road, Aigburth, Liverpool L17... - £240000 (Yield: 3.81%)
+✅ Scraped property 205: Colebrooke Road, Aigburth, Liverpool L17... - £240000 (Yield: 4.47%)
+✅ Scraped property 206: Colebrooke Road, Aigburth, Liverpool L17... - £240000 (Yield: 4.11%)
+✅ Scraped property 207: Colebrooke Road, Aigburth, Liverpool L17... - £240000 (Yield: 3.78%)
+✅ Scraped property 208: Granville Road, Wavertree L15... - £230000 (Yield: 2.25%)
+✅ Scraped property 209: Granville Road, Wavertree L15... - £230000 (Yield: 2.13%)
+✅ Scraped property 210: 4+ bed property in Liverpool - Price on ... - £500000 (Yield: 0.97%)
+✅ Scraped property 211: 4+ bed property in Liverpool - Price on ... - £359366 (Yield: 1.48%)
+✅ Scraped property 212: Granville Road, Wavertree L15... - £230000 (Yield: 2.11%)
+✅ Scraped property 213: Granville Road, Wavertree L15... - £230000 (Yield: 2.32%)
+✅ Scraped property 214: Granville Road, Wavertree L15... - £230000 (Yield: 2.5%)
+✅ Scraped property 215: Granville Road, Wavertree L15... - £230000 (Yield: 2.46%)
+📍 Pokušaj #3/9: https://www.zoopla.co.uk/for-sale/property/liverpool/?beds_min=4&price_max=50000...
+
+Error in search properties: Error: Scraper failed with code null: 🚀 Starting bulletproof scraper for Liverpool
+🎯 Search params: bedrooms=4+, max_price=£500000, keywords='HMO'
+🔧 Building URLs for Liverpool: bedrooms=4+, price=£500000, keywords=HMO
+🎯 Using city slug: liverpool
+🔗 Generated 10 search URLs for MAXIMUM coverage
+🎯 Final URL count after dedup: 9
+📍 Pokušaj #1/9: https://www.zoopla.co.uk/for-sale/property/liverpool/?beds_min=4&keywords=HMO&pr...
+⚠️ HTTP 403 - pokušavam drugi pristup
+⚠️ HTTP 502 - pokušavam ponovo
+⚠️ HTTP 502 - pokušavam ponovo
+❌ Failed to get https://www.zoopla.co.uk/for-sale/property/liverpool/?beds_min=4&keywords=HMO&price_max=500000&property_type=houses&q=Liverpool after 3 retries - HTTP None
+📍 Pokušaj #2/9: https://www.primelocation.com/for-sale/property/liverpool/?beds_min=4&is_auction...
+✅ HTTP 200 - sadržaj: 1038973 bytes
+✅ Pronašao 215 oglasa sa selektorom: div:has(a[href*="/for-sale/details/"])
+🎯 Found 215 potential listings
+🔍 First listing preview: <div class="_1qnoa4c0"><main class="_1qnoa4c5" id="main-content" style="background-color:var(--colors-graphicBackgroundDefault)"><div class="_1qnoa4c3" style="background-position:center"><div class="_...
+✅ Scraped property 1: Related searches... - £325000 (Yield: 2.36%)
+✅ Scraped property 2: Related searches... - £325000 (Yield: 2.42%)
+✅ Scraped property 3: Related searches... - £325000 (Yield: 2.71%)
+✅ Scraped property 4: Related searches... - £325000 (Yield: 2.66%)
+✅ Scraped property 5: Related searches... - £325000 (Yield: 2.46%)
+✅ Scraped property 6: Related searches... - £325000 (Yield: 2.66%)
+✅ Scraped property 7: Ramilies Road, Mossley Hill L18... - £325000 (Yield: 2.55%)
+✅ Scraped property 8: Ramilies Road, Mossley Hill L18... - £325000 (Yield: 2.42%)
+✅ Scraped property 9: Ramilies Road, Mossley Hill L18... - £325000 (Yield: 2.73%)
+✅ Scraped property 10: 4+ bed property in Liverpool - Price on ... - £500000 (Yield: 1.05%)
+✅ Scraped property 11: 4+ bed property in Liverpool - Price on ... - £500000 (Yield: 1.15%)
+✅ Scraped property 12: Ramilies Road, Mossley Hill L18... - £325000 (Yield: 2.71%)
+✅ Scraped property 13: Ramilies Road, Mossley Hill L18... - £325000 (Yield: 2.57%)
+✅ Scraped property 14: Ramilies Road, Mossley Hill L18... - £325000 (Yield: 2.62%)
+✅ Scraped property 15: Ramilies Road, Mossley Hill L18... - £325000 (Yield: 2.6%)
+✅ Scraped property 16: Norma Road, Liverpool L22... - £498000 (Yield: 1.76%)
+✅ Scraped property 17: Norma Road, Liverpool L22... - £498000 (Yield: 1.97%)
+✅ Scraped property 18: 4+ bed property in Liverpool - Price on ... - £441681 (Yield: 1.13%)
+✅ Scraped property 19: 4+ bed property in Liverpool - Price on ... - £351944 (Yield: 1.64%)
+✅ Scraped property 20: Norma Road, Liverpool L22... - £498000 (Yield: 1.84%)
+✅ Scraped property 21: Norma Road, Liverpool L22... - £498000 (Yield: 1.98%)
+✅ Scraped property 22: Norma Road, Liverpool L22... - £498000 (Yield: 2.14%)
+✅ Scraped property 23: Norma Road, Liverpool L22... - £498000 (Yield: 1.94%)
+✅ Scraped property 24: Leopold Road, Liverpool L7... - £495000 (Yield: 1.95%)
+✅ Scraped property 25: Leopold Road, Liverpool L7... - £495000 (Yield: 1.76%)
+✅ Scraped property 26: 4+ bed property in Liverpool - Price on ... - £500000 (Yield: 1.04%)
+✅ Scraped property 27: 4+ bed property in Liverpool - Price on ... - £441775 (Yield: 1.22%)
+✅ Scraped property 28: Leopold Road, Liverpool L7... - £495000 (Yield: 2.18%)
+✅ Scraped property 29: Leopold Road, Liverpool L7... - £495000 (Yield: 1.96%)
+✅ Scraped property 30: Leopold Road, Liverpool L7... - £495000 (Yield: 2.01%)
+✅ Scraped property 31: Leopold Road, Liverpool L7... - £495000 (Yield: 2.17%)
+✅ Scraped property 32: Grove Street, Edge Hill, Liverpool, Mers... - £490000 (Yield: 1.68%)
+✅ Scraped property 33: Grove Street, Edge Hill, Liverpool, Mers... - £490000 (Yield: 1.48%)
+✅ Scraped property 34: 4+ bed property in Liverpool - Price on ... - £445571 (Yield: 1.13%)
+✅ Scraped property 35: 4+ bed property in Liverpool - Price on ... - £364976 (Yield: 1.45%)
+✅ Scraped property 36: Grove Street, Edge Hill, Liverpool, Mers... - £490000 (Yield: 1.65%)
+✅ Scraped property 37: Grove Street, Edge Hill, Liverpool, Mers... - £490000 (Yield: 1.53%)
+✅ Scraped property 38: Grove Street, Edge Hill, Liverpool, Mers... - £490000 (Yield: 1.63%)
+✅ Scraped property 39: Grove Street, Edge Hill, Liverpool, Mers... - £490000 (Yield: 1.7%)
+✅ Scraped property 40: Seymour Street, Liverpool, Merseyside L3... - £485000 (Yield: 1.77%)
+✅ Scraped property 41: Seymour Street, Liverpool, Merseyside L3... - £485000 (Yield: 1.52%)
+✅ Scraped property 42: 4+ bed property in Liverpool - Price on ... - £378442 (Yield: 1.4%)
+✅ Scraped property 43: 4+ bed property in Liverpool - Price on ... - £472318 (Yield: 1.1%)
+✅ Scraped property 44: Seymour Street, Liverpool, Merseyside L3... - £485000 (Yield: 1.72%)
+✅ Scraped property 45: Seymour Street, Liverpool, Merseyside L3... - £485000 (Yield: 1.72%)
+✅ Scraped property 46: Seymour Street, Liverpool, Merseyside L3... - £485000 (Yield: 1.86%)
+✅ Scraped property 47: Seymour Street, Liverpool, Merseyside L3... - £485000 (Yield: 1.48%)
+✅ Scraped property 48: Halkyn Avenue, Liverpool, Merseyside L17... - £475000 (Yield: 2.55%)
+✅ Scraped property 49: Halkyn Avenue, Liverpool, Merseyside L17... - £475000 (Yield: 2.23%)
+✅ Scraped property 50: 4+ bed property in Liverpool - Price on ... - £366313 (Yield: 1.53%)
+✅ Scraped property 51: 4+ bed property in Liverpool - Price on ... - £500000 (Yield: 1.0%)
+✅ Scraped property 52: Halkyn Avenue, Liverpool, Merseyside L17... - £475000 (Yield: 2.21%)
+✅ Scraped property 53: Halkyn Avenue, Liverpool, Merseyside L17... - £475000 (Yield: 2.16%)
+✅ Scraped property 54: Halkyn Avenue, Liverpool, Merseyside L17... - £475000 (Yield: 2.49%)
+✅ Scraped property 55: Halkyn Avenue, Liverpool, Merseyside L17... - £475000 (Yield: 2.25%)
+✅ Scraped property 56: Newsham Drive, Liverpool, Merseyside L6... - £430000 (Yield: 3.69%)
+✅ Scraped property 57: Newsham Drive, Liverpool, Merseyside L6... - £430000 (Yield: 3.37%)
+✅ Scraped property 58: 4+ bed property in Liverpool - Price on ... - £438916 (Yield: 1.14%)
+✅ Scraped property 59: 4+ bed property in Liverpool - Price on ... - £463500 (Yield: 1.08%)
+✅ Scraped property 60: Newsham Drive, Liverpool, Merseyside L6... - £430000 (Yield: 3.29%)
+✅ Scraped property 61: Newsham Drive, Liverpool, Merseyside L6... - £430000 (Yield: 3.32%)
+✅ Scraped property 62: Newsham Drive, Liverpool, Merseyside L6... - £430000 (Yield: 3.29%)
+✅ Scraped property 63: Newsham Drive, Liverpool, Merseyside L6... - £430000 (Yield: 3.32%)
+✅ Scraped property 64: Rutland Avenue, Sefton Park, Liverpool, ... - £425000 (Yield: 2.15%)
+✅ Scraped property 65: Rutland Avenue, Sefton Park, Liverpool, ... - £425000 (Yield: 2.51%)
+✅ Scraped property 66: 4+ bed property in Liverpool - Price on ... - £426796 (Yield: 1.35%)
+✅ Scraped property 67: 4+ bed property in Liverpool - Price on ... - £359555 (Yield: 1.51%)
+✅ Scraped property 68: Rutland Avenue, Sefton Park, Liverpool, ... - £425000 (Yield: 2.49%)
+✅ Scraped property 69: Rutland Avenue, Sefton Park, Liverpool, ... - £425000 (Yield: 2.35%)
+✅ Scraped property 70: Rutland Avenue, Sefton Park, Liverpool, ... - £425000 (Yield: 2.15%)
+✅ Scraped property 71: Rutland Avenue, Sefton Park, Liverpool, ... - £425000 (Yield: 2.42%)
+✅ Scraped property 72: Jubilee Drive, Liverpool L7... - £395000 (Yield: 2.1%)
+✅ Scraped property 73: Jubilee Drive, Liverpool L7... - £395000 (Yield: 2.05%)
+✅ Scraped property 74: 4+ bed property in Liverpool - Price on ... - £500000 (Yield: 1.07%)
+✅ Scraped property 75: 4+ bed property in Liverpool - Price on ... - £500000 (Yield: 0.97%)
+✅ Scraped property 76: Jubilee Drive, Liverpool L7... - £395000 (Yield: 1.88%)
+✅ Scraped property 77: Jubilee Drive, Liverpool L7... - £395000 (Yield: 2.07%)
+✅ Scraped property 78: Jubilee Drive, Liverpool L7... - £395000 (Yield: 2.11%)
+✅ Scraped property 79: Jubilee Drive, Liverpool L7... - £395000 (Yield: 2.28%)
+✅ Scraped property 80: Sandown Lane, Liverpool, Merseyside L15... - £380000 (Yield: 3.18%)
+✅ Scraped property 81: Sandown Lane, Liverpool, Merseyside L15... - £380000 (Yield: 3.46%)
+✅ Scraped property 82: 4+ bed property in Liverpool - Price on ... - £436843 (Yield: 1.29%)
+✅ Scraped property 83: 4+ bed property in Liverpool - Price on ... - £358763 (Yield: 1.36%)
+✅ Scraped property 84: Sandown Lane, Liverpool, Merseyside L15... - £380000 (Yield: 3.21%)
+✅ Scraped property 85: Sandown Lane, Liverpool, Merseyside L15... - £380000 (Yield: 3.44%)
+✅ Scraped property 86: Sandown Lane, Liverpool, Merseyside L15... - £380000 (Yield: 3.18%)
+✅ Scraped property 87: Sandown Lane, Liverpool, Merseyside L15... - £380000 (Yield: 3.13%)
+✅ Scraped property 88: Gilroy Road, Liverpool L6... - £360000 (Yield: 2.78%)
+✅ Scraped property 89: Gilroy Road, Liverpool L6... - £360000 (Yield: 2.46%)
+✅ Scraped property 90: 4+ bed property in Liverpool - Price on ... - £500000 (Yield: 0.99%)
+✅ Scraped property 91: 4+ bed property in Liverpool - Price on ... - £380629 (Yield: 1.31%)
+✅ Scraped property 92: Gilroy Road, Liverpool L6... - £360000 (Yield: 2.74%)
+✅ Scraped property 93: Gilroy Road, Liverpool L6... - £360000 (Yield: 2.98%)
+✅ Scraped property 94: Gilroy Road, Liverpool L6... - £360000 (Yield: 2.68%)
+✅ Scraped property 95: Gilroy Road, Liverpool L6... - £360000 (Yield: 2.5%)
+✅ Scraped property 96: Arkles Lane, Liverpool, Merseyside L4... - £350000 (Yield: 3.92%)
+✅ Scraped property 97: Arkles Lane, Liverpool, Merseyside L4... - £350000 (Yield: 3.43%)
+✅ Scraped property 98: 4+ bed property in Liverpool - Price on ... - £439273 (Yield: 1.11%)
+✅ Scraped property 99: 4+ bed property in Liverpool - Price on ... - £500000 (Yield: 1.0%)
+✅ Scraped property 100: Arkles Lane, Liverpool, Merseyside L4... - £350000 (Yield: 3.62%)
+✅ Scraped property 101: Arkles Lane, Liverpool, Merseyside L4... - £350000 (Yield: 4.11%)
+✅ Scraped property 102: Arkles Lane, Liverpool, Merseyside L4... - £350000 (Yield: 3.98%)
+✅ Scraped property 103: Arkles Lane, Liverpool, Merseyside L4... - £350000 (Yield: 3.54%)
+✅ Scraped property 104: Ramilies Road, Mossley Hill L18... - £325000 (Yield: 2.29%)
+✅ Scraped property 105: Ramilies Road, Mossley Hill L18... - £325000 (Yield: 2.23%)
+✅ Scraped property 106: 4+ bed property in Liverpool - Price on ... - £499227 (Yield: 1.13%)
+✅ Scraped property 107: 4+ bed property in Liverpool - Price on ... - £404226 (Yield: 1.26%)
+✅ Scraped property 108: Ramilies Road, Mossley Hill L18... - £325000 (Yield: 2.58%)
+✅ Scraped property 109: Ramilies Road, Mossley Hill L18... - £325000 (Yield: 2.47%)
+✅ Scraped property 110: Ramilies Road, Mossley Hill L18... - £325000 (Yield: 2.6%)
+✅ Scraped property 111: Ramilies Road, Mossley Hill L18... - £325000 (Yield: 2.23%)
+✅ Scraped property 112: Spellow Lane, Liverpool L4... - £310000 (Yield: 3.41%)
+✅ Scraped property 113: Spellow Lane, Liverpool L4... - £310000 (Yield: 2.97%)
+✅ Scraped property 114: 4+ bed property in Liverpool - Price on ... - £500000 (Yield: 1.07%)
+✅ Scraped property 115: 4+ bed property in Liverpool - Price on ... - £343891 (Yield: 1.55%)
+✅ Scraped property 116: Spellow Lane, Liverpool L4... - £310000 (Yield: 2.86%)
+✅ Scraped property 117: Spellow Lane, Liverpool L4... - £310000 (Yield: 3.34%)
+✅ Scraped property 118: Spellow Lane, Liverpool L4... - £310000 (Yield: 3.07%)
+✅ Scraped property 119: Spellow Lane, Liverpool L4... - £310000 (Yield: 3.21%)
+✅ Scraped property 120: Molyneux Road, Kensington, Liverpool L6... - £300000 (Yield: 4.12%)
+✅ Scraped property 121: Molyneux Road, Kensington, Liverpool L6... - £300000 (Yield: 3.53%)
+✅ Scraped property 122: 4+ bed property in Liverpool - Price on ... - £452324 (Yield: 1.09%)
+✅ Scraped property 123: 4+ bed property in Liverpool - Price on ... - £500000 (Yield: 1.08%)
+✅ Scraped property 124: Molyneux Road, Kensington, Liverpool L6... - £300000 (Yield: 3.67%)
+✅ Scraped property 125: Molyneux Road, Kensington, Liverpool L6... - £300000 (Yield: 3.5%)
+✅ Scraped property 126: Molyneux Road, Kensington, Liverpool L6... - £300000 (Yield: 3.56%)
+✅ Scraped property 127: Molyneux Road, Kensington, Liverpool L6... - £300000 (Yield: 3.5%)
+✅ Scraped property 128: Bagot Street, Liverpool L15... - £300000 (Yield: 2.42%)
+✅ Scraped property 129: Bagot Street, Liverpool L15... - £300000 (Yield: 2.98%)
+✅ Scraped property 130: 4+ bed property in Liverpool - Price on ... - £362024 (Yield: 1.41%)
+✅ Scraped property 131: 4+ bed property in Liverpool - Price on ... - £500000 (Yield: 1.05%)
+✅ Scraped property 132: Bagot Street, Liverpool L15... - £300000 (Yield: 3.0%)
+✅ Scraped property 133: Bagot Street, Liverpool L15... - £300000 (Yield: 2.4%)
+✅ Scraped property 134: Bagot Street, Liverpool L15... - £300000 (Yield: 2.78%)
+✅ Scraped property 135: Bagot Street, Liverpool L15... - £300000 (Yield: 2.94%)
+✅ Scraped property 136: Molyneux Road, Kensington, Liverpool L6... - £300000 (Yield: 3.72%)
+✅ Scraped property 137: Molyneux Road, Kensington, Liverpool L6... - £300000 (Yield: 3.47%)
+✅ Scraped property 138: 4+ bed property in Liverpool - Price on ... - £500000 (Yield: 1.12%)
+✅ Scraped property 139: 4+ bed property in Liverpool - Price on ... - £500000 (Yield: 1.14%)
+✅ Scraped property 140: Molyneux Road, Kensington, Liverpool L6... - £300000 (Yield: 3.84%)
+✅ Scraped property 141: Molyneux Road, Kensington, Liverpool L6... - £300000 (Yield: 3.98%)
+✅ Scraped property 142: Molyneux Road, Kensington, Liverpool L6... - £300000 (Yield: 3.56%)
+✅ Scraped property 143: Molyneux Road, Kensington, Liverpool L6... - £300000 (Yield: 3.39%)
+✅ Scraped property 144: Island Road, Garston, Liverpool L19... - £295000 (Yield: 2.62%)
+✅ Scraped property 145: Island Road, Garston, Liverpool L19... - £295000 (Yield: 2.95%)
+✅ Scraped property 146: 4+ bed property in Liverpool - Price on ... - £500000 (Yield: 1.02%)
+✅ Scraped property 147: 4+ bed property in Liverpool - Price on ... - £394433 (Yield: 1.46%)
+✅ Scraped property 148: Island Road, Garston, Liverpool L19... - £295000 (Yield: 2.93%)
+✅ Scraped property 149: Island Road, Garston, Liverpool L19... - £295000 (Yield: 2.79%)
+✅ Scraped property 150: Island Road, Garston, Liverpool L19... - £295000 (Yield: 2.91%)
+✅ Scraped property 151: Island Road, Garston, Liverpool L19... - £295000 (Yield: 2.73%)
+✅ Scraped property 152: Albany Road, Kensington, Liverpool L7... - £295000 (Yield: 2.75%)
+✅ Scraped property 153: Albany Road, Kensington, Liverpool L7... - £295000 (Yield: 2.56%)
+✅ Scraped property 154: 4+ bed property in Liverpool - Price on ... - £472979 (Yield: 1.13%)
+✅ Scraped property 155: 4+ bed property in Liverpool - Price on ... - £500000 (Yield: 1.06%)
+✅ Scraped property 156: Albany Road, Kensington, Liverpool L7... - £295000 (Yield: 2.6%)
+✅ Scraped property 157: Albany Road, Kensington, Liverpool L7... - £295000 (Yield: 2.71%)
+✅ Scraped property 158: Albany Road, Kensington, Liverpool L7... - £295000 (Yield: 2.52%)
+✅ Scraped property 159: Albany Road, Kensington, Liverpool L7... - £295000 (Yield: 2.73%)
+✅ Scraped property 160: Esher Road, Kensington, Liverpool L6... - £295000 (Yield: 3.32%)
+✅ Scraped property 161: Esher Road, Kensington, Liverpool L6... - £295000 (Yield: 3.61%)
+✅ Scraped property 162: 4+ bed property in Liverpool - Price on ... - £500000 (Yield: 1.14%)
+✅ Scraped property 163: 4+ bed property in Liverpool - Price on ... - £500000 (Yield: 1.01%)
+✅ Scraped property 164: Esher Road, Kensington, Liverpool L6... - £295000 (Yield: 3.42%)
+✅ Scraped property 165: Esher Road, Kensington, Liverpool L6... - £295000 (Yield: 3.51%)
+✅ Scraped property 166: Esher Road, Kensington, Liverpool L6... - £295000 (Yield: 3.47%)
+✅ Scraped property 167: Esher Road, Kensington, Liverpool L6... - £295000 (Yield: 3.37%)
+✅ Scraped property 168: Sheil Road, Kensington, Liverpool L6... - £270000 (Yield: 3.31%)
+✅ Scraped property 169: Sheil Road, Kensington, Liverpool L6... - £270000 (Yield: 3.33%)
+✅ Scraped property 170: 4+ bed property in Liverpool - Price on ... - £500000 (Yield: 1.01%)
+✅ Scraped property 171: 4+ bed property in Liverpool - Price on ... - £398935 (Yield: 1.26%)
+✅ Scraped property 172: Sheil Road, Kensington, Liverpool L6... - £270000 (Yield: 3.81%)
+✅ Scraped property 173: Sheil Road, Kensington, Liverpool L6... - £270000 (Yield: 3.84%)
+✅ Scraped property 174: Sheil Road, Kensington, Liverpool L6... - £270000 (Yield: 3.95%)
+✅ Scraped property 175: Sheil Road, Kensington, Liverpool L6... - £270000 (Yield: 3.41%)
+✅ Scraped property 176: Brookdale Road, Liverpool L15... - £255000 (Yield: 2.24%)
+✅ Scraped property 177: Brookdale Road, Liverpool L15... - £255000 (Yield: 1.9%)
+✅ Scraped property 178: 4+ bed property in Liverpool - Price on ... - £500000 (Yield: 0.99%)
+✅ Scraped property 179: 4+ bed property in Liverpool - Price on ... - £500000 (Yield: 1.15%)
+✅ Scraped property 180: Brookdale Road, Liverpool L15... - £255000 (Yield: 1.96%)
+✅ Scraped property 181: Brookdale Road, Liverpool L15... - £255000 (Yield: 1.88%)
+✅ Scraped property 182: Brookdale Road, Liverpool L15... - £255000 (Yield: 1.88%)
+✅ Scraped property 183: Brookdale Road, Liverpool L15... - £255000 (Yield: 1.9%)
+✅ Scraped property 184: Halsbury Road, Liverpool, Merseyside L6... - £250000 (Yield: 3.58%)
+✅ Scraped property 185: Halsbury Road, Liverpool, Merseyside L6... - £250000 (Yield: 3.29%)
+✅ Scraped property 186: 4+ bed property in Liverpool - Price on ... - £500000 (Yield: 1.03%)
+✅ Scraped property 187: 4+ bed property in Liverpool - Price on ... - £500000 (Yield: 1.09%)
+✅ Scraped property 188: Halsbury Road, Liverpool, Merseyside L6... - £250000 (Yield: 2.9%)
+✅ Scraped property 189: Halsbury Road, Liverpool, Merseyside L6... - £250000 (Yield: 3.26%)
+✅ Scraped property 190: Halsbury Road, Liverpool, Merseyside L6... - £250000 (Yield: 3.22%)
+✅ Scraped property 191: Halsbury Road, Liverpool, Merseyside L6... - £250000 (Yield: 3.17%)
+✅ Scraped property 192: Arkles Lane, Liverpool, Merseyside L4... - £250000 (Yield: 3.63%)
+✅ Scraped property 193: Arkles Lane, Liverpool, Merseyside L4... - £250000 (Yield: 4.0%)
+✅ Scraped property 194: 4+ bed property in Liverpool - Price on ... - £500000 (Yield: 1.02%)
+✅ Scraped property 195: 4+ bed property in Liverpool - Price on ... - £500000 (Yield: 1.07%)
+✅ Scraped property 196: Arkles Lane, Liverpool, Merseyside L4... - £250000 (Yield: 4.0%)
+✅ Scraped property 197: Arkles Lane, Liverpool, Merseyside L4... - £250000 (Yield: 3.66%)
+✅ Scraped property 198: Arkles Lane, Liverpool, Merseyside L4... - £250000 (Yield: 4.03%)
+✅ Scraped property 199: Arkles Lane, Liverpool, Merseyside L4... - £250000 (Yield: 4.06%)
+✅ Scraped property 200: Colebrooke Road, Aigburth, Liverpool L17... - £240000 (Yield: 4.14%)
+✅ Scraped property 201: Colebrooke Road, Aigburth, Liverpool L17... - £240000 (Yield: 4.08%)
+✅ Scraped property 202: 4+ bed property in Liverpool - Price on ... - £500000 (Yield: 1.02%)
+✅ Scraped property 203: 4+ bed property in Liverpool - Price on ... - £500000 (Yield: 1.06%)
+✅ Scraped property 204: Colebrooke Road, Aigburth, Liverpool L17... - £240000 (Yield: 3.81%)
+✅ Scraped property 205: Colebrooke Road, Aigburth, Liverpool L17... - £240000 (Yield: 4.47%)
+✅ Scraped property 206: Colebrooke Road, Aigburth, Liverpool L17... - £240000 (Yield: 4.11%)
+✅ Scraped property 207: Colebrooke Road, Aigburth, Liverpool L17... - £240000 (Yield: 3.78%)
+✅ Scraped property 208: Granville Road, Wavertree L15... - £230000 (Yield: 2.25%)
+✅ Scraped property 209: Granville Road, Wavertree L15... - £230000 (Yield: 2.13%)
+✅ Scraped property 210: 4+ bed property in Liverpool - Price on ... - £500000 (Yield: 0.97%)
+✅ Scraped property 211: 4+ bed property in Liverpool - Price on ... - £359366 (Yield: 1.48%)
+✅ Scraped property 212: Granville Road, Wavertree L15... - £230000 (Yield: 2.11%)
+✅ Scraped property 213: Granville Road, Wavertree L15... - £230000 (Yield: 2.32%)
+✅ Scraped property 214: Granville Road, Wavertree L15... - £230000 (Yield: 2.5%)
+✅ Scraped property 215: Granville Road, Wavertree L15... - £230000 (Yield: 2.46%)
+📍 Pokušaj #3/9: https://www.zoopla.co.uk/for-sale/property/liverpool/?beds_min=4&price_max=50000...
+
+    at ChildProcess.<anonymous> (/home/runner/workspace/server/services/scraper.ts:383:18)
+    at ChildProcess.emit (node:events:524:28)
+    at maybeClose (node:internal/child_process:1104:16)
+    at ChildProcess._handle.onexit (node:internal/child_process:304:5)
+⚠️ No real properties available, returning empty array
+⚠️ No scraped properties found. Returning empty result - no fake data fallback.
+Python scraper process finished with code: null
+Python scraper exited with code null
+Error output: 🚀 Starting bulletproof scraper for Liverpool
+🎯 Search params: bedrooms=4+, max_price=£500000, keywords='HMO'
+🔧 Building URLs for Liverpool: bedrooms=4+, price=£500000, keywords=HMO
+🎯 Using city slug: liverpool
+🔗 Generated 10 search URLs for MAXIMUM coverage
+🎯 Final URL count after dedup: 9
+📍 Pokušaj #1/9: https://www.zoopla.co.uk/for-sale/property/liverpool/?beds_min=4&keywords=HMO&pr...
+⚠️ HTTP 502 - pokušavam ponovo
+⚠️ HTTP 502 - pokušavam ponovo
+❌ Network error (retry 3/3): HTTPSConnectionPool(host='www.zoopla.co.uk', port=443): Read timed out. (read timeout=30)
+❌ Failed to get https://www.zoopla.co.uk/for-sale/property/liverpool/?beds_min=4&keywords=HMO&price_max=500000&property_type=houses&q=Liverpool after 3 retries - HTTP None
+📍 Pokušaj #2/9: https://www.primelocation.com/for-sale/property/liverpool/?beds_min=4&is_auction...
+
+Error in search properties: Error: Scraper failed with code null: 🚀 Starting bulletproof scraper for Liverpool
+🎯 Search params: bedrooms=4+, max_price=£500000, keywords='HMO'
+🔧 Building URLs for Liverpool: bedrooms=4+, price=£500000, keywords=HMO
+🎯 Using city slug: liverpool
+🔗 Generated 10 search URLs for MAXIMUM coverage
+🎯 Final URL count after dedup: 9
+📍 Pokušaj #1/9: https://www.zoopla.co.uk/for-sale/property/liverpool/?beds_min=4&keywords=HMO&pr...
+⚠️ HTTP 502 - pokušavam ponovo
+⚠️ HTTP 502 - pokušavam ponovo
+❌ Network error (retry 3/3): HTTPSConnectionPool(host='www.zoopla.co.uk', port=443): Read timed out. (read timeout=30)
+❌ Failed to get https://www.zoopla.co.uk/for-sale/property/liverpool/?beds_min=4&keywords=HMO&price_max=500000&property_type=houses&q=Liverpool after 3 retries - HTTP None
+📍 Pokušaj #2/9: https://www.primelocation.com/for-sale/property/liverpool/?beds_min=4&is_auction...
+
+    at ChildProcess.<anonymous> (/home/runner/workspace/server/services/scraper.ts:383:18)
+    at ChildProcess.emit (node:events:524:28)
+    at maybeClose (node:internal/child_process:1104:16)
+    at ChildProcess._handle.onexit (node:internal/child_process:304:5)
+⚠️ No real properties available, returning empty array
+⚠️ No scraped properties found. Returning empty result - no fake data fallback.
+11:52:59 AM [express] GET /api/properties 200 in 60015ms :: {"properties":[],"message":"No HMO invest…

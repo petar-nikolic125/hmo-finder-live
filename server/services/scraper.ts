@@ -197,10 +197,8 @@ export class ScrapingService {
       const price = parseInt(prop.price?.toString().replace(/[£,]/g, '')) || 0;
       const bedrooms = parseInt(prop.bedrooms?.toString()) || 1;
       
-      // Skip only clearly invalid properties - be less strict
-      if (!address || address.length < 5 || price <= 10000 || 
-          address.toLowerCase().includes('properties for sale') ||
-          address.toLowerCase().includes('search results')) {
+      // Skip only clearly invalid properties - be very permissive
+      if (!address || address.length < 3 || price <= 1000) {
         continue;
       }
       
@@ -214,25 +212,49 @@ export class ScrapingService {
         continue;
       }
       
-      // Strict city validation - skip if address doesn't contain searched city
-      const searchCity = params.city.toLowerCase();
+      // Skip obviously invalid addresses - be more specific
       const addressLower = address.toLowerCase();
-      
-      const cityVariations = [
-        searchCity,
-        searchCity.substring(0, 4),
-        ...this.getCityAliases(searchCity)
+      const invalidAddressPrefixes = [
+        'related searches',
+        'similar properties', 
+        'recommended',
+        'you might also like',
+        'search results',
+        'filter by',
+        'no results found',
+        'currently available for sale in',
+        'properties for sale in'
       ];
       
-      const hasCorrectCity = cityVariations.some(variation => 
-        addressLower.includes(variation.toLowerCase())
+      const isInvalidAddress = invalidAddressPrefixes.some(prefix => 
+        addressLower.includes(prefix)
       );
       
-      // Be more lenient - if city not found, still include if it looks like a property address
-      if (!hasCorrectCity && !addressLower.match(/^\d+\s+\w+\s+(street|road|avenue|lane|drive|close|way|place|crescent)/)) {
+      if (isInvalidAddress) {
+        console.log(`🚫 Skipping invalid address: ${address}`);
+        continue;
+      }
+      
+      // More lenient city validation - accept if address contains city name or looks like a real address
+      const searchCity = params.city.toLowerCase();
+      const hasCity = addressLower.includes(searchCity) || 
+                     addressLower.includes(searchCity.substring(0, 4)) ||
+                     this.getCityAliases(searchCity).some(alias => addressLower.includes(alias.toLowerCase()));
+      
+      const looksLikeAddress = addressLower.match(/\b(street|road|avenue|lane|drive|close|way|place|crescent|terrace|park|grove|gardens|view|hill|green|court)\b/) ||
+                              addressLower.match(/^\d+\s+\w+/) ||
+                              addressLower.includes(' l\d') || // Liverpool postcodes
+                              addressLower.includes(' m\d') || // Manchester postcodes
+                              addressLower.includes(' b\d'); // Birmingham postcodes
+      
+      // MUCH more permissive - only skip obviously fake addresses
+      if (!hasCity && !looksLikeAddress && addressLower.length < 10) {
         console.log(`🚫 Skipping non-address: ${address} (searching for ${params.city})`);
         continue;
       }
+      
+      // DEBUG: Log what properties we're accepting (remove after migration)
+      // console.log(`✅ Accepting property: ${address} (£${price.toLocaleString()}) - ${bedrooms} bed | HasCity: ${hasCity} | LooksLikeAddress: ${looksLikeAddress}`);
       
       // Create intelligent unique identifier with price tolerance
       const normalizedAddress = address.toLowerCase()
@@ -243,13 +265,14 @@ export class ScrapingService {
       const priceRange = Math.floor(price / (price * 0.05)) * (price * 0.05);
       const baseKey = `${normalizedAddress}-${bedrooms}-${Math.floor(priceRange)}`;
       
-      // Check for similar properties (fuzzy matching)
+      // Check for similar properties (fuzzy matching) - be less aggressive
       let isDuplicate = false;
       for (const [existingKey, existingProp] of Array.from(seenProperties.entries())) {
         const addressSimilarity = this.calculateSimilarity(normalizedAddress, existingKey.split('-')[0]);
         const priceDiff = Math.abs(price - existingProp.price) / price;
         
-        if (addressSimilarity > 0.95 && priceDiff < 0.05 && bedrooms === existingProp.bedrooms) {
+        // Only mark as duplicate if VERY similar (99%+ similarity, same price, same bedrooms)
+        if (addressSimilarity > 0.99 && priceDiff < 0.01 && bedrooms === existingProp.bedrooms) {
           console.log(`🔄 Skipping exact duplicate: ${address} (£${price}) - identical to ${existingProp.address}`);
           isDuplicate = true;
           break;
@@ -401,6 +424,14 @@ export class ScrapingService {
           
           const scrapedProperties = JSON.parse(jsonOutput);
           console.log(`✅ Successfully parsed ${scrapedProperties.length} properties`);
+          
+          // DEBUG: Log first few properties to understand the structure (remove after migration)
+          // if (scrapedProperties.length > 0) {
+          //   console.log('🔍 DEBUG: First 3 scraped properties:');
+          //   scrapedProperties.slice(0, 3).forEach((prop, i) => {
+          //     console.log(`  ${i+1}. Address: "${prop.address}" | Price: ${prop.price} | Bedrooms: ${prop.bedrooms}`);
+          //   });
+          // }
 
           if (!scrapedProperties || scrapedProperties.length === 0) {
             console.log('⚠️ No scraped properties found. Returning empty array - no fake data fallback.');
