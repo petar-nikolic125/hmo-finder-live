@@ -1,0 +1,154 @@
+{
+  "56b1e383ede52e7a12a7f1d97ec29598": {
+    "searchHash": "56b1e383ede52e7a12a7f1d97ec29598",
+    "lastScraped": "2025-08-07T01:29:25.375Z",
+    "properties": [
+      {
+        "id": 1239692864,
+        "address": "Properties for sale in Liverpool",
+        "price": 325000,
+        "bedrooms": 5,
+        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "propertyUrl": "https://www.primelocation.com/for-sale/details/70233562/?search_identifier=586e4f15816fcb0107dbc49e15767d0afe785ac74ccf97b407167c41044ef059&featured=true",
+        "city": "Liverpool",
+        "scrapedAt": "2025-08-07T01:29:25.373Z"
+      },
+      {
+        "id": 2634359016,
+        "address": "Ramilies Road, Mossley Hill L18",
+        "price": 325000,
+        "bedrooms": 5,
+        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "propertyUrl": "https://www.primelocation.com/for-sale/details/70233562/?search_identifier=586e4f15816fcb0107dbc49e15767d0afe785ac74ccf97b407167c41044ef059&featured=true",
+        "city": "Liverpool",
+        "scrapedAt": "2025-08-07T01:29:25.374Z"
+      },
+      {
+        "id": 4098145248,
+        "address": "Norma Road, Liverpool L22",
+        "price": 498000,
+        "bedrooms": 6,
+        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "propertyUrl": "https://www.primelocation.com/for-sale/details/69313971/?search_identifier=586e4f15816fcb0107dbc49e15767d0afe785ac74ccf97b407167c41044ef059",
+        "city": "Liverpool",
+        "scrapedAt": "2025-08-07T01:29:25.374Z"
+      },
+      {
+        "id": 1618903409,
+        "address": "Leopold Road, Liverpool L7",
+        "price": 495000,
+        "bedrooms": 6,
+        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "propertyUrl": "https://www.primelocation.com/for-sale/details/69929912/?search_identifier=586e4f15816fcb0107dbc49e15767d0afe785ac74ccf97b407167c41044ef059",
+        "city": "Liverpool",
+        "scrapedAt": "2025-08-07T01:29:25.374Z"
+      },
+      {
+        "id": 1268468998,
+        "address": "Grove Street, Edge Hill, Liverpool, Merseyside L7",
+        "price": 490000,
+        "bedrooms": 5,
+        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "propertyUrl": "https://www.primelocation.com/for-sale/details/70155507/?search_identifier=586e4f15816fcb0107dbc49e15767d0afe785ac74ccf97b407167c41044ef059",
+        "city": "Liverpool",
+        "scrapedAt": "2025-08-07T01:29:25.374Z"
+      },
+      {
+        "id": 3714918050,
+        "address": "Seymour Street, Liverpool, Merseyside L3",
+        "price": 485000,
+        "bedrooms": 5,
+        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "propertyUrl": "https://www.primelocation.com/for-sale/details/68134798/?search_identifier=586e4f15816fcb0107dbc49e15767d0afe785ac74ccf97b407167c41044ef059",
+        "city": "Liverpool",
+        "scrapedAt": "2025-08-07T01:29:25.374Z"
+      },
+      {
+        "id": 1610483780,
+        "address": "Halkyn Avenue, Liverpool, Merseyside L17",
+        "price": 475000,
+        "bedrooms": 7,
+        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "propertyUrl": "https://www.primelocation.com/for-sale/details/67835487/?search_identifier=586e4f15816fcb0107dbc49e15767d0afe785ac74ccf97b407167c41044ef059",
+        "city": "Liverpool",
+        "scrapedAt": "2025-08-07T01:29:25.375Z"
+      }
+    ]
+  },
+  "ba48bd87304a2fae0cd7cceb9f55b324": {
+    "searchHash": "ba48bd87304a2fae0cd7cceb9f55b324",
+    "lastScraped": "2025-08-07T01:31:30.177Z",
+    "properties": [
+      {
+        "id": 685638829,
+        "address": "Properties for sale in London",
+        "price": 750000,
+        "bedrooms": 6,
+        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "propertyUrl": "https://www.primelocation.com/for-sale/details/70951711/?search_identifier=ac91e7b4b749af60d164f674f41df40b9c20455cc0bdb849b946d3a8eddcfd70&weekly_featured=true",
+        "city": "London",
+        "scrapedAt": "2025-08-07T01:31:30.176Z"
+      },
+      {
+        "id": 3289694898,
+        "address": "Mora Road, Cricklewood NW2",
+        "price": 750000,
+        "bedrooms": 6,
+        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "propertyUrl": "https://www.primelocation.com/for-sale/details/70951711/?search_identifier=ac91e7b4b749af60d164f674f41df40b9c20455cc0bdb849b946d3a8eddcfd70&weekly_featured=true",
+        "city": "London",
+        "scrapedAt": "2025-08-07T01:31:30.176Z"
+      },
+      {
+        "id": 1158739384,
+        "address": "Church Road, Northolt UB5",
+        "price": 750000,
+        "bedrooms": 6,
+        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "propertyUrl": "https://www.primelocation.com/for-sale/details/70683368/?search_identifier=ac91e7b4b749af60d164f674f41df40b9c20455cc0bdb849b946d3a8eddcfd70&featured=true",
+        "city": "London",
+        "scrapedAt": "2025-08-07T01:31:30.176Z"
+      },
+      {
+        "id": 4094791589,
+        "address": "Sutton Court Road, Uxbridge UB10",
+        "price": 400000,
+        "bedrooms": 5,
+        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "propertyUrl": "https://www.primelocation.com/for-sale/details/70683228/?search_identifier=ac91e7b4b749af60d164f674f41df40b9c20455cc0bdb849b946d3a8eddcfd70&featured=true",
+        "city": "London",
+        "scrapedAt": "2025-08-07T01:31:30.176Z"
+      },
+      {
+        "id": 2355853117,
+        "address": "Chartley Avenue, London NW2",
+        "price": 750000,
+        "bedrooms": 4,
+        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "propertyUrl": "https://www.primelocation.com/for-sale/details/69473102/?search_identifier=ac91e7b4b749af60d164f674f41df40b9c20455cc0bdb849b946d3a8eddcfd70",
+        "city": "London",
+        "scrapedAt": "2025-08-07T01:31:30.176Z"
+      },
+      {
+        "id": 2651091572,
+        "address": "Napier Road, Wembley, Middlesex HA0",
+        "price": 750000,
+        "bedrooms": 7,
+        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "propertyUrl": "https://www.primelocation.com/for-sale/details/69481539/?search_identifier=ac91e7b4b749af60d164f674f41df40b9c20455cc0bdb849b946d3a8eddcfd70",
+        "city": "London",
+        "scrapedAt": "2025-08-07T01:31:30.177Z"
+      },
+      {
+        "id": 136335602,
+        "address": "Woodstock Terrace, London E14",
+        "price": 750000,
+        "bedrooms": 5,
+        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "propertyUrl": "https://www.primelocation.com/for-sale/details/69597597/?search_identifier=ac91e7b4b749af60d164f674f41df40b9c20455cc0bdb849b946d3a8eddcfd70",
+        "city": "London",
+        "scrapedAt": "2025-08-07T01:31:30.177Z"
+      }
+    ]
+  }
+}
