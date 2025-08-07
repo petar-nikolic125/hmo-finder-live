@@ -186,18 +186,47 @@ export class ScrapingService {
             return;
           }
 
-          // Convert scraped data to Property format - samo realni podaci
-          const properties: Property[] = scrapedProperties.map((prop: any, index: number) => ({
-            id: Math.floor(Math.random() * 1000000), // Generate random ID
-            address: prop.address || `${prop.title || 'Unknown'}, ${params.city}`,
-            price: parseInt(prop.price?.toString().replace(/[£,]/g, '')) || 0,
-            bedrooms: parseInt(prop.bedrooms?.toString()) || 1,
-            bathrooms: prop.bathrooms ? parseInt(prop.bathrooms?.toString()) : undefined, // Samo ako je stvarno pronađeno
-            imageUrl: prop.image_url || 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80',
-            propertyUrl: prop.property_url || '',
-            city: params.city,
-            scrapedAt: new Date().toISOString()
-          }));
+          // Convert scraped data to Property format with deduplication
+          const seenProperties = new Set<string>();
+          const properties: Property[] = [];
+          
+          for (const prop of scrapedProperties) {
+            const address = prop.address || `${prop.title || 'Unknown'}, ${params.city}`;
+            const price = parseInt(prop.price?.toString().replace(/[£,]/g, '')) || 0;
+            const bedrooms = parseInt(prop.bedrooms?.toString()) || 1;
+            
+            // Create unique identifier based on address, price, and bedrooms
+            const uniqueKey = `${address}-${price}-${bedrooms}`.toLowerCase().replace(/[^a-z0-9-]/g, '');
+            
+            // Skip if we've already seen this property
+            if (seenProperties.has(uniqueKey)) {
+              console.log(`🔄 Skipping duplicate property: ${address} (£${price})`);
+              continue;
+            }
+            
+            seenProperties.add(uniqueKey);
+            
+            // Generate consistent ID based on property characteristics (not random)
+            const propertyId = parseInt(crypto.createHash('md5').update(uniqueKey).digest('hex').substring(0, 8), 16);
+            
+            properties.push({
+              id: propertyId,
+              address,
+              price,
+              bedrooms,
+              bathrooms: prop.bathrooms ? parseInt(prop.bathrooms?.toString()) : undefined,
+              imageUrl: prop.image_url || 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80',
+              propertyUrl: prop.property_url || '',
+              city: params.city,
+              scrapedAt: new Date().toISOString()
+            });
+          }
+          
+          console.log(`✅ After deduplication: ${properties.length} unique properties (from ${scrapedProperties.length} scraped)`);
+          
+          if (properties.length === 0) {
+            console.log('⚠️ No unique properties after deduplication');
+          }
 
           // Cache the results
           const searchHash = this.generateSearchHash(params);
