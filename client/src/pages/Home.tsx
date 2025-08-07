@@ -59,16 +59,40 @@ export const Home = () => {
     }
   }, [properties]);
 
-  // Error handling
+  // Error handling with enhanced debugging
   useEffect(() => {
     if (isError) {
+      console.error('🚨 Properties API Error:', isError);
+      console.log('🌐 Current URL:', window.location.href);
+      console.log('🏠 Search params:', searchParams);
+      
       toast({
         variant: "destructive",
         title: "Error loading properties",
-        description: "Please try again.",
+        description: `API Error: Please check console for details.`,
       });
     }
   }, [isError, toast]);
+
+  // Debug logging for production
+  useEffect(() => {
+    console.log('🔍 Home component mounted');
+    console.log('🌐 Environment:', {
+      hostname: window.location.hostname,
+      href: window.location.href,
+      searchParams
+    });
+  }, []);
+
+  useEffect(() => {
+    if (searchResult) {
+      console.log('📊 Search result received:', {
+        propertiesCount: searchResult.properties?.length || 0,
+        hasMessage: !!searchResult.message,
+        hasExpandedResults: searchResult.hasExpandedResults
+      });
+    }
+  }, [searchResult]);
 
   const handleSearch = () => {
     if (!hasSearched) {

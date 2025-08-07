@@ -10,14 +10,34 @@ export interface PropertySearchResponse {
 
 // API client that connects to the backend
 class ApiClient {
+  private getBaseUrl(): string {
+    // In production (deployed), use the current domain
+    // In development, use relative URLs which will go to the Express server
+    if (typeof window !== 'undefined') {
+      if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+        return ''; // Use relative URLs in development
+      } else {
+        return ''; // Use relative URLs in production too, as they should go to the same server
+      }
+    }
+    return '';
+  }
+
   private async request<T>(url: string, options?: RequestInit): Promise<T> {
-    const response = await fetch(url, {
+    const baseUrl = this.getBaseUrl();
+    const fullUrl = `${baseUrl}${url}`;
+    
+    console.log(`🔍 API Request: ${fullUrl}`);
+    
+    const response = await fetch(fullUrl, {
       headers: {
         'Content-Type': 'application/json',
         ...options?.headers,
       },
       ...options,
     });
+
+    console.log(`📡 API Response: ${response.status} for ${fullUrl}`);
 
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
