@@ -3,7 +3,7 @@ import { useProperties, useRefreshProperties } from '@/hooks/useProperties';
 import { PropertySearchParams } from '@/lib/types';
 import { Header } from '@/components/Header';
 import { HeroSection } from '@/components/HeroSection';
-import { FilterBar } from '@/components/FilterBar';
+// Removed FilterBar - now unified into HeroSection
 import { SortSelect } from '@/components/SortSelect';
 import { UpdateBadge } from '@/components/UpdateBadge';
 import { PropertyCard } from '@/components/PropertyCard';
@@ -23,7 +23,7 @@ export const Home = () => {
   const [searchParams, setSearchParams] = useState<PropertySearchParams>({
     city: 'Liverpool',
     count: 12,
-    minRooms: 1,
+    minRooms: 4,
     maxPrice: 500000,
     keywords: 'HMO',
   });
@@ -117,17 +117,11 @@ export const Home = () => {
         onCityChange={(city) => updateSearchParams({ city })}
         onMaxPriceChange={(maxPrice) => updateSearchParams({ maxPrice })}
         onMinRoomsChange={(minRooms) => updateSearchParams({ minRooms })}
+        searchTerm={searchTerm}
+        onSearchChange={setSearchTerm}
       />
 
       <main className="container mx-auto px-4 py-8">
-        <FilterBar
-          searchTerm={searchTerm}
-          onSearchChange={setSearchTerm}
-          minRooms={searchParams.minRooms || 1}
-          onMinRoomsChange={(minRooms) => updateSearchParams({ minRooms })}
-          maxPrice={searchParams.maxPrice || 500000}
-          onMaxPriceChange={(maxPrice) => updateSearchParams({ maxPrice })}
-        />
 
         {/* Search Status */}
         <SearchStatus 

@@ -950,89 +950,7 @@ def scrape_properties_with_requests(city, min_bedrooms, max_price, keywords, pos
     
     return properties
 
-def generate_fake_properties(city, min_bedrooms, max_price, count):
-    """Generiraj fake oglase kada scraping ne uspe"""
-    print(f"🏠 Generating {count} fake properties for {city}", file=sys.stderr)
-    
-    # City-specific street names for more realistic fake data
-    city_streets = {
-        'birmingham': ["Broad Street", "Hagley Road", "Pershore Road", "Stratford Road", "Moseley Road", "Bristol Road", "Warwick Road"],
-        'manchester': ["Oxford Road", "Wilmslow Road", "Stockport Road", "Princess Street", "Oldham Road", "Deansgate", "Market Street"],
-        'leeds': ["Headingley Lane", "Hyde Park Road", "Burley Road", "Kirkstall Road", "Meanwood Road", "Otley Road", "Wellington Street"],
-        'sheffield': ["Ecclesall Road", "London Road", "Abbeydale Road", "Chesterfield Road", "Fulwood Road", "West Street", "Glossop Road"],
-        'bristol': ["Gloucester Road", "Whiteladies Road", "Park Street", "Baldwin Street", "Queen Square", "Clifton Down Road"],
-        'nottingham': ["Derby Road", "Alfreton Road", "Mansfield Road", "Ilkeston Road", "Gregory Boulevard", "Queen's Road"],
-        'leicester': ["London Road", "Narborough Road", "Hinckley Road", "Belgrave Road", "Evington Road", "Welford Road"],
-        'newcastle': ["Northumberland Street", "Grainger Street", "Clayton Street", "Grey Street", "Osborne Road", "High Bridge"],
-        'coventry': ["Warwick Road", "Holyhead Road", "Foleshill Road", "Binley Road", "Allesley Old Road", "Tile Hill Lane"],
-        'preston': ["Blackpool Road", "Garstang Road", "New Hall Lane", "Watling Street Road", "Ribbleton Avenue", "Church Street"],
-        'blackpool': ["Promenade", "Church Street", "Whitegate Drive", "Lytham Road", "Central Drive", "Victoria Road"],
-        'hull': ["Spring Bank", "Anlaby Road", "Beverley Road", "Hessle Road", "Holderness Road", "Princes Avenue"],
-        'derby': ["London Road", "Burton Road", "Uttoxeter Road", "Ashbourne Road", "Kedleston Road", "Duffield Road"],
-        'plymouth': ["Mutley Plain", "Union Street", "North Road East", "Tavistock Road", "Mannamead Road", "Armada Way"],
-        'southampton': ["Above Bar Street", "London Road", "Winchester Road", "Shirley Road", "Burgess Road", "Commercial Road"],
-        'portsmouth': ["Commercial Road", "London Road", "Kingston Road", "Fratton Road", "Albert Road", "Elm Grove"],
-        'reading': ["Oxford Road", "Bath Road", "Basingstoke Road", "Whitley Street", "Kings Road", "London Street"],
-        'oxford': ["High Street", "Cornmarket Street", "St Aldates", "Headington Road", "Cowley Road", "Banbury Road"],
-        'cambridge': ["Mill Road", "Hills Road", "Newmarket Road", "Huntingdon Road", "Cherry Hinton Road", "Kings Parade"],
-        'brighton': ["London Road", "Preston Road", "Ditchling Road", "Lewes Road", "Edward Street", "Western Road"],
-        'salford': ["Chapel Street", "Eccles New Road", "Liverpool Street", "Regent Road", "Bolton Road", "Cross Lane"],
-        'stockport': ["Wellington Road", "London Road", "Buxton Road", "Bramhall Lane", "Stockport Road", "Greek Street"],
-        'wolverhampton': ["Wolverhampton Road", "Penn Road", "Stafford Road", "Compton Road", "Chapel Ash", "Victoria Street"],
-        'london': ["Roman Road", "Mile End Road", "Bethnal Green Road", "Commercial Street", "Brick Lane", "Victoria Park Road"],
-        'liverpool': ["Smithdown Road", "Lodge Lane", "Wavertree Road", "Allerton Road", "Penny Lane", "Bold Street"]
-    }
-    
-    streets = city_streets.get(city.lower(), [
-        "Victoria Street", "Church Lane", "High Street", "Mill Lane", "Station Road",
-        "Oak Avenue", "Park Road", "Kings Road", "Queens Avenue", "Elm Grove"
-    ])
-    
-    # Sample descriptions for different property types
-    descriptions = [
-        "Spacious HMO property perfect for buy-to-let investors. The property comprises multiple bedrooms, modern bathrooms, and a large communal kitchen. Close to transport links and local amenities. Ideal rental potential for students and young professionals.",
-        "Victorian terrace house converted into individual rooms with shared facilities. Each room is well-appointed with modern furnishing. Property includes garden space and parking. Located in popular residential area with excellent transport connections.",
-        "Recently renovated property offering excellent rental yields. Multiple bedrooms with shared kitchen and bathroom facilities. Close to university and city center. Perfect investment opportunity with strong rental demand in the area.",
-        "Large family home converted to HMO with multiple bedrooms and bathrooms. Property features modern kitchen, garden, and parking space. Located in desirable neighborhood with good schools and transport links nearby."
-    ]
-    
-    properties = []
-    for i in range(count):
-        street = random.choice(streets)
-        house_num = random.randint(1, 200)
-        bedrooms = max(min_bedrooms, random.randint(1, 6))
-        price = random.randint(int(max_price * 0.6), max_price)
-        address = f"{house_num} {street}, {city}"
-        
-        # Add realistic area in square meters
-        area_sqm = random.randint(80, 200)
-        
-        property_data = {
-            'title': address,
-            'address': address,
-            'price': price,
-            'bedrooms': bedrooms,
-            'bathrooms': max(1, bedrooms - random.randint(0, 2)),
-            'area_sqm': area_sqm,
-            'description': random.choice(descriptions),
-            'property_url': f"https://www.zoopla.co.uk/for-sale/details/{random.randint(10000000, 99999999)}",
-            'image_url': f"https://images.unsplash.com/photo-{random.choice(['1560518883-ce09059eeffa', '1564013799919-ab600027ffc6', '1493809842364-78817add7ffb'])}?w=800&h=600&fit=crop&crop=entropy&q=80"
-        }
-        
-        # Calculate investment analysis for fake properties too
-        investment_analysis = calculate_investment_analysis(
-            price=price,
-            bedrooms=bedrooms,
-            address=address,
-            area_sqm=area_sqm,
-            city=city
-        )
-        
-        # Merge investment analysis
-        property_data.update(investment_analysis)
-        properties.append(property_data)
-    
-    return properties
+# Removed fake property generation - we only use real scraped data
 
 def main():
     if len(sys.argv) != 5:
@@ -1044,12 +962,12 @@ def main():
     max_price = int(sys.argv[3])
     keywords = sys.argv[4]
     
-    # Pokušaj requests scraping
+    # Only use real scraped data - no fake fallbacks
     properties = scrape_properties_with_requests(city, min_bedrooms, max_price, keywords)
     
     if len(properties) == 0:
-        print("⚠️ No properties scraped, generating fallback data", file=sys.stderr)
-        properties = generate_fake_properties(city, min_bedrooms, max_price, 12)
+        print("❌ No properties scraped. Returning empty result - no fake data fallback.", file=sys.stderr)
+        properties = []
     
     # Isprintaj JSON rezultat
     print(json.dumps(properties, ensure_ascii=False, indent=2))

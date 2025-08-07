@@ -9,8 +9,8 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select';
-import { Search, RefreshCw } from 'lucide-react';
-import { getAvailableCities } from '@/lib/generator';
+import { Search, RefreshCw, SlidersHorizontal } from 'lucide-react';
+import { useCities } from '@/hooks/useProperties';
 import ukSkylineImage from '@assets/generated_images/UK_cities_skyline_background_cab93bd3.png';
 
 interface HeroSectionProps {
@@ -21,6 +21,8 @@ interface HeroSectionProps {
   onCityChange: (city: string) => void;
   onMaxPriceChange: (maxPrice: number) => void;
   onMinRoomsChange: (minRooms: number) => void;
+  searchTerm: string;
+  onSearchChange: (term: string) => void;
 }
 
 export const HeroSection = ({ 
@@ -30,8 +32,11 @@ export const HeroSection = ({
   isLoading,
   onCityChange,
   onMaxPriceChange,
-  onMinRoomsChange
+  onMinRoomsChange,
+  searchTerm,
+  onSearchChange
 }: HeroSectionProps) => {
+  const { data: cities = [] } = useCities();
   return (
     <section className="relative overflow-hidden py-20 min-h-[80vh] flex items-center">
       {/* UK Skyline Background */}
@@ -127,7 +132,7 @@ export const HeroSection = ({
                     <SelectValue placeholder="Select a city" />
                   </SelectTrigger>
                   <SelectContent className="rounded-xl">
-                    {getAvailableCities().map((city) => (
+                    {cities.map((city) => (
                       <SelectItem key={city} value={city} className="text-base py-3">
                         {city}
                       </SelectItem>
@@ -169,7 +174,7 @@ export const HeroSection = ({
                   Min Bedrooms
                 </label>
                 <Select 
-                  value={searchParams.minRooms?.toString() || '1'}
+                  value={searchParams.minRooms?.toString() || '4'}
                   onValueChange={(value) => {
                     console.log('🛏️ HeroSection: Min rooms changed to:', parseInt(value));
                     onMinRoomsChange(parseInt(value));
