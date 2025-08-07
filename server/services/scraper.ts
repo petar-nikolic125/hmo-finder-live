@@ -43,8 +43,8 @@ interface CacheData {
 
 export class ScrapingService {
   private cache: CacheData = {};
-  private readonly cacheFile = '.local/scrape_cache.json';
-  private readonly rateLimitMs = 10000; // 10 seconds between scrapes
+  private readonly cacheFile = process.env.NODE_ENV === 'production' ? '/tmp/scrape_cache.json' : '.local/scrape_cache.json';
+  private readonly rateLimitMs = process.env.NODE_ENV === 'production' ? 30000 : 10000; // Longer rate limit in production
 
   constructor() {
     this.loadCache();
@@ -63,11 +63,18 @@ export class ScrapingService {
 
   private async saveCache(): Promise<void> {
     try {
-      await fs.mkdir('.local', { recursive: true });
+      // Create directory only if not in /tmp
+      if (!this.cacheFile.startsWith('/tmp/')) {
+        await fs.mkdir('.local', { recursive: true });
+      }
       await fs.writeFile(this.cacheFile, JSON.stringify(this.cache, null, 2));
       console.log('💾 Saved scrape cache');
     } catch (error) {
       console.error('Error saving cache:', error);
+      // In production, continue even if cache save fails
+      if (process.env.NODE_ENV === 'production') {
+        console.log('⚠️ Cache save failed in production, continuing without cache');
+      }
     }
   }
 
@@ -238,7 +245,7 @@ export class ScrapingService {
       
       // Check for similar properties (fuzzy matching)
       let isDuplicate = false;
-      for (const [existingKey, existingProp] of seenProperties) {
+      for (const [existingKey, existingProp] of Array.from(seenProperties.entries())) {
         const addressSimilarity = this.calculateSimilarity(normalizedAddress, existingKey.split('-')[0]);
         const priceDiff = Math.abs(price - existingProp.price) / price;
         
@@ -320,15 +327,19 @@ export class ScrapingService {
         pythonScript,
         params.city,
         params.minBedrooms.toString(),
-        params.maxPrice.toString(),
+        (params.maxPrice || 500000).toString(),
         params.keywords || 'HMO'
       ];
 
       console.log(`🔍 Using prime_scraper.py for REAL property data - NO FAKE DATA`);
 
-      const pythonProcess = spawn('python3', args, {
+      // Production-safe Python execution with timeout
+      const pythonCmd = process.env.NODE_ENV === 'production' ? 'python3' : 'python3';
+      const pythonProcess = spawn(pythonCmd, args, {
         stdio: ['pipe', 'pipe', 'pipe'],
-        cwd: process.cwd()
+        cwd: process.cwd(),
+        env: { ...process.env, PYTHONPATH: process.cwd() },
+        timeout: 60000 // 60 second timeout for production
       });
 
       let output = '';
@@ -349,6 +360,26 @@ export class ScrapingService {
         if (code !== 0) {
           console.error(`Python scraper exited with code ${code}`);
           console.error('Error output:', errorOutput);
+          
+          // In production, try to return cached results instead of failing completely
+          if (process.env.NODE_ENV === 'production') {
+            console.log('🔄 Production error detected, attempting cache fallback...');
+            const cachedResults = await this.getCachedResults(params);
+            if (cachedResults.length > 0) {
+              console.log(`📦 Using cached fallback: ${cachedResults.length} properties`);
+              resolve(cachedResults);
+              return;
+            }
+            
+            // Try flexible cache match as last resort
+            const flexibleMatch = this.findFlexibleCacheMatch(params);
+            if (flexibleMatch && flexibleMatch.data.length > 0) {
+              console.log(`📦 Using flexible cache fallback: ${flexibleMatch.data.length} properties`);
+              resolve(flexibleMatch.data);
+              return;
+            }
+          }
+          
           reject(new Error(`Scraper failed with code ${code}: ${errorOutput}`));
           return;
         }
@@ -397,6 +428,18 @@ export class ScrapingService {
           resolve(properties);
         } catch (error) {
           console.error('Error processing scraper output:', error);
+          
+          // In production, try cache fallback before failing
+          if (process.env.NODE_ENV === 'production') {
+            console.log('🔄 JSON parsing failed in production, trying cache fallback...');
+            const cachedResults = await this.getCachedResults(params);
+            if (cachedResults.length > 0) {
+              console.log(`📦 Using cached fallback after JSON error: ${cachedResults.length} properties`);
+              resolve(cachedResults);
+              return;
+            }
+          }
+          
           reject(error);
         }
       });

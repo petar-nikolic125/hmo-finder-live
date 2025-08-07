@@ -783,7 +783,7 @@ def scrape_properties_with_requests(city, min_bedrooms, max_price, keywords, pos
                         if link_with_title and link_with_title.get('title'):
                             title_text = link_with_title['title']
                             property_data['title'] = title_text
-                            property_data['address'] = title_text if city.lower() in title_text.lower() else f"Property in {city}"
+                            property_data['address'] = title_text if city.lower() in str(title_text).lower() else f"Property in {city}"
                         else:
                             # Generate title from available data
                             price_str = f"£{property_data.get('price', 'TBC')}" if property_data.get('price') else "Price on application"
