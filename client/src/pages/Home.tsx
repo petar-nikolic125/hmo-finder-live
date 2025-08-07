@@ -1,14 +1,13 @@
+
 import { useState, useMemo, useEffect } from 'react';
 import { useProperties, useRefreshProperties } from '@/hooks/useProperties';
 import { PropertySearchParams } from '@/lib/types';
 import { Header } from '@/components/Header';
 import { HeroSection } from '@/components/HeroSection';
-
 import { SortSelect } from '@/components/SortSelect';
 import { UpdateBadge } from '@/components/UpdateBadge';
 import { PropertyCard } from '@/components/PropertyCard';
 import { PropertyGridSkeleton } from '@/components/LoadingSkeletons';
-// IntelligentLoadingScreen removed per user request
 import { RefreshFab } from '@/components/RefreshFab';
 import { Footer } from '@/components/Footer';
 import { PrivacyNoticePopup } from '@/components/PrivacyNoticePopup';
@@ -34,16 +33,13 @@ export const Home = () => {
   const [lastUpdated, setLastUpdated] = useState(Date.now());
   const [showPrivacyPopup, setShowPrivacyPopup] = useState(false);
   const [hasSearched, setHasSearched] = useState(false);
-  const [showTutorial, setShowTutorial] = useState(true); // Show tutorial on launch
-  // Loading screen state removed per user request
+  const [showTutorial, setShowTutorial] = useState(true);
 
   // Fetch properties with enhanced messaging
   const { data: searchResult, isLoading, isError, refetch } = useProperties(searchParams);
   const properties = searchResult?.properties || [];
   const expandedResultsMessage = searchResult?.message;
   const hasExpandedResults = searchResult?.hasExpandedResults || false;
-
-  // Production: Removed debug logging for performance
 
   // Filter properties by search term (client-side)
   const filteredProperties = useMemo(() => {
@@ -56,7 +52,7 @@ export const Home = () => {
     );
   }, [properties, searchTerm]);
 
-  // Update last updated time when properties change
+  // Update updated time when properties change
   useEffect(() => {
     if (properties.length > 0) {
       setLastUpdated(Date.now());
@@ -82,8 +78,6 @@ export const Home = () => {
     refetch();
     setLastUpdated(Date.now());
   };
-
-  // Loading screen logic removed per user request
 
   const handleRefresh = () => {
     refresh();
@@ -119,7 +113,6 @@ export const Home = () => {
       />
 
       <main className="container mx-auto px-4 py-8">
-
         {/* Search Status */}
         <SearchStatus 
           count={filteredProperties.length}
@@ -127,30 +120,33 @@ export const Home = () => {
           lastUpdated={lastUpdated}
         />
 
-        {/* Search results header with count */}
-
-        {/* Professional message for expanded results */}
-        {expandedResultsMessage && (
-          <div className="mb-6 p-4 bg-blue-50 dark:bg-blue-950/20 border border-blue-200 dark:border-blue-800 rounded-lg">
-            <div className="flex items-start space-x-3">
-              <div className="flex-shrink-0">
-                <svg className="w-5 h-5 text-blue-600 dark:text-blue-400 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
-                  <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clipRule="evenodd" />
-                </svg>
-              </div>
-              <div className="flex-1">
-                <h4 className="text-sm font-medium text-blue-900 dark:text-blue-100 mb-1">
-                  Search Results Expanded
-                </h4>
-                <p className="text-sm text-blue-700 dark:text-blue-300 leading-relaxed">
-                  {expandedResultsMessage}
-                </p>
-              </div>
-            </div>
+        {/* Professional expanded results message */}
+        {hasExpandedResults && expandedResultsMessage && (
+          <div className="mb-6 p-4 bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-lg">
+            <p className="text-sm text-blue-800 dark:text-blue-200">
+              {expandedResultsMessage}
+            </p>
           </div>
         )}
 
-        {/* Loading animation removed per user request */}
+        {/* Search results header with count and update badge */}
+        <div className="flex items-center justify-between mb-6">
+          <h2 className="text-xl font-semibold">
+            Available HMO Properties
+            {filteredProperties.length > 0 && (
+              <span className="ml-2 text-sm font-normal text-muted-foreground">
+                ({filteredProperties.length} found)
+              </span>
+            )}
+          </h2>
+          
+          <div className="flex items-center gap-3">
+            <UpdateBadge lastUpdated={lastUpdated} />
+            <SortSelect />
+          </div>
+        </div>
+
+        {/* Properties grid with enhanced loading states */}
         {isLoading ? (
           <PropertyGridSkeleton count={searchParams.count || 4} />
         ) : filteredProperties.length === 0 ? (
@@ -168,7 +164,7 @@ export const Home = () => {
               <PropertyCard 
                 key={`${property.postcode}-${index}`} 
                 property={property}
-                delay={150 + (index * 200)} // Staggered reveal: 150-300ms range
+                delay={150 + (index * 200)}
               />
             ))}
           </div>

@@ -7,6 +7,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
   // Properties API routes
   app.get("/api/properties", async (req, res) => {
     try {
+      console.log("🔍 API /properties called with query:", req.query);
       // Enhanced parameter validation and edge case handling for stress testing
       let count = req.query.count ? parseInt(req.query.count as string) : 50;
       let minRooms = req.query.minRooms ? parseInt(req.query.minRooms as string) : 
@@ -42,6 +43,8 @@ export async function registerRoutes(app: Express): Promise<Server> {
       };
 
       const result = await storage.getProperties(searchParams);
+      
+      console.log(`✅ Returning ${result.properties.length} properties for ${searchParams.city}`);
       
       // Return the structured result with professional messaging
       res.json({
