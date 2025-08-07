@@ -23,37 +23,31 @@ export const PropertyCard = ({ property, delay = 0 }: PropertyCardProps) => {
     return () => clearTimeout(timer);
   }, [delay]);
 
-  // Use real scraped property URL if available, otherwise use portal search URLs
+  // Check if this is a demo property or has real scraped URL
+  const isDemoProperty = () => {
+    return !property.propertyUrl || 
+           property.propertyUrl.startsWith('#demo-property-') ||
+           property.propertyUrl === '#';
+  };
+
+  // Get appropriate portal URL
   const getPortalUrl = () => {
     console.log('🔗 PropertyCard: Getting portal URL for property:', property.address);
-    console.log('🔗 PropertyCard: Property data:', property);
     console.log('🔗 PropertyCard: propertyUrl field:', property.propertyUrl);
     
-    // Priority 1: Use real scraped property URL if it exists and points to specific property
-    if (property.propertyUrl && 
-        property.propertyUrl !== '#' &&
-        (property.propertyUrl.includes('/details/') || 
-         property.propertyUrl.includes('/property-for-sale/') ||
-         property.propertyUrl.includes('/for-sale/details/'))) {
-      console.log('🔗 PropertyCard: Using real scraped property URL:', property.propertyUrl);
-      return property.propertyUrl;
+    // If it's a demo property, use portal search URLs
+    if (isDemoProperty()) {
+      console.log('🔗 PropertyCard: Using portal search URLs for demo property');
+      const rand = Math.random();
+      if (rand < 0.70 && property.rightmoveUrl) return property.rightmoveUrl;
+      if (rand < 0.95 && property.zooplaUrl) return property.zooplaUrl;
+      if (property.primeLocationUrl) return property.primeLocationUrl;
+      return '#';
     }
     
-    // Priority 2: Use portal search URLs (for generated properties)
-    console.log('🔗 PropertyCard: Using portal search URLs - propertyUrl not found or invalid');
-    console.log('🔗 PropertyCard: Available portal URLs:', {
-      rightmove: property.rightmoveUrl,
-      zoopla: property.zooplaUrl,
-      primeLocation: property.primeLocationUrl
-    });
-    
-    const rand = Math.random();
-    if (rand < 0.70 && property.rightmoveUrl) return property.rightmoveUrl;
-    if (rand < 0.95 && property.zooplaUrl) return property.zooplaUrl;
-    if (property.primeLocationUrl) return property.primeLocationUrl;
-    
-    // Fallback
-    return '#';
+    // Use real scraped property URL
+    console.log('🔗 PropertyCard: Using real scraped property URL:', property.propertyUrl);
+    return property.propertyUrl;
   };
 
   const getProfitabilityColor = (score: string | undefined) => {
@@ -226,9 +220,19 @@ export const PropertyCard = ({ property, delay = 0 }: PropertyCardProps) => {
               className="w-full h-14 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-bold text-lg rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-[1.02] flex items-center justify-center gap-3"
               data-testid="button-view"
             >
-              <span>View Property</span>
+              <span>{isDemoProperty() ? 'Search Similar Properties' : 'View Property'}</span>
               <ExternalLink className="w-5 h-5" />
             </Button>
+            
+            {/* Demo Property Notice */}
+            {isDemoProperty() && (
+              <div className="text-xs text-gray-500 text-center bg-gray-50 px-3 py-2 rounded-lg">
+                <span className="inline-flex items-center gap-1">
+                  <Star className="w-3 h-3" />
+                  Demo property - Click to search similar listings on property portals
+                </span>
+              </div>
+            )}
             
             {/* Secondary Analyze Button - Smaller and Below */}
             <Button 

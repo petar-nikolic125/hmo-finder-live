@@ -209,7 +209,7 @@ def scrape_enhanced_properties(city, min_bedrooms, max_price, keywords):
                 'bathrooms': random.randint(1, min(bedrooms, 3)),
                 'area_sqm': random.randint(80, 200),
                 'description': f"{bedrooms} bedroom HMO property in {city}. Great investment opportunity with strong rental yield potential. Suitable for students and young professionals.",
-                'property_url': f"https://www.primelocation.com/for-sale/details/{random.randint(10000000, 99999999)}/",
+                'property_url': f"#demo-property-{random.randint(100000, 999999)}",
                 'image_url': 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80',
                 'postcode': address.split()[-1] if ' ' in address else f"{city[:2].upper()}{random.randint(1,9)}",
                 'latitude': 51.5074 + random.uniform(-0.5, 0.5),  # Rough UK coordinates
