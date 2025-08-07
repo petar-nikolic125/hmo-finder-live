@@ -35,6 +35,7 @@ export const Home = () => {
   const [showPrivacyPopup, setShowPrivacyPopup] = useState(false);
   const [hasSearched, setHasSearched] = useState(false);
   const [showTutorial, setShowTutorial] = useState(true); // Show tutorial on launch
+  const [showLoadingScreen, setShowLoadingScreen] = useState(false);
   
   // Fetch properties
   const { data: properties = [], isLoading, isError, refetch } = useProperties(searchParams);
@@ -80,6 +81,9 @@ export const Home = () => {
   const handleSearch = () => {
     console.log('🔍 Home: Search triggered with params:', searchParams);
     
+    // Show loading screen when search starts
+    setShowLoadingScreen(true);
+    
     // Show privacy popup on first search
     if (!hasSearched) {
       setShowPrivacyPopup(true);
@@ -88,6 +92,16 @@ export const Home = () => {
     refetch();
     setLastUpdated(Date.now());
   };
+
+  // Hide loading screen when data is loaded
+  useEffect(() => {
+    if (!isLoading && properties.length > 0 && showLoadingScreen) {
+      // Allow a minimum display time then hide
+      setTimeout(() => {
+        setShowLoadingScreen(false);
+      }, 1500);
+    }
+  }, [isLoading, properties.length, showLoadingScreen]);
 
   const handleRefresh = () => {
     refresh();
@@ -133,18 +147,18 @@ export const Home = () => {
 
         {/* Search results header with count */}
 
-        {isLoading ? (
-          <>
-            <IntelligentLoadingScreen 
-              isVisible={isLoading} 
-              city={searchParams.city}
-              searchParams={{
-                minRooms: searchParams.minRooms,
-                maxPrice: searchParams.maxPrice
-              }}
-            />
-            <PropertyGridSkeleton count={searchParams.count || 4} />
-          </>
+        {showLoadingScreen ? (
+          <IntelligentLoadingScreen 
+            isVisible={showLoadingScreen}
+            city={searchParams.city}
+            searchParams={{
+              minRooms: searchParams.minRooms,
+              maxPrice: searchParams.maxPrice
+            }}
+            onComplete={() => setShowLoadingScreen(false)}
+          />
+        ) : isLoading ? (
+          <PropertyGridSkeleton count={searchParams.count || 4} />
         ) : filteredProperties.length === 0 ? (
           <div className="text-center py-12">
             <h3 className="text-lg font-medium text-muted-foreground mb-2">

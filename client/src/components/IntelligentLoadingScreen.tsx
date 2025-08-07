@@ -9,6 +9,7 @@ interface IntelligentLoadingScreenProps {
     minRooms?: number;
     maxPrice?: number;
   };
+  onComplete?: () => void;
 }
 
 const aiThoughts = [
@@ -31,11 +32,12 @@ const smartRemarks = [
   { text: "This could be a solid investment", type: "positive", delay: 14000 },
 ];
 
-export const IntelligentLoadingScreen = ({ isVisible, city, searchParams }: IntelligentLoadingScreenProps) => {
+export const IntelligentLoadingScreen = ({ isVisible, city, searchParams, onComplete }: IntelligentLoadingScreenProps) => {
   const [currentThought, setCurrentThought] = useState(0);
   const [currentRemark, setCurrentRemark] = useState(-1);
   const [progress, setProgress] = useState(0);
   const [showRemarks, setShowRemarks] = useState<boolean[]>(new Array(smartRemarks.length).fill(false));
+  const [isCompleted, setIsCompleted] = useState(false);
 
   useEffect(() => {
     if (!isVisible) {
@@ -43,22 +45,24 @@ export const IntelligentLoadingScreen = ({ isVisible, city, searchParams }: Inte
       setCurrentRemark(-1);
       setProgress(0);
       setShowRemarks(new Array(smartRemarks.length).fill(false));
+      setIsCompleted(false);
       return;
     }
 
     let thoughtInterval: NodeJS.Timeout;
     let progressInterval: NodeJS.Timeout;
     let remarkTimeout: NodeJS.Timeout;
+    let completionTimeout: NodeJS.Timeout;
 
-    // Progress animation - faster progress
+    // Progress animation - faster progress that plateaus at 95% until actual completion
     progressInterval = setInterval(() => {
       setProgress(prev => {
-        const newProgress = prev + Math.random() * 12 + 4;
+        const newProgress = prev + Math.random() * 8 + 3;
         return Math.min(newProgress, 95);
       });
-    }, 200);
+    }, 300);
 
-    // AI thoughts progression - faster for shorter experience
+    // AI thoughts progression
     thoughtInterval = setInterval(() => {
       setCurrentThought(prev => (prev + 1) % aiThoughts.length);
     }, 1800);
@@ -72,20 +76,38 @@ export const IntelligentLoadingScreen = ({ isVisible, city, searchParams }: Inte
         
         remarkTimeout = setTimeout(() => {
           setCurrentRemark(-1);
-          setTimeout(showNextRemark, 500); // Shorter gap between remarks
-        }, 2000); // Shorter display time
+          setTimeout(showNextRemark, 500);
+        }, 2000);
       }
     };
     
-    // Start showing remarks after shorter delay
     setTimeout(showNextRemark, 2000);
 
     return () => {
       clearInterval(thoughtInterval);
       clearInterval(progressInterval);
       clearTimeout(remarkTimeout);
+      clearTimeout(completionTimeout);
     };
   }, [isVisible]);
+
+  // Handle completion when data is ready
+  useEffect(() => {
+    if (isVisible && !isCompleted && onComplete) {
+      // Check if we should complete (this will be triggered by parent when data is ready)
+      const completeAnimation = () => {
+        setProgress(100);
+        setIsCompleted(true);
+        setTimeout(() => {
+          onComplete();
+        }, 800);
+      };
+
+      // Set a minimum display time of 3 seconds
+      const minDisplayTime = setTimeout(completeAnimation, 3000);
+      return () => clearTimeout(minDisplayTime);
+    }
+  }, [isVisible, isCompleted, onComplete]);
 
   if (!isVisible) return null;
 

@@ -79,8 +79,9 @@ export const PropertyAnalysis = ({ property, isOpen, onClose }: PropertyAnalysis
     const legals = 15000;
     const totalInput = salePricePounds + totalRenovation + bridgingLoanFee + legals;
     
-    // Liverpool LHA rates (average for HMO rooms)
-    const localLHARate = 400; // £400 per room per month in Liverpool
+    // Use the same LHA rate calculation from the backend (from property analytics)
+    // Get LHA from property data if available, otherwise use Liverpool default
+    const localLHARate = property.lhaWeekly ? (property.lhaWeekly * 52 / 12) : 400;
     const totalIncomePA = localLHARate * hmoEvaluationBeds * 12;
     
     // Net profit calculation (assuming 25% for taxes, maintenance, voids, management)
@@ -124,7 +125,8 @@ export const PropertyAnalysis = ({ property, isOpen, onClose }: PropertyAnalysis
       const totalRenovation = renovationPerRoom[0] * hmoEvaluationBeds;
       const totalInput = property.price + totalRenovation + 30000 + 15000;
       const leftInDeal = totalInput * 0.25;
-      const localLHARate = 400;
+      // Use the same LHA rate as initial calculation
+      const localLHARate = property.lhaWeekly ? (property.lhaWeekly * 52 / 12) : 400;
       const totalIncomePA = localLHARate * hmoEvaluationBeds * 12;
       const netProfitPA = totalIncomePA * 0.75;
       const paybackYears = leftInDeal / netProfitPA;
@@ -142,7 +144,7 @@ export const PropertyAnalysis = ({ property, isOpen, onClose }: PropertyAnalysis
         moneyOutWithin
       } : null);
     }
-  }, [renovationPerRoom, property.price, property.bedrooms, analysisData?.localLHARate]);
+  }, [renovationPerRoom, property.price, property.bedrooms, property.lhaWeekly]);
 
   return (
     <AnimatePresence>
