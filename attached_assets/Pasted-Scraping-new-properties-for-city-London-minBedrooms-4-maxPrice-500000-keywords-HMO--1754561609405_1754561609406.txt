@@ -1,0 +1,300 @@
+Scraping new properties for: { city: 'London', minBedrooms: 4, maxPrice: 500000, keywords: 'HMO' }
+🚀 Pokretam Zoopla scraper za London, sobe: 4+, cena: £500000
+Python scraper stderr: 🚀 Starting bulletproof scraper for London
+🎯 Search params: bedrooms=4+, max_price=£500000, keywords='HMO'
+🔧 Dynamic adjustment: Boosted max_price to £750000 for London
+
+Python scraper stderr: 🔧 Building URLs for London: bedrooms=4+, price=£750000, keywords=HMO
+🎯 Using city slug: london
+🔗 Generated 4 search URLs
+📍 Pokušaj #1/4: https://www.zoopla.co.uk/for-sale/property/london/?beds_min=4&keywords=HMO&price...
+
+Python scraper stderr: ✅ HTTP 200 - sadržaj: 51297 bytes
+
+Python scraper stderr: Some characters could not be decoded, and were replaced with REPLACEMENT CHARACTER.
+
+Python scraper stderr: ⚠️ No listings found on https://www.zoopla.co.uk/for-sale/property/london/...
+
+Python scraper stderr: 📍 Pokušaj #2/4: https://www.primelocation.com/for-sale/property/london/?beds_min=4&is_auction=in...
+
+Python scraper stderr: ✅ HTTP 200 - sadržaj: 1043019 bytes
+
+Python scraper stderr: ✅ Pronašao 231 oglasa sa selektorom: div:has(a[href*="/for-sale/details/"])
+🎯 Found 231 potential listings
+
+Python scraper stderr: 🔍 First listing preview: <div class="_1qnoa4c0"><main class="_1qnoa4c5" id="main-content" style="background-color:var(--colors-graphicBackgroundDefault)"><div class="_1qnoa4c3" style="background-position:center"><div class="_...
+
+Python scraper stderr: 🔍 Fetching PrimeLocation details from: https://www.primelocation.com/for-sale/details/70799160/?sea...
+
+Python scraper stderr: 📋 Extracted details: desc_len=430, area=None, baths=None
+
+Python scraper stderr: ✅ Scraped property 1: Properties for sale in London... - £650000 (Yield: 1.72%)
+
+Python scraper stderr: 🔍 Fetching PrimeLocation details from: https://www.primelocation.com/for-sale/details/70799160/?sea...
+
+Python scraper stderr: 📋 Extracted details: desc_len=430, area=None, baths=None
+✅ Scraped property 2: Properties for sale in London... - £650000 (Yield: 1.59%)
+
+Python scraper stderr: 🔍 Fetching PrimeLocation details from: https://www.primelocation.com/for-sale/details/70799160/?sea...
+
+Python scraper stderr: 📋 Extracted details: desc_len=430, area=None, baths=None
+
+Python scraper stderr: ✅ Scraped property 3: Properties for sale in London... - £650000 (Yield: 1.66%)
+
+Python scraper stderr: ✅ Scraped property 4: Properties for sale in London... - £650000 (Yield: 1.71%)
+
+Python scraper stderr: ✅ Scraped property 5: Properties for sale in London... - £650000 (Yield: 1.74%)
+
+Python scraper stderr: ✅ Scraped property 6: Properties for sale in London... - £650000 (Yield: 1.51%)
+
+Python scraper stderr: ✅ Scraped property 7: Carshalton Road, Sutton SM1... - £650000 (Yield: 1.43%)
+
+Python scraper stderr: ✅ Scraped property 8: Carshalton Road, Sutton SM1... - £650000 (Yield: 1.46%)
+
+Python scraper stderr: ✅ Scraped property 9: Carshalton Road, Sutton SM1... - £650000 (Yield: 1.85%)
+
+Python scraper stderr: ✅ Scraped property 10: Carshalton Road, Sutton SM1... - £650000 (Yield: 1.4%)
+
+Python scraper stderr: ✅ Scraped property 11: Carshalton Road, Sutton SM1... - £650000 (Yield: 1.52%)
+
+Python scraper stderr: ✅ Scraped property 12: Carshalton Road, Sutton SM1... - £650000 (Yield: 1.78%)
+
+Python scraper stderr: ✅ Scraped property 13: Carshalton Road, Sutton SM1... - £650000 (Yield: 1.66%)
+
+Python scraper stderr: ✅ Scraped property 14: Church Road, Northolt UB5... - £750000 (Yield: 1.89%)
+
+Python scraper stderr: ✅ Scraped property 15: Church Road, Northolt UB5... - £750000 (Yield: 1.46%)
+
+Python scraper stderr: ✅ Scraped property 16: Church Road, Northolt UB5... - £750000 (Yield: 1.61%)
+
+Python scraper stderr: ✅ Scraped property 17: Church Road, Northolt UB5... - £750000 (Yield: 1.55%)
+
+Python scraper stderr: ✅ Scraped property 18: Church Road, Northolt UB5... - £750000 (Yield: 1.8%)
+
+Python scraper stderr: ✅ Scraped property 19: Church Road, Northolt UB5... - £750000 (Yield: 1.68%)
+
+Python scraper stderr: ✅ Scraped property 20: Granville Road, Uxbridge UB10... - £625000 (Yield: 1.76%)
+✅ Scraped property 21: Granville Road, Uxbridge UB10... - £625000 (Yield: 1.56%)
+
+Python scraper stderr: ✅ Scraped property 22: Granville Road, Uxbridge UB10... - £625000 (Yield: 1.52%)
+
+Python scraper stderr: ✅ Scraped property 23: Granville Road, Uxbridge UB10... - £625000 (Yield: 1.81%)
+
+Python scraper stderr: ✅ Scraped property 24: Granville Road, Uxbridge UB10... - £625000 (Yield: 1.44%)
+
+Python scraper stderr: ✅ Scraped property 25: Granville Road, Uxbridge UB10... - £625000 (Yield: 1.63%)
+
+Python scraper stderr: ✅ Scraped property 26: Chartley Avenue, London NW2... - £750000 (Yield: 0.99%)
+
+Python scraper stderr: ✅ Scraped property 27: Chartley Avenue, London NW2... - £750000 (Yield: 1.2%)
+
+Python scraper stderr: ✅ Scraped property 28: Chartley Avenue, London NW2... - £750000 (Yield: 1.28%)
+
+Python scraper stderr: ✅ Scraped property 29: Chartley Avenue, London NW2... - £750000 (Yield: 1.28%)
+
+Python scraper stderr: ✅ Scraped property 30: Chartley Avenue, London NW2... - £750000 (Yield: 1.09%)
+
+Python scraper stderr: ✅ Scraped property 31: Chartley Avenue, London NW2... - £750000 (Yield: 1.12%)
+
+Python scraper stderr: ✅ Scraped property 32: Napier Road, Wembley, Middlesex HA0... - £750000 (Yield: 2.04%)
+
+Python scraper stderr: ✅ Scraped property 33: Napier Road, Wembley, Middlesex HA0... - £750000 (Yield: 2.16%)
+
+Python scraper stderr: ✅ Scraped property 34: Napier Road, Wembley, Middlesex HA0... - £750000 (Yield: 1.79%)
+
+Python scraper stderr: ✅ Scraped property 35: Napier Road, Wembley, Middlesex HA0... - £750000 (Yield: 2.07%)
+
+Python scraper stderr: ✅ Scraped property 36: Napier Road, Wembley, Middlesex HA0... - £750000 (Yield: 2.08%)
+
+Python scraper stderr: ✅ Scraped property 37: Napier Road, Wembley, Middlesex HA0... - £750000 (Yield: 1.7%)
+
+Python scraper stderr: ✅ Scraped property 38: Woodstock Terrace, London E14... - £750000 (Yield: 1.22%)
+
+Python scraper stderr: ✅ Scraped property 39: Woodstock Terrace, London E14... - £750000 (Yield: 1.54%)
+
+Python scraper stderr: ✅ Scraped property 40: Woodstock Terrace, London E14... - £750000 (Yield: 1.36%)
+
+Python scraper stderr: ✅ Scraped property 41: Woodstock Terrace, London E14... - £750000 (Yield: 1.23%)
+
+Python scraper stderr: ✅ Scraped property 42: Woodstock Terrace, London E14... - £750000 (Yield: 1.58%)
+
+Python scraper stderr: ✅ Scraped property 43: Woodstock Terrace, London E14... - £750000 (Yield: 1.49%)
+
+Python scraper stderr: ✅ Scraped property 44: Randall Avenue, Dollis Hill, London NW2... - £750000 (Yield: 1.56%)
+
+Python scraper stderr: ✅ Scraped property 45: Randall Avenue, Dollis Hill, London NW2... - £750000 (Yield: 1.64%)
+
+Python scraper stderr: ✅ Scraped property 46: Randall Avenue, Dollis Hill, London NW2... - £750000 (Yield: 1.86%)
+
+Python scraper stderr: ✅ Scraped property 47: Randall Avenue, Dollis Hill, London NW2... - £750000 (Yield: 1.71%)
+
+Python scraper stderr: ✅ Scraped property 48: Randall Avenue, Dollis Hill, London NW2... - £750000 (Yield: 1.8%)
+
+Python scraper stderr: ✅ Scraped property 49: Randall Avenue, Dollis Hill, London NW2... - £750000 (Yield: 1.47%)
+
+Python scraper stderr: ✅ Scraped property 50: Faggs Road, Hounslow TW14... - £750000 (Yield: 1.8%)
+
+Python scraper stderr: ✅ Scraped property 51: Faggs Road, Hounslow TW14... - £750000 (Yield: 1.84%)
+
+Python scraper stderr: ✅ Scraped property 52: Faggs Road, Hounslow TW14... - £750000 (Yield: 1.65%)
+
+Python scraper stderr: ✅ Scraped property 53: Faggs Road, Hounslow TW14... - £750000 (Yield: 1.71%)
+
+Python scraper stderr: ✅ Scraped property 54: Faggs Road, Hounslow TW14... - £750000 (Yield: 1.73%)
+
+Python scraper stderr: ✅ Scraped property 55: Faggs Road, Hounslow TW14... - £750000 (Yield: 1.46%)
+
+Python scraper stderr: ✅ Scraped property 56: Yorkland Avenue, Welling DA16... - £750000 (Yield: 1.53%)
+
+Python scraper stderr: ✅ Scraped property 57: Yorkland Avenue, Welling DA16... - £750000 (Yield: 1.59%)
+
+Python scraper stderr: ✅ Scraped property 58: Yorkland Avenue, Welling DA16... - £750000 (Yield: 1.8%)
+
+Python scraper stderr: ✅ Scraped property 59: Yorkland Avenue, Welling DA16... - £750000 (Yield: 1.66%)
+
+Python scraper stderr: ✅ Scraped property 60: Yorkland Avenue, Welling DA16... - £750000 (Yield: 1.54%)
+
+Python scraper stderr: ✅ Scraped property 61: Yorkland Avenue, Welling DA16... - £750000 (Yield: 1.71%)
+
+Python scraper stderr: ✅ Scraped property 62: Church Road, Northolt UB5... - £750000 (Yield: 1.8%)
+
+Python scraper stderr: ✅ Scraped property 63: Church Road, Northolt UB5... - £750000 (Yield: 1.73%)
+
+Python scraper stderr: ✅ Scraped property 64: Church Road, Northolt UB5... - £750000 (Yield: 1.56%)
+
+Python scraper stderr: ✅ Scraped property 65: Church Road, Northolt UB5... - £750000 (Yield: 1.8%)
+
+Python scraper stderr: ✅ Scraped property 66: Church Road, Northolt UB5... - £750000 (Yield: 1.48%)
+
+Python scraper stderr: ✅ Scraped property 67: Church Road, Northolt UB5... - £750000 (Yield: 1.56%)
+
+Python scraper stderr: ✅ Scraped property 68: Brighton Road, South Croydon CR2... - £750000 (Yield: 0.81%)
+
+Python scraper stderr: ✅ Scraped property 69: Brighton Road, South Croydon CR2... - £750000 (Yield: 0.86%)
+
+Python scraper stderr: ✅ Scraped property 70: Brighton Road, South Croydon CR2... - £750000 (Yield: 0.79%)
+
+Python scraper stderr: ✅ Scraped property 71: Brighton Road, South Croydon CR2... - £750000 (Yield: 0.78%)
+
+Python scraper stderr: ✅ Scraped property 72: Brighton Road, South Croydon CR2... - £750000 (Yield: 0.88%)
+
+Python scraper stderr: ✅ Scraped property 73: Brighton Road, South Croydon CR2... - £750000 (Yield: 0.94%)
+
+Python scraper stderr: ✅ Scraped property 74: Mora Road, Cricklewood NW2... - £750000 (Yield: 1.55%)
+
+Python scraper stderr: ✅ Scraped property 75: Mora Road, Cricklewood NW2... - £750000 (Yield: 1.59%)
+
+Python scraper stderr: ✅ Scraped property 76: Mora Road, Cricklewood NW2... - £750000 (Yield: 1.61%)
+📍 Pokušaj #3/4: https://www.zoopla.co.uk/for-sale/property/london/?beds_min=4&price_max=750000&p...
+
+Python scraper stderr: ✅ HTTP 200 - sadržaj: 24148 bytes
+
+Python scraper stderr: Some characters could not be decoded, and were replaced with REPLACEMENT CHARACTER.
+
+Python scraper stderr: ⚠️ No listings found on https://www.zoopla.co.uk/for-sale/property/london/...
+
+Python scraper stderr: 📍 Pokušaj #4/4: https://www.primelocation.com/for-sale/property/london/?beds_min=4&price_max=750...
+
+Python scraper stderr: ✅ HTTP 200 - sadržaj: 808405 bytes
+
+Python scraper stderr: ✅ Pronašao 11 oglasa sa selektorom: div:has(a[href*="/property/"])
+🎯 Found 11 potential listings
+
+Python scraper stderr: 🔍 First listing preview: <div class="_1qnoa4c0"><main class="_1qnoa4c5" id="main-content" style="background-color:var(--colors-graphicBackgroundDefault)"><div class="_1qnoa4c3" style="background-position:center"><div class="_...
+
+Python scraper stderr: 📊 Enhanced Scraping Summary for London:
+   🔗 URLs tried: 4
+   ✅ Successful URLs: 2
+   🏠 Properties found: 76
+
+Python scraper stderr:    💰 Price range: £625000 - £750000
+   🛏️ Bedroom range: 4 - 7
+
+Python scraper process finished with code: 0
+Raw scraper output (first 500 chars): [
+  {
+    "title": "Properties for sale in London",
+    "address": "Properties for sale in London",
+    "price": 650000,
+    "bedrooms": 5,
+    "property_url": "https://www.primelocation.com/for-sale/details/70799160/?search_identifier=ac91e7b4b749af60d164f674f41df40b9c20455cc0bdb849b946d3a8eddcfd70&weekly_featured=true",
+    "image_url": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
+    "description": "Property descriptions and related infor
+Extracted JSON (first 200 chars): [
+  {
+    "title": "Properties for sale in London",
+    "address": "Properties for sale in London",
+    "price": 650000,
+    "bedrooms": 5,
+    "property_url": "https://www.primelocation.com/for-sale/
+✅ Successfully parsed 76 properties
+🔄 Skipping duplicate property: Properties for sale in London (£650000)
+🔄 Skipping duplicate property: Properties for sale in London (£650000)
+🔄 Skipping duplicate property: Properties for sale in London (£650000)
+🔄 Skipping duplicate property: Properties for sale in London (£650000)
+🔄 Skipping duplicate property: Properties for sale in London (£650000)
+🔄 Skipping duplicate property: Carshalton Road, Sutton SM1 (£650000)
+🔄 Skipping duplicate property: Carshalton Road, Sutton SM1 (£650000)
+🔄 Skipping duplicate property: Carshalton Road, Sutton SM1 (£650000)
+🔄 Skipping duplicate property: Carshalton Road, Sutton SM1 (£650000)
+🔄 Skipping duplicate property: Carshalton Road, Sutton SM1 (£650000)
+🔄 Skipping duplicate property: Carshalton Road, Sutton SM1 (£650000)
+🔄 Skipping duplicate property: Church Road, Northolt UB5 (£750000)
+🔄 Skipping duplicate property: Church Road, Northolt UB5 (£750000)
+🔄 Skipping duplicate property: Church Road, Northolt UB5 (£750000)
+🔄 Skipping duplicate property: Church Road, Northolt UB5 (£750000)
+🔄 Skipping duplicate property: Church Road, Northolt UB5 (£750000)
+🔄 Skipping duplicate property: Granville Road, Uxbridge UB10 (£625000)
+🔄 Skipping duplicate property: Granville Road, Uxbridge UB10 (£625000)
+🔄 Skipping duplicate property: Granville Road, Uxbridge UB10 (£625000)
+🔄 Skipping duplicate property: Granville Road, Uxbridge UB10 (£625000)
+🔄 Skipping duplicate property: Granville Road, Uxbridge UB10 (£625000)
+🔄 Skipping duplicate property: Chartley Avenue, London NW2 (£750000)
+🔄 Skipping duplicate property: Chartley Avenue, London NW2 (£750000)
+🔄 Skipping duplicate property: Chartley Avenue, London NW2 (£750000)
+🔄 Skipping duplicate property: Chartley Avenue, London NW2 (£750000)
+🔄 Skipping duplicate property: Chartley Avenue, London NW2 (£750000)
+🔄 Skipping duplicate property: Napier Road, Wembley, Middlesex HA0 (£750000)
+🔄 Skipping duplicate property: Napier Road, Wembley, Middlesex HA0 (£750000)
+🔄 Skipping duplicate property: Napier Road, Wembley, Middlesex HA0 (£750000)
+🔄 Skipping duplicate property: Napier Road, Wembley, Middlesex HA0 (£750000)
+🔄 Skipping duplicate property: Napier Road, Wembley, Middlesex HA0 (£750000)
+🔄 Skipping duplicate property: Woodstock Terrace, London E14 (£750000)
+🔄 Skipping duplicate property: Woodstock Terrace, London E14 (£750000)
+🔄 Skipping duplicate property: Woodstock Terrace, London E14 (£750000)
+🔄 Skipping duplicate property: Woodstock Terrace, London E14 (£750000)
+🔄 Skipping duplicate property: Woodstock Terrace, London E14 (£750000)
+🔄 Skipping duplicate property: Randall Avenue, Dollis Hill, London NW2 (£750000)
+🔄 Skipping duplicate property: Randall Avenue, Dollis Hill, London NW2 (£750000)
+🔄 Skipping duplicate property: Randall Avenue, Dollis Hill, London NW2 (£750000)
+🔄 Skipping duplicate property: Randall Avenue, Dollis Hill, London NW2 (£750000)
+🔄 Skipping duplicate property: Randall Avenue, Dollis Hill, London NW2 (£750000)
+🔄 Skipping duplicate property: Faggs Road, Hounslow TW14 (£750000)
+🔄 Skipping duplicate property: Faggs Road, Hounslow TW14 (£750000)
+🔄 Skipping duplicate property: Faggs Road, Hounslow TW14 (£750000)
+🔄 Skipping duplicate property: Faggs Road, Hounslow TW14 (£750000)
+🔄 Skipping duplicate property: Faggs Road, Hounslow TW14 (£750000)
+🔄 Skipping duplicate property: Yorkland Avenue, Welling DA16 (£750000)
+🔄 Skipping duplicate property: Yorkland Avenue, Welling DA16 (£750000)
+🔄 Skipping duplicate property: Yorkland Avenue, Welling DA16 (£750000)
+🔄 Skipping duplicate property: Yorkland Avenue, Welling DA16 (£750000)
+🔄 Skipping duplicate property: Yorkland Avenue, Welling DA16 (£750000)
+🔄 Skipping duplicate property: Church Road, Northolt UB5 (£750000)
+🔄 Skipping duplicate property: Church Road, Northolt UB5 (£750000)
+🔄 Skipping duplicate property: Church Road, Northolt UB5 (£750000)
+🔄 Skipping duplicate property: Church Road, Northolt UB5 (£750000)
+🔄 Skipping duplicate property: Church Road, Northolt UB5 (£750000)
+🔄 Skipping duplicate property: Church Road, Northolt UB5 (£750000)
+🔄 Skipping duplicate property: Brighton Road, South Croydon CR2 (£750000)
+🔄 Skipping duplicate property: Brighton Road, South Croydon CR2 (£750000)
+🔄 Skipping duplicate property: Brighton Road, South Croydon CR2 (£750000)
+🔄 Skipping duplicate property: Brighton Road, South Croydon CR2 (£750000)
+🔄 Skipping duplicate property: Brighton Road, South Croydon CR2 (£750000)
+🔄 Skipping duplicate property: Mora Road, Cricklewood NW2 (£750000)
+🔄 Skipping duplicate property: Mora Road, Cricklewood NW2 (£750000)
+✅ After deduplication: 12 unique properties (from 76 scraped)
+💾 Saved scrape cache
+💾 Cached 12 scraped properties for London
+✅ Returning 12 real scraped properties for London
+10:13:05 AM [express] GET /api/properties 200 in 23093ms :: [{"id":3888485440,"address":"Properties f…
+^C

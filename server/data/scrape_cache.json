@@ -1,7 +1,183 @@
 {
+  "89155fdfffaed3fab3ac14e393b68edb": {
+    "searchHash": "89155fdfffaed3fab3ac14e393b68edb",
+    "lastScraped": "2025-08-07T10:16:09.163Z",
+    "properties": [
+      {
+        "id": 3598606449,
+        "address": "Properties for sale in Manchester",
+        "price": 250000,
+        "bedrooms": 4,
+        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "propertyUrl": "https://www.primelocation.com/for-sale/details/69441483/?search_identifier=c057bde668fb63bb4467fd377c4272d0856a0744f5775ae4167dc6f24fc0b7fa",
+        "city": "Manchester",
+        "scrapedAt": "2025-08-07T10:16:09.161Z"
+      },
+      {
+        "id": 466021891,
+        "address": "Linen Court, Salford, Trinity Riverside M3",
+        "price": 250000,
+        "bedrooms": 4,
+        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "propertyUrl": "https://www.primelocation.com/for-sale/details/69441483/?search_identifier=c057bde668fb63bb4467fd377c4272d0856a0744f5775ae4167dc6f24fc0b7fa",
+        "city": "Manchester",
+        "scrapedAt": "2025-08-07T10:16:09.161Z"
+      },
+      {
+        "id": 3896600176,
+        "address": "Worsley Road, Manchester, Lancashire M30",
+        "price": 250000,
+        "bedrooms": 5,
+        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "propertyUrl": "https://www.primelocation.com/for-sale/details/70393602/?search_identifier=c057bde668fb63bb4467fd377c4272d0856a0744f5775ae4167dc6f24fc0b7fa",
+        "city": "Manchester",
+        "scrapedAt": "2025-08-07T10:16:09.161Z"
+      },
+      {
+        "id": 3942468761,
+        "address": "Liverpool Street, Salford M6",
+        "price": 235000,
+        "bedrooms": 4,
+        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "propertyUrl": "https://www.primelocation.com/for-sale/details/70068134/?search_identifier=c057bde668fb63bb4467fd377c4272d0856a0744f5775ae4167dc6f24fc0b7fa",
+        "city": "Manchester",
+        "scrapedAt": "2025-08-07T10:16:09.161Z"
+      },
+      {
+        "id": 3702418362,
+        "address": "Properties for sale in Manchester",
+        "price": 180000,
+        "bedrooms": 1,
+        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "propertyUrl": "https://www.primelocation.com/for-sale/details/70346097/?search_identifier=af1e4c1f2317145cb60d522b4d538963b7e2ef362e5d5c57550d19e18d5661f9&weekly_featured=true",
+        "city": "Manchester",
+        "scrapedAt": "2025-08-07T10:16:09.161Z"
+      },
+      {
+        "id": 3465015473,
+        "address": "Hill Quays, Commercial Street, Manchester M15",
+        "price": 180000,
+        "bedrooms": 1,
+        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "propertyUrl": "https://www.primelocation.com/for-sale/details/70346097/?search_identifier=af1e4c1f2317145cb60d522b4d538963b7e2ef362e5d5c57550d19e18d5661f9&weekly_featured=true",
+        "city": "Manchester",
+        "scrapedAt": "2025-08-07T10:16:09.161Z"
+      },
+      {
+        "id": 3171643791,
+        "address": "Firefly Close, Salford, Manchester M3",
+        "price": 192545,
+        "bedrooms": 5451,
+        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "propertyUrl": "https://www.primelocation.com/for-sale/details/68091205/?search_identifier=af1e4c1f2317145cb60d522b4d538963b7e2ef362e5d5c57550d19e18d5661f9&featured=true",
+        "city": "Manchester",
+        "scrapedAt": "2025-08-07T10:16:09.161Z"
+      },
+      {
+        "id": 1234694055,
+        "address": "Ludgate Street, Manchester City Centre M4",
+        "price": 250000,
+        "bedrooms": 2,
+        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "propertyUrl": "https://www.primelocation.com/for-sale/details/61148240/?search_identifier=af1e4c1f2317145cb60d522b4d538963b7e2ef362e5d5c57550d19e18d5661f9",
+        "city": "Manchester",
+        "scrapedAt": "2025-08-07T10:16:09.162Z"
+      },
+      {
+        "id": 1211895445,
+        "address": "City Road East, Manchester M15",
+        "price": 250000,
+        "bedrooms": 2,
+        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "propertyUrl": "https://www.primelocation.com/for-sale/details/61471921/?search_identifier=af1e4c1f2317145cb60d522b4d538963b7e2ef362e5d5c57550d19e18d5661f9",
+        "city": "Manchester",
+        "scrapedAt": "2025-08-07T10:16:09.162Z"
+      },
+      {
+        "id": 154608122,
+        "address": "122 High Street, Northern Quarter M4",
+        "price": 250000,
+        "bedrooms": 2,
+        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "propertyUrl": "https://www.primelocation.com/for-sale/details/61898759/?search_identifier=af1e4c1f2317145cb60d522b4d538963b7e2ef362e5d5c57550d19e18d5661f9",
+        "city": "Manchester",
+        "scrapedAt": "2025-08-07T10:16:09.162Z"
+      },
+      {
+        "id": 2873139577,
+        "address": "Montmano Drive, West Didsbury, Manchester, Greater Manchester M20",
+        "price": 250000,
+        "bedrooms": 2,
+        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "propertyUrl": "https://www.primelocation.com/for-sale/details/65594557/?search_identifier=af1e4c1f2317145cb60d522b4d538963b7e2ef362e5d5c57550d19e18d5661f9",
+        "city": "Manchester",
+        "scrapedAt": "2025-08-07T10:16:09.162Z"
+      },
+      {
+        "id": 3548349498,
+        "address": "Tib Street, Manchester M4",
+        "price": 250000,
+        "bedrooms": 2,
+        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "propertyUrl": "https://www.primelocation.com/for-sale/details/67000758/?search_identifier=af1e4c1f2317145cb60d522b4d538963b7e2ef362e5d5c57550d19e18d5661f9",
+        "city": "Manchester",
+        "scrapedAt": "2025-08-07T10:16:09.162Z"
+      },
+      {
+        "id": 2302232133,
+        "address": "Woden Street, Salford M5",
+        "price": 250000,
+        "bedrooms": 2,
+        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "propertyUrl": "https://www.primelocation.com/for-sale/details/67417880/?search_identifier=af1e4c1f2317145cb60d522b4d538963b7e2ef362e5d5c57550d19e18d5661f9",
+        "city": "Manchester",
+        "scrapedAt": "2025-08-07T10:16:09.162Z"
+      },
+      {
+        "id": 1372024223,
+        "address": "Chaseley Road, Salford, Greater Manchester M6",
+        "price": 250000,
+        "bedrooms": 2,
+        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "propertyUrl": "https://www.primelocation.com/for-sale/details/67550183/?search_identifier=af1e4c1f2317145cb60d522b4d538963b7e2ef362e5d5c57550d19e18d5661f9",
+        "city": "Manchester",
+        "scrapedAt": "2025-08-07T10:16:09.162Z"
+      },
+      {
+        "id": 2706720138,
+        "address": "Chapel Street, Salford M3",
+        "price": 250000,
+        "bedrooms": 3,
+        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "propertyUrl": "https://www.primelocation.com/for-sale/details/67684771/?search_identifier=af1e4c1f2317145cb60d522b4d538963b7e2ef362e5d5c57550d19e18d5661f9",
+        "city": "Manchester",
+        "scrapedAt": "2025-08-07T10:16:09.163Z"
+      },
+      {
+        "id": 3715307798,
+        "address": "High Street, Manchester M4",
+        "price": 250000,
+        "bedrooms": 2,
+        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "propertyUrl": "https://www.primelocation.com/for-sale/details/68050588/?search_identifier=af1e4c1f2317145cb60d522b4d538963b7e2ef362e5d5c57550d19e18d5661f9",
+        "city": "Manchester",
+        "scrapedAt": "2025-08-07T10:16:09.163Z"
+      },
+      {
+        "id": 4278345688,
+        "address": "Worrall Street, Manchester M5",
+        "price": 250000,
+        "bedrooms": 3,
+        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
+        "propertyUrl": "https://www.primelocation.com/for-sale/details/68084250/?search_identifier=af1e4c1f2317145cb60d522b4d538963b7e2ef362e5d5c57550d19e18d5661f9",
+        "city": "Manchester",
+        "scrapedAt": "2025-08-07T10:16:09.163Z"
+      }
+    ]
+  },
   "56b1e383ede52e7a12a7f1d97ec29598": {
     "searchHash": "56b1e383ede52e7a12a7f1d97ec29598",
-    "lastScraped": "2025-08-07T10:09:15.744Z",
+    "lastScraped": "2025-08-07T10:16:20.524Z",
     "properties": [
       {
         "id": 1239692864,
@@ -11,7 +187,7 @@
         "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
         "propertyUrl": "https://www.primelocation.com/for-sale/details/70233562/?search_identifier=586e4f15816fcb0107dbc49e15767d0afe785ac74ccf97b407167c41044ef059&featured=true",
         "city": "Liverpool",
-        "scrapedAt": "2025-08-07T10:09:15.742Z"
+        "scrapedAt": "2025-08-07T10:16:20.522Z"
       },
       {
         "id": 2634359016,
@@ -21,7 +197,7 @@
         "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
         "propertyUrl": "https://www.primelocation.com/for-sale/details/70233562/?search_identifier=586e4f15816fcb0107dbc49e15767d0afe785ac74ccf97b407167c41044ef059&featured=true",
         "city": "Liverpool",
-        "scrapedAt": "2025-08-07T10:09:15.742Z"
+        "scrapedAt": "2025-08-07T10:16:20.523Z"
       },
       {
         "id": 4098145248,
@@ -31,7 +207,7 @@
         "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
         "propertyUrl": "https://www.primelocation.com/for-sale/details/69313971/?search_identifier=586e4f15816fcb0107dbc49e15767d0afe785ac74ccf97b407167c41044ef059",
         "city": "Liverpool",
-        "scrapedAt": "2025-08-07T10:09:15.742Z"
+        "scrapedAt": "2025-08-07T10:16:20.523Z"
       },
       {
         "id": 1618903409,
@@ -41,7 +217,7 @@
         "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
         "propertyUrl": "https://www.primelocation.com/for-sale/details/69929912/?search_identifier=586e4f15816fcb0107dbc49e15767d0afe785ac74ccf97b407167c41044ef059",
         "city": "Liverpool",
-        "scrapedAt": "2025-08-07T10:09:15.742Z"
+        "scrapedAt": "2025-08-07T10:16:20.523Z"
       },
       {
         "id": 1268468998,
@@ -51,7 +227,7 @@
         "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
         "propertyUrl": "https://www.primelocation.com/for-sale/details/70155507/?search_identifier=586e4f15816fcb0107dbc49e15767d0afe785ac74ccf97b407167c41044ef059",
         "city": "Liverpool",
-        "scrapedAt": "2025-08-07T10:09:15.743Z"
+        "scrapedAt": "2025-08-07T10:16:20.523Z"
       },
       {
         "id": 3714918050,
@@ -61,7 +237,7 @@
         "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
         "propertyUrl": "https://www.primelocation.com/for-sale/details/68134798/?search_identifier=586e4f15816fcb0107dbc49e15767d0afe785ac74ccf97b407167c41044ef059",
         "city": "Liverpool",
-        "scrapedAt": "2025-08-07T10:09:15.743Z"
+        "scrapedAt": "2025-08-07T10:16:20.523Z"
       },
       {
         "id": 1610483780,
@@ -71,7 +247,7 @@
         "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
         "propertyUrl": "https://www.primelocation.com/for-sale/details/67835487/?search_identifier=586e4f15816fcb0107dbc49e15767d0afe785ac74ccf97b407167c41044ef059",
         "city": "Liverpool",
-        "scrapedAt": "2025-08-07T10:09:15.743Z"
+        "scrapedAt": "2025-08-07T10:16:20.523Z"
       },
       {
         "id": 842032532,
@@ -81,7 +257,7 @@
         "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
         "propertyUrl": "https://www.primelocation.com/for-sale/details/70064888/?search_identifier=586e4f15816fcb0107dbc49e15767d0afe785ac74ccf97b407167c41044ef059",
         "city": "Liverpool",
-        "scrapedAt": "2025-08-07T10:09:15.743Z"
+        "scrapedAt": "2025-08-07T10:16:20.524Z"
       },
       {
         "id": 3888772225,
@@ -91,7 +267,7 @@
         "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
         "propertyUrl": "https://www.primelocation.com/for-sale/details/70862281/?search_identifier=586e4f15816fcb0107dbc49e15767d0afe785ac74ccf97b407167c41044ef059",
         "city": "Liverpool",
-        "scrapedAt": "2025-08-07T10:09:15.743Z"
+        "scrapedAt": "2025-08-07T10:16:20.524Z"
       },
       {
         "id": 2746736879,
@@ -101,7 +277,7 @@
         "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
         "propertyUrl": "https://www.primelocation.com/for-sale/details/70280366/?search_identifier=586e4f15816fcb0107dbc49e15767d0afe785ac74ccf97b407167c41044ef059",
         "city": "Liverpool",
-        "scrapedAt": "2025-08-07T10:09:15.743Z"
+        "scrapedAt": "2025-08-07T10:16:20.524Z"
       },
       {
         "id": 3580640058,
@@ -111,7 +287,7 @@
         "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
         "propertyUrl": "https://www.primelocation.com/for-sale/details/67913721/?search_identifier=586e4f15816fcb0107dbc49e15767d0afe785ac74ccf97b407167c41044ef059",
         "city": "Liverpool",
-        "scrapedAt": "2025-08-07T10:09:15.744Z"
+        "scrapedAt": "2025-08-07T10:16:20.524Z"
       },
       {
         "id": 3052068854,
@@ -121,7 +297,7 @@
         "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
         "propertyUrl": "https://www.primelocation.com/for-sale/details/69868972/?search_identifier=586e4f15816fcb0107dbc49e15767d0afe785ac74ccf97b407167c41044ef059",
         "city": "Liverpool",
-        "scrapedAt": "2025-08-07T10:09:15.744Z"
+        "scrapedAt": "2025-08-07T10:16:20.524Z"
       },
       {
         "id": 462701721,
@@ -131,405 +307,7 @@
         "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
         "propertyUrl": "https://www.primelocation.com/for-sale/details/70887293/?search_identifier=586e4f15816fcb0107dbc49e15767d0afe785ac74ccf97b407167c41044ef059",
         "city": "Liverpool",
-        "scrapedAt": "2025-08-07T10:09:15.744Z"
-      }
-    ]
-  },
-  "4ed94e51ec9b02a73bb14cc73f17db9f": {
-    "searchHash": "4ed94e51ec9b02a73bb14cc73f17db9f",
-    "lastScraped": "2025-08-07T01:39:28.599Z",
-    "properties": [
-      {
-        "id": 1239692864,
-        "address": "Properties for sale in Liverpool",
-        "price": 325000,
-        "bedrooms": 5,
-        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
-        "propertyUrl": "https://www.primelocation.com/for-sale/details/70233562/?search_identifier=c3d948524ab4828629401546d35983260077dc192f8d7c75fde7054135003ba1&featured=true",
-        "city": "Liverpool",
-        "scrapedAt": "2025-08-07T01:39:28.598Z"
-      },
-      {
-        "id": 2634359016,
-        "address": "Ramilies Road, Mossley Hill L18",
-        "price": 325000,
-        "bedrooms": 5,
-        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
-        "propertyUrl": "https://www.primelocation.com/for-sale/details/70233562/?search_identifier=c3d948524ab4828629401546d35983260077dc192f8d7c75fde7054135003ba1&featured=true",
-        "city": "Liverpool",
-        "scrapedAt": "2025-08-07T01:39:28.598Z"
-      },
-      {
-        "id": 4098145248,
-        "address": "Norma Road, Liverpool L22",
-        "price": 498000,
-        "bedrooms": 6,
-        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
-        "propertyUrl": "https://www.primelocation.com/for-sale/details/69313971/?search_identifier=c3d948524ab4828629401546d35983260077dc192f8d7c75fde7054135003ba1",
-        "city": "Liverpool",
-        "scrapedAt": "2025-08-07T01:39:28.598Z"
-      },
-      {
-        "id": 1618903409,
-        "address": "Leopold Road, Liverpool L7",
-        "price": 495000,
-        "bedrooms": 6,
-        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
-        "propertyUrl": "https://www.primelocation.com/for-sale/details/69929912/?search_identifier=c3d948524ab4828629401546d35983260077dc192f8d7c75fde7054135003ba1",
-        "city": "Liverpool",
-        "scrapedAt": "2025-08-07T01:39:28.598Z"
-      },
-      {
-        "id": 1268468998,
-        "address": "Grove Street, Edge Hill, Liverpool, Merseyside L7",
-        "price": 490000,
-        "bedrooms": 5,
-        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
-        "propertyUrl": "https://www.primelocation.com/for-sale/details/70155507/?search_identifier=c3d948524ab4828629401546d35983260077dc192f8d7c75fde7054135003ba1",
-        "city": "Liverpool",
-        "scrapedAt": "2025-08-07T01:39:28.598Z"
-      },
-      {
-        "id": 3714918050,
-        "address": "Seymour Street, Liverpool, Merseyside L3",
-        "price": 485000,
-        "bedrooms": 5,
-        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
-        "propertyUrl": "https://www.primelocation.com/for-sale/details/68134798/?search_identifier=c3d948524ab4828629401546d35983260077dc192f8d7c75fde7054135003ba1",
-        "city": "Liverpool",
-        "scrapedAt": "2025-08-07T01:39:28.598Z"
-      },
-      {
-        "id": 1610483780,
-        "address": "Halkyn Avenue, Liverpool, Merseyside L17",
-        "price": 475000,
-        "bedrooms": 7,
-        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
-        "propertyUrl": "https://www.primelocation.com/for-sale/details/67835487/?search_identifier=c3d948524ab4828629401546d35983260077dc192f8d7c75fde7054135003ba1",
-        "city": "Liverpool",
-        "scrapedAt": "2025-08-07T01:39:28.599Z"
-      },
-      {
-        "id": 842032532,
-        "address": "Newsham Drive, Liverpool, Merseyside L6",
-        "price": 430000,
-        "bedrooms": 9,
-        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
-        "propertyUrl": "https://www.primelocation.com/for-sale/details/70064888/?search_identifier=c3d948524ab4828629401546d35983260077dc192f8d7c75fde7054135003ba1",
-        "city": "Liverpool",
-        "scrapedAt": "2025-08-07T01:39:28.599Z"
-      },
-      {
-        "id": 3888772225,
-        "address": "Rutland Avenue, Sefton Park, Liverpool, Merseyside L17",
-        "price": 425000,
-        "bedrooms": 6,
-        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
-        "propertyUrl": "https://www.primelocation.com/for-sale/details/70862281/?search_identifier=c3d948524ab4828629401546d35983260077dc192f8d7c75fde7054135003ba1",
-        "city": "Liverpool",
-        "scrapedAt": "2025-08-07T01:39:28.599Z"
-      },
-      {
-        "id": 2746736879,
-        "address": "Jubilee Drive, Liverpool L7",
-        "price": 395000,
-        "bedrooms": 5,
-        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
-        "propertyUrl": "https://www.primelocation.com/for-sale/details/70280366/?search_identifier=c3d948524ab4828629401546d35983260077dc192f8d7c75fde7054135003ba1",
-        "city": "Liverpool",
-        "scrapedAt": "2025-08-07T01:39:28.599Z"
-      },
-      {
-        "id": 3580640058,
-        "address": "Sandown Lane, Liverpool, Merseyside L15",
-        "price": 380000,
-        "bedrooms": 8,
-        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
-        "propertyUrl": "https://www.primelocation.com/for-sale/details/67913721/?search_identifier=c3d948524ab4828629401546d35983260077dc192f8d7c75fde7054135003ba1",
-        "city": "Liverpool",
-        "scrapedAt": "2025-08-07T01:39:28.599Z"
-      },
-      {
-        "id": 3052068854,
-        "address": "Gilroy Road, Liverpool L6",
-        "price": 360000,
-        "bedrooms": 6,
-        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
-        "propertyUrl": "https://www.primelocation.com/for-sale/details/69868972/?search_identifier=c3d948524ab4828629401546d35983260077dc192f8d7c75fde7054135003ba1",
-        "city": "Liverpool",
-        "scrapedAt": "2025-08-07T01:39:28.599Z"
-      },
-      {
-        "id": 462701721,
-        "address": "Arkles Lane, Liverpool, Merseyside L4",
-        "price": 350000,
-        "bedrooms": 8,
-        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
-        "propertyUrl": "https://www.primelocation.com/for-sale/details/70887293/?search_identifier=c3d948524ab4828629401546d35983260077dc192f8d7c75fde7054135003ba1",
-        "city": "Liverpool",
-        "scrapedAt": "2025-08-07T01:39:28.599Z"
-      }
-    ]
-  },
-  "e66a82d94a2b5354b9ba268f3dd61eea": {
-    "searchHash": "e66a82d94a2b5354b9ba268f3dd61eea",
-    "lastScraped": "2025-08-07T10:11:31.339Z",
-    "properties": [
-      {
-        "id": 276785715,
-        "address": "Properties for sale in Birmingham",
-        "price": 300000,
-        "bedrooms": 3,
-        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
-        "propertyUrl": "https://www.primelocation.com/for-sale/details/69471947/?search_identifier=4caccd98aa4ec0b295aeb9dd5b8af4aaa55df9036bcadb4bfc132b88ba066ddc",
-        "city": "Birmingham",
-        "scrapedAt": "2025-08-07T10:11:31.335Z"
-      },
-      {
-        "id": 4040418723,
-        "address": "Eastwood Road, Balsall Heath, Birmingham B12",
-        "price": 300000,
-        "bedrooms": 3,
-        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
-        "propertyUrl": "https://www.primelocation.com/for-sale/details/69471947/?search_identifier=4caccd98aa4ec0b295aeb9dd5b8af4aaa55df9036bcadb4bfc132b88ba066ddc",
-        "city": "Birmingham",
-        "scrapedAt": "2025-08-07T10:11:31.335Z"
-      },
-      {
-        "id": 1267295168,
-        "address": "Crawford Street - 20% Net Yield, Birmingham B8",
-        "price": 299000,
-        "bedrooms": 5,
-        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
-        "propertyUrl": "https://www.primelocation.com/for-sale/details/70929702/?search_identifier=4caccd98aa4ec0b295aeb9dd5b8af4aaa55df9036bcadb4bfc132b88ba066ddc",
-        "city": "Birmingham",
-        "scrapedAt": "2025-08-07T10:11:31.335Z"
-      },
-      {
-        "id": 1912114988,
-        "address": "Swindon Road, Birmingham B17",
-        "price": 285000,
-        "bedrooms": 4,
-        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
-        "propertyUrl": "https://www.primelocation.com/for-sale/details/70396324/?search_identifier=4caccd98aa4ec0b295aeb9dd5b8af4aaa55df9036bcadb4bfc132b88ba066ddc",
-        "city": "Birmingham",
-        "scrapedAt": "2025-08-07T10:11:31.335Z"
-      },
-      {
-        "id": 1126262024,
-        "address": "Alexander Road, Birmingham, West Midlands B27",
-        "price": 260000,
-        "bedrooms": 3,
-        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
-        "propertyUrl": "https://www.primelocation.com/for-sale/details/70967185/?search_identifier=4caccd98aa4ec0b295aeb9dd5b8af4aaa55df9036bcadb4bfc132b88ba066ddc",
-        "city": "Birmingham",
-        "scrapedAt": "2025-08-07T10:11:31.335Z"
-      },
-      {
-        "id": 1577508199,
-        "address": "Harborne Park Road, Birmingham B17",
-        "price": 255000,
-        "bedrooms": 3,
-        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
-        "propertyUrl": "https://www.primelocation.com/for-sale/details/70473115/?search_identifier=4caccd98aa4ec0b295aeb9dd5b8af4aaa55df9036bcadb4bfc132b88ba066ddc",
-        "city": "Birmingham",
-        "scrapedAt": "2025-08-07T10:11:31.336Z"
-      },
-      {
-        "id": 337245038,
-        "address": "Daisy Road, Edgbaston, Birmingham B16",
-        "price": 250000,
-        "bedrooms": 4,
-        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
-        "propertyUrl": "https://www.primelocation.com/for-sale/details/70349862/?search_identifier=4caccd98aa4ec0b295aeb9dd5b8af4aaa55df9036bcadb4bfc132b88ba066ddc",
-        "city": "Birmingham",
-        "scrapedAt": "2025-08-07T10:11:31.339Z"
-      },
-      {
-        "id": 3168093723,
-        "address": "Edwards Road, Birmingham B24",
-        "price": 250000,
-        "bedrooms": 4,
-        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
-        "propertyUrl": "https://www.primelocation.com/for-sale/details/70993431/?search_identifier=4caccd98aa4ec0b295aeb9dd5b8af4aaa55df9036bcadb4bfc132b88ba066ddc",
-        "city": "Birmingham",
-        "scrapedAt": "2025-08-07T10:11:31.339Z"
-      },
-      {
-        "id": 3155200885,
-        "address": "Manor Farm Road, Birmingham B11",
-        "price": 249950,
-        "bedrooms": 9504,
-        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
-        "propertyUrl": "https://www.primelocation.com/for-sale/details/70146594/?search_identifier=4caccd98aa4ec0b295aeb9dd5b8af4aaa55df9036bcadb4bfc132b88ba066ddc",
-        "city": "Birmingham",
-        "scrapedAt": "2025-08-07T10:11:31.339Z"
-      },
-      {
-        "id": 2844303602,
-        "address": "Stratford Walk, Birmingham B36",
-        "price": 225000,
-        "bedrooms": 6,
-        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
-        "propertyUrl": "https://www.primelocation.com/for-sale/details/70067766/?search_identifier=4caccd98aa4ec0b295aeb9dd5b8af4aaa55df9036bcadb4bfc132b88ba066ddc",
-        "city": "Birmingham",
-        "scrapedAt": "2025-08-07T10:11:31.339Z"
-      },
-      {
-        "id": 3622933385,
-        "address": "Bloomsbury Street, Birmingham B7",
-        "price": 215000,
-        "bedrooms": 4,
-        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
-        "propertyUrl": "https://www.primelocation.com/for-sale/details/70773951/?search_identifier=4caccd98aa4ec0b295aeb9dd5b8af4aaa55df9036bcadb4bfc132b88ba066ddc",
-        "city": "Birmingham",
-        "scrapedAt": "2025-08-07T10:11:31.339Z"
-      },
-      {
-        "id": 2101614137,
-        "address": "Maple Walk - 13% Net Yield, Chelmsley Wood, Solihull B37",
-        "price": 110000,
-        "bedrooms": 3,
-        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
-        "propertyUrl": "https://www.primelocation.com/for-sale/details/70712205/?search_identifier=4caccd98aa4ec0b295aeb9dd5b8af4aaa55df9036bcadb4bfc132b88ba066ddc",
-        "city": "Birmingham",
-        "scrapedAt": "2025-08-07T10:11:31.339Z"
-      }
-    ]
-  },
-  "699fc0fde2210820b800bda2b1c39e4c": {
-    "searchHash": "699fc0fde2210820b800bda2b1c39e4c",
-    "lastScraped": "2025-08-07T10:11:59.969Z",
-    "properties": [
-      {
-        "id": 3733249421,
-        "address": "Properties for sale in London",
-        "price": 475000,
-        "bedrooms": 4,
-        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
-        "propertyUrl": "https://www.primelocation.com/for-sale/details/69864318/?search_identifier=aee6d8686a7c6da199db633f4e78d0674bd5ae989337361480b049b384d979d8&weekly_featured=true",
-        "city": "London",
-        "scrapedAt": "2025-08-07T10:11:59.966Z"
-      },
-      {
-        "id": 3229603385,
-        "address": "Windmill Road, Croydon CR0",
-        "price": 475000,
-        "bedrooms": 4,
-        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
-        "propertyUrl": "https://www.primelocation.com/for-sale/details/69864318/?search_identifier=aee6d8686a7c6da199db633f4e78d0674bd5ae989337361480b049b384d979d8&weekly_featured=true",
-        "city": "London",
-        "scrapedAt": "2025-08-07T10:11:59.966Z"
-      },
-      {
-        "id": 3673965712,
-        "address": "Tebworth Road, Tottenham, London N17",
-        "price": 480000,
-        "bedrooms": 3,
-        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
-        "propertyUrl": "https://www.primelocation.com/for-sale/details/46146581/?search_identifier=aee6d8686a7c6da199db633f4e78d0674bd5ae989337361480b049b384d979d8&featured=true",
-        "city": "London",
-        "scrapedAt": "2025-08-07T10:11:59.967Z"
-      },
-      {
-        "id": 2959453382,
-        "address": "Warley Avenue, Hayes, Greater London UB4",
-        "price": 540000,
-        "bedrooms": 3,
-        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
-        "propertyUrl": "https://www.primelocation.com/for-sale/details/70907618/?search_identifier=aee6d8686a7c6da199db633f4e78d0674bd5ae989337361480b049b384d979d8&featured=true",
-        "city": "London",
-        "scrapedAt": "2025-08-07T10:11:59.967Z"
-      },
-      {
-        "id": 125820709,
-        "address": "Catherines Close, London UB7",
-        "price": 600000,
-        "bedrooms": 6,
-        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
-        "propertyUrl": "https://www.primelocation.com/for-sale/details/67629636/?search_identifier=aee6d8686a7c6da199db633f4e78d0674bd5ae989337361480b049b384d979d8",
-        "city": "London",
-        "scrapedAt": "2025-08-07T10:11:59.967Z"
-      },
-      {
-        "id": 3548442489,
-        "address": "Courtenay Avenue, Harrow HA3",
-        "price": 600000,
-        "bedrooms": 6,
-        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
-        "propertyUrl": "https://www.primelocation.com/for-sale/details/68031328/?search_identifier=aee6d8686a7c6da199db633f4e78d0674bd5ae989337361480b049b384d979d8",
-        "city": "London",
-        "scrapedAt": "2025-08-07T10:11:59.967Z"
-      },
-      {
-        "id": 423101751,
-        "address": "Orpington BR5",
-        "price": 600000,
-        "bedrooms": 6,
-        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
-        "propertyUrl": "https://www.primelocation.com/for-sale/details/68665328/?search_identifier=aee6d8686a7c6da199db633f4e78d0674bd5ae989337361480b049b384d979d8",
-        "city": "London",
-        "scrapedAt": "2025-08-07T10:11:59.967Z"
-      },
-      {
-        "id": 4014195025,
-        "address": "Richmond Gardens, London NW4",
-        "price": 600000,
-        "bedrooms": 3,
-        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
-        "propertyUrl": "https://www.primelocation.com/for-sale/details/69534171/?search_identifier=aee6d8686a7c6da199db633f4e78d0674bd5ae989337361480b049b384d979d8",
-        "city": "London",
-        "scrapedAt": "2025-08-07T10:11:59.967Z"
-      },
-      {
-        "id": 909534074,
-        "address": "Moorlands Avenue, Mill Hill, London NW7",
-        "price": 600000,
-        "bedrooms": 4,
-        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
-        "propertyUrl": "https://www.primelocation.com/for-sale/details/70561513/?search_identifier=aee6d8686a7c6da199db633f4e78d0674bd5ae989337361480b049b384d979d8",
-        "city": "London",
-        "scrapedAt": "2025-08-07T10:11:59.968Z"
-      },
-      {
-        "id": 221381558,
-        "address": "Upton Lane, London E7",
-        "price": 600000,
-        "bedrooms": 6,
-        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
-        "propertyUrl": "https://www.primelocation.com/for-sale/details/70568554/?search_identifier=aee6d8686a7c6da199db633f4e78d0674bd5ae989337361480b049b384d979d8",
-        "city": "London",
-        "scrapedAt": "2025-08-07T10:11:59.968Z"
-      },
-      {
-        "id": 2445246076,
-        "address": "Ordnance Road, Enfield EN3",
-        "price": 600000,
-        "bedrooms": 6,
-        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
-        "propertyUrl": "https://www.primelocation.com/for-sale/details/70592958/?search_identifier=aee6d8686a7c6da199db633f4e78d0674bd5ae989337361480b049b384d979d8",
-        "city": "London",
-        "scrapedAt": "2025-08-07T10:11:59.968Z"
-      },
-      {
-        "id": 1206256779,
-        "address": "Hertford Road, Waltham Cross EN8",
-        "price": 600000,
-        "bedrooms": 6,
-        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
-        "propertyUrl": "https://www.primelocation.com/for-sale/details/70592962/?search_identifier=aee6d8686a7c6da199db633f4e78d0674bd5ae989337361480b049b384d979d8",
-        "city": "London",
-        "scrapedAt": "2025-08-07T10:11:59.968Z"
-      },
-      {
-        "id": 634971632,
-        "address": "Forge Square, Isle Of Dogs, London E14",
-        "price": 600000,
-        "bedrooms": 3,
-        "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
-        "propertyUrl": "https://www.primelocation.com/for-sale/details/70919860/?search_identifier=aee6d8686a7c6da199db633f4e78d0674bd5ae989337361480b049b384d979d8",
-        "city": "London",
-        "scrapedAt": "2025-08-07T10:11:59.968Z"
+        "scrapedAt": "2025-08-07T10:16:20.524Z"
       }
     ]
   }

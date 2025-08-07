@@ -192,7 +192,7 @@ export class ScrapingService {
             return;
           }
 
-          // Convert scraped data to Property format with deduplication
+          // Convert scraped data to Property format with smarter deduplication
           const seenProperties = new Set<string>();
           const properties: Property[] = [];
           
@@ -201,18 +201,24 @@ export class ScrapingService {
             const price = parseInt(prop.price?.toString().replace(/[£,]/g, '')) || 0;
             const bedrooms = parseInt(prop.bedrooms?.toString()) || 1;
             
-            // Create unique identifier based on address, price, and bedrooms
-            const uniqueKey = `${address}-${price}-${bedrooms}`.toLowerCase().replace(/[^a-z0-9-]/g, '');
+            // Skip properties with missing critical data
+            if (!address || address.length < 5 || price <= 0) {
+              continue;
+            }
             
-            // Skip if we've already seen this property
+            // Create more specific unique identifier - include postcode if available
+            const postcode = prop.postcode || address.match(/[A-Z]{1,2}\d{1,2}[A-Z]?\s?\d[A-Z]{2}/i)?.[0] || '';
+            const uniqueKey = `${address.toLowerCase().replace(/[^a-z0-9]/g, '')}-${price}-${bedrooms}-${postcode.toLowerCase().replace(/[^a-z0-9]/g, '')}`;
+            
+            // Only skip if it's an exact duplicate (same address, price, and bedrooms)
             if (seenProperties.has(uniqueKey)) {
-              console.log(`🔄 Skipping duplicate property: ${address} (£${price})`);
+              console.log(`🔄 Skipping exact duplicate: ${address} (£${price})`);
               continue;
             }
             
             seenProperties.add(uniqueKey);
             
-            // Generate consistent ID based on property characteristics (not random)
+            // Generate consistent ID based on property characteristics
             const propertyId = parseInt(crypto.createHash('md5').update(uniqueKey).digest('hex').substring(0, 8), 16);
             
             properties.push({

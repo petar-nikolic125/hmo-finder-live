@@ -1,0 +1,106 @@
+Python scraper stderr: Some characters could not be decoded, and were replaced with REPLACEMENT CHARACTER.
+
+Python scraper stderr: ⚠️ No listings found on https://www.zoopla.co.uk/for-sale/property/liverpo...
+
+Python scraper stderr: 📍 Pokušaj #4/4: https://www.primelocation.com/for-sale/property/liverpool/?beds_min=4&price_max=...
+
+Python scraper stderr: ✅ HTTP 200 - sadržaj: 809241 bytes
+
+Python scraper stderr: ✅ Pronašao 11 oglasa sa selektorom: div:has(a[href*="/property/"])
+🎯 Found 11 potential listings
+
+Python scraper stderr: 🔍 First listing preview: <div class="_1qnoa4c0"><main class="_1qnoa4c5" id="main-content" style="background-color:var(--colors-graphicBackgroundDefault)"><div class="_1qnoa4c3" style="background-position:center"><div class="_...
+
+Python scraper stderr: 📊 Enhanced Scraping Summary for Liverpool:
+   🔗 URLs tried: 4
+   ✅ Successful URLs: 2
+   🏠 Properties found: 76
+   💰 Price range: £325000 - £498000
+   🛏️ Bedroom range: 5 - 9
+
+Python scraper process finished with code: 0
+Raw scraper output (first 500 chars): [
+  {
+    "title": "Properties for sale in Liverpool",
+    "address": "Properties for sale in Liverpool",
+    "price": 325000,
+    "bedrooms": 5,
+    "property_url": "https://www.primelocation.com/for-sale/details/70233562/?search_identifier=586e4f15816fcb0107dbc49e15767d0afe785ac74ccf97b407167c41044ef059&featured=true",
+    "image_url": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80",
+    "description": "Versatile Downstairs Bedroom, Ideal for 
+Extracted JSON (first 200 chars): [
+  {
+    "title": "Properties for sale in Liverpool",
+    "address": "Properties for sale in Liverpool",
+    "price": 325000,
+    "bedrooms": 5,
+    "property_url": "https://www.primelocation.com/for
+✅ Successfully parsed 76 properties
+🔄 Skipping duplicate property: Properties for sale in Liverpool (£325000)
+🔄 Skipping duplicate property: Properties for sale in Liverpool (£325000)
+🔄 Skipping duplicate property: Properties for sale in Liverpool (£325000)
+🔄 Skipping duplicate property: Properties for sale in Liverpool (£325000)
+🔄 Skipping duplicate property: Properties for sale in Liverpool (£325000)
+🔄 Skipping duplicate property: Ramilies Road, Mossley Hill L18 (£325000)
+🔄 Skipping duplicate property: Ramilies Road, Mossley Hill L18 (£325000)
+🔄 Skipping duplicate property: Ramilies Road, Mossley Hill L18 (£325000)
+🔄 Skipping duplicate property: Ramilies Road, Mossley Hill L18 (£325000)
+🔄 Skipping duplicate property: Ramilies Road, Mossley Hill L18 (£325000)
+🔄 Skipping duplicate property: Ramilies Road, Mossley Hill L18 (£325000)
+🔄 Skipping duplicate property: Norma Road, Liverpool L22 (£498000)
+🔄 Skipping duplicate property: Norma Road, Liverpool L22 (£498000)
+🔄 Skipping duplicate property: Norma Road, Liverpool L22 (£498000)
+🔄 Skipping duplicate property: Norma Road, Liverpool L22 (£498000)
+🔄 Skipping duplicate property: Norma Road, Liverpool L22 (£498000)
+🔄 Skipping duplicate property: Leopold Road, Liverpool L7 (£495000)
+🔄 Skipping duplicate property: Leopold Road, Liverpool L7 (£495000)
+🔄 Skipping duplicate property: Leopold Road, Liverpool L7 (£495000)
+🔄 Skipping duplicate property: Leopold Road, Liverpool L7 (£495000)
+🔄 Skipping duplicate property: Leopold Road, Liverpool L7 (£495000)
+🔄 Skipping duplicate property: Grove Street, Edge Hill, Liverpool, Merseyside L7 (£490000)
+🔄 Skipping duplicate property: Grove Street, Edge Hill, Liverpool, Merseyside L7 (£490000)
+🔄 Skipping duplicate property: Grove Street, Edge Hill, Liverpool, Merseyside L7 (£490000)
+🔄 Skipping duplicate property: Grove Street, Edge Hill, Liverpool, Merseyside L7 (£490000)
+🔄 Skipping duplicate property: Grove Street, Edge Hill, Liverpool, Merseyside L7 (£490000)
+🔄 Skipping duplicate property: Seymour Street, Liverpool, Merseyside L3 (£485000)
+🔄 Skipping duplicate property: Seymour Street, Liverpool, Merseyside L3 (£485000)
+🔄 Skipping duplicate property: Seymour Street, Liverpool, Merseyside L3 (£485000)
+🔄 Skipping duplicate property: Seymour Street, Liverpool, Merseyside L3 (£485000)
+🔄 Skipping duplicate property: Seymour Street, Liverpool, Merseyside L3 (£485000)
+🔄 Skipping duplicate property: Halkyn Avenue, Liverpool, Merseyside L17 (£475000)
+🔄 Skipping duplicate property: Halkyn Avenue, Liverpool, Merseyside L17 (£475000)
+🔄 Skipping duplicate property: Halkyn Avenue, Liverpool, Merseyside L17 (£475000)
+🔄 Skipping duplicate property: Halkyn Avenue, Liverpool, Merseyside L17 (£475000)
+🔄 Skipping duplicate property: Halkyn Avenue, Liverpool, Merseyside L17 (£475000)
+🔄 Skipping duplicate property: Newsham Drive, Liverpool, Merseyside L6 (£430000)
+🔄 Skipping duplicate property: Newsham Drive, Liverpool, Merseyside L6 (£430000)
+🔄 Skipping duplicate property: Newsham Drive, Liverpool, Merseyside L6 (£430000)
+🔄 Skipping duplicate property: Newsham Drive, Liverpool, Merseyside L6 (£430000)
+🔄 Skipping duplicate property: Newsham Drive, Liverpool, Merseyside L6 (£430000)
+🔄 Skipping duplicate property: Rutland Avenue, Sefton Park, Liverpool, Merseyside L17 (£425000)
+🔄 Skipping duplicate property: Rutland Avenue, Sefton Park, Liverpool, Merseyside L17 (£425000)
+🔄 Skipping duplicate property: Rutland Avenue, Sefton Park, Liverpool, Merseyside L17 (£425000)
+🔄 Skipping duplicate property: Rutland Avenue, Sefton Park, Liverpool, Merseyside L17 (£425000)
+🔄 Skipping duplicate property: Rutland Avenue, Sefton Park, Liverpool, Merseyside L17 (£425000)
+🔄 Skipping duplicate property: Jubilee Drive, Liverpool L7 (£395000)
+🔄 Skipping duplicate property: Jubilee Drive, Liverpool L7 (£395000)
+🔄 Skipping duplicate property: Jubilee Drive, Liverpool L7 (£395000)
+🔄 Skipping duplicate property: Jubilee Drive, Liverpool L7 (£395000)
+🔄 Skipping duplicate property: Jubilee Drive, Liverpool L7 (£395000)
+🔄 Skipping duplicate property: Sandown Lane, Liverpool, Merseyside L15 (£380000)
+🔄 Skipping duplicate property: Sandown Lane, Liverpool, Merseyside L15 (£380000)
+🔄 Skipping duplicate property: Sandown Lane, Liverpool, Merseyside L15 (£380000)
+🔄 Skipping duplicate property: Sandown Lane, Liverpool, Merseyside L15 (£380000)
+🔄 Skipping duplicate property: Sandown Lane, Liverpool, Merseyside L15 (£380000)
+🔄 Skipping duplicate property: Gilroy Road, Liverpool L6 (£360000)
+🔄 Skipping duplicate property: Gilroy Road, Liverpool L6 (£360000)
+🔄 Skipping duplicate property: Gilroy Road, Liverpool L6 (£360000)
+🔄 Skipping duplicate property: Gilroy Road, Liverpool L6 (£360000)
+🔄 Skipping duplicate property: Gilroy Road, Liverpool L6 (£360000)
+🔄 Skipping duplicate property: Arkles Lane, Liverpool, Merseyside L4 (£350000)
+🔄 Skipping duplicate property: Arkles Lane, Liverpool, Merseyside L4 (£350000)
+✅ After deduplication: 13 unique properties (from 76 scraped)
+💾 Saved scrape cache
+💾 Cached 13 scraped properties for Liverpool
+✅ Returning 13 real scraped properties for Liverpool
+10:13:57 AM [express] GET /api/properties 200 in 20485ms :: [{"id":1239692864,"address":"Properties f…
