@@ -40,8 +40,15 @@ export async function registerRoutes(app: Express): Promise<Server> {
         stressTest: false
       };
 
-      const properties = await storage.getProperties(searchParams);
-      res.json(properties);
+      const result = await storage.getProperties(searchParams);
+      
+      // Return the structured result with professional messaging
+      res.json({
+        properties: result.properties,
+        message: result.message,
+        hasExpandedResults: result.hasExpandedResults,
+        totalCount: result.properties.length
+      });
     } catch (error) {
       console.error("Error fetching properties:", error);
       res.status(500).json({ error: "Failed to fetch properties" });

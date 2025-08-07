@@ -179,9 +179,11 @@ export class ScrapingService {
     return cached.properties;
   }
 
-  private convertScrapedToProperties(scrapedProperties: any[], params: SearchParams): Property[] {
+  private convertScrapedToProperties(scrapedProperties: any[], params: SearchParams): { properties: Property[], hasExpandedResults: boolean } {
     const seenProperties = new Map<string, any>();
     const properties: Property[] = [];
+    const expandedProperties: Property[] = [];
+    const maxPriceLimit = params.maxPrice || 500000;
           
     for (const prop of scrapedProperties) {
       const address = prop.address || `${prop.title || 'Unknown'}, ${params.city}`;
@@ -192,6 +194,16 @@ export class ScrapingService {
       if (!address || address.length < 5 || price <= 10000 || 
           address.toLowerCase().includes('properties for sale') ||
           address.toLowerCase().includes('search results')) {
+        continue;
+      }
+      
+      // STRICT PRICE FILTERING - respect user's maximum price criteria
+      const isWithinPriceLimit = price <= maxPriceLimit;
+      const isWithinExpandedLimit = price <= (maxPriceLimit * 1.15); // Allow 15% tolerance for "similar" properties
+      
+      // Skip properties that are way over the price limit (more than 15% over)
+      if (!isWithinExpandedLimit) {
+        console.log(`💰 Skipping over-priced property: ${address} (£${price.toLocaleString()}) - exceeds ${(maxPriceLimit * 1.15).toLocaleString()} limit`);
         continue;
       }
       
@@ -254,7 +266,8 @@ export class ScrapingService {
         imageUrl: prop.image_url || 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80',
         propertyUrl: prop.property_url || '',
         city: params.city,
-        scrapedAt: new Date().toISOString()
+        scrapedAt: new Date().toISOString(),
+        isExpandedResult: !isWithinPriceLimit
       };
       
       // Add additional fields if available
@@ -283,10 +296,21 @@ export class ScrapingService {
       if (prop.zoopla_url) propertyObj.zooplaUrl = prop.zoopla_url;
       if (prop.primelocation_url) propertyObj.primeLocationUrl = prop.primelocation_url;
       
-      properties.push(propertyObj);
+      // Separate properties within price limit vs expanded results
+      if (isWithinPriceLimit) {
+        properties.push(propertyObj);
+      } else {
+        expandedProperties.push(propertyObj);
+      }
     }
     
-    return properties;
+    // Prioritize properties within price limit, then add expanded results if needed
+    const allProperties = [...properties, ...expandedProperties];
+    const hasExpandedResults = expandedProperties.length > 0 && properties.length < 10;
+    
+    console.log(`📊 Price filtering results: ${properties.length} within £${maxPriceLimit.toLocaleString()}, ${expandedProperties.length} expanded results`);
+    
+    return { properties: allProperties, hasExpandedResults };
   }
 
   async scrapeProperties(params: SearchParams): Promise<Property[]> {
@@ -353,13 +377,20 @@ export class ScrapingService {
             return;
           }
 
-          const properties = this.convertScrapedToProperties(scrapedProperties, params);
+          const result = this.convertScrapedToProperties(scrapedProperties, params);
+          const { properties, hasExpandedResults } = result;
           
           console.log(`✅ After deduplication: ${properties.length} unique properties (from ${scrapedProperties.length} scraped)`);
           
           if (properties.length > 0) {
             await this.cacheResults(params, properties);
             console.log(`💾 Cached ${properties.length} scraped properties for ${params.city}`);
+          }
+          
+          // Add professional messaging for expanded results
+          if (hasExpandedResults) {
+            const maxPrice = params.maxPrice || 500000;
+            console.log(`🗺 Professional message: Some results exceed £${maxPrice.toLocaleString()} to provide additional investment options`);
           }
           
           console.log(`✅ Returning ${properties.length} real scraped properties for ${params.city}`);

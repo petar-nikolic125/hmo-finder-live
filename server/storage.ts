@@ -12,6 +12,12 @@ export interface PropertySearchParams {
   stressTest?: boolean;
 }
 
+export interface PropertySearchResult {
+  properties: PropertyWithAnalytics[];
+  message?: string;
+  hasExpandedResults?: boolean;
+}
+
 // Enhanced Property type with analytics (calculated from scraped data only)
 export interface PropertyWithAnalytics extends Property {
   postcode: string;
@@ -45,7 +51,7 @@ export interface IStorage {
   getUser(id: number): Promise<User | undefined>;
   getUserByUsername(username: string): Promise<User | undefined>;
   createUser(user: InsertUser): Promise<User>;
-  getProperties(params: PropertySearchParams): Promise<PropertyWithAnalytics[]>;
+  getProperties(params: PropertySearchParams): Promise<PropertySearchResult>;
   getCities(): Promise<string[]>;
 }
 
@@ -70,7 +76,7 @@ export class MemStorage implements IStorage {
     return user;
   }
 
-  async getProperties(params: PropertySearchParams): Promise<PropertyWithAnalytics[]> {
+  async getProperties(params: PropertySearchParams): Promise<PropertySearchResult> {
     console.log('🔍 MemStorage: Searching properties with params:', params);
     
     try {
@@ -90,15 +96,43 @@ export class MemStorage implements IStorage {
           return this.enhancePropertyWithAnalytics(prop, params);
         });
 
-        return propertiesWithAnalytics;
+        // Check if we have expanded results and generate professional message
+        const hasExpandedResults = scrapedProperties.some(prop => prop.isExpandedResult);
+        const exactMatchCount = scrapedProperties.filter(prop => !prop.isExpandedResult).length;
+        const expandedCount = scrapedProperties.length - exactMatchCount;
+        
+        let message = undefined;
+        if (hasExpandedResults && expandedCount > 0) {
+          const maxPrice = params.maxPrice || 500000;
+          const cityName = params.city || 'this area';
+          const bedroomText = params.minRooms ? `${params.minRooms}+ bedroom ` : '';
+          
+          if (exactMatchCount === 0) {
+            message = `Limited properties available in ${cityName} matching your exact criteria of ${bedroomText}properties under £${maxPrice.toLocaleString()}. We are displaying ${expandedCount} similar investment opportunities within a broader price range to provide comprehensive market insight.`;
+          } else {
+            message = `We found ${exactMatchCount} properties within your £${maxPrice.toLocaleString()} budget and included ${expandedCount} additional similar properties to provide comprehensive investment options in ${cityName}.`;
+          }
+        }
+
+        return {
+          properties: propertiesWithAnalytics,
+          message,
+          hasExpandedResults
+        };
       } else {
-        console.log('⚠️ No scraped properties found. Returning empty array - no fake data fallback.');
-        return [];
+        console.log('⚠️ No scraped properties found. Returning empty result - no fake data fallback.');
+        return {
+          properties: [],
+          message: `No HMO investment properties currently available in ${params.city || 'this area'} matching your criteria. Please try adjusting your search parameters or exploring nearby areas.`
+        };
       }
     } catch (error) {
       console.error('❌ Error during scraping:', error);
-      console.log('❌ Scraping failed. Returning empty array - no fake data fallback.');
-      return [];
+      console.log('❌ Scraping failed. Returning empty result - no fake data fallback.');
+      return {
+        properties: [],
+        message: `Unable to retrieve current property data. Please try again shortly or contact support if the issue persists.`
+      };
     }
   }
 

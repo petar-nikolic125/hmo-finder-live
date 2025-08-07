@@ -1,9 +1,9 @@
 import { useQuery, useQueryClient } from '@tanstack/react-query';
-import { apiClient, PropertyWithAnalytics } from '@/lib/api';
+import { apiClient, PropertyWithAnalytics, PropertySearchResponse } from '@/lib/api';
 import { PropertySearchParams } from '@/lib/types';
 
 export const useProperties = (params: PropertySearchParams) => {
-  return useQuery({
+  return useQuery<PropertySearchResponse>({
     queryKey: ['properties', params],
     queryFn: () => {
       console.log('🌐 API: Fetching properties with params:', params);

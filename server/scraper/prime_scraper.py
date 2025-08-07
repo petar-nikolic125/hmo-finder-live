@@ -155,10 +155,10 @@ def build_search_urls(city, min_bedrooms, max_price, keywords, postcode=None):
     prime_minimal = f"https://www.primelocation.com/for-sale/property/{city_slug}/?price_max={max_price}"
     alternative_urls.append(prime_minimal)
     
-    # EXTREME price range handling - works for £100k to £2M+
+    # CONTROLLED price range handling - respect user limits more strictly
     if max_price < 200000:  # Low budget properties (£100k-£200k)
-        # Expand search by 50% for more options
-        expanded_price = int(max_price * 1.5)
+        # Only expand by 10% for budget properties
+        expanded_price = int(max_price * 1.1)
         zoopla_expanded = f"https://www.zoopla.co.uk/for-sale/property/{city_slug}/?price_max={expanded_price}"
         alternative_urls.append(zoopla_expanded)
         
@@ -167,20 +167,20 @@ def build_search_urls(city, min_bedrooms, max_price, keywords, postcode=None):
         
         # Try with lower bedroom requirements for budget properties
         budget_beds = max(1, min_bedrooms - 1)
-        zoopla_budget = f"https://www.zoopla.co.uk/for-sale/property/{city_slug}/?beds_min={budget_beds}&price_max={expanded_price}"
+        zoopla_budget = f"https://www.zoopla.co.uk/for-sale/property/{city_slug}/?beds_min={budget_beds}&price_max={max_price}"
         alternative_urls.append(zoopla_budget)
         
     elif max_price > 600000:  # High budget properties (£600k+)
-        # Try searches with lower price caps to catch more properties
-        reduced_price = int(max_price * 0.8)
+        # Try searches with slightly lower price caps to catch more properties
+        reduced_price = int(max_price * 0.9)
         zoopla_reduced = f"https://www.zoopla.co.uk/for-sale/property/{city_slug}/?price_max={reduced_price}&property_type=houses"
         alternative_urls.append(zoopla_reduced)
         
         prime_reduced = f"https://www.primelocation.com/for-sale/property/{city_slug}/?price_max={reduced_price}"
         alternative_urls.append(prime_reduced)
         
-        # High-end property searches with luxury keywords
-        zoopla_luxury = f"https://www.zoopla.co.uk/for-sale/property/{city_slug}/?beds_min={min_bedrooms}&price_min={int(max_price * 0.5)}&price_max={max_price}"
+        # High-end property searches with realistic price range
+        zoopla_luxury = f"https://www.zoopla.co.uk/for-sale/property/{city_slug}/?beds_min={min_bedrooms}&price_min={int(max_price * 0.7)}&price_max={max_price}"
         alternative_urls.append(zoopla_luxury)
     
     # ALWAYS add flexible searches regardless of city or price
@@ -193,11 +193,11 @@ def build_search_urls(city, min_bedrooms, max_price, keywords, postcode=None):
         prime_flex_beds = f"https://www.primelocation.com/for-sale/property/{city_slug}/?beds_min={flexible_beds}&price_max={max_price}"
         alternative_urls.append(prime_flex_beds)
     
-    # Wide search without filters for maximum coverage
-    zoopla_wide = f"https://www.zoopla.co.uk/for-sale/property/{city_slug}/"
+    # Controlled wider search - still with price limits but relaxed other filters
+    zoopla_wide = f"https://www.zoopla.co.uk/for-sale/property/{city_slug}/?price_max={max_price}"
     alternative_urls.append(zoopla_wide)
     
-    prime_wide = f"https://www.primelocation.com/for-sale/property/{city_slug}/"
+    prime_wide = f"https://www.primelocation.com/for-sale/property/{city_slug}/?price_max={max_price}"
     alternative_urls.append(prime_wide)
     
     print(f"🔗 Generated {len(alternative_urls) + 2} search URLs for MAXIMUM coverage", file=sys.stderr)
@@ -574,15 +574,15 @@ def scrape_properties_with_requests(city, min_bedrooms, max_price, keywords, pos
     original_min_bedrooms = min_bedrooms
     original_max_price = max_price
     
-    # Advanced city-specific adjustments with extreme case handling
+    # CONSERVATIVE city-specific adjustments - respect user price limits
     city_adjustments = {
-        'leeds': {'min_price_boost': 1.1, 'bedroom_flexibility': True, 'stress_multiplier': 1.3},
-        'cambridge': {'min_price_boost': 1.3, 'bedroom_flexibility': True, 'stress_multiplier': 1.5},
-        'brighton': {'min_price_boost': 1.2, 'bedroom_flexibility': True, 'stress_multiplier': 1.4},
-        'blackpool': {'min_price_boost': 0.8, 'bedroom_flexibility': True, 'stress_multiplier': 1.1},
-        'salford': {'min_price_boost': 0.9, 'bedroom_flexibility': True, 'stress_multiplier': 1.2},
-        'oxford': {'min_price_boost': 1.4, 'bedroom_flexibility': True, 'stress_multiplier': 1.6},
-        'london': {'min_price_boost': 1.5, 'bedroom_flexibility': True, 'stress_multiplier': 2.0}
+        'leeds': {'min_price_boost': 1.0, 'bedroom_flexibility': True, 'stress_multiplier': 1.0},
+        'cambridge': {'min_price_boost': 1.05, 'bedroom_flexibility': True, 'stress_multiplier': 1.0},
+        'brighton': {'min_price_boost': 1.05, 'bedroom_flexibility': True, 'stress_multiplier': 1.0},
+        'blackpool': {'min_price_boost': 1.0, 'bedroom_flexibility': True, 'stress_multiplier': 1.0},
+        'salford': {'min_price_boost': 1.0, 'bedroom_flexibility': True, 'stress_multiplier': 1.0},
+        'oxford': {'min_price_boost': 1.05, 'bedroom_flexibility': True, 'stress_multiplier': 1.0},
+        'london': {'min_price_boost': 1.0, 'bedroom_flexibility': True, 'stress_multiplier': 1.0}
     }
     
     # Apply dynamic adjustments with stress testing considerations
@@ -590,13 +590,19 @@ def scrape_properties_with_requests(city, min_bedrooms, max_price, keywords, pos
         adjustment = city_adjustments[city.lower()]
         stress_factor = adjustment.get('stress_multiplier', 1.0)
         
-        # For extreme cases, apply stress multiplier
+        # Respect user price limits - minimal adjustments only
         if max_price > 1000000 or min_bedrooms > 6:
-            max_price = int(max_price * adjustment['min_price_boost'] * stress_factor)
-            print(f"🔧 Extreme case detected - Applied stress multiplier: £{max_price}", file=sys.stderr)
+            # Even for extreme cases, keep price adjustments minimal
+            max_price = int(max_price * 1.02)  # Only 2% for extreme cases
+            print(f"✅ Minimal adjustment for extreme case: £{max_price} for {city}", file=sys.stderr)
         else:
-            max_price = int(max_price * adjustment['min_price_boost'])
-            print(f"🔧 Dynamic adjustment: Boosted max_price to £{max_price} for {city}", file=sys.stderr)
+            # Apply only conservative adjustments and respect user intent
+            if adjustment['min_price_boost'] > 1.0:
+                old_price = max_price
+                max_price = int(max_price * adjustment['min_price_boost'])
+                print(f"✅ Conservative adjustment: £{old_price} → £{max_price} for {city}", file=sys.stderr)
+            else:
+                print(f"✅ Respecting exact user price limit: £{max_price} for {city}", file=sys.stderr)
     
     properties = []
     session = setup_session()

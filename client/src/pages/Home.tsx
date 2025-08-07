@@ -37,17 +37,24 @@ export const Home = () => {
   const [showTutorial, setShowTutorial] = useState(true); // Show tutorial on launch
   const [showLoadingScreen, setShowLoadingScreen] = useState(false);
   
-  // Fetch properties
-  const { data: properties = [], isLoading, isError, refetch } = useProperties(searchParams);
+  // Fetch properties with enhanced messaging
+  const { data: searchResult, isLoading, isError, refetch } = useProperties(searchParams);
+  const properties = searchResult?.properties || [];
+  const expandedResultsMessage = searchResult?.message;
+  const hasExpandedResults = searchResult?.hasExpandedResults || false;
   
   // Add console logging to track data flow
   useEffect(() => {
     console.log('🏠 Home: Properties data updated:', properties.length, 'properties');
+    if (expandedResultsMessage) {
+      console.log('💬 Home: Professional message:', expandedResultsMessage);
+    }
     if (properties.length > 0) {
       console.log('🏠 Home: First property sample:', properties[0]);
-      console.log('🏠 Home: Are these scraped properties?', properties[0]?.address?.includes('Zoopla') ? 'No - Generated' : 'Maybe - Check address format');
+      const hasExpandedProps = properties.some(p => p.isExpandedResult);
+      console.log('💰 Home: Contains expanded price results:', hasExpandedProps);
     }
-  }, [properties]);
+  }, [properties, expandedResultsMessage]);
   
   // Filter properties by search term (client-side)
   const filteredProperties = useMemo(() => {
@@ -56,7 +63,7 @@ export const Home = () => {
     const term = searchTerm.toLowerCase();
     return properties.filter(property =>
       property.address.toLowerCase().includes(term) ||
-      property.postcode.toLowerCase().includes(term)
+      (property.postcode && property.postcode.toLowerCase().includes(term))
     );
   }, [properties, searchTerm]);
 
@@ -146,6 +153,27 @@ export const Home = () => {
         />
 
         {/* Search results header with count */}
+
+        {/* Professional message for expanded results */}
+        {expandedResultsMessage && (
+          <div className="mb-6 p-4 bg-blue-50 dark:bg-blue-950/20 border border-blue-200 dark:border-blue-800 rounded-lg">
+            <div className="flex items-start space-x-3">
+              <div className="flex-shrink-0">
+                <svg className="w-5 h-5 text-blue-600 dark:text-blue-400 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                  <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clipRule="evenodd" />
+                </svg>
+              </div>
+              <div className="flex-1">
+                <h4 className="text-sm font-medium text-blue-900 dark:text-blue-100 mb-1">
+                  Search Results Expanded
+                </h4>
+                <p className="text-sm text-blue-700 dark:text-blue-300 leading-relaxed">
+                  {expandedResultsMessage}
+                </p>
+              </div>
+            </div>
+          </div>
+        )}
 
         {showLoadingScreen ? (
           <IntelligentLoadingScreen 
