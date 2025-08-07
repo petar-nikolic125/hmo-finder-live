@@ -124,8 +124,8 @@ def build_search_urls(city, min_bedrooms, max_price, keywords, postcode=None):
     
     # Skip complex alternatives - keep it simple
     
-    # OPTIMIZED: Return only PrimeLocation URLs (no Zoopla)
-    return alternative_urls[:1]  # Only 1 URL - PrimeLocation focused
+    # OPTIMIZED: Return PrimeLocation URLs - povećano na 2 za više rezultata
+    return alternative_urls[:2]  # 2 URLs - PrimeLocation focused
 
 
 def extract_price(price_text):
@@ -653,8 +653,8 @@ def scrape_properties_with_requests(city, min_bedrooms, max_price, keywords, pos
                 first_listing = listings[0]
                 print(f"🔍 First listing preview: {str(first_listing)[:200]}...", file=sys.stderr)
             
-            # Scrape svaki oglas - OPTIMIZED limit za brže učitavanje (samo 30)
-            for i, listing in enumerate(listings[:30]):
+            # Scrape svaki oglas - aumentovano na 100 properties po zahtevu
+            for i, listing in enumerate(listings[:100]):
                 try:
                     property_data = {}
                     

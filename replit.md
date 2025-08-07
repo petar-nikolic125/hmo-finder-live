@@ -36,7 +36,7 @@ Properties include basic info (address, price, size, bedrooms, bathrooms) and co
 ### Key Features
 - **Reliable API Communication**: Enhanced frontend-backend communication with automatic retries, exponential backoff, connection monitoring, proper timeouts, and comprehensive error handling for development reliability
 - **Production Deployment Ready**: Comprehensive multi-platform deployment support with automated build fixes, dynamic port binding, and proper static asset handling for Vercel, Render, Railway, Heroku, and Docker
-- **Optimized Scraping**: PrimeLocation-only scraping limited to top 30 results for faster loading, triggered only on search button click
+- **Optimized Scraping**: PrimeLocation-only scraping limited to top 100 results, triggered only on search button click
 - **Enhanced Error Handling**: Production-safe caching system with /tmp/ file paths and comprehensive fallback mechanisms
 - **Parameter Compatibility**: Fixed frontend/backend parameter synchronization for reliable property searches
 - **Intelligent Deduplication**: Optimized fuzzy matching algorithm to prevent over-filtering while maintaining data quality
