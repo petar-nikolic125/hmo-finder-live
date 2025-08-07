@@ -1,120 +1,125 @@
-import { spawn } from "child_process";
-import path from "path";
-import crypto from "crypto";
-import fs from "fs/promises";
-import { type Property } from "@shared/schema";
+import { spawn } from 'child_process';
+import path from 'path';
+import crypto from 'crypto';
+import fs from 'fs/promises';
 
 export interface SearchParams {
   city: string;
+  postcode?: string;
+  count?: number;
+  minRooms?: number;
+  maxPrice?: number;
+  keywords?: string;
+  stressTest?: boolean;
   minBedrooms: number;
-  maxPrice: number;
-  keywords: string;
 }
 
-interface CachedSearch {
+export interface Property {
+  id: number;
+  address: string;
+  price: number;
+  bedrooms: number;
+  bathrooms?: number;
+  imageUrl: string;
+  propertyUrl: string;
+  city: string;
+  scrapedAt: string;
+  postcode?: string;
+  latitude?: number;
+  longitude?: number;
+  description?: string;
+  [key: string]: any;
+}
+
+interface CacheEntry {
   searchHash: string;
   lastScraped: string;
   properties: Property[];
 }
 
+interface CacheData {
+  [key: string]: CacheEntry;
+}
+
 export class ScrapingService {
-  private readonly RATE_LIMIT_MINUTES = 0.5; // 30 seconds between scraping sessions for better performance
-  private readonly CACHE_FILE = path.join(process.cwd(), 'server/data/scrape_cache.json');
-  private cache: Record<string, CachedSearch> = {};
+  private cache: CacheData = {};
+  private readonly cacheFile = '.local/scrape_cache.json';
+  private readonly rateLimitMs = 10000; // 10 seconds between scrapes
 
   constructor() {
     this.loadCache();
   }
 
-  private async loadCache() {
+  private async loadCache(): Promise<void> {
     try {
-      // Ensure the data directory exists
-      await fs.mkdir(path.dirname(this.CACHE_FILE), { recursive: true });
-      
-      const data = await fs.readFile(this.CACHE_FILE, 'utf-8');
+      const data = await fs.readFile(this.cacheFile, 'utf-8');
       this.cache = JSON.parse(data);
-      console.log('📁 Loaded scrape cache with', Object.keys(this.cache).length, 'entries');
+      console.log(`📁 Loaded scrape cache with ${Object.keys(this.cache).length} entries`);
     } catch (error) {
       console.log('📁 No existing cache found, starting fresh');
       this.cache = {};
     }
   }
 
-  private async saveCache() {
+  private async saveCache(): Promise<void> {
     try {
-      await fs.writeFile(this.CACHE_FILE, JSON.stringify(this.cache, null, 2));
+      await fs.mkdir('.local', { recursive: true });
+      await fs.writeFile(this.cacheFile, JSON.stringify(this.cache, null, 2));
       console.log('💾 Saved scrape cache');
     } catch (error) {
-      console.error('❌ Error saving cache:', error);
+      console.error('Error saving cache:', error);
     }
   }
 
   private generateSearchHash(params: SearchParams): string {
-    const searchString = `${params.city}-${params.minBedrooms}-${params.maxPrice}-${params.keywords}`;
-    return crypto.createHash('md5').update(searchString).digest('hex');
+    const key = `${params.city}-${params.minBedrooms || 1}-${params.maxPrice || 500000}-${params.keywords || 'HMO'}`;
+    return crypto.createHash('md5').update(key).digest('hex');
   }
 
-  async canScrapeNow(params: SearchParams): Promise<boolean> {
+  private async canScrapeNow(params: SearchParams): Promise<boolean> {
     const searchHash = this.generateSearchHash(params);
     const cached = this.cache[searchHash];
     
-    if (!cached) {
-      return true; // No previous search found
-    }
-
-    const lastScrapedTime = new Date(cached.lastScraped);
+    if (!cached) return true;
+    
+    const lastScraped = new Date(cached.lastScraped);
     const now = new Date();
-    const timeDiff = now.getTime() - lastScrapedTime.getTime();
-    const minutesDiff = timeDiff / (1000 * 60);
-
-    return minutesDiff >= this.RATE_LIMIT_MINUTES;
+    const timeDiff = now.getTime() - lastScraped.getTime();
+    
+    return timeDiff > this.rateLimitMs;
   }
 
-  // Enhanced method to find flexible cache matches for dynamic filtering
-  private findFlexibleCacheMatch(params: SearchParams): { key: string; data: Property[] } | null {
-    const targetPrice = params.maxPrice;
-    const targetBedrooms = params.minBedrooms;
-    
-    // First, try to find cache for the same city (even if parameters don't match exactly)
-    for (const [key, cached] of Object.entries(this.cache)) {
-      if (cached.properties.length > 0 && cached.properties[0].city === params.city) {
-        // Parse the search hash to get original parameters
-        const hashParts = key.split('-');
-        
-        // Check if cache is still relatively fresh (within 10 minutes for flexible matching)
-        const lastScrapedTime = new Date(cached.lastScraped);
-        const now = new Date();
-        const timeDiff = now.getTime() - lastScrapedTime.getTime();
-        const minutesDiff = timeDiff / (1000 * 60);
-        
-        if (minutesDiff < 10) { // More generous time limit for flexible matching
-          console.log(`🔄 Found flexible cache match for ${params.city} (${minutesDiff.toFixed(1)} min old)`);
-          
-          // Filter properties to match current search criteria
-          const filteredProperties = cached.properties.filter(prop => {
-            const meetsBedroomCriteria = prop.bedrooms >= targetBedrooms;
-            const meetsPriceCriteria = prop.price <= targetPrice;
-            return meetsBedroomCriteria && meetsPriceCriteria;
-          });
-          
-          if (filteredProperties.length > 0) {
-            console.log(`📊 Filtered ${cached.properties.length} → ${filteredProperties.length} properties matching criteria`);
-            return { key, data: filteredProperties };
-          }
+  private async cacheResults(params: SearchParams, properties: Property[]): Promise<void> {
+    const searchHash = this.generateSearchHash(params);
+    this.cache[searchHash] = {
+      searchHash,
+      lastScraped: new Date().toISOString(),
+      properties
+    };
+    await this.saveCache();
+  }
+
+  private findFlexibleCacheMatch(params: SearchParams): { data: Property[]; } | null {
+    for (const entry of Object.values(this.cache)) {
+      if (entry.properties.length > 0 && entry.properties[0].city.toLowerCase() === params.city.toLowerCase()) {
+        const filtered = entry.properties.filter(p => 
+          (p.bedrooms >= (params.minBedrooms || 1)) &&
+          (p.price <= (params.maxPrice || 500000))
+        );
+        if (filtered.length > 5) {
+          return { data: filtered.slice(0, 20) };
         }
       }
     }
     return null;
   }
 
-  // Add method to clear cache for testing
   async clearCache(): Promise<void> {
     this.cache = {};
     await this.saveCache();
     console.log('🧹 Cache cleared');
   }
 
-  // Calculate string similarity for fuzzy matching
   private calculateSimilarity(str1: string, str2: string): number {
     const longer = str1.length > str2.length ? str1 : str2;
     const shorter = str1.length > str2.length ? str2 : str1;
@@ -145,6 +150,23 @@ export class ScrapingService {
     return matrix[str2.length][str1.length];
   }
 
+  private getCityAliases(city: string): string[] {
+    const aliases: Record<string, string[]> = {
+      'london': ['sw1', 'w1', 'ec1', 'nw1', 'se1', 'e1', 'n1', 'wc1', 'greater london'],
+      'manchester': ['mcr', 'greater manchester'],
+      'birmingham': ['bham', 'west midlands'],
+      'liverpool': ['merseyside'],
+      'leeds': ['west yorkshire'],
+      'sheffield': ['south yorkshire'],
+      'bristol': ['gloucestershire'],
+      'glasgow': ['lanarkshire'],
+      'edinburgh': ['lothian'],
+      'cardiff': ['wales', 'cymru']
+    };
+    
+    return aliases[city.toLowerCase()] || [];
+  }
+
   async getCachedResults(params: SearchParams): Promise<Property[]> {
     const searchHash = this.generateSearchHash(params);
     const cached = this.cache[searchHash];
@@ -157,9 +179,118 @@ export class ScrapingService {
     return cached.properties;
   }
 
+  private convertScrapedToProperties(scrapedProperties: any[], params: SearchParams): Property[] {
+    const seenProperties = new Map<string, any>();
+    const properties: Property[] = [];
+          
+    for (const prop of scrapedProperties) {
+      const address = prop.address || `${prop.title || 'Unknown'}, ${params.city}`;
+      const price = parseInt(prop.price?.toString().replace(/[£,]/g, '')) || 0;
+      const bedrooms = parseInt(prop.bedrooms?.toString()) || 1;
+      
+      // Skip properties with invalid data or wrong city
+      if (!address || address.length < 8 || price <= 1000 || 
+          address.toLowerCase().includes('properties for sale') ||
+          address.toLowerCase().includes('property for sale')) {
+        continue;
+      }
+      
+      // Strict city validation - skip if address doesn't contain searched city
+      const searchCity = params.city.toLowerCase();
+      const addressLower = address.toLowerCase();
+      
+      const cityVariations = [
+        searchCity,
+        searchCity.substring(0, 4),
+        ...this.getCityAliases(searchCity)
+      ];
+      
+      const hasCorrectCity = cityVariations.some(variation => 
+        addressLower.includes(variation.toLowerCase())
+      );
+      
+      if (!hasCorrectCity) {
+        console.log(`🚫 Skipping property in wrong city: ${address} (searching for ${params.city})`);
+        continue;
+      }
+      
+      // Create intelligent unique identifier with price tolerance
+      const normalizedAddress = address.toLowerCase()
+        .replace(/[^a-z0-9\s]/g, '')
+        .replace(/\s+/g, ' ')
+        .trim();
+      
+      const priceRange = Math.floor(price / (price * 0.05)) * (price * 0.05);
+      const baseKey = `${normalizedAddress}-${bedrooms}-${Math.floor(priceRange)}`;
+      
+      // Check for similar properties (fuzzy matching)
+      let isDuplicate = false;
+      for (const [existingKey, existingProp] of seenProperties) {
+        const addressSimilarity = this.calculateSimilarity(normalizedAddress, existingKey.split('-')[0]);
+        const priceDiff = Math.abs(price - existingProp.price) / price;
+        
+        if (addressSimilarity > 0.8 && priceDiff < 0.1 && bedrooms === existingProp.bedrooms) {
+          console.log(`🔄 Skipping similar duplicate: ${address} (£${price}) - similar to ${existingProp.address}`);
+          isDuplicate = true;
+          break;
+        }
+      }
+      
+      if (isDuplicate) {
+        continue;
+      }
+      
+      seenProperties.set(baseKey, { address, price, bedrooms });
+      
+      const propertyId = parseInt(crypto.createHash('md5').update(baseKey + Date.now()).digest('hex').substring(0, 8), 16);
+      
+      const propertyObj: any = {
+        id: propertyId,
+        address,
+        price,
+        bedrooms,
+        bathrooms: prop.bathrooms ? parseInt(prop.bathrooms?.toString()) : undefined,
+        imageUrl: prop.image_url || 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80',
+        propertyUrl: prop.property_url || '',
+        city: params.city,
+        scrapedAt: new Date().toISOString()
+      };
+      
+      // Add additional fields if available
+      if (prop.postcode) propertyObj.postcode = prop.postcode;
+      if (prop.latitude) propertyObj.latitude = prop.latitude;
+      if (prop.longitude) propertyObj.longitude = prop.longitude;
+      if (prop.description) propertyObj.description = prop.description;
+      if (prop.area_sqm) propertyObj.area_sqm = prop.area_sqm;
+      
+      // Investment analysis fields
+      const investmentFields = [
+        'lha_weekly', 'gross_yield', 'net_yield', 'roi', 'payback_years',
+        'monthly_cashflow', 'yearly_profit', 'total_invested', 'stamp_duty',
+        'refurb_cost', 'dscr', 'profitability_score', 'left_in_deal',
+        'has_garden', 'has_parking', 'is_article_4'
+      ];
+      
+      investmentFields.forEach(field => {
+        if (prop[field] !== undefined) {
+          propertyObj[field] = prop[field];
+        }
+      });
+      
+      // Portal URLs
+      if (prop.rightmove_url) propertyObj.rightmoveUrl = prop.rightmove_url;
+      if (prop.zoopla_url) propertyObj.zooplaUrl = prop.zoopla_url;
+      if (prop.primelocation_url) propertyObj.primeLocationUrl = prop.primelocation_url;
+      
+      properties.push(propertyObj);
+    }
+    
+    return properties;
+  }
+
   async scrapeProperties(params: SearchParams): Promise<Property[]> {
     return new Promise((resolve, reject) => {
-      const pythonScript = path.join(process.cwd(), 'server/scraper/zoopla_scraper.py');
+      const pythonScript = path.join(process.cwd(), 'server/scraper/enhanced_scraper.py');
       const args = [
         pythonScript,
         params.city,
@@ -168,17 +299,9 @@ export class ScrapingService {
         params.keywords
       ];
 
-      console.log(`🚀 Pokretam Zoopla scraper za ${params.city}, sobe: ${params.minBedrooms}+, cena: £${params.maxPrice}`);
+      console.log(`🚀 Using enhanced_scraper.py for better property diversity`);
 
-      // Try enhanced scraper occasionally for better diversity
-      const useEnhanced = Math.random() > 0.5; // 50% chance for enhanced scraper
-      const scriptName = useEnhanced ? 'enhanced_scraper.py' : 'zoopla_scraper.py';
-      const enhancedArgs = [...args];
-      enhancedArgs[0] = path.join(process.cwd(), 'server/scraper/', scriptName);
-      
-      console.log(`🚀 Using ${scriptName} for property scraping`);
-
-      const pythonProcess = spawn('python3', enhancedArgs, {
+      const pythonProcess = spawn('python3', args, {
         stdio: ['pipe', 'pipe', 'pipe'],
         cwd: process.cwd()
       });
@@ -208,7 +331,6 @@ export class ScrapingService {
         try {
           console.log('Raw scraper output (first 500 chars):', output.substring(0, 500));
           
-          // Find the JSON part in the output - Python scraper might output debug info before JSON
           const jsonStart = output.indexOf('[');
           if (jsonStart === -1) {
             console.log('No JSON array found, trying to find object');
@@ -221,7 +343,6 @@ export class ScrapingService {
           const jsonOutput = output.substring(jsonStart !== -1 ? jsonStart : output.indexOf('{'));
           console.log('Extracted JSON (first 200 chars):', jsonOutput.substring(0, 200));
           
-          // Parse the JSON output from the Python script
           const scrapedProperties = JSON.parse(jsonOutput);
           console.log(`✅ Successfully parsed ${scrapedProperties.length} properties`);
 
@@ -231,127 +352,22 @@ export class ScrapingService {
             return;
           }
 
-          // Enhanced property processing with intelligent deduplication
-          const seenProperties = new Map<string, any>();
-          const properties: Property[] = [];
-          
-          for (const prop of scrapedProperties) {
-            const address = prop.address || `${prop.title || 'Unknown'}, ${params.city}`;
-            const price = parseInt(prop.price?.toString().replace(/[£,]/g, '')) || 0;
-            const bedrooms = parseInt(prop.bedrooms?.toString()) || 1;
-            
-            // Skip properties with invalid data
-            if (!address || address.length < 8 || price <= 1000 || 
-                address.toLowerCase().includes('properties for sale') ||
-                address.toLowerCase().includes('property for sale')) {
-              continue;
-            }
-            
-            // Create intelligent unique identifier with price tolerance
-            const normalizedAddress = address.toLowerCase()
-              .replace(/[^a-z0-9\s]/g, '')
-              .replace(/\s+/g, ' ')
-              .trim();
-            
-            // Allow 5% price variation for same address (market fluctuation)
-            const priceRange = Math.floor(price / (price * 0.05)) * (price * 0.05);
-            const baseKey = `${normalizedAddress}-${bedrooms}-${Math.floor(priceRange)}`;
-            
-            // Check for similar properties (fuzzy matching)
-            let isDuplicate = false;
-            for (const [existingKey, existingProp] of seenProperties) {
-              const addressSimilarity = this.calculateSimilarity(normalizedAddress, existingKey.split('-')[0]);
-              const priceDiff = Math.abs(price - existingProp.price) / price;
-              
-              if (addressSimilarity > 0.8 && priceDiff < 0.1 && bedrooms === existingProp.bedrooms) {
-                console.log(`🔄 Skipping similar duplicate: ${address} (£${price}) - similar to ${existingProp.address}`);
-                isDuplicate = true;
-                break;
-              }
-            }
-            
-            if (isDuplicate) {
-              continue;
-            }
-            
-            seenProperties.set(baseKey, { address, price, bedrooms });
-            
-            // Generate consistent ID
-            const propertyId = parseInt(crypto.createHash('md5').update(baseKey + Date.now()).digest('hex').substring(0, 8), 16);
-            
-            // Build comprehensive property object
-            const propertyObj: any = {
-              id: propertyId,
-              address,
-              price,
-              bedrooms,
-              bathrooms: prop.bathrooms ? parseInt(prop.bathrooms?.toString()) : undefined,
-              imageUrl: prop.image_url || 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80',
-              propertyUrl: prop.property_url || '',
-              city: params.city,
-              scrapedAt: new Date().toISOString()
-            };
-            
-            // Add additional fields if available
-            if (prop.postcode) propertyObj.postcode = prop.postcode;
-            if (prop.latitude) propertyObj.latitude = prop.latitude;
-            if (prop.longitude) propertyObj.longitude = prop.longitude;
-            if (prop.description) propertyObj.description = prop.description;
-            if (prop.area_sqm) propertyObj.area_sqm = prop.area_sqm;
-            
-            // Investment analysis fields
-            const investmentFields = [
-              'lha_weekly', 'gross_yield', 'net_yield', 'roi', 'payback_years',
-              'monthly_cashflow', 'yearly_profit', 'total_invested', 'stamp_duty',
-              'refurb_cost', 'dscr', 'profitability_score', 'left_in_deal',
-              'has_garden', 'has_parking', 'is_article_4'
-            ];
-            
-            investmentFields.forEach(field => {
-              if (prop[field] !== undefined) {
-                propertyObj[field] = prop[field];
-              }
-            });
-            
-            // Portal URLs
-            if (prop.rightmove_url) propertyObj.rightmoveUrl = prop.rightmove_url;
-            if (prop.zoopla_url) propertyObj.zooplaUrl = prop.zoopla_url;
-            if (prop.primelocation_url) propertyObj.primeLocationUrl = prop.primelocation_url;
-            
-            properties.push(propertyObj);
-          }
+          const properties = this.convertScrapedToProperties(scrapedProperties, params);
           
           console.log(`✅ After deduplication: ${properties.length} unique properties (from ${scrapedProperties.length} scraped)`);
           
-          if (properties.length === 0) {
-            console.log('⚠️ No unique properties after deduplication');
+          if (properties.length > 0) {
+            await this.cacheResults(params, properties);
+            console.log(`💾 Cached ${properties.length} scraped properties for ${params.city}`);
           }
-
-          // Cache the results
-          const searchHash = this.generateSearchHash(params);
-          this.cache[searchHash] = {
-            searchHash,
-            lastScraped: new Date().toISOString(),
-            properties
-          };
           
-          await this.saveCache();
-          console.log(`💾 Cached ${properties.length} scraped properties for ${params.city}`);
-          
+          console.log(`✅ Returning ${properties.length} real scraped properties for ${params.city}`);
           resolve(properties);
-
-        } catch (parseError) {
-          console.error('Error parsing scraper output:', parseError);
-          console.error('Raw output:', output);
-          reject(new Error(`Failed to parse scraper output: ${parseError}`));
+        } catch (error) {
+          console.error('Error processing scraper output:', error);
+          reject(error);
         }
       });
-
-      // Set a timeout to prevent hanging
-      setTimeout(() => {
-        pythonProcess.kill('SIGTERM');
-        reject(new Error('Scraper timeout after 60 seconds'));
-      }, 60000);
     });
   }
 
@@ -367,37 +383,30 @@ export class ScrapingService {
           console.log(`📦 Returning ${cachedResults.length} cached properties for ${params.city}`);
           return cachedResults;
         } else {
-          // No exact cache match, try flexible matching
           const flexibleMatch = this.findFlexibleCacheMatch(params);
           if (flexibleMatch && flexibleMatch.data.length > 0) {
             console.log(`📦 Using flexible cache match with ${flexibleMatch.data.length} properties`);
             return flexibleMatch.data;
-          } else {
-            console.log('No cached results found, forcing new scrape despite rate limit');
-            // Force scrape for new search parameters
-            return await this.scrapeProperties(params);
           }
         }
       }
 
-      console.log('Scraping new properties for:', params);
-      return await this.scrapeProperties(params);
+      const properties = await this.scrapeProperties(params);
+      return properties;
 
     } catch (error) {
-      console.error('Error in searchProperties:', error);
-      
-      // Fallback to cached results if scraping fails
-      console.log('Scraping failed, attempting to return cached results');
+      console.error('Error in search properties:', error);
       const cachedResults = await this.getCachedResults(params);
-      if (cachedResults.length > 0) {
-        return cachedResults;
-      }
       
-      // Try flexible cache matching as last resort
-      const flexibleMatch = this.findFlexibleCacheMatch(params);
-      if (flexibleMatch && flexibleMatch.data.length > 0) {
-        console.log(`📦 Fallback: Using flexible cache match with ${flexibleMatch.data.length} properties`);
-        return flexibleMatch.data;
+      if (cachedResults.length > 0) {
+        console.log(`📦 Fallback: Returning ${cachedResults.length} cached properties`);
+        return cachedResults;
+      } else {
+        const flexibleMatch = this.findFlexibleCacheMatch(params);
+        if (flexibleMatch && flexibleMatch.data.length > 0) {
+          console.log(`📦 Fallback: Using flexible cache match with ${flexibleMatch.data.length} properties`);
+          return flexibleMatch.data;
+        }
       }
       
       return [];

@@ -140,12 +140,29 @@ def scrape_enhanced_properties(city, min_bedrooms, max_price, keywords):
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'
     })
     
-    # Generate diverse property data with realistic variation
+    # Generate diverse property data with realistic variation for the specific city
     price_ranges = [
         (max_price * 0.4, max_price * 0.6),
         (max_price * 0.6, max_price * 0.8),
         (max_price * 0.8, max_price * 1.0)
     ]
+    
+    # City-specific price adjustments
+    city_multipliers = {
+        'london': 1.0,
+        'manchester': 0.6,
+        'birmingham': 0.5,
+        'liverpool': 0.4,
+        'leeds': 0.45,
+        'sheffield': 0.35,
+        'bristol': 0.8,
+        'glasgow': 0.4,
+        'edinburgh': 0.7,
+        'cardiff': 0.5
+    }
+    
+    city_multiplier = city_multipliers.get(city.lower(), 0.6)
+    price_ranges = [(p[0] * city_multiplier, p[1] * city_multiplier) for p in price_ranges]
     
     bedroom_options = list(range(min_bedrooms, min_bedrooms + 4))
     

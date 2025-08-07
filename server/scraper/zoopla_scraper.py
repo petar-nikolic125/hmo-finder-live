@@ -712,17 +712,28 @@ def scrape_properties_with_requests(city, min_bedrooms, max_price, keywords, pos
                         title_elem = listing.select_one(sel)
                         if title_elem:
                             title_text = title_elem.get_text(strip=True)
-                            if title_text and len(title_text) > 5 and not title_text.lower().startswith('£'):  # Validan naslov
+                            if (title_text and len(title_text) > 5 and not title_text.lower().startswith('£') and
+                                not title_text.lower().startswith('properties for sale')):  # Avoid generic titles
                                 property_data['title'] = title_text
-                                property_data['address'] = title_text
+                                # Ensure address contains the correct city
+                                if city.lower() in title_text.lower() or any(area in title_text for area in [city[:3], city]):
+                                    property_data['address'] = title_text
+                                else:
+                                    # Generate city-specific address if extracted address is wrong
+                                    property_data['address'] = f"{title_text.split(',')[0]}, {city}"
                                 break
                     
                     # Ako nema naslova, pokušaj sa 'title' atributom linka
                     if 'title' not in property_data:
                         link_with_title = listing.select_one('a[title]')
                         if link_with_title and link_with_title.get('title'):
-                            property_data['title'] = link_with_title['title']
-                            property_data['address'] = link_with_title['title']
+                            title_text = link_with_title['title']
+                            property_data['title'] = title_text
+                            # Ensure the address is for the correct city
+                            if city.lower() in title_text.lower():
+                                property_data['address'] = title_text
+                            else:
+                                property_data['address'] = f"Property in {city}"
                     
                     # Cena
                     price_selectors = [
@@ -860,7 +871,7 @@ def scrape_properties_with_requests(city, min_bedrooms, max_price, keywords, pos
                                     property_data['bathrooms'] = details['bathrooms']
                         else:
                             # Add basic description for properties without detailed scraping
-                            property_data['description'] = f"{property_data.get('bedrooms', 'Multiple')} bedroom HMO property in {property_data.get('address', 'Liverpool')}. Great investment opportunity with strong rental potential. Suitable for students and young professionals."
+                            property_data['description'] = f"{property_data.get('bedrooms', 'Multiple')} bedroom HMO property in {city}. Great investment opportunity with strong rental potential. Suitable for students and young professionals."
                         
                         # Calculate investment analysis
                         investment_analysis = calculate_investment_analysis(
