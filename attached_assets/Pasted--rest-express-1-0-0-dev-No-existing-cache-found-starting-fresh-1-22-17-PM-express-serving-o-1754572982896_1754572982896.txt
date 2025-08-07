@@ -1,0 +1,51 @@
+> rest-express@1.0.0 dev
+📁 No existing cache found, starting fresh
+1:22:17 PM [express] serving on port 5000
+1:22:21 PM [express] GET /api/cities 200 in 3ms :: ["London","Liverpool","Birmingham","Manchester","…
+🔍 API /properties called with query: {
+  city: 'Liverpool',
+  count: '50',
+  minRooms: '4',
+  maxPrice: '500000',
+  keywords: 'HMO'
+}
+🔍 MemStorage: Searching properties with params: {
+  city: 'Liverpool',
+  postcode: undefined,
+  count: 50,
+  minRooms: 4,
+  maxPrice: 500000,
+  keywords: 'HMO',
+  stressTest: false
+}
+🔍 Starting search for Liverpool with minBedrooms: 4, maxPrice: 500000
+🚀 No cache found, allowing scrape
+🚀 Proceeding with fresh scrape
+🔍 Using prime_scraper.py for REAL property data - NO FAKE DATA
+Python scraper stderr: Traceback (most recent call last):
+  File "/home/runner/workspace/server/scraper/prime_scraper.py", line 6, in <module>
+    import requests
+ModuleNotFoundError: No module named 'requests'
+
+Python scraper process finished with code: 1
+Python scraper exited with code 1
+Error output: Traceback (most recent call last):
+  File "/home/runner/workspace/server/scraper/prime_scraper.py", line 6, in <module>
+    import requests
+ModuleNotFoundError: No module named 'requests'
+
+❌ Error in search properties: Error: Scraper failed with code 1: Traceback (most recent call last):
+  File "/home/runner/workspace/server/scraper/prime_scraper.py", line 6, in <module>
+    import requests
+ModuleNotFoundError: No module named 'requests'
+
+    at ChildProcess.<anonymous> (/home/runner/workspace/server/services/scraper.ts:429:18)
+    at ChildProcess.emit (node:events:524:28)
+    at maybeClose (node:internal/child_process:1104:16)
+    at Socket.<anonymous> (node:internal/child_process:456:11)
+    at Socket.emit (node:events:524:28)
+    at Pipe.<anonymous> (node:net:343:12)
+⚠️ No real properties available after error, returning empty array
+⚠️ No scraped properties found. Returning empty result - no fake data fallback.
+✅ Returning 0 properties for Liverpool
+1:22:21 PM [express] GET /api/properties 200 in 79ms :: {"properties":[],"message":"No HMO investmen…
