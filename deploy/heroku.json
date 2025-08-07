@@ -1,0 +1,30 @@
+{
+  "name": "hmo-property-search",
+  "description": "HMO Property Search with Real-time Analytics",
+  "repository": "https://github.com/your-username/hmo-property-search",
+  "logo": "https://raw.githubusercontent.com/your-username/hmo-property-search/main/client/public/favicon.ico",
+  "keywords": ["node", "express", "react", "property", "hmo", "real-estate"],
+  "env": {
+    "NODE_ENV": {
+      "description": "Production environment",
+      "value": "production"
+    }
+  },
+  "formation": {
+    "web": {
+      "quantity": 1,
+      "size": "basic"
+    }
+  },
+  "buildpacks": [
+    {
+      "url": "heroku/nodejs"
+    },
+    {
+      "url": "https://github.com/moneymeets/python-poetry-buildpack.git"
+    }
+  ],
+  "scripts": {
+    "postdeploy": "echo 'HMO Property Search deployed successfully!'"
+  }
+}

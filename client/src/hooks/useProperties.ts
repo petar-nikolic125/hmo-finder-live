@@ -6,8 +6,12 @@ export const useProperties = (params: PropertySearchParams) => {
   return useQuery<PropertySearchResponse>({
     queryKey: ['properties', params],
     queryFn: () => apiClient.getProperties(params),
-    refetchInterval: 120_000, // Auto-poll every 2 minutes
-    staleTime: 90_000,
+    retry: 3,
+    retryDelay: (attemptIndex) => Math.min(1000 * 2 ** attemptIndex, 8000),
+    staleTime: 60_000, // 1 minute
+    gcTime: 300_000, // 5 minutes
+    refetchOnWindowFocus: false,
+    refetchOnMount: true,
     // Note: onSuccess and onError are deprecated in TanStack Query v5
     // Using useEffect in component instead
   });

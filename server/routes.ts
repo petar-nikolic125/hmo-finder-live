@@ -6,8 +6,13 @@ import { scrapingService } from "./services/scraper";
 export async function registerRoutes(app: Express): Promise<Server> {
   // Properties API routes
   app.get("/api/properties", async (req, res) => {
+    const startTime = Date.now();
     try {
       console.log("🔍 API /properties called with query:", req.query);
+      
+      // Set proper headers for better reliability
+      res.setHeader('Content-Type', 'application/json');
+      res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
       // Enhanced parameter validation and edge case handling for stress testing
       let count = req.query.count ? parseInt(req.query.count as string) : 50;
       let minRooms = req.query.minRooms ? parseInt(req.query.minRooms as string) : 
@@ -44,34 +49,59 @@ export async function registerRoutes(app: Express): Promise<Server> {
 
       const result = await storage.getProperties(searchParams);
       
-      console.log(`✅ Returning ${result.properties.length} properties for ${searchParams.city}`);
+      const responseTime = Date.now() - startTime;
+      console.log(`✅ Returning ${result.properties.length} properties for ${searchParams.city} (${responseTime}ms)`);
       
       // Return the structured result with professional messaging
-      res.json({
+      const response = {
         properties: result.properties,
         message: result.message,
         hasExpandedResults: result.hasExpandedResults,
-        totalCount: result.properties.length
-      });
+        totalCount: result.properties.length,
+        responseTime,
+        timestamp: Date.now()
+      };
+      
+      res.status(200).json(response);
     } catch (error) {
-      console.error("Error fetching properties:", error);
-      res.status(500).json({ error: "Failed to fetch properties" });
+      const responseTime = Date.now() - startTime;
+      console.error("❌ Error fetching properties:", error);
+      console.error("🔍 Request details:", { query: req.query, responseTime });
+      
+      res.status(500).json({ 
+        error: "Failed to fetch properties",
+        details: error instanceof Error ? error.message : "Unknown error",
+        timestamp: Date.now(),
+        responseTime
+      });
     }
   });
 
   app.get("/api/cities", async (req, res) => {
     try {
+      res.setHeader('Content-Type', 'application/json');
+      res.setHeader('Cache-Control', 'public, max-age=3600'); // Cache cities for 1 hour
+      
       const cities = await storage.getCities();
-      res.json(cities);
+      res.status(200).json(cities);
     } catch (error) {
-      console.error("Error fetching cities:", error);
-      res.status(500).json({ error: "Failed to fetch cities" });
+      console.error("❌ Error fetching cities:", error);
+      res.status(500).json({ 
+        error: "Failed to fetch cities",
+        details: error instanceof Error ? error.message : "Unknown error",
+        timestamp: Date.now()
+      });
     }
   });
 
   // Health check endpoint
   app.get("/api/ping", (req, res) => {
-    res.json({ now: Date.now() });
+    res.setHeader('Content-Type', 'application/json');
+    res.status(200).json({ 
+      now: Date.now(),
+      status: 'healthy',
+      uptime: process.uptime()
+    });
   });
 
   // Clear cache endpoint for debugging

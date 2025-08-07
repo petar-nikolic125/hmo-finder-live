@@ -1,4 +1,5 @@
 import { PropertySearchParams, PropertyWithAnalytics } from './types';
+import { apiMonitor } from './api-monitor';
 
 // API response structure for property search with professional messaging
 export interface PropertySearchResponse {
@@ -29,21 +30,36 @@ class ApiClient {
     
     console.log(`🔍 API Request: ${fullUrl}`);
     
-    const response = await fetch(fullUrl, {
-      headers: {
-        'Content-Type': 'application/json',
-        ...options?.headers,
-      },
-      ...options,
-    });
+    try {
+      // Check connection status before making request
+      if (!apiMonitor.isConnected()) {
+        console.warn('⚠️ API appears disconnected, attempting anyway...');
+      }
 
-    console.log(`📡 API Response: ${response.status} for ${fullUrl}`);
+      const response = await fetch(fullUrl, {
+        headers: {
+          'Content-Type': 'application/json',
+          ...options?.headers,
+        },
+        signal: AbortSignal.timeout(30000), // 30 second timeout
+        ...options,
+      });
 
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
+      console.log(`📡 API Response: ${response.status} for ${fullUrl}`);
+
+      if (!response.ok) {
+        const errorText = await response.text();
+        console.error(`❌ API Error ${response.status}:`, errorText);
+        throw new Error(`API Error ${response.status}: ${errorText || response.statusText}`);
+      }
+
+      const data = await response.json();
+      console.log(`✅ API Success:`, { url: fullUrl, dataSize: JSON.stringify(data).length });
+      return data;
+    } catch (error) {
+      console.error(`🚨 Request failed for ${fullUrl}:`, error);
+      throw error;
     }
-
-    return response.json();
   }
 
   async getProperties(params: PropertySearchParams = {}): Promise<PropertySearchResponse> {
