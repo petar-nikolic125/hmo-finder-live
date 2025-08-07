@@ -781,11 +781,9 @@ def scrape_properties_with_requests(city, min_bedrooms, max_price, keywords, pos
                             property_data['title'] = title_text
                             property_data['address'] = title_text if city.lower() in str(title_text).lower() else f"Property in {city}"
                         else:
-                            # Generate title from available data
-                            price_str = f"£{property_data.get('price', 'TBC')}" if property_data.get('price') else "Price on application"
-                            bed_str = f"{property_data.get('bedrooms', min_bedrooms)} bed" if property_data.get('bedrooms') else f"{min_bedrooms}+ bed"
-                            property_data['title'] = f"{bed_str} property in {city} - {price_str}"
-                            property_data['address'] = f"Property in {city}"
+                            # SKIP properties without proper titles/addresses to avoid generic duplicates
+                            print(f"⚠️ Skipping property without proper title/address", file=sys.stderr)
+                            continue
                     
                     # Cena
                     price_selectors = [
@@ -1037,11 +1035,15 @@ def scrape_properties_with_requests(city, min_bedrooms, max_price, keywords, pos
         price = prop.get('price', 0)
         bedrooms = prop.get('bedrooms', 0)
         
-        # Skip properties with invalid addresses
+        # Skip properties with invalid or generic addresses
         if (not address or 
             address in ['related searches', 'property in', 'bed property in'] or
-            len(address) < 5):
-            print(f"🚫 Skipping invalid address: {address}", file=sys.stderr)
+            'property in liverpool' in address or
+            'property in manchester' in address or
+            'property in birmingham' in address or
+            'property in' in address and len(address.split()) <= 3 or
+            len(address) < 10):  # Require minimum 10 characters for valid address
+            print(f"🚫 Skipping invalid/generic address: {address}", file=sys.stderr)
             continue
         
         # Clean address for comparison

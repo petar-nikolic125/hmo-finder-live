@@ -8,7 +8,7 @@ import { SortSelect } from '@/components/SortSelect';
 import { UpdateBadge } from '@/components/UpdateBadge';
 import { PropertyCard } from '@/components/PropertyCard';
 import { PropertyGridSkeleton } from '@/components/LoadingSkeletons';
-import { IntelligentLoadingScreen } from '@/components/IntelligentLoadingScreen';
+// IntelligentLoadingScreen removed per user request
 import { RefreshFab } from '@/components/RefreshFab';
 import { Footer } from '@/components/Footer';
 import { PrivacyNoticePopup } from '@/components/PrivacyNoticePopup';
@@ -35,7 +35,7 @@ export const Home = () => {
   const [showPrivacyPopup, setShowPrivacyPopup] = useState(false);
   const [hasSearched, setHasSearched] = useState(false);
   const [showTutorial, setShowTutorial] = useState(true); // Show tutorial on launch
-  const [showLoadingScreen, setShowLoadingScreen] = useState(false);
+  // Loading screen state removed per user request
   
   // Fetch properties with enhanced messaging
   const { data: searchResult, isLoading, isError, refetch } = useProperties(searchParams);
@@ -75,8 +75,6 @@ export const Home = () => {
   }, [isError, toast]);
 
   const handleSearch = () => {
-    setShowLoadingScreen(true);
-    
     if (!hasSearched) {
       setShowPrivacyPopup(true);
       setHasSearched(true);
@@ -85,15 +83,7 @@ export const Home = () => {
     setLastUpdated(Date.now());
   };
 
-  // Hide loading screen when data is loaded
-  useEffect(() => {
-    if (!isLoading && properties.length > 0 && showLoadingScreen) {
-      // Allow a minimum display time then hide
-      setTimeout(() => {
-        setShowLoadingScreen(false);
-      }, 1500);
-    }
-  }, [isLoading, properties.length, showLoadingScreen]);
+  // Loading screen logic removed per user request
 
   const handleRefresh = () => {
     refresh();
@@ -160,17 +150,8 @@ export const Home = () => {
           </div>
         )}
 
-        {showLoadingScreen ? (
-          <IntelligentLoadingScreen 
-            isVisible={showLoadingScreen}
-            city={searchParams.city}
-            searchParams={{
-              minRooms: searchParams.minRooms,
-              maxPrice: searchParams.maxPrice
-            }}
-            onComplete={() => setShowLoadingScreen(false)}
-          />
-        ) : isLoading ? (
+        {/* Loading animation removed per user request */}
+        {isLoading ? (
           <PropertyGridSkeleton count={searchParams.count || 4} />
         ) : filteredProperties.length === 0 ? (
           <div className="text-center py-12">
