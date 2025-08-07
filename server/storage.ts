@@ -9,7 +9,6 @@ export interface PropertySearchParams {
   maxPrice?: number;
   keywords?: string;
   postcode?: string;
-  stressTest?: boolean;
 }
 
 // Enhanced Property type with analytics (calculated from scraped data only)
@@ -103,23 +102,47 @@ export class MemStorage implements IStorage {
   }
 
   private enhancePropertyWithAnalytics(property: Property, params: PropertySearchParams): PropertyWithAnalytics {
-    // Use shared calculation functions to ensure consistency
+    // Calculate JARVIS-accurate analytics based on scraped property data to match analysis modal
     const price = property.price;
     const bedrooms = property.bedrooms || 4;
     const city = property.city || params.city || 'Liverpool';
     
-    // Import and use shared calculations for consistency
-    const { calculatePropertyFinancials, LHA_RATES } = require('../shared/calculations');
-    const financials = calculatePropertyFinancials(price, bedrooms, city);
-    
-    const lhaWeekly = LHA_RATES[city] || 110;
-    const monthlyRent = lhaWeekly * 4.33 * bedrooms;
+    // Real UK LHA rates (Local Housing Allowance) - updated 2024/2025
+    const lhaRates: Record<string, number> = {
+      'Liverpool': 122,
+      'Birmingham': 110,
+      'Manchester': 125,
+      'Leeds': 115,
+      'Sheffield': 108,
+      'Bristol': 140,
+      'Newcastle': 105,
+      'Nottingham': 112,
+      'Leicester': 108,
+      'Coventry': 102,
+      'Brighton': 165,
+      'Cambridge': 180,
+      'Oxford': 175,
+      'Reading': 155,
+      'Portsmouth': 135,
+      'Southampton': 130,
+      'Plymouth': 110,
+      'Derby': 100,
+      'Hull': 95,
+      'Preston': 90,
+      'Blackpool': 85,
+      'Salford': 118,
+      'Stockport': 112,
+      'Wolverhampton': 98
+    };
+
+    const lhaWeekly = lhaRates[city] || 110;
+    const monthlyRent = lhaWeekly * 4.33 * bedrooms; // Weekly to monthly conversion
     const yearlyRent = monthlyRent * 12;
     
-    // Enhanced calculations matching JARVIS precision
-    const stampDuty = price * 0.03;
+    // JARVIS-accurate financial calculations matching analysis modal
+    const stampDuty = price * 0.03; // 3% stamp duty
+    const refurbCost = Math.floor(price * 0.04); // 4% of property value for refurb
     const legalCosts = 1500; // Legal and survey costs
-    const refurbCost = Math.floor(price * 0.04);
     const totalInvested = price + stampDuty + refurbCost + legalCosts;
     
     // Enhanced yield calculations to match JARVIS analysis
