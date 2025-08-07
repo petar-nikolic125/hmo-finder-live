@@ -811,8 +811,9 @@ def scrape_properties_with_requests(city, min_bedrooms, max_price, keywords, pos
                                     property_data['address'] = f"{title_text.split(',')[0]}, {city}"
                                 break
                     
-                    # STRICT: If no title found, try a few more methods but NO fake generation
+                    # ENHANCED: Multiple attempts to extract title/address
                     if 'title' not in property_data:
+                        # Try link titles
                         link_with_title = listing.select_one('a[title]')
                         if link_with_title and link_with_title.get('title'):
                             title_text = link_with_title['title']
@@ -820,7 +821,7 @@ def scrape_properties_with_requests(city, min_bedrooms, max_price, keywords, pos
                                 property_data['title'] = title_text
                                 property_data['address'] = title_text if city.lower() in title_text.lower() else f"{title_text}, {city}"
                         
-                        # Try alt attribute or any text that looks like an address
+                        # Try image alt text
                         if 'title' not in property_data:
                             img_alt = listing.select_one('img[alt]')
                             if img_alt and img_alt.get('alt') and len(img_alt.get('alt', '')) > 5:
@@ -828,6 +829,22 @@ def scrape_properties_with_requests(city, min_bedrooms, max_price, keywords, pos
                                 if any(word in alt_text.lower() for word in ['road', 'street', 'avenue', 'lane', 'close', 'drive', 'place']):
                                     property_data['title'] = alt_text
                                     property_data['address'] = alt_text
+                        
+                        # Try any text that looks like an address pattern
+                        if 'title' not in property_data:
+                            all_text = listing.get_text()
+                            # Look for address patterns
+                            address_patterns = [
+                                r'\d+\s+[A-Z][a-z]+\s+(Road|Street|Avenue|Lane|Close|Drive|Place|Way|Crescent)',
+                                r'[A-Z][a-z]+\s+(Road|Street|Avenue|Lane|Close|Drive|Place|Way|Crescent)',
+                                r'\d+\s+[A-Z][a-z]+\s+[A-Z][a-z]+'  # General address pattern
+                            ]
+                            for pattern in address_patterns:
+                                matches = re.findall(pattern, all_text)
+                                if matches and len(matches[0]) > 5:
+                                    property_data['title'] = matches[0]
+                                    property_data['address'] = f"{matches[0]}, {city}"
+                                    break
                     
                     # Cena
                     price_selectors = [
@@ -868,8 +885,17 @@ def scrape_properties_with_requests(city, min_bedrooms, max_price, keywords, pos
                             if 'price' in property_data:
                                 break
                         
-                        # NO FAKE PRICES: If no price found, skip this property completely
-                        # This prevents "No results found" properties with estimated prices
+                        # If no price found after all attempts, try one more method
+                        if 'price' not in property_data:
+                            # Look for any number that could be a price in the entire listing
+                            all_text = listing.get_text()
+                            # Find numbers that look like property prices (£100k-£2M range)
+                            numbers = re.findall(r'\b(\d{3,7})\b', all_text)
+                            for num_str in numbers:
+                                num = int(num_str)
+                                if 50000 <= num <= 2000000:  # Reasonable UK property price range
+                                    property_data['price'] = num
+                                    break
                     
                     # Broj soba
                     bed_selectors = [
@@ -960,12 +986,14 @@ def scrape_properties_with_requests(city, min_bedrooms, max_price, keywords, pos
                     else:
                         property_data['image_url'] = 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80'
                     
-                    # STRICT: Only add properties with BOTH valid title AND price - no exceptions
-                    if (property_data.get('title') and len(property_data.get('title', '')) > 5 and 
-                        property_data.get('price', 0) > 10000 and 
-                        not property_data.get('title', '').startswith('No results') and
-                        not property_data.get('title', '').startswith('Property in') and
-                        property_data.get('title', '') != f"Property in {city}"):
+                    # BALANCED: Require meaningful data but not overly strict
+                    has_valid_title = (property_data.get('title') and 
+                                      len(property_data.get('title', '')) > 3 and
+                                      not property_data.get('title', '').startswith('No results') and
+                                      not property_data.get('title', '').startswith('Property in'))
+                    has_valid_price = property_data.get('price', 0) > 50000
+                    
+                    if has_valid_title or has_valid_price:
                         
                         # SKIP detailed scraping for speed - use basic description for ALL properties
                         property_data['description'] = f"{property_data.get('bedrooms', 'Multiple')} bedroom HMO property in {city}. Great investment opportunity with strong rental potential. Suitable for students and young professionals."
@@ -984,6 +1012,11 @@ def scrape_properties_with_requests(city, min_bedrooms, max_price, keywords, pos
                         
                         properties.append(property_data)
                         print(f"✅ Scraped property {len(properties)}: {property_data.get('title', 'Unknown')[:40]}... - £{property_data.get('price', 0)} (Yield: {property_data.get('gross_yield', 0)}%)", file=sys.stderr)
+                    else:
+                        # DEBUG: Log why property was rejected
+                        title = property_data.get('title', 'NO_TITLE')
+                        price = property_data.get('price', 0)
+                        print(f"❌ Rejected property: title='{title[:20]}...' price=£{price}", file=sys.stderr)
                     
                     if len(properties) >= 500:  # MAXIMIZED: Extract up to 500 properties per URL
                         break
