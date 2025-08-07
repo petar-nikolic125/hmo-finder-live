@@ -37,7 +37,7 @@ app.use((req, res, next) => {
   next();
 });
 
-(async () => {
+async function initializeApp() {
   // Run comprehensive startup check (non-blocking)
   performStartupCheck().catch((error) => {
     log(`⚠️ Startup check failed: ${error}`);
@@ -62,19 +62,32 @@ app.use((req, res, next) => {
     serveStatic(app);
   }
 
-  // Configure server timeouts for better reliability
-  server.timeout = 60000; // 60 seconds
-  server.keepAliveTimeout = 65000; // 65 seconds
-  server.headersTimeout = 66000; // 66 seconds
+  // Only start server if not in Vercel environment
+  if (!process.env.VERCEL) {
+    // Configure server timeouts for better reliability
+    server.timeout = 60000; // 60 seconds
+    server.keepAliveTimeout = 65000; // 65 seconds
+    server.headersTimeout = 66000; // 66 seconds
 
-  // Use environment PORT for production deployment compatibility
-  // Fallback to 5000 for Replit environment
-  const port = process.env.PORT || 5000;
-  server.listen({
-    port,
-    host: "0.0.0.0",
-    reusePort: true,
-  }, () => {
-    log(`serving on port ${port}`);
-  });
-})();
+    // Use environment PORT for production deployment compatibility
+    // Fallback to 5000 for Replit environment
+    const port = process.env.PORT || 5000;
+    server.listen({
+      port,
+      host: "0.0.0.0",
+      reusePort: true,
+    }, () => {
+      log(`serving on port ${port}`);
+    });
+  }
+  
+  return app;
+}
+
+// For regular deployment (Replit, local)
+if (!process.env.VERCEL) {
+  initializeApp();
+}
+
+// Export the app initialization function for Vercel
+export { initializeApp };
