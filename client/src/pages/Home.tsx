@@ -19,7 +19,7 @@ import { useToast } from '@/hooks/use-toast';
 export const Home = () => {
   const { toast } = useToast();
   const refresh = useRefreshProperties();
-  
+
   // Search parameters
   const [searchParams, setSearchParams] = useState<PropertySearchParams>({
     city: 'Liverpool',
@@ -28,7 +28,7 @@ export const Home = () => {
     maxPrice: 500000,
     keywords: 'HMO',
   });
-  
+
   // UI state
   const [searchTerm, setSearchTerm] = useState('');
   const [lastUpdated, setLastUpdated] = useState(Date.now());
@@ -36,19 +36,19 @@ export const Home = () => {
   const [hasSearched, setHasSearched] = useState(false);
   const [showTutorial, setShowTutorial] = useState(true); // Show tutorial on launch
   // Loading screen state removed per user request
-  
+
   // Fetch properties with enhanced messaging
   const { data: searchResult, isLoading, isError, refetch } = useProperties(searchParams);
   const properties = searchResult?.properties || [];
   const expandedResultsMessage = searchResult?.message;
   const hasExpandedResults = searchResult?.hasExpandedResults || false;
-  
+
   // Production: Removed debug logging for performance
-  
+
   // Filter properties by search term (client-side)
   const filteredProperties = useMemo(() => {
     if (!searchTerm.trim()) return properties;
-    
+
     const term = searchTerm.toLowerCase();
     return properties.filter(property =>
       property.address.toLowerCase().includes(term) ||
@@ -105,7 +105,7 @@ export const Home = () => {
         onCityChange={(city) => updateSearchParams({ city })}
         onShowTutorial={() => setShowTutorial(true)}
       />
-      
+
       <HeroSection
         searchParams={searchParams}
         onSearch={handleSearch}
@@ -178,7 +178,7 @@ export const Home = () => {
       <Footer />
 
       <RefreshFab onRefresh={handleRefresh} isLoading={isLoading} />
-      
+
       {/* Privacy Notice Popup */}
       {showPrivacyPopup && (
         <PrivacyNoticePopup onClose={() => setShowPrivacyPopup(false)} />
