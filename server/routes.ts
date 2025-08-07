@@ -28,17 +28,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
         minRooms = 15;
       }
       
-      // Detect potential stress testing patterns
-      const stressTest = req.query.stressTest === 'true';
-      const isLikelyStressTest = stressTest || (
-        (maxPrice && (maxPrice < 50000 || maxPrice > 5000000)) ||
-        (minRooms && minRooms > 10) ||
-        (count > 30)
-      );
-      
-      if (isLikelyStressTest) {
-        console.log('🔥 STRESS TEST MODE DETECTED - Using enhanced robust handling');
-      }
+      // NO STRESS TEST MODE - Always use real scraping only
       
       const searchParams: PropertySearchParams = {
         city: req.query.city as string,
@@ -47,7 +37,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
         minRooms,
         maxPrice,
         keywords: req.query.keywords as string,
-        stressTest: isLikelyStressTest
+        stressTest: false
       };
 
       const properties = await storage.getProperties(searchParams);
@@ -84,48 +74,6 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
-  // Stress testing endpoint for extreme edge cases
-  app.post("/api/stress-test", async (req, res) => {
-    try {
-      console.log('🔥 STRESS TEST INITIATED');
-      const testCases = [
-        { city: "London", minRooms: 10, maxPrice: 50000, keywords: "HMO", description: "Extreme low price, high bedrooms" },
-        { city: "Cambridge", minRooms: 1, maxPrice: 10000000, keywords: "", description: "Extreme high price" },
-        { postcode: "M1 1AA", minRooms: 15, maxPrice: 1000000, keywords: "luxury", description: "Manchester postcode, extreme bedrooms" },
-        { city: "Brighton", minRooms: 20, maxPrice: 100000, keywords: "student", description: "Impossible parameters" }
-      ];
-
-      const results = [];
-      for (const testCase of testCases) {
-        console.log(`Testing: ${testCase.description}`);
-        try {
-          const searchParams: PropertySearchParams = {
-            ...testCase,
-            count: 5,
-            stressTest: true
-          };
-          const properties = await storage.getProperties(searchParams);
-          results.push({
-            testCase: testCase.description,
-            success: properties.length > 0,
-            propertyCount: properties.length,
-            firstProperty: properties[0]?.address || "No properties found"
-          });
-        } catch (error) {
-          results.push({
-            testCase: testCase.description,
-            success: false,
-            error: (error as Error).message
-          });
-        }
-      }
-
-      res.json({ message: "Stress test completed", results });
-    } catch (error) {
-      console.error("Stress test failed:", error);
-      res.status(500).json({ error: "Stress test failed" });
-    }
-  });
 
   const httpServer = createServer(app);
   return httpServer;

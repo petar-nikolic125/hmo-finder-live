@@ -290,16 +290,16 @@ export class ScrapingService {
 
   async scrapeProperties(params: SearchParams): Promise<Property[]> {
     return new Promise((resolve, reject) => {
-      const pythonScript = path.join(process.cwd(), 'server/scraper/enhanced_scraper.py');
+      const pythonScript = path.join(process.cwd(), 'server/scraper/zoopla_scraper.py');
       const args = [
         pythonScript,
         params.city,
         params.minBedrooms.toString(),
         params.maxPrice.toString(),
-        params.keywords
+        params.keywords || 'HMO'
       ];
 
-      console.log(`🚀 Using enhanced_scraper.py for better property diversity`);
+      console.log(`🔍 Using zoopla_scraper.py for REAL property data - NO FAKE DATA`);
 
       const pythonProcess = spawn('python3', args, {
         stdio: ['pipe', 'pipe', 'pipe'],
@@ -347,7 +347,7 @@ export class ScrapingService {
           console.log(`✅ Successfully parsed ${scrapedProperties.length} properties`);
 
           if (!scrapedProperties || scrapedProperties.length === 0) {
-            console.log('No properties found during scraping');
+            console.log('⚠️ No scraped properties found. Returning empty array - no fake data fallback.');
             resolve([]);
             return;
           }
@@ -396,19 +396,17 @@ export class ScrapingService {
 
     } catch (error) {
       console.error('Error in search properties:', error);
+      
+      // STRICT: Only return cached REAL scraped data, never generate fake data
       const cachedResults = await this.getCachedResults(params);
       
       if (cachedResults.length > 0) {
-        console.log(`📦 Fallback: Returning ${cachedResults.length} cached properties`);
+        console.log(`📦 Fallback: Returning ${cachedResults.length} cached REAL properties`);
         return cachedResults;
-      } else {
-        const flexibleMatch = this.findFlexibleCacheMatch(params);
-        if (flexibleMatch && flexibleMatch.data.length > 0) {
-          console.log(`📦 Fallback: Using flexible cache match with ${flexibleMatch.data.length} properties`);
-          return flexibleMatch.data;
-        }
       }
       
+      // NO fake data generation - return empty array if no real data available
+      console.log('⚠️ No real properties available, returning empty array');
       return [];
     }
   }
