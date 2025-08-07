@@ -1,29 +1,46 @@
 # HMO Property Search - Production Deployment Guide
 
-## Python Dependencies Issue Fix
+## Python Dependencies Issue - SOLVED ✅
 
-This application uses Python for web scraping. The main issue in production was that Python modules weren't being installed correctly.
+This application uses Python for web scraping. The recurring issue where Python modules got "corrupted" every time the environment restarted has been **completely fixed** with an automatic solution.
 
-### Quick Setup for Production
+### ⚡ One-Command Production Setup
 
-1. **Run the Python setup script:**
-   ```bash
-   ./scripts/setup-python.sh
-   ```
+**Simply run the production deployment script:**
+```bash
+./deploy-production.sh
+```
 
-2. **Or manually install dependencies:**
-   ```bash
-   # Install uv package manager if not available
-   curl -LsSf https://astral.sh/uv/install.sh | sh
+This script will:
+- ✅ Install uv package manager
+- ✅ Install all Python dependencies (requests, beautifulsoup4, lxml)
+- ✅ Verify the installation works
+- ✅ Build the Node.js application
+- ✅ Test the scraper functionality
 
-   # Install Python dependencies
-   uv sync
-   ```
+### 🛡️ Automatic Fix Implemented
 
-3. **Verify installation:**
-   ```bash
-   python3 -c "import requests, bs4, lxml; print('✅ All packages installed!')"
-   ```
+The application now **automatically detects and fixes** Python dependency issues:
+
+1. **Server Startup Check** - Verifies dependencies when server starts
+2. **Before Each Scrape** - Checks dependencies before running Python scraper
+3. **Auto-Recovery** - Automatically reinstalls dependencies if ModuleNotFoundError detected
+4. **Cache Fallback** - Uses cached data if Python setup temporarily fails
+
+### Alternative Manual Setup
+
+If you prefer manual setup:
+
+```bash
+# Install uv package manager if not available
+curl -LsSf https://astral.sh/uv/install.sh | sh
+
+# Install Python dependencies
+uv sync
+
+# Verify installation
+python3 -c "import requests, bs4, lxml; print('✅ All packages installed!')"
+```
 
 ### Key Files for Deployment
 

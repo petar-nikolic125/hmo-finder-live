@@ -2,6 +2,7 @@ import { spawn } from 'child_process';
 import path from 'path';
 import crypto from 'crypto';
 import fs from 'fs/promises';
+import { pythonSetup } from '../utils/python-setup.js';
 
 export interface SearchParams {
   city: string;
@@ -367,6 +368,23 @@ export class ScrapingService {
   }
 
   async scrapeProperties(params: SearchParams): Promise<Property[]> {
+    // Ensure Python dependencies are installed before running scraper
+    console.log('🐍 Checking Python dependencies before scraping...');
+    const setupResult = await pythonSetup.ensurePythonReady();
+    
+    if (!setupResult.success) {
+      console.error('❌ Failed to setup Python dependencies:', setupResult.message);
+      // Try to return cached results as fallback
+      const cachedResults = await this.getCachedResults(params);
+      if (cachedResults.length > 0) {
+        console.log(`📦 Using cached fallback due to Python setup failure: ${cachedResults.length} properties`);
+        return cachedResults;
+      }
+      throw new Error(`Python dependencies not available: ${setupResult.message}`);
+    }
+    
+    console.log('✅ Python dependencies verified, proceeding with scraping');
+
     return new Promise((resolve, reject) => {
       const pythonScript = path.join(process.cwd(), 'server/scraper/prime_scraper.py');
       const args = [
@@ -406,6 +424,18 @@ export class ScrapingService {
         if (code !== 0) {
           console.error(`Python scraper exited with code ${code}`);
           console.error('Error output:', errorOutput);
+          
+          // Check if this is a Python dependency issue and try to fix it
+          if (errorOutput.includes('ModuleNotFoundError') || errorOutput.includes('No module named')) {
+            console.log('🔧 Detected Python module error, attempting auto-fix...');
+            pythonSetup.setupPythonDependencies().then(async (setupResult) => {
+              if (setupResult.success) {
+                console.log('✅ Python dependencies reinstalled, please retry the request');
+              } else {
+                console.log('❌ Failed to reinstall Python dependencies:', setupResult.message);
+              }
+            });
+          }
           
           // In production, try to return cached results instead of failing completely
           if (process.env.NODE_ENV === 'production') {
