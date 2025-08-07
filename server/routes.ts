@@ -9,7 +9,8 @@ export async function registerRoutes(app: Express): Promise<Server> {
     try {
       // Enhanced parameter validation and edge case handling for stress testing
       let count = req.query.count ? parseInt(req.query.count as string) : 50;
-      let minRooms = req.query.minRooms ? parseInt(req.query.minRooms as string) : undefined;
+      let minRooms = req.query.minRooms ? parseInt(req.query.minRooms as string) : 
+                     req.query.minBedrooms ? parseInt(req.query.minBedrooms as string) : undefined;
       let maxPrice = req.query.maxPrice ? parseInt(req.query.maxPrice as string) : undefined;
       
       // Extreme edge case validation to prevent system abuse

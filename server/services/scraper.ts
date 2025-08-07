@@ -87,13 +87,25 @@ export class ScrapingService {
     const searchHash = this.generateSearchHash(params);
     const cached = this.cache[searchHash];
     
-    if (!cached) return true;
+    if (!cached) {
+      console.log('🚀 No cache found, allowing scrape');
+      return true;
+    }
     
     const lastScraped = new Date(cached.lastScraped);
     const now = new Date();
     const timeDiff = now.getTime() - lastScraped.getTime();
+    const canScrape = timeDiff > this.rateLimitMs;
     
-    return timeDiff > this.rateLimitMs;
+    console.log(`⏰ Cache check: Last scraped ${Math.floor(timeDiff/1000)}s ago, rate limit ${this.rateLimitMs/1000}s, can scrape: ${canScrape}`);
+    
+    // In development, allow more frequent scraping for testing
+    if (process.env.NODE_ENV === 'development' && timeDiff > 5000) {
+      console.log('🔧 Development mode: allowing scrape after 5s');
+      return true;
+    }
+    
+    return canScrape;
   }
 
   private async cacheResults(params: SearchParams, properties: Property[]): Promise<void> {
@@ -479,40 +491,54 @@ export class ScrapingService {
 
   async searchProperties(params: SearchParams): Promise<Property[]> {
     try {
+      console.log(`🔍 Starting search for ${params.city} with minBedrooms: ${params.minBedrooms}, maxPrice: ${params.maxPrice}`);
+      
       const canScrape = await this.canScrapeNow(params);
       
       if (!canScrape) {
-        console.log('Rate limit active, checking for cached results');
+        console.log('⏰ Rate limit active, checking for cached results');
         const cachedResults = await this.getCachedResults(params);
         
         if (cachedResults.length > 0) {
           console.log(`📦 Returning ${cachedResults.length} cached properties for ${params.city}`);
           return cachedResults;
         } else {
+          console.log('⚠️ No exact cache match, trying flexible match...');
           const flexibleMatch = this.findFlexibleCacheMatch(params);
           if (flexibleMatch && flexibleMatch.data.length > 0) {
             console.log(`📦 Using flexible cache match with ${flexibleMatch.data.length} properties`);
             return flexibleMatch.data;
           }
+          console.log('❌ No flexible cache match found either');
+        }
+        
+        // If rate limited and no cache, force scrape anyway in development
+        if (process.env.NODE_ENV === 'development') {
+          console.log('🔧 Development mode: Forcing scrape despite rate limit');
+        } else {
+          console.log('⚠️ Production rate limit enforced, returning empty');
+          return [];
         }
       }
 
+      console.log('🚀 Proceeding with fresh scrape');
       const properties = await this.scrapeProperties(params);
+      console.log(`✅ Scraping completed, returning ${properties.length} properties`);
       return properties;
 
     } catch (error) {
-      console.error('Error in search properties:', error);
+      console.error('❌ Error in search properties:', error);
       
       // STRICT: Only return cached REAL scraped data, never generate fake data
       const cachedResults = await this.getCachedResults(params);
       
       if (cachedResults.length > 0) {
-        console.log(`📦 Fallback: Returning ${cachedResults.length} cached REAL properties`);
+        console.log(`📦 Error fallback: Returning ${cachedResults.length} cached REAL properties`);
         return cachedResults;
       }
       
       // NO fake data generation - return empty array if no real data available
-      console.log('⚠️ No real properties available, returning empty array');
+      console.log('⚠️ No real properties available after error, returning empty array');
       return [];
     }
   }
