@@ -32,7 +32,7 @@ A production-optimized full-stack TypeScript application for searching HMO (Hous
 Properties include basic info (address, price, size, bedrooms, bathrooms) and comprehensive financial analytics (ROI, yields, cashflow, DSCR, payback years). Portal integration uses `SEARCH_SEEDS` for Rightmove and Zoopla URLs.
 
 ### Key Features
-- **Production Deployment Ready**: Critical production deployment issues resolved - searches now work reliably on hosting platforms like Render
+- **Production Deployment Ready**: Critical production deployment issues resolved - build path mismatch fixed with post-build script for Render deployment
 - **Authentic Data Only**: Real property scraping from Zoopla and PrimeLocation with zero synthetic/fake data fallbacks
 - **Enhanced Error Handling**: Production-safe caching system with /tmp/ file paths and comprehensive fallback mechanisms
 - **Parameter Compatibility**: Fixed frontend/backend parameter synchronization for reliable property searches
