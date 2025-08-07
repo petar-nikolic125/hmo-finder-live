@@ -335,37 +335,33 @@ def get_rental_estimate_by_city(city, address, bedrooms):
     return total_rent
 
 def calculate_investment_analysis(price, bedrooms, address="", area_sqm=None, city="Liverpool"):
-    """Izračunaj kompletnu investicionu analizu"""
+    """Calculate complete investment analysis with accurate ROI and yield formulas"""
     
-    # Mesečna renta based on city
+    # Monthly rent based on city
     monthly_rent = get_rental_estimate_by_city(city, address, bedrooms)
     annual_rent = monthly_rent * 12
     
-    # Gross yield
+    # CORRECTED: Gross Yield (%) = (Annual Rent ÷ Purchase Price) × 100
     gross_yield = (annual_rent / price) * 100 if price > 0 else 0
     
-    # Investment calculations
+    # CORRECTED: Estimated annual costs as 10% of annual rent (management, maintenance, etc.)
+    estimated_annual_costs = annual_rent * 0.10
+    
+    # CORRECTED: ROI (%) = (Annual Rent - Estimated Annual Costs) ÷ Purchase Price × 100
+    net_annual_income = annual_rent - estimated_annual_costs
+    roi = (net_annual_income / price) * 100 if price > 0 else 0
+    
+    # Investment calculations for display
     deposit_25 = price * 0.25
     mortgage_75 = price * 0.75
-    
-    # Godišnji troškovi
-    maintenance_cost = price * 0.05  # 5% od vrednosti
-    property_tax = 1200  # Fixed £1200/year
-    mortgage_interest = mortgage_75 * 0.055  # Assume 5.5% interest rate
-    
-    total_annual_costs = maintenance_cost + property_tax + mortgage_interest
-    net_annual_income = annual_rent - total_annual_costs
-    
-    # ROI na deposit
-    roi_on_deposit = (net_annual_income / deposit_25) * 100 if deposit_25 > 0 else 0
     
     # Price per square meter
     price_per_sqm = price / area_sqm if area_sqm and area_sqm > 0 else None
     
-    # Profitability score
-    if gross_yield >= 8 and roi_on_deposit >= 15:
+    # Profitability score using corrected ROI
+    if gross_yield >= 8 and roi >= 15:
         profitability = "high"
-    elif gross_yield >= 6 and roi_on_deposit >= 10:
+    elif gross_yield >= 6 and roi >= 10:
         profitability = "medium"
     else:
         profitability = "low"
@@ -376,9 +372,9 @@ def calculate_investment_analysis(price, bedrooms, address="", area_sqm=None, ci
         "gross_yield": round(gross_yield, 2),
         "deposit_required": int(deposit_25),
         "mortgage_amount": int(mortgage_75),
-        "annual_costs": int(total_annual_costs),
+        "annual_costs": int(estimated_annual_costs),
         "net_annual_income": int(net_annual_income),
-        "roi_on_deposit": round(roi_on_deposit, 2),
+        "roi_on_deposit": round(roi, 2),  # Updated to use corrected ROI calculation
         "price_per_sqm": int(price_per_sqm) if price_per_sqm else None,
         "profitability_score": profitability
     }

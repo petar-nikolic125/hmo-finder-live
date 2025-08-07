@@ -262,11 +262,11 @@ export class MemStorage implements IStorage {
   async getCities(): Promise<string[]> {
     // Return list of UK cities supported by our scraper
     return [
-      'London', 'Liverpool', 'Birmingham', 'Manchester', 'Leeds', 'Sheffield', 
-      'Bristol', 'Newcastle', 'Nottingham', 'Leicester', 'Coventry',
-      'Brighton', 'Cambridge', 'Oxford', 'Reading', 'Portsmouth',
-      'Southampton', 'Plymouth', 'Derby', 'Hull', 'Preston',
-      'Blackpool', 'Salford', 'Stockport', 'Wolverhampton'
+      'London', 'Liverpool', 'Birmingham', 'Manchester', 'West Yorkshire', 'Sheffield', 
+      'Bristol', 'County Down', 'Nottingham', 'Leicester', 'Coventry',
+      'East Sussex', 'Cambridgeshire', 'Oxford', 'Reading', 'Portsmouth',
+      'Southampton', 'Plymouth', 'Derby', 'Hull', 'Lancashire',
+      'Blackpool', 'Greater Manchester', 'Stockport', 'Wolverhampton'
     ];
   }
 }
