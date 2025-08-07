@@ -70,14 +70,18 @@ async function initializeApp() {
     server.headersTimeout = 66000; // 66 seconds
 
     // Use environment PORT for production deployment compatibility
-    // Fallback to 5000 for Replit environment
-    const port = process.env.PORT || 5000;
+    // Railway, Render, Heroku, or Replit environment
+    const port = parseInt(process.env.PORT || "5000");
+    const host = process.env.RAILWAY_ENVIRONMENT ? "0.0.0.0" : "0.0.0.0";
+    
     server.listen({
       port,
-      host: "0.0.0.0",
-      reusePort: true,
+      host,
+      reusePort: process.env.NODE_ENV !== "production",
     }, () => {
-      log(`serving on port ${port}`);
+      log(`🚂 HMO Property Search serving on ${host}:${port}`);
+      log(`🔧 Environment: ${process.env.NODE_ENV || 'development'}`);
+      log(`🌐 Railway: ${process.env.RAILWAY_ENVIRONMENT ? 'Yes' : 'No'}`);
     });
   }
   
