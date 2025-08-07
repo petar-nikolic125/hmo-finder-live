@@ -10,7 +10,8 @@ A production-optimized full-stack TypeScript application for searching HMO (Hous
 - Emphasize financial analytics and ROI calculations
 - Maintain authentic portal integration with real search URLs
 - Responsive design for mobile and desktop users
-- Ready for production deployment on Vercel platform
+- Ready for production deployment on Render/Vercel platforms
+- Requires proper deployment configuration with fixed static file paths
 
 ## System Architecture
 
