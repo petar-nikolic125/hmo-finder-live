@@ -63,7 +63,7 @@ async function initializeApp() {
   }
 
   // Only start server if not in Vercel environment or Railway build
-  if (!process.env.VERCEL && !process.env.RAILWAY_STATIC_URL && !process.env.RAILWAY_ENVIRONMENT) {
+  if (!process.env.VERCEL && !process.env.RAILWAY_STATIC_URL && !process.env.RAILWAY_ENVIRONMENT && !process.env.RAILWAY) {
     // Configure server timeouts for better reliability
     server.timeout = 60000; // 60 seconds
     server.keepAliveTimeout = 65000; // 65 seconds

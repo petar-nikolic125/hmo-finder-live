@@ -2,7 +2,7 @@
 builder = "nixpacks"
 
 [deploy]
-startCommand = "npm run build && npm run start:production"
+startCommand = "npm run build && node railway-start.js"
 healthcheckPath = "/api/ping"
 healthcheckTimeout = 60
 restartPolicyType = "on_failure"
