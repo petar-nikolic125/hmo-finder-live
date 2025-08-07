@@ -32,12 +32,11 @@ export const PropertyCard = ({ property, delay = 0 }: PropertyCardProps) => {
 
   // Get appropriate portal URL
   const getPortalUrl = () => {
-    console.log('🔗 PropertyCard: Getting portal URL for property:', property.address);
-    console.log('🔗 PropertyCard: propertyUrl field:', property.propertyUrl);
+
     
     // If it's a demo property, use portal search URLs
     if (isDemoProperty()) {
-      console.log('🔗 PropertyCard: Using portal search URLs for demo property');
+
       const rand = Math.random();
       if (rand < 0.70 && property.rightmoveUrl) return property.rightmoveUrl;
       if (rand < 0.95 && property.zooplaUrl) return property.zooplaUrl;
@@ -46,7 +45,6 @@ export const PropertyCard = ({ property, delay = 0 }: PropertyCardProps) => {
     }
     
     // Use real scraped property URL
-    console.log('🔗 PropertyCard: Using real scraped property URL:', property.propertyUrl);
     return property.propertyUrl;
   };
 

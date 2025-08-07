@@ -123,10 +123,7 @@ export const HeroSection = ({
                 </label>
                 <Select 
                   value={searchParams.city || 'Birmingham'}
-                  onValueChange={(value) => {
-                    console.log('🏙️ HeroSection: City changed to:', value);
-                    onCityChange(value);
-                  }}
+                  onValueChange={onCityChange}
                 >
                   <SelectTrigger className="h-12 text-base border-2 border-gray-200 hover:border-blue-400 focus:border-blue-500 transition-colors rounded-xl">
                     <SelectValue placeholder="Select a city" />
@@ -148,10 +145,7 @@ export const HeroSection = ({
                 </label>
                 <Select 
                   value={searchParams.maxPrice?.toString() || '500000'}
-                  onValueChange={(value) => {
-                    console.log('💰 HeroSection: Max price changed to:', parseInt(value));
-                    onMaxPriceChange(parseInt(value));
-                  }}
+                  onValueChange={(value) => onMaxPriceChange(parseInt(value))}
                 >
                   <SelectTrigger className="h-12 text-base border-2 border-gray-200 hover:border-green-400 focus:border-green-500 transition-colors rounded-xl">
                     <SelectValue />
@@ -175,10 +169,7 @@ export const HeroSection = ({
                 </label>
                 <Select 
                   value={searchParams.minRooms?.toString() || '4'}
-                  onValueChange={(value) => {
-                    console.log('🛏️ HeroSection: Min rooms changed to:', parseInt(value));
-                    onMinRoomsChange(parseInt(value));
-                  }}
+                  onValueChange={(value) => onMinRoomsChange(parseInt(value))}
                 >
                   <SelectTrigger className="h-12 text-base border-2 border-gray-200 hover:border-purple-400 focus:border-purple-500 transition-colors rounded-xl">
                     <SelectValue />
@@ -196,10 +187,7 @@ export const HeroSection = ({
 
             <div className="flex flex-col sm:flex-row items-center gap-4">
               <Button 
-                onClick={() => {
-                  console.log('🔍 HeroSection: Search button clicked');
-                  onSearch();
-                }}
+                onClick={onSearch}
                 size="lg" 
                 className="w-full sm:flex-1 h-14 bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 text-white text-base sm:text-lg font-semibold shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300 rounded-xl"
                 disabled={isLoading}
@@ -209,10 +197,7 @@ export const HeroSection = ({
               </Button>
               
               <Button 
-                onClick={() => {
-                  console.log('🔄 HeroSection: Refresh button clicked');
-                  onRefresh();
-                }}
+                onClick={onRefresh}
                 variant="outline" 
                 size="lg"
                 className="w-full sm:w-auto h-14 border-2 border-gray-300 hover:border-blue-400 hover:bg-blue-50 text-gray-700 hover:text-blue-700 transition-all duration-300 rounded-xl px-6"

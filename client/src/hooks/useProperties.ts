@@ -5,10 +5,7 @@ import { PropertySearchParams } from '@/lib/types';
 export const useProperties = (params: PropertySearchParams) => {
   return useQuery<PropertySearchResponse>({
     queryKey: ['properties', params],
-    queryFn: () => {
-      console.log('🌐 API: Fetching properties with params:', params);
-      return apiClient.getProperties(params);
-    },
+    queryFn: () => apiClient.getProperties(params),
     refetchInterval: 120_000, // Auto-poll every 2 minutes
     staleTime: 90_000,
     // Note: onSuccess and onError are deprecated in TanStack Query v5

@@ -3,11 +3,11 @@ import { useProperties, useRefreshProperties } from '@/hooks/useProperties';
 import { PropertySearchParams } from '@/lib/types';
 import { Header } from '@/components/Header';
 import { HeroSection } from '@/components/HeroSection';
-// Removed FilterBar - now unified into HeroSection
+
 import { SortSelect } from '@/components/SortSelect';
 import { UpdateBadge } from '@/components/UpdateBadge';
 import { PropertyCard } from '@/components/PropertyCard';
-import { PropertyGridSkeleton } from '@/components/PropertySkeletonCard';
+import { PropertyGridSkeleton } from '@/components/LoadingSkeletons';
 import { IntelligentLoadingScreen } from '@/components/IntelligentLoadingScreen';
 import { RefreshFab } from '@/components/RefreshFab';
 import { Footer } from '@/components/Footer';
@@ -43,18 +43,7 @@ export const Home = () => {
   const expandedResultsMessage = searchResult?.message;
   const hasExpandedResults = searchResult?.hasExpandedResults || false;
   
-  // Add console logging to track data flow
-  useEffect(() => {
-    console.log('🏠 Home: Properties data updated:', properties.length, 'properties');
-    if (expandedResultsMessage) {
-      console.log('💬 Home: Professional message:', expandedResultsMessage);
-    }
-    if (properties.length > 0) {
-      console.log('🏠 Home: First property sample:', properties[0]);
-      const hasExpandedProps = properties.some(p => p.isExpandedResult);
-      console.log('💰 Home: Contains expanded price results:', hasExpandedProps);
-    }
-  }, [properties, expandedResultsMessage]);
+  // Production: Removed debug logging for performance
   
   // Filter properties by search term (client-side)
   const filteredProperties = useMemo(() => {
@@ -86,12 +75,8 @@ export const Home = () => {
   }, [isError, toast]);
 
   const handleSearch = () => {
-    console.log('🔍 Home: Search triggered with params:', searchParams);
-    
-    // Show loading screen when search starts
     setShowLoadingScreen(true);
     
-    // Show privacy popup on first search
     if (!hasSearched) {
       setShowPrivacyPopup(true);
       setHasSearched(true);

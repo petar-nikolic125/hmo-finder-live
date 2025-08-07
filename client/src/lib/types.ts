@@ -21,16 +21,21 @@ export interface InsertProperty {
 }
 
 export interface PropertyWithAnalytics extends InsertProperty {
-  lhaWeekly: number;
-  grossYield: number;
-  netYield: number;
-  roi: number;
-  paybackYears: number;
-  monthlyCashflow: number;
-  dscr: number;
-  stampDuty: number;
-  refurbCost: number;
-  totalInvested: number;
+  id?: number;
+  city?: string;
+  scrapedAt?: string;
+  isExpandedResult?: boolean;
+  gross_yield?: number; // Backend field name compatibility
+  lhaWeekly?: number;
+  grossYield?: number;
+  netYield?: number;
+  roi?: number;
+  paybackYears?: number;
+  monthlyCashflow?: number;
+  dscr?: number;
+  stampDuty?: number;
+  refurbCost?: number;
+  totalInvested?: number;
   profitabilityScore?: string;
 }
 

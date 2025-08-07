@@ -1,28 +1,4 @@
-import { PropertySearchParams, InsertProperty } from './types';
-
-// Enhanced property type with analytics
-export type PropertyWithAnalytics = InsertProperty & {
-  lhaWeekly: number;
-  grossYield: number;
-  netYield: number;
-  roi: number;
-  paybackYears: number;
-  monthlyCashflow: number;
-  dscr: number;
-  stampDuty: number;
-  refurbCost: number;
-  totalInvested: number;
-  profitabilityScore?: string;
-  size?: number;
-  postcode?: string;
-  latitude?: number;
-  longitude?: number;
-  rightmoveUrl?: string;
-  zooplaUrl?: string;
-  primeLocationUrl?: string;
-  description?: string;
-  isExpandedResult?: boolean;
-};
+import { PropertySearchParams, PropertyWithAnalytics } from './types';
 
 // API response structure for property search with professional messaging
 export interface PropertySearchResponse {
