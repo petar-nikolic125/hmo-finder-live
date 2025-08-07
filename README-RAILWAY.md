@@ -84,6 +84,17 @@ node dist/index.js
 - Health check je dostupan na `/api/ping`
 - Aplikacija loguje deployment platform
 
+### Ako se podaci ne prikazuju:
+1. Otvorite browser console na `/`
+2. Pokrenite `debugProduction()` da testirate API endpoints
+3. Proverite da li API vraća podatke sa `/api/properties`
+4. Debug poruke pokazuju strukturu podataka
+
+### Česti problemi:
+- **Serverless timeout**: Railway ima 60s timeout limit
+- **Python scraping blocked**: Nekad portali blokiraju scraping (normalno)
+- **Port binding**: Railway automatski postavlja PORT environment variable
+
 ## 🌟 Funkcionalnosti:
 
 Vaša aplikacija na Railway-u će imati:

@@ -12,6 +12,13 @@ interface PropertyCardProps {
 }
 
 export const PropertyCard = ({ property, delay = 0 }: PropertyCardProps) => {
+  // Debug logging for production troubleshooting
+  console.log('🏠 PropertyCard render:', {
+    hasProperty: !!property,
+    address: property?.address,
+    price: property?.price,
+    delay
+  });
   const [isVisible, setIsVisible] = useState(false);
   const [isAnalysisOpen, setIsAnalysisOpen] = useState(false);
 

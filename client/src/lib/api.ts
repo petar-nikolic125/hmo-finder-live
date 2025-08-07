@@ -55,6 +55,25 @@ class ApiClient {
 
       const data = await response.json();
       console.log(`✅ API Success:`, { url: fullUrl, dataSize: JSON.stringify(data).length });
+      
+      // Enhanced debugging for production properties endpoint
+      if (fullUrl.includes('/api/properties')) {
+        console.log('🏠 Properties data structure:', {
+          hasProperties: !!data.properties,
+          propertiesLength: data.properties?.length || 0,
+          hasMessage: !!data.message,
+          hasExpandedResults: !!data.hasExpandedResults,
+          dataKeys: Object.keys(data),
+          firstProperty: data.properties?.[0] ? {
+            hasId: !!data.properties[0].id,
+            hasAddress: !!data.properties[0].address,
+            hasPrice: !!data.properties[0].price,
+            keys: Object.keys(data.properties[0])
+          } : 'no properties',
+          rawDataSample: JSON.stringify(data).substring(0, 200) + '...'
+        });
+      }
+      
       return data;
     } catch (error) {
       console.error(`🚨 Request failed for ${fullUrl}:`, error);
