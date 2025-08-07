@@ -55,7 +55,7 @@ interface CacheData {
 export class ScrapingService {
   private cache: CacheData = {};
   private readonly cacheFile = process.env.NODE_ENV === 'production' ? '/tmp/scrape_cache.json' : '.local/scrape_cache.json';
-  private readonly rateLimitMs = process.env.NODE_ENV === 'production' ? 30000 : 5000; // Shorter rate limit for development
+  private readonly rateLimitMs = process.env.NODE_ENV === 'production' ? 300000 : 60000; // Cache for 5 minutes in production, 1 minute in dev
 
   constructor() {
     this.loadCache();
@@ -110,9 +110,9 @@ export class ScrapingService {
     
     console.log(`⏰ Cache check: Last scraped ${Math.floor(timeDiff/1000)}s ago, rate limit ${this.rateLimitMs/1000}s, can scrape: ${canScrape}`);
     
-    // In development, allow more frequent scraping for testing
-    if (process.env.NODE_ENV === 'development' && timeDiff > 2000) {
-      console.log('🔧 Development mode: allowing scrape after 2s');
+    // In development, still respect reasonable cache times
+    if (process.env.NODE_ENV === 'development' && timeDiff > 30000) {
+      console.log('🔧 Development mode: allowing scrape after 30s');
       return true;
     }
     
