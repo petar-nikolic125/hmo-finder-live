@@ -29,7 +29,8 @@ async function buildForProduction() {
     ],
     define: {
       'process.env.NODE_ENV': '"production"'
-    }
+    },
+    minify: true
   });
 
   // Copy Python files and dependencies

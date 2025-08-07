@@ -13,6 +13,7 @@ A production-optimized full-stack TypeScript application for searching HMO (Hous
 - Ready for production deployment on Render/Vercel platforms
 - Requires proper deployment configuration with fixed static file paths
 - Fully Vercel-ready with serverless architecture and optimized build process
+- Railway-optimized with proper Nixpacks configuration and deployment scripts
 
 ## System Architecture
 
@@ -60,4 +61,4 @@ Properties include basic info (address, price, size, bedrooms, bathrooms) and co
 - **State Management Library**: TanStack Query
 - **Routing Library**: Wouter
 - **Build Tool**: Vite
-- **Deployment Platform**: Vercel
+- **Deployment Platforms**: Vercel, Railway (optimized for both)

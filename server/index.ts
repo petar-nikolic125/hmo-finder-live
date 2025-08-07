@@ -63,21 +63,30 @@ async function initializeApp() {
   }
 
   // Only start server if not in Vercel environment
-  if (!process.env.VERCEL) {
+  if (!process.env.VERCEL && !process.env.RAILWAY_STATIC_URL) {
     // Configure server timeouts for better reliability
     server.timeout = 60000; // 60 seconds
     server.keepAliveTimeout = 65000; // 65 seconds
     server.headersTimeout = 66000; // 66 seconds
 
     // Use environment PORT for production deployment compatibility
-    // Fallback to 5000 for Replit environment
-    const port = process.env.PORT || 5000;
-    server.listen({
-      port,
-      host: "0.0.0.0",
-      reusePort: true,
-    }, () => {
-      log(`serving on port ${port}`);
+    // Railway, Heroku, and other platforms set PORT automatically
+    const port = parseInt(process.env.PORT) || 5000;
+    const host = process.env.HOST || "0.0.0.0";
+    
+    server.listen(port, host, () => {
+      log(`serving on ${host}:${port}`);
+      
+      // Log deployment platform for debugging
+      if (process.env.RAILWAY_STATIC_URL) {
+        log(`🚂 Running on Railway: ${process.env.RAILWAY_STATIC_URL}`);
+      } else if (process.env.HEROKU_APP_NAME) {
+        log(`🟣 Running on Heroku: ${process.env.HEROKU_APP_NAME}`);
+      } else if (process.env.RENDER) {
+        log(`🟢 Running on Render`);
+      } else {
+        log(`🔵 Running on Replit/Local`);
+      }
     });
   }
   
