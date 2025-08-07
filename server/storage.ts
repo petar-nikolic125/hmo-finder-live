@@ -83,9 +83,10 @@ export class MemStorage implements IStorage {
       // Only use real scraped data - no fallbacks to fake data
       const scrapedProperties = await scrapingService.searchProperties({
         city: params.city || 'Liverpool',
-        minBedrooms: params.minRooms || 4,
+        minBedrooms: params.minRooms || 4, // Convert minRooms to minBedrooms for scraper
         maxPrice: params.maxPrice || 500000,
-        keywords: params.keywords || 'HMO'
+        keywords: params.keywords || 'HMO',
+        postcode: params.postcode
       });
 
       if (scrapedProperties.length > 0) {

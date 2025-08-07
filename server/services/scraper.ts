@@ -7,28 +7,39 @@ export interface SearchParams {
   city: string;
   postcode?: string;
   count?: number;
-  minRooms?: number;
+  minBedrooms: number;
   maxPrice?: number;
   keywords?: string;
   stressTest?: boolean;
-  minBedrooms: number;
 }
 
 export interface Property {
   id: number;
   address: string;
+  postcode: string;
   price: number;
+  size?: number;
   bedrooms: number;
   bathrooms?: number;
+  latitude: number;
+  longitude: number;
   imageUrl: string;
   propertyUrl: string;
+  primeLocationUrl: string;
+  rightmoveUrl: string;
+  zooplaUrl: string;
   city: string;
   scrapedAt: string;
-  postcode?: string;
-  latitude?: number;
-  longitude?: number;
-  description?: string;
-  [key: string]: any;
+  description: string;
+  hasGarden: boolean;
+  hasParking: boolean;
+  isArticle4: boolean;
+  yearlyProfit: number;
+  leftInDeal: number;
+  isExpandedResult?: boolean;
+  // Financial fields that come from scraper
+  gross_yield?: number;
+  profitability_score?: string;
 }
 
 interface CacheEntry {

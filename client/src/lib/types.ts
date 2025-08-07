@@ -37,7 +37,9 @@ export interface PropertyWithAnalytics extends InsertProperty {
 export interface PropertySearchParams {
   city?: string;
   count?: number;
-  minRooms?: number;
+  minRooms?: number; // Frontend uses minRooms, backend converts to minBedrooms
   maxPrice?: number;
   keywords?: string;
+  postcode?: string;
+  stressTest?: boolean;
 }

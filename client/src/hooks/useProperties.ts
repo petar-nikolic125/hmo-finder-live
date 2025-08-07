@@ -1,5 +1,5 @@
 import { useQuery, useQueryClient } from '@tanstack/react-query';
-import { apiClient, PropertyWithAnalytics, PropertySearchResponse } from '@/lib/api';
+import { apiClient, PropertySearchResponse } from '@/lib/api';
 import { PropertySearchParams } from '@/lib/types';
 
 export const useProperties = (params: PropertySearchParams) => {

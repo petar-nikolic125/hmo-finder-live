@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { PropertyWithAnalytics } from '@/lib/api';
+import { PropertyWithAnalytics } from '@/lib/types';
 import { formatCurrency, formatPercentage } from '@/lib/format';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
