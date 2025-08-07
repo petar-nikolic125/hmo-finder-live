@@ -9,6 +9,7 @@ export interface PropertySearchParams {
   maxPrice?: number;
   keywords?: string;
   postcode?: string;
+  stressTest?: boolean;
 }
 
 // Enhanced Property type with analytics (calculated from scraped data only)

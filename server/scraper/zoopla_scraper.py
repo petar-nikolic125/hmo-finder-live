@@ -688,8 +688,8 @@ def scrape_properties_with_requests(city, min_bedrooms, max_price, keywords, pos
                 first_listing = listings[0]
                 print(f"🔍 First listing preview: {str(first_listing)[:200]}...", file=sys.stderr)
             
-            # Scrape svaki oglas
-            for i, listing in enumerate(listings[:30]):
+            # Scrape svaki oglas - increased limit for more diverse results
+            for i, listing in enumerate(listings[:50]):
                 try:
                     property_data = {}
                     
@@ -877,7 +877,7 @@ def scrape_properties_with_requests(city, min_bedrooms, max_price, keywords, pos
                         properties.append(property_data)
                         print(f"✅ Scraped property {len(properties)}: {property_data.get('title', 'Unknown')[:40]}... - £{property_data.get('price', 0)} (Yield: {property_data.get('gross_yield', 0)}%)", file=sys.stderr)
                     
-                    if len(properties) >= 30:  # Stop na 30 properties
+                    if len(properties) >= 80:  # Stop na 80 properties - increased for more diverse results
                         break
                         
                 except Exception as e:
@@ -885,7 +885,7 @@ def scrape_properties_with_requests(city, min_bedrooms, max_price, keywords, pos
                     continue
             
             total_properties_found = len(properties)
-            if len(properties) >= 12:  # Imamo dovoljno properties
+            if len(properties) >= 40:  # Imamo dovoljno properties - increased target
                 print(f"🎯 Target reached: {len(properties)} properties found", file=sys.stderr)
                 break
                 

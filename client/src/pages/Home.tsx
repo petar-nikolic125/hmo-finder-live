@@ -23,7 +23,7 @@ export const Home = () => {
   // Search parameters
   const [searchParams, setSearchParams] = useState<PropertySearchParams>({
     city: 'Liverpool',
-    count: 12,
+    count: 30,
     minRooms: 4,
     maxPrice: 500000,
     keywords: 'HMO',
