@@ -1,6 +1,7 @@
 import type { Express } from "express";
 import { createServer, type Server } from "http";
 import { storage, type PropertySearchParams } from "./storage";
+import { scrapingService } from "./services/scraper";
 
 export async function registerRoutes(app: Express): Promise<Server> {
   // Properties API routes
@@ -70,6 +71,17 @@ export async function registerRoutes(app: Express): Promise<Server> {
   // Health check endpoint
   app.get("/api/ping", (req, res) => {
     res.json({ now: Date.now() });
+  });
+
+  // Clear cache endpoint for debugging
+  app.delete("/api/cache", async (req, res) => {
+    try {
+      await scrapingService.clearCache();
+      res.json({ message: "Cache cleared successfully" });
+    } catch (error) {
+      console.error("Error clearing cache:", error);
+      res.status(500).json({ error: "Failed to clear cache" });
+    }
   });
 
   // Stress testing endpoint for extreme edge cases

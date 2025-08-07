@@ -18,7 +18,7 @@ interface CachedSearch {
 }
 
 export class ScrapingService {
-  private readonly RATE_LIMIT_MINUTES = 2; // 2 minutes between scraping sessions for better performance
+  private readonly RATE_LIMIT_MINUTES = 0.5; // 30 seconds between scraping sessions for better performance
   private readonly CACHE_FILE = path.join(process.cwd(), 'server/data/scrape_cache.json');
   private cache: Record<string, CachedSearch> = {};
 
@@ -75,37 +75,43 @@ export class ScrapingService {
     const targetPrice = params.maxPrice;
     const targetBedrooms = params.minBedrooms;
     
+    // First, try to find cache for the same city (even if parameters don't match exactly)
     for (const [key, cached] of Object.entries(this.cache)) {
-      // Parse the cache key to extract parameters
-      const keyParts = key.split('-');
-      if (keyParts.length >= 3 && keyParts[0] === params.city) {
-        try {
-          const cachedBedrooms = parseInt(keyParts[keyParts.length - 2]);
-          const cachedPrice = parseInt(keyParts[keyParts.length - 1]);
+      if (cached.properties.length > 0 && cached.properties[0].city === params.city) {
+        // Parse the search hash to get original parameters
+        const hashParts = key.split('-');
+        
+        // Check if cache is still relatively fresh (within 10 minutes for flexible matching)
+        const lastScrapedTime = new Date(cached.lastScraped);
+        const now = new Date();
+        const timeDiff = now.getTime() - lastScrapedTime.getTime();
+        const minutesDiff = timeDiff / (1000 * 60);
+        
+        if (minutesDiff < 10) { // More generous time limit for flexible matching
+          console.log(`🔄 Found flexible cache match for ${params.city} (${minutesDiff.toFixed(1)} min old)`);
           
-          // Check if parameters are within acceptable range (±20% price, ±1 bedroom)
-          const priceRange = targetPrice * 0.2;
-          const bedroomRange = 1;
+          // Filter properties to match current search criteria
+          const filteredProperties = cached.properties.filter(prop => {
+            const meetsBedroomCriteria = prop.bedrooms >= targetBedrooms;
+            const meetsPriceCriteria = prop.price <= targetPrice;
+            return meetsBedroomCriteria && meetsPriceCriteria;
+          });
           
-          if (Math.abs(cachedPrice - targetPrice) <= priceRange &&
-              Math.abs(cachedBedrooms - targetBedrooms) <= bedroomRange) {
-            
-            // Check if cache is still fresh
-            const lastScrapedTime = new Date(cached.lastScraped);
-            const now = new Date();
-            const timeDiff = now.getTime() - lastScrapedTime.getTime();
-            const minutesDiff = timeDiff / (1000 * 60);
-            
-            if (minutesDiff < this.RATE_LIMIT_MINUTES) {
-              return { key, data: cached.properties };
-            }
+          if (filteredProperties.length > 0) {
+            console.log(`📊 Filtered ${cached.properties.length} → ${filteredProperties.length} properties matching criteria`);
+            return { key, data: filteredProperties };
           }
-        } catch (e) {
-          continue; // Skip malformed cache keys
         }
       }
     }
     return null;
+  }
+
+  // Add method to clear cache for testing
+  async clearCache(): Promise<void> {
+    this.cache = {};
+    await this.saveCache();
+    console.log('🧹 Cache cleared');
   }
 
   async getCachedResults(params: SearchParams): Promise<Property[]> {
@@ -261,8 +267,24 @@ export class ScrapingService {
       const canScrape = await this.canScrapeNow(params);
       
       if (!canScrape) {
-        console.log('Rate limit active, returning cached results');
-        return await this.getCachedResults(params);
+        console.log('Rate limit active, checking for cached results');
+        const cachedResults = await this.getCachedResults(params);
+        
+        if (cachedResults.length > 0) {
+          console.log(`📦 Returning ${cachedResults.length} cached properties for ${params.city}`);
+          return cachedResults;
+        } else {
+          // No exact cache match, try flexible matching
+          const flexibleMatch = this.findFlexibleCacheMatch(params);
+          if (flexibleMatch && flexibleMatch.data.length > 0) {
+            console.log(`📦 Using flexible cache match with ${flexibleMatch.data.length} properties`);
+            return flexibleMatch.data;
+          } else {
+            console.log('No cached results found, forcing new scrape despite rate limit');
+            // Force scrape for new search parameters
+            return await this.scrapeProperties(params);
+          }
+        }
       }
 
       console.log('Scraping new properties for:', params);
@@ -273,7 +295,19 @@ export class ScrapingService {
       
       // Fallback to cached results if scraping fails
       console.log('Scraping failed, attempting to return cached results');
-      return await this.getCachedResults(params);
+      const cachedResults = await this.getCachedResults(params);
+      if (cachedResults.length > 0) {
+        return cachedResults;
+      }
+      
+      // Try flexible cache matching as last resort
+      const flexibleMatch = this.findFlexibleCacheMatch(params);
+      if (flexibleMatch && flexibleMatch.data.length > 0) {
+        console.log(`📦 Fallback: Using flexible cache match with ${flexibleMatch.data.length} properties`);
+        return flexibleMatch.data;
+      }
+      
+      return [];
     }
   }
 }
