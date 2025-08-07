@@ -45,30 +45,34 @@ def setup_session():
 def build_search_urls(city, min_bedrooms, max_price, keywords, postcode=None):
     """Napravi URLs za Zoopla i PrimeLocation sa filterima u ispravnom formatu"""
     
-    # Enhanced city mappings for problematic cities with better URL slugs
+    # FIXED: Proper city mappings with correct regional paths for problematic cities
     city_mappings = {
         'london': 'london',
         'newcastle': 'newcastle-upon-tyne',
         'newcastle upon tyne': 'newcastle-upon-tyne',
         'brighton': 'brighton-and-hove', 
         'brighton and hove': 'brighton-and-hove',
-        'cambridge': 'cambridge',
-        'leeds': 'leeds',
-        'blackpool': 'blackpool', 
-        'salford': 'salford',
-        'oxford': 'oxford',
-        'portsmouth': 'portsmouth',
-        'southampton': 'southampton',
-        'reading': 'reading',
-        'plymouth': 'plymouth',
-        'hull': 'kingston-upon-hull',
-        'kingston upon hull': 'kingston-upon-hull',
-        'derby': 'derby',
-        'coventry': 'coventry',
-        'leicester': 'leicester',
-        'preston': 'preston',
-        'wolverhampton': 'wolverhampton',
-        'stockport': 'stockport'
+        'cambridge': 'cambridgeshire/cambridge',  # Fixed: regional path
+        'leeds': 'west-yorkshire/leeds',  # Fixed: regional path 
+        'sheffield': 'south-yorkshire/sheffield',  # Fixed: regional path
+        'blackpool': 'lancashire/blackpool',  # Fixed: regional path
+        'salford': 'greater-manchester/salford',  # Fixed: regional path
+        'oxford': 'oxfordshire/oxford',  # Fixed: regional path
+        'portsmouth': 'hampshire/portsmouth',
+        'southampton': 'hampshire/southampton',
+        'reading': 'berkshire/reading',
+        'plymouth': 'devon/plymouth',
+        'hull': 'east-yorkshire/kingston-upon-hull',
+        'kingston upon hull': 'east-yorkshire/kingston-upon-hull',
+        'derby': 'derbyshire/derby',
+        'coventry': 'west-midlands/coventry',
+        'leicester': 'leicestershire/leicester',
+        'preston': 'lancashire/preston',
+        'wolverhampton': 'west-midlands/wolverhampton',
+        'stockport': 'greater-manchester/stockport',
+        'birmingham': 'west-midlands/birmingham',
+        'manchester': 'greater-manchester/manchester',
+        'liverpool': 'merseyside/liverpool'
     }
     
     city_lower = city.lower()
@@ -652,30 +656,55 @@ def scrape_properties_with_requests(city, min_bedrooms, max_price, keywords, pos
                 
             soup = BeautifulSoup(response.content, 'html.parser')
             
-            # Enhanced selectors for better property extraction from UK portals
+            # ENHANCED: Comprehensive selectors for ALL UK city page layouts
             selectors_list = [
                 # Primary property listing selectors (most specific first)
                 'article[data-testid*="search-result"]',
-                '[data-testid*="listing-card"]',
+                '[data-testid*="listing-card"]', 
                 '[data-testid*="property-listing"]',
+                '[data-testid*="property-card"]',
                 '.property-listing',
-                '.property-card', 
-                # Zoopla specific selectors
+                '.property-card',
+                '.listing-item',
+                # Zoopla specific selectors (enhanced)
                 '[data-testid*="listing"]:not([data-testid*="price"])',
                 '.listing-results-wrapper > div',
                 '.search-results > div',
-                # PrimeLocation specific selectors  
+                '.property-list > div',
+                '.results-list > div',
+                # PrimeLocation specific selectors (enhanced for regional pages)
                 '.search-property-result',
                 '[class*="SearchResultCard"]',
+                '[class*="PropertyCard"]',
                 '[class*="property-item"]',
+                '[class*="property-result"]',
                 'div[data-testid*="card"]',
-                # Generic fallback selectors that often contain property info
+                'div[data-testid*="result"]',
+                # Regional layout selectors (for Leeds, Cambridge, etc.)
+                '.property-summary',
+                '.property-wrapper',
+                '.listing-wrapper',
+                '.result-wrapper',
+                'div[class*="Property"]',
+                'div[class*="Listing"]',
+                'div[class*="Result"]',
+                # Grid and list layouts
+                '.grid-item',
+                '.list-item', 
+                '.property-row',
+                '.property-grid-item',
+                # Generic fallback selectors
                 'article',
                 'li[data-testid]',
+                'li[class*="property"]',
+                'li[class*="listing"]',
                 'div[class*="card"]:has(a[href*="/for-sale/"])',
                 # Last resort: find containers with property URLs
                 'div:has(a[href*="/for-sale/details/"])',
-                'div:has(a[href*="/property/"])'
+                'div:has(a[href*="/property/"])',
+                'div:has(a[href*="/houses-for-sale/"])',
+                'a[href*="/for-sale/details/"]',  # Direct links as last resort
+                'a[href*="/property/"]'
             ]
             
             listings = []
@@ -706,16 +735,27 @@ def scrape_properties_with_requests(city, min_bedrooms, max_price, keywords, pos
             if not listings:
                 print(f"⚠️ No listings found on {url[:50]}...", file=sys.stderr)
                 
-                # Enhanced fallback - try alternative selectors for dynamic content
+                # COMPREHENSIVE fallback for regional cities with different layouts
                 fallback_selectors = [
                     'div[role="listitem"]',
                     'div[data-testid]',
+                    'div[id*="property"]',
+                    'div[id*="listing"]',
+                    'div[id*="result"]',
                     'article',
                     'li[class*="result"]',
+                    'li[class*="property"]',
+                    'li[class*="listing"]',
                     'div[class*="card"]',
                     'div[class*="item"]',
+                    'div[class*="box"]',
+                    'div[class*="summary"]',
+                    'section[class*="property"]',
+                    'section[class*="listing"]',
                     'a[href*="/for-sale/"]',
-                    'a[href*="/details/"]'
+                    'a[href*="/details/"]',
+                    'a[href*="/houses-for-sale/"]',
+                    'a[href*="/property/"]'
                 ]
                 
                 for fallback_sel in fallback_selectors:
@@ -771,19 +811,23 @@ def scrape_properties_with_requests(city, min_bedrooms, max_price, keywords, pos
                                     property_data['address'] = f"{title_text.split(',')[0]}, {city}"
                                 break
                     
-                    # AGGRESSIVE: If no title found, generate one from price and city
+                    # STRICT: If no title found, try a few more methods but NO fake generation
                     if 'title' not in property_data:
                         link_with_title = listing.select_one('a[title]')
                         if link_with_title and link_with_title.get('title'):
                             title_text = link_with_title['title']
-                            property_data['title'] = title_text
-                            property_data['address'] = title_text if city.lower() in title_text.lower() else f"Property in {city}"
-                        else:
-                            # Generate title from available data
-                            price_str = f"£{property_data.get('price', 'TBC')}" if property_data.get('price') else "Price on application"
-                            bed_str = f"{property_data.get('bedrooms', min_bedrooms)} bed" if property_data.get('bedrooms') else f"{min_bedrooms}+ bed"
-                            property_data['title'] = f"{bed_str} property in {city} - {price_str}"
-                            property_data['address'] = f"Property in {city}"
+                            if len(title_text) > 3 and title_text not in ['Read more', 'View details', 'More info']:
+                                property_data['title'] = title_text
+                                property_data['address'] = title_text if city.lower() in title_text.lower() else f"{title_text}, {city}"
+                        
+                        # Try alt attribute or any text that looks like an address
+                        if 'title' not in property_data:
+                            img_alt = listing.select_one('img[alt]')
+                            if img_alt and img_alt.get('alt') and len(img_alt.get('alt', '')) > 5:
+                                alt_text = img_alt.get('alt')
+                                if any(word in alt_text.lower() for word in ['road', 'street', 'avenue', 'lane', 'close', 'drive', 'place']):
+                                    property_data['title'] = alt_text
+                                    property_data['address'] = alt_text
                     
                     # Cena
                     price_selectors = [
@@ -824,18 +868,8 @@ def scrape_properties_with_requests(city, min_bedrooms, max_price, keywords, pos
                             if 'price' in property_data:
                                 break
                         
-                        # LAST RESORT: Generate realistic price if still no price found
-                        if 'price' not in property_data:
-                            # Generate realistic price based on city and bedrooms
-                            city_base_prices = {
-                                'london': 600000, 'cambridge': 450000, 'oxford': 400000, 'brighton': 350000,
-                                'bristol': 300000, 'manchester': 200000, 'liverpool': 150000, 'birmingham': 180000,
-                                'leeds': 160000, 'sheffield': 140000, 'newcastle': 130000, 'hull': 100000
-                            }
-                            base_price = city_base_prices.get(city.lower(), 200000)
-                            bedroom_multiplier = property_data.get('bedrooms', min_bedrooms) * 0.8
-                            estimated_price = int(base_price * bedroom_multiplier * random.uniform(0.7, 1.3))
-                            property_data['price'] = min(estimated_price, max_price) if max_price else estimated_price
+                        # NO FAKE PRICES: If no price found, skip this property completely
+                        # This prevents "No results found" properties with estimated prices
                     
                     # Broj soba
                     bed_selectors = [
@@ -926,8 +960,12 @@ def scrape_properties_with_requests(city, min_bedrooms, max_price, keywords, pos
                     else:
                         property_data['image_url'] = 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&crop=entropy&q=80'
                     
-                    # AGGRESSIVE: Add property with minimal validation - either title OR price
-                    if (property_data.get('title') and len(property_data.get('title', '')) > 3) or property_data.get('price', 0) > 0:
+                    # STRICT: Only add properties with BOTH valid title AND price - no exceptions
+                    if (property_data.get('title') and len(property_data.get('title', '')) > 5 and 
+                        property_data.get('price', 0) > 10000 and 
+                        not property_data.get('title', '').startswith('No results') and
+                        not property_data.get('title', '').startswith('Property in') and
+                        property_data.get('title', '') != f"Property in {city}"):
                         
                         # SKIP detailed scraping for speed - use basic description for ALL properties
                         property_data['description'] = f"{property_data.get('bedrooms', 'Multiple')} bedroom HMO property in {city}. Great investment opportunity with strong rental potential. Suitable for students and young professionals."
