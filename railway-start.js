@@ -60,3 +60,16 @@ async function startForRailway() {
 }
 
 startForRailway();
+// Railway production start script
+import { initializeApp } from "./server/index.js";
+
+const app = await initializeApp();
+
+// Railway provides PORT environment variable
+const port = process.env.PORT || 5000;
+const host = "0.0.0.0";
+
+app.listen(port, host, () => {
+  console.log(`🚂 Railway deployment running on ${host}:${port}`);
+  console.log(`📡 Health check available at http://${host}:${port}/api/ping`);
+});

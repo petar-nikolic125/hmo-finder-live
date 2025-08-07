@@ -62,8 +62,8 @@ async function initializeApp() {
     serveStatic(app);
   }
 
-  // Only start server if not in Vercel environment
-  if (!process.env.VERCEL && !process.env.RAILWAY_STATIC_URL) {
+  // Only start server if not in Vercel environment or Railway build
+  if (!process.env.VERCEL && !process.env.RAILWAY_STATIC_URL && !process.env.RAILWAY_ENVIRONMENT) {
     // Configure server timeouts for better reliability
     server.timeout = 60000; // 60 seconds
     server.keepAliveTimeout = 65000; // 65 seconds
@@ -78,8 +78,8 @@ async function initializeApp() {
       log(`serving on ${host}:${port}`);
       
       // Log deployment platform for debugging
-      if (process.env.RAILWAY_STATIC_URL) {
-        log(`🚂 Running on Railway: ${process.env.RAILWAY_STATIC_URL}`);
+      if (process.env.RAILWAY_STATIC_URL || process.env.RAILWAY_ENVIRONMENT) {
+        log(`🚂 Running on Railway: ${process.env.RAILWAY_STATIC_URL || 'Railway Environment'}`);
       } else if (process.env.HEROKU_APP_NAME) {
         log(`🟣 Running on Heroku: ${process.env.HEROKU_APP_NAME}`);
       } else if (process.env.RENDER) {
