@@ -35,8 +35,11 @@ export const Home = () => {
   const [hasSearched, setHasSearched] = useState(false);
   const [showTutorial, setShowTutorial] = useState(true);
 
-  // Fetch properties with enhanced messaging
-  const { data: searchResult, isLoading, isError, refetch } = useProperties(searchParams);
+  // Search trigger state
+  const [searchTrigger, setSearchTrigger] = useState(false);
+  
+  // Fetch properties with enhanced messaging - only when triggered
+  const { data: searchResult, isLoading, isError, refetch } = useProperties(searchParams, searchTrigger);
   const properties = searchResult?.properties || [];
   const expandedResultsMessage = searchResult?.message;
   const hasExpandedResults = searchResult?.hasExpandedResults || false;
@@ -51,6 +54,13 @@ export const Home = () => {
       (property.postcode && property.postcode.toLowerCase().includes(term))
     );
   }, [properties, searchTerm]);
+
+  // Search handler
+  const handleSearch = () => {
+    console.log('🔍 Triggering new search with params:', searchParams);
+    setSearchTrigger(true);
+    setHasSearched(true);
+  };
 
   // Update updated time when properties change
   useEffect(() => {
@@ -105,7 +115,7 @@ export const Home = () => {
     }
   }, [searchResult]);
 
-  const handleSearch = () => {
+  const handleSearchClick = () => {
     if (!hasSearched) {
       setShowPrivacyPopup(true);
       setHasSearched(true);
@@ -177,7 +187,7 @@ export const Home = () => {
           
           <div className="flex items-center gap-3">
             <UpdateBadge lastUpdated={lastUpdated} />
-            <SortSelect />
+            <SortSelect value="price" onValueChange={() => {}} />
           </div>
         </div>
 

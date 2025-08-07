@@ -36,14 +36,14 @@ Properties include basic info (address, price, size, bedrooms, bathrooms) and co
 ### Key Features
 - **Reliable API Communication**: Enhanced frontend-backend communication with automatic retries, exponential backoff, connection monitoring, proper timeouts, and comprehensive error handling for development reliability
 - **Production Deployment Ready**: Comprehensive multi-platform deployment support with automated build fixes, dynamic port binding, and proper static asset handling for Vercel, Render, Railway, Heroku, and Docker
-- **Authentic Data Only**: Real property scraping from Zoopla and PrimeLocation with zero synthetic/fake data fallbacks
+- **Optimized Scraping**: PrimeLocation-only scraping limited to top 30 results for faster loading, triggered only on search button click
 - **Enhanced Error Handling**: Production-safe caching system with /tmp/ file paths and comprehensive fallback mechanisms
 - **Parameter Compatibility**: Fixed frontend/backend parameter synchronization for reliable property searches
 - **Intelligent Deduplication**: Optimized fuzzy matching algorithm to prevent over-filtering while maintaining data quality
 - **Enhanced City Coverage**: Improved scraper with better URL generation for London, Leeds, Cambridge, Oxford, and 20+ UK cities
 - **Financial Analytics**: ROI, yields, and cashflow calculations based on real market data and city-specific rental estimates
 - **Cache Management**: Production-optimized caching with proper rate limiting and development-friendly testing modes
-- **Enhanced Property Volume**: Successfully delivering 60-70 unique properties per search with authentic addresses
+- **User-Controlled Search**: Manual search trigger prevents unnecessary API calls and improves user experience
 - **Responsive Design**: Mobile-first approach with enhanced loading states and error handling
 
 ### System Design Choices

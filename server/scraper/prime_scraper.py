@@ -123,91 +123,10 @@ def build_search_urls(city, min_bedrooms, max_price, keywords, postcode=None):
         alternative_urls.append(zoopla_flex)
     
     # Skip complex alternatives - keep it simple
-    zoopla_broad_params = []
-    if min_bedrooms:
-        zoopla_broad_params.append(f"beds_min={min_bedrooms}")
-    if max_price:
-        zoopla_broad_params.append(f"price_max={max_price}")
-    zoopla_broad_params.append("property_type=houses")
-    zoopla_broad_params.append("results_sort=newest")
     
-    alt_zoopla_url = f"https://www.zoopla.co.uk/for-sale/property/{city_slug}/?" + "&".join(zoopla_broad_params)
-    alternative_urls.append(alt_zoopla_url)
-    
-    # PrimeLocation alternatives - broader search without HMO keywords
-    prime_broad_params = []
-    if min_bedrooms:
-        prime_broad_params.append(f"beds_min={min_bedrooms}")
-    if max_price:
-        prime_broad_params.append(f"price_max={max_price}")
-    prime_broad_params.append("propertyType=terraced")
-    prime_broad_params.append("results_sort=price")
-    
-    alt_prime_url = f"https://www.primelocation.com/for-sale/property/{city_slug}/?" + "&".join(prime_broad_params)
-    alternative_urls.append(alt_prime_url)
-    
-    # ENHANCED: Extreme price range handling for all cities
-    # Generate multiple price-flexible searches for robust coverage
-    
-    # Basic searches without bedroom restrictions for broader results
-    zoopla_minimal = f"https://www.zoopla.co.uk/for-sale/property/{city_slug}/?price_max={max_price}&property_type=houses"
-    alternative_urls.append(zoopla_minimal)
-    
-    prime_minimal = f"https://www.primelocation.com/for-sale/property/{city_slug}/?price_max={max_price}"
-    alternative_urls.append(prime_minimal)
-    
-    # CONTROLLED price range handling - respect user limits more strictly
-    if max_price < 200000:  # Low budget properties (£100k-£200k)
-        # Only expand by 10% for budget properties
-        expanded_price = int(max_price * 1.1)
-        zoopla_expanded = f"https://www.zoopla.co.uk/for-sale/property/{city_slug}/?price_max={expanded_price}"
-        alternative_urls.append(zoopla_expanded)
-        
-        prime_expanded = f"https://www.primelocation.com/for-sale/property/{city_slug}/?price_max={expanded_price}"
-        alternative_urls.append(prime_expanded)
-        
-        # Try with lower bedroom requirements for budget properties
-        budget_beds = max(1, min_bedrooms - 1)
-        zoopla_budget = f"https://www.zoopla.co.uk/for-sale/property/{city_slug}/?beds_min={budget_beds}&price_max={max_price}"
-        alternative_urls.append(zoopla_budget)
-        
-    elif max_price > 600000:  # High budget properties (£600k+)
-        # Try searches with slightly lower price caps to catch more properties
-        reduced_price = int(max_price * 0.9)
-        zoopla_reduced = f"https://www.zoopla.co.uk/for-sale/property/{city_slug}/?price_max={reduced_price}&property_type=houses"
-        alternative_urls.append(zoopla_reduced)
-        
-        prime_reduced = f"https://www.primelocation.com/for-sale/property/{city_slug}/?price_max={reduced_price}"
-        alternative_urls.append(prime_reduced)
-        
-        # High-end property searches with realistic price range
-        zoopla_luxury = f"https://www.zoopla.co.uk/for-sale/property/{city_slug}/?beds_min={min_bedrooms}&price_min={int(max_price * 0.7)}&price_max={max_price}"
-        alternative_urls.append(zoopla_luxury)
-    
-    # ALWAYS add flexible searches regardless of city or price
-    # Search with reduced bedroom requirements for more results  
-    if min_bedrooms > 2:
-        flexible_beds = min_bedrooms - 1
-        zoopla_flex_beds = f"https://www.zoopla.co.uk/for-sale/property/{city_slug}/?beds_min={flexible_beds}&price_max={max_price}"
-        alternative_urls.append(zoopla_flex_beds)
-        
-        prime_flex_beds = f"https://www.primelocation.com/for-sale/property/{city_slug}/?beds_min={flexible_beds}&price_max={max_price}"
-        alternative_urls.append(prime_flex_beds)
-    
-    # Controlled wider search - still with price limits but relaxed other filters
-    zoopla_wide = f"https://www.zoopla.co.uk/for-sale/property/{city_slug}/?price_max={max_price}"
-    alternative_urls.append(zoopla_wide)
-    
-    prime_wide = f"https://www.primelocation.com/for-sale/property/{city_slug}/?price_max={max_price}"
-    alternative_urls.append(prime_wide)
-    
-    print(f"🔗 Generated {len(alternative_urls) + 2} search URLs for FAST results", file=sys.stderr)
-    
-    # PRIORITY: Start with PrimeLocation since it's more reliable than Zoopla
-    # Return URLs in order of reliability
-    priority_urls = [prime_url, zoopla_url] + alternative_urls[:2]  # PrimeLocation first
-    print(f"🎯 Final URL count: {len(priority_urls)} (PrimeLocation prioritized)", file=sys.stderr)
-    return priority_urls
+    # OPTIMIZED: Return only PrimeLocation URLs (no Zoopla)
+    return alternative_urls[:1]  # Only 1 URL - PrimeLocation focused
+
 
 def extract_price(price_text):
     """Izvuci cenu iz teksta"""
@@ -734,8 +653,8 @@ def scrape_properties_with_requests(city, min_bedrooms, max_price, keywords, pos
                 first_listing = listings[0]
                 print(f"🔍 First listing preview: {str(first_listing)[:200]}...", file=sys.stderr)
             
-            # Scrape svaki oglas - OPTIMIZED limit for speed
-            for i, listing in enumerate(listings[:50]):
+            # Scrape svaki oglas - OPTIMIZED limit za brže učitavanje (samo 30)
+            for i, listing in enumerate(listings[:30]):
                 try:
                     property_data = {}
                     
