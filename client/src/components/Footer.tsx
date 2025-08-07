@@ -184,7 +184,7 @@ export const Footer = () => {
                 Made with precision in the UK
               </p>
               <p className="text-xs text-zinc-400 dark:text-zinc-500 mt-1">
-                Version: 1.1
+                Version: 1.3
               </p>
             </div>
           </div>
