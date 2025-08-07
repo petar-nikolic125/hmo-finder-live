@@ -35,6 +35,7 @@ Properties include basic info (address, price, size, bedrooms, bathrooms) and co
 - **AI Loading Experience**: Intelligent animated loading screen simulating AI analysis with dynamic status messages
 - **Financial Analytics**: ROI, yields, and cashflow calculations based on real market data and city-specific rental estimates
 - **Cache Management**: Automatic cache clearing to prevent stale data display
+- **High Volume Results**: Maximized property limits (150 total, 100 per URL) with deduplication for diverse property listings
 - **Responsive Design**: Mobile-first approach with enhanced loading states and error handling
 
 ### System Design Choices

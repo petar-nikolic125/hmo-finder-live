@@ -7,7 +7,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
   app.get("/api/properties", async (req, res) => {
     try {
       // Enhanced parameter validation and edge case handling for stress testing
-      let count = req.query.count ? parseInt(req.query.count as string) : 30;
+      let count = req.query.count ? parseInt(req.query.count as string) : 50;
       let minRooms = req.query.minRooms ? parseInt(req.query.minRooms as string) : undefined;
       let maxPrice = req.query.maxPrice ? parseInt(req.query.maxPrice as string) : undefined;
       
