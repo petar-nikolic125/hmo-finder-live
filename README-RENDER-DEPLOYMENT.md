@@ -12,11 +12,11 @@
 The repository includes a `render.yaml` file with the correct configuration. Render will automatically detect and use this file.
 
 ### 2. Manual Configuration
-If you prefer manual setup:
+If you prefer manual setup, use this EXACT build command:
 
 **Build Command:**
 ```
-npm install && npm run build && ./scripts/fix-build.sh
+npm install && npm run build && mkdir -p server/public && cp -r dist/public/* server/public/
 ```
 
 **Start Command:**
@@ -26,6 +26,11 @@ npm start
 
 **Environment Variables:**
 - `NODE_ENV`: `production`
+
+### 3. Alternative: Production Build Script
+```
+./build-production.sh
+```
 
 ### 3. Verify the Fix
 After deployment, check that:

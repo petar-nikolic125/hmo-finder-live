@@ -4,7 +4,7 @@
 
 **If deploying to Render, you MUST use this build command:**
 ```
-npm install && npm run build && ./scripts/fix-build.sh
+npm install && npm run build && mkdir -p server/public && cp -r dist/public/* server/public/
 ```
 
 Or use the included `render.yaml` file for automatic configuration.
