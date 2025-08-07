@@ -10,9 +10,10 @@ A production-optimized full-stack TypeScript application for searching HMO (Hous
 - Emphasize financial analytics and ROI calculations
 - Maintain authentic portal integration with real search URLs
 - Responsive design for mobile and desktop users
-- Ready for production deployment on Railway, Render, and Vercel platforms
+- Ready for production deployment on Render/Vercel platforms
 - Requires proper deployment configuration with fixed static file paths
 - Fully Vercel-ready with serverless architecture and optimized build process
+- Railway-optimized with proper Nixpacks configuration and deployment scripts
 
 ## System Architecture
 
@@ -34,7 +35,7 @@ Properties include basic info (address, price, size, bedrooms, bathrooms) and co
 
 ### Key Features
 - **Reliable API Communication**: Enhanced frontend-backend communication with automatic retries, exponential backoff, connection monitoring, proper timeouts, and comprehensive error handling for development reliability
-- **Railway Optimized Deployment**: Fully optimized for Railway with custom nixpacks configuration, automated Python+Node.js setup, health checks, and production-ready scaling. Includes specialized Railway startup scripts and environment detection.
+- **Production Deployment Ready**: Comprehensive multi-platform deployment support with automated build fixes, dynamic port binding, and proper static asset handling for Vercel, Render, Railway, Heroku, and Docker
 - **Authentic Data Only**: Real property scraping from Zoopla and PrimeLocation with zero synthetic/fake data fallbacks
 - **Enhanced Error Handling**: Production-safe caching system with /tmp/ file paths and comprehensive fallback mechanisms
 - **Parameter Compatibility**: Fixed frontend/backend parameter synchronization for reliable property searches
@@ -60,4 +61,4 @@ Properties include basic info (address, price, size, bedrooms, bathrooms) and co
 - **State Management Library**: TanStack Query
 - **Routing Library**: Wouter
 - **Build Tool**: Vite
-- **Deployment Platforms**: Vercel, Railway, Render (multi-platform ready)
+- **Deployment Platforms**: Vercel, Railway (optimized for both)

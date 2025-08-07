@@ -1,1 +1,1 @@
-web: node scripts/railway-start.js
+web: node dist/index.js
