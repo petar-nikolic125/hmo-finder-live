@@ -23,7 +23,7 @@ A full-stack TypeScript application for searching HMO (House in Multiple Occupat
 - **Framework**: Express.js
 - **Storage**: Real-time scraping only (no synthetic data fallbacks)
 - **API Endpoints**: `/api/properties` (search with filters), `/api/cities` (available cities list), `/api/ping` (health check)
-- **Scraping**: Enhanced Python scraper with improved city mappings for Leeds, Cambridge, and 20+ UK cities
+- **Scraping**: Single prime_scraper.py for real property data from Zoopla and PrimeLocation with zero fake data fallbacks
 
 ### Data Model
 Properties include basic info (address, price, size, bedrooms, bathrooms) and comprehensive financial analytics (ROI, yields, cashflow, DSCR, payback years). Portal integration uses `SEARCH_SEEDS` for Rightmove and Zoopla URLs.
@@ -31,7 +31,7 @@ Properties include basic info (address, price, size, bedrooms, bathrooms) and co
 ### Key Features
 - **Authentic Data Only**: Real property scraping from Zoopla and PrimeLocation with zero synthetic/fake data fallbacks
 - **Enhanced City Coverage**: Improved scraper with better URL generation for London, Leeds, Cambridge, Oxford, and 20+ UK cities
-- **Dual Scraper System**: Combined real scraper + enhanced diversity generator (70/30 mix) for optimal results
+- **Pure Real Data**: Single prime_scraper.py providing authentic property data with strict validation and deduplication
 - **Intelligent Deduplication**: Fuzzy matching algorithm with 80% similarity threshold and 10% price tolerance
 - **Unified Search Interface**: Single comprehensive search bar combining city, price, and bedroom filters
 - **AI Loading Experience**: Intelligent animated loading screen simulating AI analysis with dynamic status messages
@@ -42,7 +42,7 @@ Properties include basic info (address, price, size, bedrooms, bathrooms) and co
 
 ### System Design Choices
 - **Client-Server Separation**: Clear separation with frontend handling UI/display and backend managing data generation/APIs.
-- **Hybrid Scraping Strategy**: Dual-mode scraper system combining real web scraping (zoopla_scraper.py) with enhanced diversity generation (enhanced_scraper.py) for optimal property volume and variety.
+- **Pure Scraping Strategy**: Single prime_scraper.py for authentic web scraping from Zoopla and PrimeLocation with zero synthetic data generation.
 - **Advanced Deduplication**: Levenshtein distance algorithm for fuzzy matching, preventing over-filtering while maintaining data quality.
 - **Query Management**: TanStack Query for efficient data fetching, caching, and error handling with improved cache invalidation.
 - **Robustness**: Enhanced property validation, intelligent address normalization, and multi-tier fallbacks for consistent user experience.

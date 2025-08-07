@@ -290,7 +290,7 @@ export class ScrapingService {
 
   async scrapeProperties(params: SearchParams): Promise<Property[]> {
     return new Promise((resolve, reject) => {
-      const pythonScript = path.join(process.cwd(), 'server/scraper/zoopla_scraper.py');
+      const pythonScript = path.join(process.cwd(), 'server/scraper/prime_scraper.py');
       const args = [
         pythonScript,
         params.city,
@@ -299,7 +299,7 @@ export class ScrapingService {
         params.keywords || 'HMO'
       ];
 
-      console.log(`🔍 Using zoopla_scraper.py for REAL property data - NO FAKE DATA`);
+      console.log(`🔍 Using prime_scraper.py for REAL property data - NO FAKE DATA`);
 
       const pythonProcess = spawn('python3', args, {
         stdio: ['pipe', 'pipe', 'pipe'],
