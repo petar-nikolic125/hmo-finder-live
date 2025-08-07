@@ -9,7 +9,8 @@ echo "🔧 Fixing build output paths for production deployment..."
 if [ -d "dist/public" ]; then
     echo "✅ Found vite build output in dist/public"
     
-    # Create server/public directory
+    # Remove any existing server/public directory and recreate
+    rm -rf server/public
     mkdir -p server/public
     
     # Copy all files from dist/public to server/public
@@ -17,9 +18,28 @@ if [ -d "dist/public" ]; then
     
     echo "✅ Copied build files to server/public for production"
     
+    # Set proper permissions
+    chmod -R 755 server/public/
+    
     # List copied files for verification
     echo "📁 Files in server/public:"
-    ls -la server/public/
+    ls -la server/public/ | head -10
+    
+    # Verify key files exist
+    if [ -f "server/public/index.html" ]; then
+        echo "✅ index.html found"
+    else
+        echo "❌ index.html missing!"
+        exit 1
+    fi
+    
+    if [ -d "server/public/assets" ]; then
+        echo "✅ assets directory found"
+    else
+        echo "❌ assets directory missing!"
+        exit 1
+    fi
+    
 else
     echo "❌ dist/public not found. Make sure to run 'vite build' first"
     exit 1

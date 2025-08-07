@@ -20,22 +20,39 @@ A post-build script has been created at `scripts/fix-build.sh` that:
 
 ## Updated Build Process for Render
 
-### Option 1: Run the fix script after build
+### Option 1: Use render.yaml (Recommended)
+A `render.yaml` file has been created with the correct build command:
+```yaml
+services:
+  - type: web
+    name: hmo-property-search
+    env: node
+    plan: starter
+    buildCommand: npm install && npm run build && ./scripts/fix-build.sh
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+```
+
+### Option 2: Manual Render service configuration
+In your Render service settings:
+
+**Build Command:**
+```
+npm install && npm run build && ./scripts/fix-build.sh
+```
+
+**Start Command:**
+```
+npm start
+```
+
+### Option 3: Local testing
 ```bash
 npm run build
 ./scripts/fix-build.sh
 npm start
-```
-
-### Option 2: Update Render build command
-In your Render service settings, change the build command from:
-```
-npm install; npm run build
-```
-
-To:
-```
-npm install; npm run build; ./scripts/fix-build.sh
 ```
 
 ## Verification

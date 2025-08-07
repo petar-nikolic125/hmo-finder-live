@@ -1,5 +1,18 @@
 # HMO Property Search Application
 
+## 🚨 CRITICAL DEPLOYMENT FIX FOR RENDER
+
+**If deploying to Render, you MUST use this build command:**
+```
+npm install && npm run build && ./scripts/fix-build.sh
+```
+
+Or use the included `render.yaml` file for automatic configuration.
+
+**Why?** The build outputs to `dist/public/` but the server expects `server/public/`. The fix script copies files to the correct location.
+
+See `README-RENDER-DEPLOYMENT.md` for detailed instructions.
+
 A professional HMO (House in Multiple Occupation) property search platform with real-time analytics and authentic portal integration.
 
 ## 🚀 Quick Start
